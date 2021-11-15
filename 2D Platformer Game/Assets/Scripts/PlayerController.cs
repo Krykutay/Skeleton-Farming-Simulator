@@ -8,7 +8,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _jumpForce = 16f;
 
     [SerializeField] Transform _groundCheck;
+    [SerializeField] Transform _wallCheck;
     [SerializeField] float _groundCheckRadius;
+    [SerializeField] float _wallCheckDistance;
+    [SerializeField] float _wallSlidingSpeed;
+    [SerializeField] float _movementForceInAir;
+    [SerializeField] float _airDragMultiplier = 0.95f;
+    [SerializeField] float _variableJumpHeightMultiplier = 0.5f;
+
     [SerializeField] LayerMask _groundLayer;
 
     [SerializeField] int _amountsOfJumps = 2;
@@ -22,6 +29,8 @@ public class PlayerController : MonoBehaviour
     bool _isFacingRight = true;
     bool _isWalking;
     bool _isGrounded;
+    bool _isTouchingWall;
+    bool _isWallSliding;
     bool _canJump;
 
     void Awake()
@@ -41,6 +50,7 @@ public class PlayerController : MonoBehaviour
         CheckMovementDirection();
         UpdateAnimations();
         CheckIfCanJump();
+        CheckIfWallSliding();
     }
 
     void FixedUpdate()
@@ -49,9 +59,23 @@ public class PlayerController : MonoBehaviour
         CheckSurroundings();
     }
 
+    void CheckIfWallSliding()
+    {
+        if (_isTouchingWall && !_isGrounded && _rb.velocity.y < 0)
+        {
+            _isWallSliding = true;
+        }
+        else
+        {
+            _isWallSliding = false;
+        }
+    }
+
     void CheckSurroundings()
     {
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
+
+        _isTouchingWall = Physics2D.Raycast(_wallCheck.position, transform.right, _wallCheckDistance, _groundLayer);
     }
 
     void CheckMovementDirection()
@@ -72,6 +96,7 @@ public class PlayerController : MonoBehaviour
         _anim.SetBool("isWalking", _isWalking);
         _anim.SetBool("isGrounded", _isGrounded);
         _anim.SetFloat("yVelocity", _rb.velocity.y);
+        _anim.SetBool("isWallSliding", _isWallSliding);
     }
 
     void CheckInput()
@@ -81,6 +106,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _variableJumpHeightMultiplier);
         }
     }
 
@@ -109,18 +139,50 @@ public class PlayerController : MonoBehaviour
 
     void ApplyMovement()
     {
-        _rb.velocity = new Vector2(_movementSpeed * _movementInputDirection, _rb.velocity.y);
+        if (_isGrounded)
+        {
+            _rb.velocity = new Vector2(_movementSpeed * _movementInputDirection, _rb.velocity.y);
+        }
+        else if (!_isGrounded && !_isWallSliding && _movementInputDirection != 0)
+        {
+            Vector2 forceToAdd = new Vector2(_movementForceInAir * _movementInputDirection, 0);
+            _rb.AddForce(forceToAdd);
+
+            if (Mathf.Abs(_rb.velocity.x) > _movementSpeed)
+            {
+                _rb.velocity = new Vector2(_movementSpeed * _movementInputDirection, _rb.velocity.y);
+            }
+        }
+        else if (!_isGrounded && !_isWallSliding && _movementInputDirection == 0)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x * _airDragMultiplier, _rb.velocity.y);
+        }
+
+
+        if (_isWallSliding)
+        {
+            if (_rb.velocity.y < -_wallSlidingSpeed)
+            {
+                _rb.velocity = new Vector2(_rb.velocity.x, -_wallSlidingSpeed);
+            }
+        }
     }
 
     void Flip()
     {
-        _isFacingRight = !_isFacingRight;
-        transform.Rotate(0f, 180f, 0f);
+        if (!_isWallSliding)
+        {
+            _isFacingRight = !_isFacingRight;
+            transform.Rotate(0f, 180f, 0f);
+        }
+
     }
 
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
+
+        Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallCheckDistance, _wallCheck.position.y, _wallCheck.position.z));
     }
 
 }
