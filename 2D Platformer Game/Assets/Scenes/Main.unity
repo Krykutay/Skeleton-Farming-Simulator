@@ -961,16 +961,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 10
   _jumpForce: 16
+  _amountsOfJumps: 2
+  _facingDirection: 1
   _groundCheck: {fileID: 1301047347}
   _wallCheck: {fileID: 175378113}
   _groundCheckRadius: 0.3
   _wallCheckDistance: 0.4
   _wallSlidingSpeed: 0.1
-  _movementForceInAir: 10
+  _movementForceInAir: 50
+  _airDragMultiplier: 0.95
+  _variableJumpHeightMultiplier: 0.5
+  _wallHopForce: 10
+  _wallJumpForce: 20
+  _wallHopDirection: {x: 1, y: 0.5}
+  _wallJumpDirection: {x: 1, y: 2}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _amountsOfJumps: 2
 --- !u!95 &458347158
 Animator:
   serializedVersion: 3
