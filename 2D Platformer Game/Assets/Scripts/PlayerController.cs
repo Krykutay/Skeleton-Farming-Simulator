@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _jumpTimerSet = 0.15f;
     [SerializeField] float _turnTimerSet = 0.1f;
     [SerializeField] float __wallJumpTimerSet = 0.5f;
+    [Header ("Dashing")]
+    [SerializeField] float _dashTime;
+    [SerializeField] float _dashSpeed;
+    [SerializeField] float _distanceBetweenImages;
+    [SerializeField] float _dashCooldown;
 
     [SerializeField] float _groundCheckRadius;
     [SerializeField] float _wallCheckDistance;
@@ -43,6 +48,9 @@ public class PlayerController : MonoBehaviour
     float _turnTimer = 0.1f;
     float _wallJumpTimer;
     int _lastWallJumpDirection;
+    float _dashTimeLeft;
+    float _lastImageXpos;
+    float _lastDashTime = -100f;
 
     bool _isFacingRight = true;
     bool _isWalking;
@@ -59,11 +67,15 @@ public class PlayerController : MonoBehaviour
     bool _isTouchingLedge;
     bool _canClimbLedge = false;
     bool _ledgeDetected;
+    bool _isDashing;
+
+    ObjectPoolingManager _objectPoolingManagerInstance;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _objectPoolingManagerInstance = ObjectPoolingManager.Instance;
     }
 
     void Start()
@@ -81,6 +93,7 @@ public class PlayerController : MonoBehaviour
         CheckIfWallSliding();
         CheckJump();
         CheckLedgeClimb();
+        CheckDash();
     }
 
     void FixedUpdate()
@@ -138,6 +151,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = _ledgePos1;
         }
+
     }
 
     public void FinishedLedgeClimb()
@@ -229,6 +243,52 @@ public class PlayerController : MonoBehaviour
         {
             _checkJumpMultiplier = false;
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _variableJumpHeightMultiplier);
+        }
+
+        if (Input.GetButtonDown("Dash"))
+        {
+            if (Time.time >= (_lastDashTime + _dashCooldown))
+                AttemptToDash();
+        }
+    }
+
+    void AttemptToDash()
+    {
+        _isDashing = true;
+        _dashTimeLeft = _dashTime;
+        _lastDashTime = Time.time;
+
+        GameObject afterImage = _objectPoolingManagerInstance.Get("afterImage");
+        afterImage.SetActive(true);
+        _lastImageXpos = transform.position.x;
+    }
+
+    void CheckDash()
+    {
+        if (_isDashing)
+        {
+            if (_dashTimeLeft > 0)
+            {
+                _canMove = false;
+                _canFlip = false;
+
+                _rb.velocity = new Vector2(_dashSpeed * _facingDirection, _rb.velocity.y);  // Set to 0 for Hallow Knight style
+                _dashTimeLeft -= Time.deltaTime;
+
+                if (Mathf.Abs(transform.position.x - _lastImageXpos) > _distanceBetweenImages)
+                {
+                    GameObject afterImage = _objectPoolingManagerInstance.Get("afterImage");
+                    afterImage.SetActive(true);
+                    _lastImageXpos = transform.position.x;
+                }
+            }
+
+            if (_dashTimeLeft <= 0 || _isTouchingWall)
+            {
+                _isDashing = false;
+                _canMove = true;
+                _canFlip = true;
+            }
         }
     }
 
@@ -363,6 +423,8 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
 
         Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallCheckDistance, _wallCheck.position.y, _wallCheck.position.z));
+
+        //Gizmos.DrawLine(_ledgePos1, _ledgePos2);
     }
 
 }
