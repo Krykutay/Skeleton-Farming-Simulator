@@ -4,35 +4,42 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("BasicMovement")]
     [SerializeField] float _movementSpeed = 10f;
+    [SerializeField] int _facingDirection = 1;
+
+    [Header("Jumping")]
     [SerializeField] float _jumpForce = 16f;
     [SerializeField] int _amountsOfJumps = 2;
-    [SerializeField] int _facingDirection = 1;
     [SerializeField] float _jumpTimerSet = 0.15f;
+    [SerializeField] float _groundCheckRadius;
+    [SerializeField] float _airDragMultiplier = 0.95f;
+    [SerializeField] float _variableJumpHeightMultiplier = 0.5f;
+
+    [Header("WallSlide")]
+    [SerializeField] Vector2 _wallJumpDirection;
+    [SerializeField] float _wallCheckDistance;
+    [SerializeField] float _wallSlidingSpeed;
+    [SerializeField] float _wallJumpForce;
     [SerializeField] float _turnTimerSet = 0.1f;
     [SerializeField] float __wallJumpTimerSet = 0.5f;
+
+    [Header("LedgeClimbing")]
+    [SerializeField] float _ledgeClimbXOffset1 = 0f;
+    [SerializeField] float _ledgeClimbYOffset1 = 0f;
+    [SerializeField] float _ledgeClimbXOffset2 = 0f;
+    [SerializeField] float _ledgeClimbYOffset2 = 0f;
+
     [Header ("Dashing")]
     [SerializeField] float _dashTime;
     [SerializeField] float _dashSpeed;
     [SerializeField] float _distanceBetweenImages;
     [SerializeField] float _dashCooldown;
 
-    [SerializeField] float _groundCheckRadius;
-    [SerializeField] float _wallCheckDistance;
-    [SerializeField] float _wallSlidingSpeed;
-    [SerializeField] float _airDragMultiplier = 0.95f;
-    [SerializeField] float _variableJumpHeightMultiplier = 0.5f;
-    [SerializeField] float _wallJumpForce;
-    [SerializeField] float _ledgeClimbXOffset1 = 0f;
-    [SerializeField] float _ledgeClimbYOffset1 = 0f;
-    [SerializeField] float _ledgeClimbXOffset2 = 0f;
-    [SerializeField] float _ledgeClimbYOffset2 = 0f;
-
+    [Header("Checkers")]
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _ledgeCheck;
-
-    [SerializeField] Vector2 _wallJumpDirection;
 
     [SerializeField] LayerMask _groundLayer;
 

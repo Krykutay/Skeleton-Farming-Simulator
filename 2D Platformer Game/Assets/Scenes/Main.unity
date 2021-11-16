@@ -920,7 +920,7 @@ MonoBehaviour:
   _pools:
   - _tag: afterImage
     _prefab: {fileID: 1029384482432138302, guid: ca862322cca88b14599ae5b621f97bde, type: 3}
-    _initialSize: 5
+    _initialSize: 12
 --- !u!1 &458347152
 GameObject:
   m_ObjectHideFlags: 0
