@@ -1070,30 +1070,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 9
+  _facingDirection: 1
   _jumpForce: 22
   _amountsOfJumps: 2
-  _facingDirection: 1
   _jumpTimerSet: 0.15
-  _turnTimerSet: 0.1
-  __wallJumpTimerSet: 0.5
-  _dashTime: 0.2
-  _dashSpeed: 50
-  _distanceBetweenImages: 0.1
-  _dashCooldown: 2.5
   _groundCheckRadius: 0.3
-  _wallCheckDistance: 0.65
-  _wallSlidingSpeed: 1
   _airDragMultiplier: 0.95
   _variableJumpHeightMultiplier: 0.5
+  _wallJumpDirection: {x: 1, y: 2}
+  _wallCheckDistance: 0.65
+  _wallSlidingSpeed: 1
   _wallJumpForce: 30
+  _turnTimerSet: 0.1
+  __wallJumpTimerSet: 0.5
   _ledgeClimbXOffset1: 0.3
   _ledgeClimbYOffset1: 0
   _ledgeClimbXOffset2: 0.5
   _ledgeClimbYOffset2: 2
+  _dashTime: 0.2
+  _dashSpeed: 50
+  _distanceBetweenImages: 0.8
+  _dashCooldown: 2.5
   _groundCheck: {fileID: 1301047347}
   _wallCheck: {fileID: 175378113}
   _ledgeCheck: {fileID: 240751148}
-  _wallJumpDirection: {x: 1, y: 2}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
