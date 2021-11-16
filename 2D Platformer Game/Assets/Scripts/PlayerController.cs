@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (_isGrounded || (_amountsOfJumpsLeft > 0 && _isTouchingWall))
+            if (_isGrounded || (_amountsOfJumpsLeft > 0 && !_isTouchingWall))
             {
                 NormalJump();
             }
