@@ -713,6 +713,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 1, y: 7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 1
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -14, y: 8, z: 0}
     second:
       serializedVersion: 2
@@ -821,6 +831,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 66c255bb3a9d7b34f8a01ffef3de0679, type: 2}
   - m_RefCount: 19
     m_Data: {fileID: 11400000, guid: a47ab32bc3708564c8472f360b06a13a, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 8e04a2669c475ed478319a92ab151baa, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 21
     m_Data: {fileID: 7828017421341732505, guid: 703c35c088528084ebea1d62f40deee2, type: 3}
@@ -828,6 +840,8 @@ Tilemap:
     m_Data: {fileID: 8804346995418868313, guid: 703c35c088528084ebea1d62f40deee2, type: 3}
   - m_RefCount: 19
     m_Data: {fileID: 5641304389960186697, guid: 703c35c088528084ebea1d62f40deee2, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 5886386325936423871, guid: 703c35c088528084ebea1d62f40deee2, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 41
     m_Data:
@@ -847,8 +861,26 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 1
+    m_Data:
+      e00: 0
+      e01: -1
+      e02: 0
+      e03: 0
+      e10: 1
+      e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_TileColorArray:
-  - m_RefCount: 41
+  - m_RefCount: 42
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -933,8 +965,9 @@ GameObject:
   - component: {fileID: 458347154}
   - component: {fileID: 458347153}
   - component: {fileID: 458347156}
-  - component: {fileID: 458347157}
   - component: {fileID: 458347158}
+  - component: {fileID: 458347157}
+  - component: {fileID: 458347159}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1028,6 +1061,7 @@ Transform:
   - {fileID: 1301047347}
   - {fileID: 175378113}
   - {fileID: 240751148}
+  - {fileID: 1619916139}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1116,6 +1150,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &458347159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458347152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e2bd86c57a7ba4784fa59a4fb73a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _combatEnabled: 1
+  _inputTimer: 0.2
+  _attack1Radius: 0.8
+  _attack1Damage: 10
+  _attack1HitBoxPos: {fileID: 1619916139}
+  _isDamageable:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -71040,6 +71094,36 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &1619916138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619916139}
+  m_Layer: 0
+  m_Name: Attack1Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1619916139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619916138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.41, y: -0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 458347155}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1660442445
 GameObject:
   m_ObjectHideFlags: 3

@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
         else if (!_isFacingRight && _movementInputDirection > 0)
             Flip();
 
-        if (Mathf.Abs(_rb.velocity.x) > 0.01f)
+        if (Mathf.Abs(_rb.velocity.x) >= 0.01f)
             _isWalking = true;
         else
             _isWalking = false;
@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
                 _canMove = false;
                 _canFlip = false;
 
-                _rb.velocity = new Vector2(_dashSpeed * _facingDirection, _rb.velocity.y);  // Set to 0 for Hallow Knight style
+                _rb.velocity = new Vector2(_dashSpeed * _facingDirection, 0);  // Set to 0 for Hallow Knight style
                 _dashTimeLeft -= Time.deltaTime;
 
                 if (Mathf.Abs(transform.position.x - _lastImageXpos) > _distanceBetweenImages)
@@ -414,6 +414,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void DisableFlip()
+    {
+        _canFlip = false;
+    }
+
+    void EnableFlip()
+    {
+        _canFlip = true;
+    }
+
     void Flip()
     {
         if (!_isWallSliding && _canFlip)
@@ -427,9 +437,9 @@ public class PlayerController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
+        //Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
 
-        Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallCheckDistance, _wallCheck.position.y, _wallCheck.position.z));
+        //Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallCheckDistance, _wallCheck.position.y, _wallCheck.position.z));
 
         //Gizmos.DrawLine(_ledgePos1, _ledgePos2);
     }
