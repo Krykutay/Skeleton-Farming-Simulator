@@ -1,4 +1,4 @@
-public class HitParticlePool : GenericObjectPool<HitParticleController>
+public class HitParticlePool : GenericObjectPool<HitParticle>
 {
 
 }

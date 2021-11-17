@@ -15,6 +15,8 @@ public class PlayerCombatController : MonoBehaviour
 
     float _lastInputTime = Mathf.NegativeInfinity;
 
+    float[] _attackDetails = new float[2];
+
     bool _gotInput;
     bool _isAttacking;
     bool _isFirstAttack;
@@ -77,12 +79,13 @@ public class PlayerCombatController : MonoBehaviour
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_attack1HitBoxPos.position, _attack1Radius, _isDamageable);
 
+        _attackDetails[0] = _attack1Damage;
+        _attackDetails[1] = transform.position.x;
+
         foreach (Collider2D collider in detectedObjects)
         {
-            // may as well try events
-            collider.transform.parent.SendMessage("Damage", _attack1Damage);
+            collider.transform.parent.SendMessage("Damage", _attackDetails);
             // instantiate hit particle
-
         }
     }
 

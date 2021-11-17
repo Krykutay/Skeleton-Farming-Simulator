@@ -5,6 +5,7 @@ public class PlayerAfterImage : MonoBehaviour
 {
     [SerializeField] float _activeTime = 0.2f;
     [SerializeField] float _alphaSet = 0.8f;
+    [SerializeField] float _alphaDecay = 10f;
 
     Transform _player;
     SpriteRenderer _sr;
@@ -13,7 +14,7 @@ public class PlayerAfterImage : MonoBehaviour
     Color _color;
 
     float _alpha;
-    float _alphaMultiplier = 0.96f;
+    float _timeActivated;
 
     void Awake()
     {
@@ -28,19 +29,18 @@ public class PlayerAfterImage : MonoBehaviour
         _sr.sprite = _playerSr.sprite;
         transform.position = _player.position;
         transform.rotation = _player.rotation;
-        StartCoroutine(Despawn(_activeTime));
-    }
-
-    IEnumerator Despawn(float activeTime)
-    {
-        yield return new WaitForSeconds(activeTime);
-        PlayerAfterImagePool.Instance.ReturnToPool(this);
+        _timeActivated = Time.time;
     }
 
     void Update()
     {
-        _alpha *= _alphaMultiplier;
+        _alpha -= _alphaDecay * Time.deltaTime;
         _color = new Color(1f, 1f, 1f, _alpha);
         _sr.color = _color;
+
+        if (Time.time >= (_timeActivated + _activeTime))
+        {
+            PlayerAfterImagePool.Instance.ReturnToPool(this);
+        }
     }
 }

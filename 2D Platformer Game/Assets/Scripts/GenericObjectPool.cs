@@ -36,7 +36,7 @@ public abstract class GenericObjectPool<T> : MonoBehaviour where T : Component
         return objectToGet;
     }
 
-    public T Get(Vector3 position, Vector3 rotation)
+    public T Get(Vector3 position, Quaternion rotation)
     {
         if (_objectsQueue.Count == 0)
         {
@@ -46,7 +46,7 @@ public abstract class GenericObjectPool<T> : MonoBehaviour where T : Component
         T objectToGet = _objectsQueue.Dequeue();
 
         objectToGet.transform.position = position;
-        objectToGet.transform.rotation = Quaternion.Euler(rotation);
+        objectToGet.transform.rotation = rotation;
         objectToGet.gameObject.SetActive(true);
 
         return objectToGet;

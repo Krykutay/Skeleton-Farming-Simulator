@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class CombatDummyController : MonoBehaviour
@@ -15,25 +16,21 @@ public class CombatDummyController : MonoBehaviour
     [SerializeField] float _deathTorque;
 
     Animator _aliveAnim;
-    PlayerController _pc;
     GameObject _aliveGo, _brokenTopGo, _brokenBotGo;
     Rigidbody2D _rbAlive, _rbBrokenTop, _rbBrokenBot;
-    Vector3 _initialPosition, _initialRotation;
+    Vector3 _initialPosition;
+    Quaternion _initialRotation;
 
     public Vector3 initialPosition { get { return _initialPosition; } }
-    public Vector3 initialRotation { get { return _initialRotation; } }
+    public Quaternion initialRotation { get { return _initialRotation; } }
 
     float _currentHealth;
     int _playerFacingDirection;
-    float _knockbackStart;
 
     bool _playerOnLeft;
-    bool _knockback;
 
     void Awake()
     {
-        _pc = GameObject.Find("Player").GetComponent<PlayerController>();
-
         _aliveGo = transform.Find("Alive").gameObject;
         _brokenTopGo = transform.Find("Broken Top").gameObject;
         _brokenBotGo = transform.Find("Broken Bottom").gameObject;
@@ -44,7 +41,7 @@ public class CombatDummyController : MonoBehaviour
         _rbBrokenBot = _brokenBotGo.GetComponent<Rigidbody2D>();
 
         _initialPosition = transform.position;
-        _initialRotation = transform.rotation.eulerAngles;
+        _initialRotation = transform.rotation;
     }
 
     void OnEnable()
@@ -59,25 +56,21 @@ public class CombatDummyController : MonoBehaviour
         _brokenBotGo.SetActive(false);
     }
 
-    void Update()
+    void Damage(float[] attackDetails)
     {
-        CheckKnockback();
-    }
+        HitParticlePool.Instance.Get(_aliveGo.transform.position, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 360)));
 
-    void Damage(float amount)
-    {
-        HitParticlePool.Instance.Get(_aliveGo.transform.position, new Vector3(0f, 0f, UnityEngine.Random.Range(0, 360)));
+        _currentHealth -= attackDetails[0];
 
-        _currentHealth -= amount;
-        _playerFacingDirection = _pc.GetFacingDirection();
-
-        if (_playerFacingDirection == 1)
+        if (attackDetails[1] < _aliveGo.transform.position.x)
         {
             _playerOnLeft = true;
+            _playerFacingDirection = 1;
         }
         else
         {
             _playerOnLeft = false;
+            _playerFacingDirection = -1;
         }
 
         _aliveAnim.SetBool("playerOnLeft", _playerOnLeft);
@@ -96,18 +89,14 @@ public class CombatDummyController : MonoBehaviour
 
     void Knockback()
     {
-        _knockback = true;
-        _knockbackStart = Time.time;
         _rbAlive.velocity = new Vector2(_knockbackSpeedX * _playerFacingDirection, _knockbackSpeedY);
+        StartCoroutine(EndKnockback(_knockbackDuration));
     }
 
-    void CheckKnockback()
+    IEnumerator EndKnockback(float duration)
     {
-        if (Time.time >= _knockbackStart + _knockbackDuration && _knockback)
-        {
-            _knockback = false;
-            _rbAlive.velocity = new Vector2(0f, _knockbackSpeedY);
-        }
+        yield return new WaitForSeconds(duration);
+        _rbAlive.velocity = new Vector2(0f, _knockbackSpeedY);
     }
 
     void Die()
