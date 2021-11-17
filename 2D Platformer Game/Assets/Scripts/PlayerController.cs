@@ -76,13 +76,10 @@ public class PlayerController : MonoBehaviour
     bool _ledgeDetected;
     bool _isDashing;
 
-    ObjectPoolingManager _objectPoolingManagerInstance;
-
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
-        _objectPoolingManagerInstance = ObjectPoolingManager.Instance;
     }
 
     void Start()
@@ -265,8 +262,7 @@ public class PlayerController : MonoBehaviour
         _dashTimeLeft = _dashTime;
         _lastDashTime = Time.time;
 
-        GameObject afterImage = _objectPoolingManagerInstance.Get("afterImage");
-        afterImage.SetActive(true);
+        PlayerAfterImagePool.Instance.Get();
         _lastImageXpos = transform.position.x;
     }
 
@@ -284,8 +280,7 @@ public class PlayerController : MonoBehaviour
 
                 if (Mathf.Abs(transform.position.x - _lastImageXpos) > _distanceBetweenImages)
                 {
-                    GameObject afterImage = _objectPoolingManagerInstance.Get("afterImage");
-                    afterImage.SetActive(true);
+                    PlayerAfterImagePool.Instance.Get();
                     _lastImageXpos = transform.position.x;
                 }
             }
@@ -433,6 +428,11 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
         }
 
+    }
+
+    public int GetFacingDirection()
+    {
+        return _facingDirection;
     }
 
     void OnDrawGizmos()

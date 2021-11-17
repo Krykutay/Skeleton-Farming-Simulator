@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerAfterImageSprite : MonoBehaviour
+public class PlayerAfterImage : MonoBehaviour
 {
     [SerializeField] float _activeTime = 0.2f;
     [SerializeField] float _alphaSet = 0.8f;
@@ -15,14 +15,11 @@ public class PlayerAfterImageSprite : MonoBehaviour
     float _alpha;
     float _alphaMultiplier = 0.96f;
 
-    ObjectPoolingManager _objectPoolingManagerInstance;
-
     void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _sr = GetComponent<SpriteRenderer>();
         _playerSr = _player.GetComponent<SpriteRenderer>();
-        _objectPoolingManagerInstance = ObjectPoolingManager.Instance;
     }
 
     void OnEnable()
@@ -37,7 +34,7 @@ public class PlayerAfterImageSprite : MonoBehaviour
     IEnumerator Despawn(float activeTime)
     {
         yield return new WaitForSeconds(activeTime);
-        _objectPoolingManagerInstance.ReturnToPool("afterImage", this.gameObject);
+        PlayerAfterImagePool.Instance.ReturnToPool(this);
     }
 
     void Update()
