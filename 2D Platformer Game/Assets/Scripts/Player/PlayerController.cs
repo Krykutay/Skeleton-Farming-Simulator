@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _distanceBetweenImages;
     [SerializeField] float _dashCooldown;
 
+    [Header("Knockback")]
+    [SerializeField] float _knockbackDuration;
+    [SerializeField] Vector2 _knockbackSpeed;
+
     [Header("Checkers")]
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
@@ -57,7 +61,9 @@ public class PlayerController : MonoBehaviour
     int _lastWallJumpDirection;
     float _dashTimeLeft;
     float _lastImageXpos;
-    float _lastDashTime = -100f;
+    float _lastDashTime = Mathf.NegativeInfinity;
+    float _knockbackStartTime;
+
 
     bool _isFacingRight = true;
     bool _isWalking;
@@ -75,6 +81,7 @@ public class PlayerController : MonoBehaviour
     bool _canClimbLedge = false;
     bool _ledgeDetected;
     bool _isDashing;
+    bool _knockback;
 
     void Awake()
     {
@@ -98,6 +105,7 @@ public class PlayerController : MonoBehaviour
         CheckJump();
         CheckLedgeClimb();
         CheckDash();
+        CheckKnockback();
     }
 
     void FixedUpdate()
@@ -115,6 +123,27 @@ public class PlayerController : MonoBehaviour
         else
         {
             _isWallSliding = false;
+        }
+    }
+
+    public bool GetDashingStatus()
+    {
+        return _isDashing;
+    }
+
+    public void Knockback(int enemyDirection)
+    {
+        _knockback = true;
+        _knockbackStartTime = Time.time;
+        _rb.velocity = new Vector2(_knockbackSpeed.x * enemyDirection, _knockbackSpeed.y);
+    }
+
+    void CheckKnockback()
+    {
+        if (_knockback && Time.time >= _knockbackStartTime + _knockbackDuration)
+        {
+            _knockback = false;
+            _rb.velocity = new Vector2(0f, _rb.velocity.y);
         }
     }
 
@@ -391,11 +420,11 @@ public class PlayerController : MonoBehaviour
 
     void ApplyMovement()
     {
-        if (!_isGrounded && !_isWallSliding && _movementInputDirection == 0)
+        if (!_isGrounded && !_isWallSliding && _movementInputDirection == 0 && !_knockback)
         {
             _rb.velocity = new Vector2(_rb.velocity.x * _airDragMultiplier, _rb.velocity.y);
         }
-        else if (_canMove)
+        else if (_canMove && !_knockback)
         {
             _rb.velocity = new Vector2(_movementSpeed * _movementInputDirection, _rb.velocity.y);
         }
@@ -421,7 +450,7 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
-        if (!_isWallSliding && _canFlip)
+        if (!_isWallSliding && _canFlip && !_knockback)
         {
             _facingDirection *= -1;
             _isFacingRight = !_isFacingRight;
@@ -443,5 +472,5 @@ public class PlayerController : MonoBehaviour
 
         //Gizmos.DrawLine(_ledgePos1, _ledgePos2);
     }
-
+    
 }

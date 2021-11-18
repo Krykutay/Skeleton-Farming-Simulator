@@ -19,19 +19,28 @@ public class BasicEnemyController : MonoBehaviour
     [SerializeField] float _movementSpeed;
     [SerializeField] float _maxHealth;
     [SerializeField] float _knockbackDuration;
+    [SerializeField] float _touchDamageCooldown;
+    [SerializeField] float _touchDamage;
+    [SerializeField] float _touchDamageWidth;
+    [SerializeField] float _touchDamageHeight;
 
     [SerializeField] Vector2 _knockbackSpeed;
 
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
+    [SerializeField] Transform _touchDamageCheck;
 
     [SerializeField] LayerMask _ground;
+    [SerializeField] LayerMask _player;
 
     GameObject _alive;
     Rigidbody2D _aliveRb;
     Animator _aliveAnim;
 
     Vector2 _movement;
+    Vector2 _touchDamageBotLeft;
+    Vector2 _touchDamageTopRight;
+
     Vector3 _initialPosition;
     Quaternion _initialRotation;
 
@@ -42,7 +51,9 @@ public class BasicEnemyController : MonoBehaviour
     int _damageDirection;
 
     float _currentHealth;
+    float _lastTouchDamageTime;
     float _knockbackStartTime;
+    float[] _attackDetails = new float[2];
 
     bool _groundDetected;
     bool _wallDetected;
@@ -103,6 +114,8 @@ public class BasicEnemyController : MonoBehaviour
             _movement.Set(_movementSpeed * _facingDirection, _aliveRb.velocity.y);
             _aliveRb.velocity = _movement;
         }
+
+        CheckTouchDamage();
     }
 
     void ExitMovingState()
@@ -218,11 +231,40 @@ public class BasicEnemyController : MonoBehaviour
         }
     }
 
+    void CheckTouchDamage()
+    {
+        if (Time.time >= _lastTouchDamageTime + _touchDamageCooldown)
+        {
+            _touchDamageBotLeft.Set(_touchDamageCheck.position.x - (_touchDamageWidth / 2), _touchDamageCheck.position.y - (_touchDamageHeight / 2));
+            _touchDamageTopRight.Set(_touchDamageCheck.position.x + (_touchDamageWidth / 2), _touchDamageCheck.position.y + (_touchDamageHeight / 2));
+
+            Collider2D hit = Physics2D.OverlapArea(_touchDamageBotLeft, _touchDamageTopRight, _player);
+
+            if (hit != null)
+            {
+                _lastTouchDamageTime = Time.time;
+                _attackDetails[0] = _touchDamage;
+                _attackDetails[1] = _alive.transform.position.x;
+                hit.SendMessage("Damage", _attackDetails);  // Could also send an Event
+            }
+        }
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.DrawLine(_groundCheck.position, new Vector2(_groundCheck.position.x, _groundCheck.position.y - _groundCheckDistance));
 
         Gizmos.DrawLine(_wallCheck.position, new Vector2(_wallCheck.position.x + _wallCheckDistance, _wallCheck.position.y));
+
+        Vector2 botLeft = new Vector2(_touchDamageCheck.position.x - (_touchDamageWidth / 2), _touchDamageCheck.position.y - (_touchDamageHeight / 2));
+        Vector2 botRight = new Vector2(_touchDamageCheck.position.x + (_touchDamageWidth / 2), _touchDamageCheck.position.y - (_touchDamageHeight / 2));
+        Vector2 topRight = new Vector2(_touchDamageCheck.position.x + (_touchDamageWidth / 2), _touchDamageCheck.position.y + (_touchDamageHeight / 2));
+        Vector2 topLeft = new Vector2(_touchDamageCheck.position.x - (_touchDamageWidth / 2), _touchDamageCheck.position.y + (_touchDamageHeight / 2));
+
+        Gizmos.DrawLine(botLeft, botRight);
+        Gizmos.DrawLine(botRight, topRight);
+        Gizmos.DrawLine(topRight, topLeft);
+        Gizmos.DrawLine(topLeft, botLeft);
     }
 
 }

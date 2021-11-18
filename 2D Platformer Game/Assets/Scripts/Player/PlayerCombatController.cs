@@ -22,10 +22,14 @@ public class PlayerCombatController : MonoBehaviour
     bool _isFirstAttack;
 
     Animator _anim;
+    PlayerController _pc;
+    PlayerStats _ps;
 
     void Awake()
     {
         _anim = GetComponent<Animator>();
+        _pc = GetComponent<PlayerController>();
+        _ps = GetComponent<PlayerStats>();
     }
 
     void Start()
@@ -75,6 +79,27 @@ public class PlayerCombatController : MonoBehaviour
         }
     }
 
+    void Damage(float[] attackDetails)
+    {
+        if (!_pc.GetDashingStatus())
+        {
+            int enemyDirection;
+
+            _ps.DecreaseHealth(attackDetails[0]);
+
+            if (attackDetails[1] < transform.position.x)
+            {
+                enemyDirection = 1;
+            }
+            else
+            {
+                enemyDirection = -1;
+            }
+
+            _pc.Knockback(enemyDirection);
+        }
+    }
+
     void CheckAttackHitBox()
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_attack1HitBoxPos.position, _attack1Radius, _isDamageable);
@@ -85,7 +110,6 @@ public class PlayerCombatController : MonoBehaviour
         foreach (Collider2D collider in detectedObjects)
         {
             collider.transform.parent.SendMessage("Damage", _attackDetails);
-            // instantiate hit particle
         }
     }
 
