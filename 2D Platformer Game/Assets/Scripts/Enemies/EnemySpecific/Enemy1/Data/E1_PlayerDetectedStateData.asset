@@ -9,16 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1abf3636f89619d499a93ace16b06937, type: 3}
-  m_Name: E1_BaseData
+  m_Script: {fileID: 11500000, guid: 7bafb740eee371b41a66e3b399c7e9ef, type: 3}
+  m_Name: E1_PlayerDetectedStateData
   m_EditorClassIdentifier: 
-  wallCheckDistance: 0.2
-  ledgeCheckDistance: 0.4
-  minAgroDistance: 3
-  maxAgroDistance: 4
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
-  player:
-    serializedVersion: 2
-    m_Bits: 128

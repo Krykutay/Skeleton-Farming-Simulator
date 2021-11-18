@@ -16,6 +16,7 @@ public class Entity : MonoBehaviour
 
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _ledgeCheck;
+    [SerializeField] Transform _playerCheck;
 
     Vector2 _velocityWorkspace;
 
@@ -63,6 +64,16 @@ public class Entity : MonoBehaviour
     {
         facingDirection *= -1;
         aliveGO.transform.Rotate(0f, 180f, 0f);
+    }
+
+    public virtual bool CheckPlayerInMinAgroRange()
+    {
+        return Physics2D.Raycast(_playerCheck.position, aliveGO.transform.right, entityData.minAgroDistance, entityData.player);
+    }
+    
+    public virtual bool CheckPlayerInMaxAgroRange()
+    {
+        return Physics2D.Raycast(_playerCheck.position, aliveGO.transform.right, entityData.maxAgroDistance, entityData.player);
     }
 
     public virtual void OnDrawGizmos()
