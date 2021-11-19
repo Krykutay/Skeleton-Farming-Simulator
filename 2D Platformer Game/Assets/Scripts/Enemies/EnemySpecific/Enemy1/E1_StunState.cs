@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class E1_MeleeAttackState : MeleeAttackState
+public class E1_StunState : StunState
 {
     Enemy1 enemy;
 
-    public E1_MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData, Enemy1 enemy) 
-        : base(entity, stateMachine, animBoolName, attackPosition, stateData)
+    public E1_StunState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_StunState stateData, Enemy1 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -24,11 +23,15 @@ public class E1_MeleeAttackState : MeleeAttackState
     {
         base.LogicUpdate();
 
-        if (isAnimationFinished)
+        if (isStunDurationOver)
         {
-            if (isPlayerMaxAgroRange)
+            if (performedMeleeRangeAction)
             {
-                stateMachine.ChangeState(enemy.playerDetectedState);
+                stateMachine.ChangeState(enemy.meleeAttackState);
+            }
+            else if (isPlayerInMaxAgroRange)
+            {
+                stateMachine.ChangeState(enemy.chargeState);
             }
             else
             {
@@ -46,15 +49,5 @@ public class E1_MeleeAttackState : MeleeAttackState
     public override void DoChecks()
     {
         base.DoChecks();
-    }
-
-    public override void TriggerAttack()
-    {
-        base.TriggerAttack();
-    }
-
-    public override void FinishAttack()
-    {
-        base.FinishAttack();
     }
 }

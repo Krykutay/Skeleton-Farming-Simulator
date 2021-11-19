@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6053dee9a5abc3545a9380b4312c22b8, type: 3}
-  m_Name: E1_MeleeAttackStateData
+  m_Script: {fileID: 11500000, guid: 840a8b22ff807c74ebb3eec4a5687ef3, type: 3}
+  m_Name: E1_DeadStateData
   m_EditorClassIdentifier: 
-  attackRadius: 0.75
-  attackDamage: 10

@@ -29,6 +29,11 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }
+        else if (isDeadtingLedge)
+        {
+            entity.Flip();
+            stateMachine.ChangeState(enemy.moveState);
+        }
         else if (isPlayerInMinAgroRange)
         {
             stateMachine.ChangeState(enemy.chargeState);

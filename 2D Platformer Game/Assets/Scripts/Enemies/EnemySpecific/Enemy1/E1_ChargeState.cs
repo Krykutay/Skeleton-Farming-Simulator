@@ -41,6 +41,7 @@ public class E1_ChargeState : ChargeState
             }
             else
             {
+                enemy.lookForPlayerState.SetTurnImmediately(true);
                 stateMachine.ChangeState(enemy.lookForPlayerState);
             }
         }

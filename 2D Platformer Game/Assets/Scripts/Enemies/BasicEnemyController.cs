@@ -152,7 +152,7 @@ public class BasicEnemyController : MonoBehaviour
         DeathBloodParticlePool.Instance.Get(_alive.transform.position, Quaternion.Euler(0f, 0f, 0f));
 
         Died?.Invoke(this);
-        BasicEnemyPool.Instance.ReturnToPool(this);
+        //BasicEnemyPool.Instance.ReturnToPool(this);
     }
 
     void UpdateDeadState()
