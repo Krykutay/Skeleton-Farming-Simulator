@@ -9,7 +9,7 @@ public class D_Entity : ScriptableObject
     public float damageHopSpeed = 5f;
 
     public float wallCheckDistance = 0.2f;
-    public float ledgeCheckDistance = 0.4f;
+    public float ledgeCheckDistance = 1f;
     public float groundCheckRadius = 0.3f;
 
     public float minAgroDistance = 3f;
