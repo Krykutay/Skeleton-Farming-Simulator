@@ -25,7 +25,15 @@ public class E1_PlayerDetectedState : PlayerDetectedState
     {
         base.LogicUpdate();
 
-        if (performLongRangeAction)
+        if (performMeleeRangeAction)
+        {
+            stateMachine.ChangeState(enemy.meleeAttackState);
+        }
+        else if (isPlayerInMinAgroRange)
+        {
+            stateMachine.ChangeState(enemy.chargeState);
+        }
+        else if (performLongRangeAction && isPlayerInMaxAgroRange)
         {
             stateMachine.ChangeState(enemy.chargeState);
         }

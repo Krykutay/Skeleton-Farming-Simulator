@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class E1_ChargeState : ChargeState
+public class E1_MeleeAttackState : MeleeAttackState
 {
     Enemy1 enemy;
 
-    public E1_ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData, Enemy1 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E1_MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData, Enemy1 enemy) 
+        : base(entity, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;
     }
@@ -25,17 +24,9 @@ public class E1_ChargeState : ChargeState
     {
         base.LogicUpdate();
 
-        if (performMeleeRangeAction)
+        if (isAnimationFinished)
         {
-            stateMachine.ChangeState(enemy.meleeAttackState);
-        }
-        else if (!isDetectingLedge || isDetectingWall)
-        {
-            stateMachine.ChangeState(enemy.lookForPlayerState);
-        }
-        else if (isChargeTimeOver)
-        {
-            if (isPlayerInMaxAgroRange)
+            if (isPlayerMaxAgroRange)
             {
                 stateMachine.ChangeState(enemy.playerDetectedState);
             }
@@ -54,5 +45,15 @@ public class E1_ChargeState : ChargeState
     public override void DoChecks()
     {
         base.DoChecks();
+    }
+
+    public override void TriggerAttack()
+    {
+        base.TriggerAttack();
+    }
+
+    public override void FinishAttack()
+    {
+        base.FinishAttack();
     }
 }

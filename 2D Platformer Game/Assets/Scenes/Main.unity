@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 150749946}
   - component: {fileID: 150749945}
   - component: {fileID: 150749944}
+  - component: {fileID: 150749948}
   m_Layer: 8
   m_Name: Alive
   m_TagString: Enemy
@@ -422,6 +423,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &150749948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150749942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154ff97b2b0d48140b10d79c3d4c8942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252777465
 GameObject:
   m_ObjectHideFlags: 0
@@ -72188,6 +72201,8 @@ MonoBehaviour:
   _playerDetectedStateData: {fileID: 11400000, guid: d4956ac818ce8f54b94ad35e99d343be, type: 2}
   _chargeStateData: {fileID: 11400000, guid: 586311ff21768da40b449827039c4726, type: 2}
   _lookForPlayerStateData: {fileID: 11400000, guid: 1f2113dd036819c40b3d0904e3af067f, type: 2}
+  _meleeAttackStateData: {fileID: 0}
+  _meleeAttackPosition: {fileID: 0}
 --- !u!4 &1681565538
 Transform:
   m_ObjectHideFlags: 0

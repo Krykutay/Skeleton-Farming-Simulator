@@ -56,13 +56,13 @@ public class CombatDummyController : MonoBehaviour
         _brokenBotGo.SetActive(false);
     }
 
-    void Damage(float[] attackDetails)
+    void Damage(AttackDetails attackDetails)
     {
         HitParticlePool.Instance.Get(_aliveGo.transform.position, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 360)));
 
-        _currentHealth -= attackDetails[0];
+        _currentHealth -= attackDetails.damageAmount;
 
-        if (attackDetails[1] < _aliveGo.transform.position.x)
+        if (attackDetails.position.x < _aliveGo.transform.position.x)
         {
             _playerOnLeft = true;
             _playerFacingDirection = 1;

@@ -15,7 +15,7 @@ public class PlayerCombatController : MonoBehaviour
 
     float _lastInputTime = Mathf.NegativeInfinity;
 
-    float[] _attackDetails = new float[2];
+    AttackDetails _attackDetails;
 
     bool _gotInput;
     bool _isAttacking;
@@ -79,15 +79,15 @@ public class PlayerCombatController : MonoBehaviour
         }
     }
 
-    void Damage(float[] attackDetails)
+    void Damage(AttackDetails attackDetails)
     {
         if (!_pc.GetDashingStatus())
         {
             int enemyDirection;
 
-            _ps.DecreaseHealth(attackDetails[0]);
+            _ps.DecreaseHealth(attackDetails.damageAmount);
 
-            if (attackDetails[1] < transform.position.x)
+            if (attackDetails.position.x < transform.position.x)
             {
                 enemyDirection = 1;
             }
@@ -104,8 +104,8 @@ public class PlayerCombatController : MonoBehaviour
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_attack1HitBoxPos.position, _attack1Radius, _isDamageable);
 
-        _attackDetails[0] = _attack1Damage;
-        _attackDetails[1] = transform.position.x;
+        _attackDetails.damageAmount = _attack1Damage;
+        _attackDetails.position = transform.position;
 
         foreach (Collider2D collider in detectedObjects)
         {

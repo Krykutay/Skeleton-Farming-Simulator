@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour
     public GameObject aliveGO { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
+    public AnimationToStateMachine atsm { get; private set; }
 
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _ledgeCheck;
@@ -25,6 +26,7 @@ public class Entity : MonoBehaviour
         aliveGO = transform.Find("Alive").gameObject;
         rb = aliveGO.GetComponent<Rigidbody2D>();
         anim = aliveGO.GetComponent<Animator>();
+        atsm = aliveGO.GetComponent<AnimationToStateMachine>();
 
         stateMachine = new FiniteStateMachine();
     }
@@ -76,10 +78,19 @@ public class Entity : MonoBehaviour
         return Physics2D.Raycast(_playerCheck.position, aliveGO.transform.right, entityData.maxAgroDistance, entityData.player);
     }
 
+    public virtual bool CheckPlayerInMeleeRangeAction()
+    {
+        return Physics2D.Raycast(_playerCheck.position, aliveGO.transform.right, entityData.meleeRangeActionDistance, entityData.player);
+    }
+
     public virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(_wallCheck.position, _wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
         Gizmos.DrawLine(_ledgeCheck.position, _ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckDistance));
+
+        Gizmos.DrawWireSphere(_playerCheck.position + (Vector3)(Vector2.right * entityData.meleeRangeActionDistance), 0.2f);
+        Gizmos.DrawWireSphere(_playerCheck.position + (Vector3)(Vector2.right * entityData.minAgroDistance), 0.2f);
+        Gizmos.DrawWireSphere(_playerCheck.position + (Vector3)(Vector2.right * entityData.maxAgroDistance), 0.2f);
     }
 
 }

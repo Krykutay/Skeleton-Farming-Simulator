@@ -12,6 +12,7 @@ public class LookForPlayerState : State
 
     protected bool turnImmediately;
     protected bool isPlayerInMinAgroRange;
+    protected bool isPlayerInMaxAgroRange;
     protected bool isAllTurnsDone;
     protected bool isAllTurnsTimeDone;
 
@@ -77,6 +78,7 @@ public class LookForPlayerState : State
         base.DoChecks();
 
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
     }
 
     public void SetTurnImmediately(bool flip)

@@ -9,6 +9,7 @@ public class IdleState : State
     protected bool flipAfterIdle;
     protected bool isIdleTimeOver;
     protected bool isPlayerInMinAgroRange;
+    protected bool isPlayerInMaxAgroRange;
 
     protected float idleTime;
 
@@ -56,6 +57,7 @@ public class IdleState : State
         base.DoChecks();
 
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
     }
 
     public void SetFlipAfterIdle(bool flip)

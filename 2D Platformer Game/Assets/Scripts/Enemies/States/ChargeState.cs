@@ -11,6 +11,7 @@ public class ChargeState : State
     protected bool isDetectingLedge;
     protected bool isDetectingWall;
     protected bool isChargeTimeOver;
+    protected bool performMeleeRangeAction;
 
     public ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -53,5 +54,6 @@ public class ChargeState : State
         isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
         isDetectingLedge = entity.CheckLedge();
         isDetectingWall = entity.CheckWall();
+        performMeleeRangeAction = entity.CheckPlayerInMeleeRangeAction();
     }
 }
