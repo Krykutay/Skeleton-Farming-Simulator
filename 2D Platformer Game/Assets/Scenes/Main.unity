@@ -1467,6 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13cfd292b9555b4dba863a65836b64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputHoldTime: 0.2
 --- !u!114 &987973597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,7 +1628,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 12ebd2bfc3d9b7f4fab46eb2fbc46fc9, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
