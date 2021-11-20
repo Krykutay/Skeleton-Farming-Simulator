@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    #region State Variable
-    [SerializeField] PlayerData playerData;
+    [SerializeField] PlayerData _playerData;
+
+    [SerializeField] Transform _groundCheck;
 
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
-    #endregion
+    public PlayerJumpState jumpState { get; private set; }
+    public PlayerInAirState inAirState { get; private set; }
+    public PlayerLandState landState { get; private set; }
 
-    #region Components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public PlayerInputHandler inputHandler { get; private set; }
-    #endregion
 
     public Vector2 currentVelocity { get; private set; }
     public int facingDirection { get; private set; }
 
     Vector2 _workSpace;
 
-    #region Unity Callback Functions
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -32,8 +32,11 @@ public class Player : MonoBehaviour
 
         stateMachine = new PlayerStateMachine();
 
-        idleState = new PlayerIdleState(this, stateMachine, playerData, "idle");
-        moveState = new PlayerMoveState(this, stateMachine, playerData, "move");
+        idleState = new PlayerIdleState(this, stateMachine, _playerData, "idle");
+        moveState = new PlayerMoveState(this, stateMachine, _playerData, "move");
+        jumpState = new PlayerJumpState(this, stateMachine, _playerData, "inAir");
+        inAirState = new PlayerInAirState(this, stateMachine, _playerData, "inAir");
+        landState = new PlayerLandState(this, stateMachine, _playerData, "land");
     }
 
     void OnEnable()
@@ -52,18 +55,21 @@ public class Player : MonoBehaviour
     {
         stateMachine.currentState.PhysicsUpdate();
     }
-    #endregion
 
-    #region Set Functions
     public void SetVelocityX(float velocity)
     {
         _workSpace.Set(velocity, currentVelocity.y);
         rb.velocity = _workSpace;
         currentVelocity = _workSpace;
     }
-    #endregion
 
-    #region Check Functions
+    public void SetVelocityY(float velocity)
+    {
+        _workSpace.Set(currentVelocity.x, velocity);
+        rb.velocity = _workSpace;
+        currentVelocity = _workSpace;
+    }
+
     public void CheckIfShouldFlip(int xInput)
     {
         if (xInput != 0 && xInput != facingDirection)
@@ -71,11 +77,25 @@ public class Player : MonoBehaviour
             Flip();
         }
     }
-    #endregion
+
+    public bool CheckIfGrounded()
+    {
+        return Physics2D.OverlapCircle(_groundCheck.position, _playerData.groundCheckRadius, _playerData.ground);
+    }
 
     void Flip()
     {
         facingDirection *= -1;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    void AnimationTrigger()
+    {
+        stateMachine.currentState.AnimationFinishTrigger();
+    }
+
+    void AnimationFinishTrigger()
+    {
+        stateMachine.currentState.AnimationFinishTrigger();
     }
 }

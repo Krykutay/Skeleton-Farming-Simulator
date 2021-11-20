@@ -10,6 +10,12 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 rawMovementInput { get; private set; }
     public int normalizedInputX { get; private set; }
     public int normalizedInputY { get; private set;}
+    public bool jumpInput { get; private set; }
+    public bool jumpInputStopped { get; private set; }
+
+    [SerializeField] float _inputHoldTime = 0.2f;
+
+    float _jumpInputStartTime;
 
     void Awake()
     {
@@ -20,23 +26,28 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnEnable()
     {
-        _movementAction.performed += MovementPerforming;
+        _movementAction.started += MovementStart;
         _movementAction.canceled += MovementEnd;
 
-        _jumpAction.performed += JumpPerforming;
+        _jumpAction.started += JumpStart;
         _jumpAction.canceled += JumpEnd;
     }
 
     void OnDisable()
     {
-        _movementAction.performed -= MovementPerforming;
+        _movementAction.started -= MovementStart;
         _movementAction.canceled -= MovementEnd;
 
-        _jumpAction.performed -= JumpPerforming;
-        _jumpAction.performed -= JumpEnd;
+        _jumpAction.started -= JumpStart;
+        _jumpAction.canceled -= JumpEnd;
     }
 
-    void MovementPerforming(InputAction.CallbackContext context)
+    void Update()
+    {
+        CheckJumpInputHoldTime();
+    }
+
+    void MovementStart(InputAction.CallbackContext context)
     {
         rawMovementInput = context.ReadValue<Vector2>();
         normalizedInputX = (int)(rawMovementInput * Vector2.right).normalized.x;
@@ -52,13 +63,28 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
 
-    void JumpPerforming(InputAction.CallbackContext context)
+    void JumpStart(InputAction.CallbackContext context)
     {
-        
+        jumpInput = true;
+        jumpInputStopped = false;
+        _jumpInputStartTime = Time.time;
     }
 
     void JumpEnd(InputAction.CallbackContext context)
     {
+        jumpInputStopped = true;
+    }
 
+    public void UseJumpInput()
+    {
+        jumpInput = false;
+    }
+
+    void CheckJumpInputHoldTime()
+    {
+        if (Time.time >= _jumpInputStartTime + _inputHoldTime)
+        {
+            jumpInput = false;
+        }
     }
 }

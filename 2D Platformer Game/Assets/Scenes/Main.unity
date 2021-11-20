@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70625892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.96, y: 9.1, z: -10}
+  m_LocalPosition: {x: -1.57, y: 9.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1660442446}
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 458347155}
+  m_Follow: {fileID: 987973598}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 8.5
@@ -1130,11 +1130,6 @@ Transform:
   m_Father: {fileID: 961604607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &458347155 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3847205180700791400, guid: 2e881c5a83824eb4999d3b3553e792d6, type: 3}
-  m_PrefabInstance: {fileID: 3847205180318105851}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.96, y: 9.1, z: -10}
+  m_LocalPosition: {x: -1.57, y: 9.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 252777466}
@@ -1520,7 +1515,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.57, y: 9.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1379891830}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1587,7 +1583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7646a1870a22e46851be543bdeae50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 05025a8bcb6728c4da6396d348522455, type: 2}
+  _playerData: {fileID: 11400000, guid: 05025a8bcb6728c4da6396d348522455, type: 2}
+  _groundCheck: {fileID: 1379891830}
 --- !u!61 &987973601
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2003,6 +2000,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1379891829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379891830}
+  m_Layer: 7
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379891830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379891829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 987973598}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435251149
 GameObject:
   m_ObjectHideFlags: 0
