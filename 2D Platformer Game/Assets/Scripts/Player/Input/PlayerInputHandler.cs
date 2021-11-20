@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,24 +20,23 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnEnable()
     {
-        //_movementAction.started += OnMoveInput;
-        _movementAction.performed += MovementPerform;
+        _movementAction.performed += MovementPerforming;
         _movementAction.canceled += MovementEnd;
 
-        //_jumpAction.started += OnJumpInput;
-        _jumpAction.performed += OnJumpInput;
-        //_jumpAction.canceled += OnJumpInput;
+        _jumpAction.performed += JumpPerforming;
+        _jumpAction.canceled += JumpEnd;
     }
 
     void OnDisable()
     {
-        _movementAction.performed -= MovementPerform;
+        _movementAction.performed -= MovementPerforming;
         _movementAction.canceled -= MovementEnd;
 
-        _jumpAction.performed -= OnJumpInput;
+        _jumpAction.performed -= JumpPerforming;
+        _jumpAction.performed -= JumpEnd;
     }
 
-    void MovementPerform(InputAction.CallbackContext context)
+    void MovementPerforming(InputAction.CallbackContext context)
     {
         rawMovementInput = context.ReadValue<Vector2>();
         normalizedInputX = (int)(rawMovementInput * Vector2.right).normalized.x;
@@ -55,8 +52,13 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
 
-    void OnJumpInput(InputAction.CallbackContext context)
+    void JumpPerforming(InputAction.CallbackContext context)
     {
         
+    }
+
+    void JumpEnd(InputAction.CallbackContext context)
+    {
+
     }
 }
