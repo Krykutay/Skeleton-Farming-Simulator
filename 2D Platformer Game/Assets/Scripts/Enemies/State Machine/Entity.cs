@@ -117,6 +117,11 @@ public class Entity : MonoBehaviour
         {
             isDead = true;
         }
+
+        if (!isDead && !isStunned && !CheckPlayerInMaxAgroRange())
+        {
+            Flip();
+        }
     }
 
     public virtual void DamageHop(float velocity)
