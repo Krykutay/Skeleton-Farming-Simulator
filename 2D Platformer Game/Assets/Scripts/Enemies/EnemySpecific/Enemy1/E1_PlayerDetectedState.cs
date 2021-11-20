@@ -29,7 +29,7 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }
-        else if (!isDeadtingLedge)
+        else if (!isDetectingLedge)
         {
             entity.Flip();
             stateMachine.ChangeState(enemy.moveState);

@@ -25,20 +25,27 @@ public class E2_PlayerDetectedState : PlayerDetectedState
 
         if (performMeleeRangeAction)
         {
-            stateMachine.ChangeState(enemy.meleeAttackState);
+            if (Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown)
+            {
+                stateMachine.ChangeState(enemy.dodgeState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemy.meleeAttackState);
+            }
         }
-        else if (!isDeadtingLedge)
+        else if (!isDetectingLedge)
         {
             entity.Flip();
             stateMachine.ChangeState(enemy.moveState);
         }
         else if (isPlayerInMinAgroRange)
         {
-            //stateMachine.ChangeState(enemy.chargeState);
+            stateMachine.ChangeState(enemy.rangeAttackState);
         }
         else if (performLongRangeAction && isPlayerInMaxAgroRange)
         {
-            //stateMachine.ChangeState(enemy.chargeState);
+            stateMachine.ChangeState(enemy.rangeAttackState);
         }
         else if (!isPlayerInMaxAgroRange)
         {

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6987727654821065280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3917899665907632988}
+  m_Layer: 8
+  m_Name: RangeAttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3917899665907632988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6987727654821065280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.333, y: -0.068, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9030373230637344785}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9030373229967098050
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,8 +85,11 @@ MonoBehaviour:
   _lookForPlayerStateData: {fileID: 11400000, guid: 480bb5b4cd86e3b48b2141aaddf2975a, type: 2}
   _meleeAttackStateData: {fileID: 11400000, guid: 92ce7b48d496d4e459e9cbc813dcc244, type: 2}
   _stunStateData: {fileID: 11400000, guid: 3f3e22d67ba08404bb22d260ec892cad, type: 2}
-  _deadStateData: {fileID: 0}
+  _deadStateData: {fileID: 11400000, guid: f886ec805a3f8e249be84fe7a50c50aa, type: 2}
+  _dodgeStateData: {fileID: 11400000, guid: e558dc0b37918684eb7742c5770ec049, type: 2}
+  _rangeAttackStateData: {fileID: 11400000, guid: b98efb0e682f10d43a260758898e6aef, type: 2}
   _meleeAttackPosition: {fileID: 9030373230223269892}
+  _rangeAttackPosition: {fileID: 3917899665907632988}
 --- !u!1 &9030373230223269893
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +187,7 @@ Transform:
   - {fileID: 9030373231803204543}
   - {fileID: 9030373230422341463}
   - {fileID: 9030373230223269892}
+  - {fileID: 3917899665907632988}
   m_Father: {fileID: 9030373229967098048}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

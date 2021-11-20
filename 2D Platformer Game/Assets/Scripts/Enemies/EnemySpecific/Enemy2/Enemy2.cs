@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy2 : Entity
@@ -11,6 +9,8 @@ public class Enemy2 : Entity
     public E2_MeleeAttackState meleeAttackState { get; private set; }
     public E2_StunState stunState { get; private set; }
     public E2_DeadState deadState { get; private set; }
+    public E2_DodgeState dodgeState { get; private set; }
+    public E2_RangeAttackState rangeAttackState { get; private set; }
 
     public Vector3 initialPosition { get; private set; }
     public Quaternion initialRotation { get; private set; }
@@ -22,8 +22,13 @@ public class Enemy2 : Entity
     [SerializeField] D_MeleeAttackState _meleeAttackStateData;
     [SerializeField] D_StunState _stunStateData;
     [SerializeField] D_DeadState _deadStateData;
+    [SerializeField] D_DodgeState _dodgeStateData;
+    [SerializeField] D_RangeAttackState _rangeAttackStateData;
 
     [SerializeField] Transform _meleeAttackPosition;
+    [SerializeField] Transform _rangeAttackPosition;
+
+    public D_DodgeState dodgeStateData  { get { return _dodgeStateData; } }
 
     public override void Awake()
     {
@@ -36,6 +41,8 @@ public class Enemy2 : Entity
         meleeAttackState = new E2_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData, this);
         stunState = new E2_StunState(this, stateMachine, "stun", _stunStateData, this);
         deadState = new E2_DeadState(this, stateMachine, "dead", _deadStateData, this);
+        dodgeState = new E2_DodgeState(this, stateMachine, "dodge", _dodgeStateData, this);
+        rangeAttackState = new E2_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData, this);
 
         initialPosition = transform.position;
         initialRotation = transform.rotation;
@@ -70,4 +77,5 @@ public class Enemy2 : Entity
 
         Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackRadius);
     }
+
 }

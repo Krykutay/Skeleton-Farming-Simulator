@@ -952,6 +952,7 @@ GameObject:
   - component: {fileID: 362191539}
   - component: {fileID: 362191537}
   - component: {fileID: 362191541}
+  - component: {fileID: 362191542}
   m_Layer: 0
   m_Name: ObjectPoolingManager
   m_TagString: Untagged
@@ -1085,6 +1086,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 9030373229967098049, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
   _initialPoolSize: 0
+--- !u!114 &362191542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362191532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc9290bbfd89934c8b79174e16548af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 4803047411898281148, guid: c34cc0f641472b04d8e6317bf0602b5f, type: 3}
+  _initialPoolSize: 2
 --- !u!1 &363870874
 GameObject:
   m_ObjectHideFlags: 0
@@ -72233,7 +72248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030373229967098048, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.15
+      value: -15.96
       objectReference: {fileID: 0}
     - target: {fileID: 9030373229967098048, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -72271,10 +72286,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9030373229967098049, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
-      propertyPath: _deadStateData
-      value: 
-      objectReference: {fileID: 11400000, guid: f886ec805a3f8e249be84fe7a50c50aa, type: 2}
     - target: {fileID: 9030373229967098050, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
       propertyPath: m_Name
       value: Enemy2
