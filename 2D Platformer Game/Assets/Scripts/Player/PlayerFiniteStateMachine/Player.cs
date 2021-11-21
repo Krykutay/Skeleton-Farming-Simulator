@@ -81,6 +81,14 @@ public class Player : MonoBehaviour
         currentVelocity = _workSpace;
     }
 
+    public void SetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        _workSpace.Set(angle.x * velocity * direction, angle.y * velocity);
+        rb.velocity = _workSpace;
+        currentVelocity = _workSpace;
+    }
+
     public void CheckIfShouldFlip(int xInput)
     {
         if (xInput != 0 && xInput != facingDirection)
@@ -97,6 +105,11 @@ public class Player : MonoBehaviour
     public bool CheckIfTouchingWall()
     {
         return Physics2D.Raycast(_wallCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
+    }
+
+    public bool CheckIfTouchingWallBack()
+    {
+        return Physics2D.Raycast(_wallCheck.position, Vector2.right * -facingDirection, _playerData.wallCheckDistance, _playerData.ground);
     }
 
     void Flip()

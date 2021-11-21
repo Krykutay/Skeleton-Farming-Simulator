@@ -15,8 +15,6 @@ public class PlayerAbilityState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
-        isAbilityDone = true;
     }
 
     public override void Exit()

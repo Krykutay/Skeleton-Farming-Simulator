@@ -10,6 +10,11 @@ public class PlayerData : ScriptableObject
     [SerializeField] float _jumpVelocity = 15f;
     [SerializeField] int _amountOfJumps = 2;
 
+    [Header("Wall Jump State")]
+    [SerializeField] float _wallJumpVelocity = 20f;
+    [SerializeField] float _wallJumpTime = 0.4f;
+    [SerializeField] Vector2 _wallJumpAngle = new Vector2(1, 2);
+
     [Header("In Air State")]
     [SerializeField] float _coyoteTime = 0.2f;
     [SerializeField] float _variableJumpHeightMultiplier = 0.5f;
@@ -28,6 +33,9 @@ public class PlayerData : ScriptableObject
     public float movementVelocity { get { return _movementVelocity; } }
     public float jumpVelocity { get { return _jumpVelocity; } }
     public int amountOfJumps { get { return _amountOfJumps; } }
+    public float wallJumpVelocity { get { return _wallJumpVelocity; } }
+    public float wallJumpTime { get { return _wallJumpTime; } }
+    public Vector2 wallJumpAngle { get { return _wallJumpAngle; } }
     public float coyoteTime { get { return _coyoteTime; } }
     public float variableJumpHeightMultiplier { get { return _variableJumpHeightMultiplier; } }
     public float wallSlideVelocity { get { return _wallSlideVelocity; } }

@@ -36,18 +36,18 @@ public class PlayerWallGrabState : PlayerTouchingWallState
         base.LogicUpdate();
 
         //HoldPosition();
-
-        if (!isExitingState)
+        if (isExitingState)
+            return;
+        
+        if (yInput > 0.01f)
         {
-            if (yInput > 0.01f)
-            {
-                stateMachine.ChangeState(player.wallClimbState);
-            }
-            else if (yInput < -0.01f || !grabInput)
-            {
-                stateMachine.ChangeState(player.wallSlideState);
-            }
+            stateMachine.ChangeState(player.wallClimbState);
         }
+        else if (!grabInput)
+        {
+            stateMachine.ChangeState(player.inAirState);
+        }
+        
     }
 
     void HoldPosition()     // TODO: try rb gravity = 0
