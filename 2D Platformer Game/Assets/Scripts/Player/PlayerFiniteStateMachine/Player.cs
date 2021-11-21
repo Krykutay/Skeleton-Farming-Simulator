@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public PlayerWallSlideState wallSlideState { get; private set; }
     public PlayerWallGrabState wallGrabState { get; private set; }
     public PlayerWallClimbState wallClimbState { get; private set; }
+    public PlayerWallJumpState wallJumpState { get; private set; }
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
         wallSlideState = new PlayerWallSlideState(this, stateMachine, _playerData, "wallSlide");
         wallGrabState = new PlayerWallGrabState(this, stateMachine, _playerData, "wallGrab");
         wallClimbState = new PlayerWallClimbState(this, stateMachine, _playerData, "wallClimb");
+        wallJumpState = new PlayerWallJumpState(this, stateMachine, _playerData, "inAir");
     }
 
     void OnEnable()

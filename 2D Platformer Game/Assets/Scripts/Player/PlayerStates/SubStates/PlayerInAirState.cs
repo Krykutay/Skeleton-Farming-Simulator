@@ -28,7 +28,7 @@ public class PlayerInAirState : PlayerState
         base.Exit();
     }
 
-    public override void LogicUpdate()
+    public override void LogicUpdate()  // TODO: may change instantly stopping on the air
     {
         base.LogicUpdate();
 

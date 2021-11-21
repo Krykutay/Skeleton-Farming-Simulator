@@ -37,13 +37,16 @@ public class PlayerWallGrabState : PlayerTouchingWallState
 
         //HoldPosition();
 
-        if (yInput > 0.01f)
+        if (!isExitingState)
         {
-            stateMachine.ChangeState(player.wallClimbState);
-        }
-        else if (yInput < -0.01f || !grabInput)
-        {
-            stateMachine.ChangeState(player.wallSlideState);
+            if (yInput > 0.01f)
+            {
+                stateMachine.ChangeState(player.wallClimbState);
+            }
+            else if (yInput < -0.01f || !grabInput)
+            {
+                stateMachine.ChangeState(player.wallSlideState);
+            }
         }
     }
 
