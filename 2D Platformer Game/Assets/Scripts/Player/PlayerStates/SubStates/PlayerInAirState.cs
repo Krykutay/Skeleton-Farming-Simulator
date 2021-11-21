@@ -110,18 +110,19 @@ public class PlayerInAirState : PlayerState
 
     void CheckJumpMultiplier()
     {
-        if (_isJumping)
+        if (!_isJumping)
+            return;
+        
+        if (_jumpInputStopped)
         {
-            if (_jumpInputStopped)
-            {
-                player.SetVelocityY(player.currentVelocity.y * playerData.variableJumpHeightMultiplier);
-                _isJumping = false;
-            }
-            else if (player.currentVelocity.y <= 0.01f)
-            {
-                _isJumping = false;
-            }
+            player.SetVelocityY(player.currentVelocity.y * playerData.variableJumpHeightMultiplier);
+            _isJumping = false;
         }
+        else if (player.currentVelocity.y <= 0.01f)
+        {
+            _isJumping = false;
+        }
+        
     }
 
     void CheckCoyoteTime()
@@ -138,6 +139,7 @@ public class PlayerInAirState : PlayerState
         if (_wallJumpCoyoteTime && Time.time >= _startWallJumpCoyoteTime + playerData.coyoteTime)
         {
             _wallJumpCoyoteTime = false;
+            player.jumpState.DecreaseAmountOfJumpsLeft();
         }
     }
 
