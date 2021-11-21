@@ -102,7 +102,9 @@ public class PlayerInAirState : PlayerState
         if (_coyoteTime && Time.time > startTime + playerData.coyoteTime)
         {
             _coyoteTime = false;
-            player.jumpState.DecreaseAmountOfJumpsLeft();
+
+            if(player.jumpState.amountOfJumpsLeft == playerData.amountOfJumps)
+                player.jumpState.DecreaseAmountOfJumpsLeft();
         }
     }
 
