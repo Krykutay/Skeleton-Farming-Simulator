@@ -6,13 +6,40 @@
             "id": "625bc3a2-977e-4797-a726-134a15421894",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "Value",
-                    "id": "d1293583-674f-4aec-9f8e-6431ad4ee1ee",
-                    "expectedControlType": "Vector2",
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "f10d4a2a-5361-4f13-a09b-580a960121b6",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "e416bfcb-4bd9-4c35-9ffb-5090d418251b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "64c7c97f-4863-4659-8c8f-adea69e44e2b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "7ac79bd5-b2bc-44d7-95bb-d283880a1ea0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -22,63 +49,72 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "61073605-ea0f-4d20-b99c-0be6e44fdde9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "WASD",
-                    "id": "ee6e0d18-9aab-4d23-8a10-4976a0824f77",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "283aaadd-4710-4055-bc96-602fe746f040",
+                    "name": "",
+                    "id": "23c06d57-e273-4d91-b8f6-c0ef3079c8ed",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
+                    "groups": "",
+                    "action": "Up",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "down",
-                    "id": "418ca5e6-ae87-4dfe-9410-123aa611c4a9",
+                    "name": "",
+                    "id": "53bc788c-4764-45dd-b7bb-371e7b3c953d",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
+                    "groups": "",
+                    "action": "Down",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "903ef029-6d2e-454b-8c05-b7c27a938fd5",
+                    "name": "",
+                    "id": "32d1cc13-2396-4dfe-a58a-4d63a298575c",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
+                    "groups": "",
+                    "action": "Left",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "right",
-                    "id": "2f48bfea-c0bf-4ba7-b428-5b701f1d49ec",
+                    "name": "",
+                    "id": "cc8466e2-46b8-4a30-9e29-145a4fc0d333",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Movement",
+                    "groups": "",
+                    "action": "Right",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be4da7d6-503a-444e-9202-e3054286caab",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",

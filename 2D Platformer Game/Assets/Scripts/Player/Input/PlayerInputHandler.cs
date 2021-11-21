@@ -4,14 +4,18 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     PlayerInput _playerInput;
-    InputAction _movementAction;
+    InputAction _upAction;
+    InputAction _downAction;
+    InputAction _leftAction;
+    InputAction _rightAction;
     InputAction _jumpAction;
+    InputAction _grabAction;
 
-    public Vector2 rawMovementInput { get; private set; }
-    public int normalizedInputX { get; private set; }
-    public int normalizedInputY { get; private set;}
+    public int xInput { get; private set; }
+    public int yInput { get; private set;}
     public bool jumpInput { get; private set; }
     public bool jumpInputStopped { get; private set; }
+    public bool grabInput { get; private set; }
 
     [SerializeField] float _inputHoldTime = 0.2f;
 
@@ -20,59 +24,53 @@ public class PlayerInputHandler : MonoBehaviour
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _movementAction = _playerInput.actions["Movement"];
+        _upAction = _playerInput.actions["Up"];
+        _downAction = _playerInput.actions["Down"];
+        _leftAction = _playerInput.actions["Left"];
+        _rightAction = _playerInput.actions["Right"];
         _jumpAction = _playerInput.actions["Jump"];
+        _grabAction = _playerInput.actions["Grab"];
     }
 
     void OnEnable()
     {
-        _movementAction.started += MovementStart;
-        _movementAction.canceled += MovementEnd;
+        _upAction.performed += UpStart;
+        _upAction.canceled += UpCancel;
+        _downAction.performed += DownStart;
+        _downAction.canceled += DownCancel;
+        _leftAction.performed += LeftStart;
+        _leftAction.canceled += LeftCancel;
+        _rightAction.performed += RightStart;
+        _rightAction.canceled += RightCancel;
 
-        _jumpAction.started += JumpStart;
-        _jumpAction.canceled += JumpEnd;
+        _jumpAction.performed += JumpStart;
+        _jumpAction.canceled += JumpCancel;
+
+        _grabAction.performed += GrabStart;
+        _grabAction.canceled += GrabCancel;
     }
 
     void OnDisable()
     {
-        _movementAction.started -= MovementStart;
-        _movementAction.canceled -= MovementEnd;
+        _upAction.performed -= UpStart;
+        _upAction.canceled -= UpCancel;
+        _downAction.performed -= DownStart;
+        _downAction.canceled -= DownCancel;
+        _leftAction.performed -= LeftStart;
+        _leftAction.canceled -= LeftCancel;
+        _rightAction.performed -= RightStart;
+        _rightAction.canceled -= RightCancel;
 
-        _jumpAction.started -= JumpStart;
-        _jumpAction.canceled -= JumpEnd;
+        _jumpAction.performed -= JumpStart;
+        _jumpAction.canceled -= JumpCancel;
+
+        _grabAction.performed -= GrabStart;
+        _grabAction.canceled -= GrabCancel;
     }
 
     void Update()
     {
         CheckJumpInputHoldTime();
-    }
-
-    void MovementStart(InputAction.CallbackContext context)
-    {
-        rawMovementInput = context.ReadValue<Vector2>();
-        normalizedInputX = (int)(rawMovementInput * Vector2.right).normalized.x;
-        normalizedInputY = (int)(rawMovementInput * Vector2.up).normalized.y;
-
-    }
-
-    void MovementEnd(InputAction.CallbackContext context)
-    {
-        rawMovementInput = context.ReadValue<Vector2>();
-        normalizedInputX = 0;
-        normalizedInputY = 0;
-    }
-
-
-    void JumpStart(InputAction.CallbackContext context)
-    {
-        jumpInput = true;
-        jumpInputStopped = false;
-        _jumpInputStartTime = Time.time;
-    }
-
-    void JumpEnd(InputAction.CallbackContext context)
-    {
-        jumpInputStopped = true;
     }
 
     public void UseJumpInput()
@@ -86,5 +84,91 @@ public class PlayerInputHandler : MonoBehaviour
         {
             jumpInput = false;
         }
+    }
+
+    void UpStart(InputAction.CallbackContext context)
+    {
+        if (_downAction.inProgress)
+            yInput = 0;
+        else
+            yInput = 1;
+    }
+
+    void UpCancel(InputAction.CallbackContext context)
+    {
+        if (_downAction.inProgress)
+            yInput = -1;
+        else
+            yInput = 0;
+    }
+
+    void DownStart(InputAction.CallbackContext context)
+    {
+        if (_upAction.inProgress)
+            yInput = 0;
+        else
+            yInput = -1;
+    }
+
+    void DownCancel(InputAction.CallbackContext context)
+    {
+        if (_upAction.inProgress)
+            yInput = 1;
+        else
+            yInput = 0;
+    }
+
+    void LeftStart(InputAction.CallbackContext context)
+    {
+        if (_rightAction.inProgress)
+            xInput = 0;
+        else
+            xInput = -1;
+    }
+
+    void LeftCancel(InputAction.CallbackContext context)
+    {
+        if (_rightAction.inProgress)
+            xInput = 1;
+        else
+            xInput = 0;
+    }
+
+    void RightStart(InputAction.CallbackContext context)
+    {
+        if (_leftAction.inProgress)
+            xInput = 0;
+        else
+            xInput = 1;
+    }
+
+    void RightCancel(InputAction.CallbackContext context)
+    {
+        if (_leftAction.inProgress)
+            xInput = -1;
+        else
+            xInput = 0;
+    }
+
+    void JumpStart(InputAction.CallbackContext context)
+    {
+        jumpInput = true;
+        jumpInputStopped = false;
+        _jumpInputStartTime = Time.time;
+    }
+
+    void JumpCancel(InputAction.CallbackContext context)
+    {
+        jumpInputStopped = true;
+    }
+
+    void GrabStart(InputAction.CallbackContext context)
+    {
+        grabInput = true;
+    }
+
+    void GrabCancel(InputAction.CallbackContext context)
+    {
+        grabInput = false;
     }
 }

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerData _playerData;
 
     [SerializeField] Transform _groundCheck;
+    [SerializeField] Transform _wallCheck;
 
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -14,6 +15,9 @@ public class Player : MonoBehaviour
     public PlayerJumpState jumpState { get; private set; }
     public PlayerInAirState inAirState { get; private set; }
     public PlayerLandState landState { get; private set; }
+    public PlayerWallSlideState wallSlideState { get; private set; }
+    public PlayerWallGrabState wallGrabState { get; private set; }
+    public PlayerWallClimbState wallClimbState { get; private set; }
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -21,6 +25,7 @@ public class Player : MonoBehaviour
 
     public Vector2 currentVelocity { get; private set; }
     public int facingDirection { get; private set; }
+    public float initialGravity { get; private set; }
 
     Vector2 _workSpace;
 
@@ -37,12 +42,16 @@ public class Player : MonoBehaviour
         jumpState = new PlayerJumpState(this, stateMachine, _playerData, "inAir");
         inAirState = new PlayerInAirState(this, stateMachine, _playerData, "inAir");
         landState = new PlayerLandState(this, stateMachine, _playerData, "land");
+        wallSlideState = new PlayerWallSlideState(this, stateMachine, _playerData, "wallSlide");
+        wallGrabState = new PlayerWallGrabState(this, stateMachine, _playerData, "wallGrab");
+        wallClimbState = new PlayerWallClimbState(this, stateMachine, _playerData, "wallClimb");
     }
 
     void OnEnable()
     {
         stateMachine.Initialize(idleState);
         facingDirection = 1;
+        initialGravity = rb.gravityScale;
     }
 
     void Update()
@@ -81,6 +90,11 @@ public class Player : MonoBehaviour
     public bool CheckIfGrounded()
     {
         return Physics2D.OverlapCircle(_groundCheck.position, _playerData.groundCheckRadius, _playerData.ground);
+    }
+
+    public bool CheckIfTouchingWall()
+    {
+        return Physics2D.Raycast(_wallCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
     }
 
     void Flip()
