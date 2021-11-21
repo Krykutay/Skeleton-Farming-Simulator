@@ -26,17 +26,18 @@ public class PlayerAbilityState : PlayerState
     {
         base.LogicUpdate();
 
-        if (isAbilityDone)
+        if (!isAbilityDone)
+            return;
+        
+        if (_isGrounded && player.currentVelocity.y < 0.01f)
         {
-            if (_isGrounded && player.currentVelocity.y < 0.01f)
-            {
-                stateMachine.ChangeState(player.idleState);
-            }
-            else
-            {
-                stateMachine.ChangeState(player.inAirState);
-            }
+            stateMachine.ChangeState(player.idleState);
         }
+        else
+        {
+            stateMachine.ChangeState(player.inAirState);
+        }
+        
     }
 
     public override void PhysicsUpdate()
