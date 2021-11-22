@@ -35,6 +35,11 @@ public class PlayerInAirState : PlayerState
     public override void Exit()
     {
         base.Exit();
+
+        _previousIsTouchingWall = false;
+        _previousIsTouchingWallBack = false;
+        _isTouchingWall = false;
+        _isTouchingWallBack = false;
     }
 
     public override void LogicUpdate()  // TODO: may change instantly stopping on the air
