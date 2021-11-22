@@ -10,12 +10,14 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction _rightAction;
     InputAction _jumpAction;
     InputAction _grabAction;
+    InputAction _dashAction;
 
     public int xInput { get; private set; }
     public int yInput { get; private set;}
     public bool jumpInput { get; private set; }
     public bool jumpInputStopped { get; private set; }
     public bool grabInput { get; private set; }
+    public bool dashInput { get; private set; }
 
     [SerializeField] float _inputHoldTime = 0.2f;
 
@@ -30,6 +32,7 @@ public class PlayerInputHandler : MonoBehaviour
         _rightAction = _playerInput.actions["Right"];
         _jumpAction = _playerInput.actions["Jump"];
         _grabAction = _playerInput.actions["Grab"];
+        _dashAction = _playerInput.actions["Dash"];
     }
 
     void OnEnable()
@@ -48,6 +51,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         _grabAction.performed += GrabStart;
         _grabAction.canceled += GrabCancel;
+
+        _dashAction.performed += DashStart;
+        _dashAction.canceled += DashCancel;
     }
 
     void OnDisable()
@@ -66,6 +72,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         _grabAction.performed -= GrabStart;
         _grabAction.canceled -= GrabCancel;
+
+        _dashAction.performed -= DashStart;
+        _dashAction.canceled -= DashCancel;
     }
 
     void Update()
@@ -170,5 +179,15 @@ public class PlayerInputHandler : MonoBehaviour
     void GrabCancel(InputAction.CallbackContext context)
     {
         grabInput = false;
+    }
+
+    void DashStart(InputAction.CallbackContext context)
+    {
+        dashInput = true;
+    }
+
+    void DashCancel(InputAction.CallbackContext context)
+    {
+        dashInput = false;
     }
 }

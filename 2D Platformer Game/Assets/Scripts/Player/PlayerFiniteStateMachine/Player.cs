@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public PlayerWallClimbState wallClimbState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerLedgeClimbState ledgeClimbState { get; private set; }
+    public PlayerDashState dashState { get; private set; }
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         wallClimbState = new PlayerWallClimbState(this, stateMachine, _playerData, "wallClimb");
         wallJumpState = new PlayerWallJumpState(this, stateMachine, _playerData, "inAir");
         ledgeClimbState = new PlayerLedgeClimbState(this, stateMachine, _playerData, "ledgeClimbState");
+        dashState = new PlayerDashState(this, stateMachine, _playerData, "inAir");
 
     }
 
