@@ -11,6 +11,7 @@ public class PlayerLedgeClimbState : PlayerState
 
     int _xInput;
     int _yInput;
+    bool _jumpInput;
 
     bool _isHanging;
     bool _isClimbing;
@@ -62,6 +63,7 @@ public class PlayerLedgeClimbState : PlayerState
 
         _xInput = player.inputHandler.xInput;
         _yInput = player.inputHandler.yInput;
+        _jumpInput = player.inputHandler.jumpInput;
 
         if (_xInput == player.facingDirection && _isHanging && !_isClimbing)
         {
@@ -71,6 +73,11 @@ public class PlayerLedgeClimbState : PlayerState
         else if (_yInput == -1 && _isHanging && !_isClimbing)
         {
             stateMachine.ChangeState(player.inAirState);
+        }
+        else if (_jumpInput && !_isClimbing)
+        {
+            player.wallJumpState.DetermineWallJumpDirection(true);
+            stateMachine.ChangeState(player.wallJumpState);
         }
     }
 

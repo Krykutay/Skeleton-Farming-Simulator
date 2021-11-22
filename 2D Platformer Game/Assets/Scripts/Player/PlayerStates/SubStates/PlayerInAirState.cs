@@ -78,7 +78,7 @@ public class PlayerInAirState : PlayerState
             player.inputHandler.UseJumpInput();
             stateMachine.ChangeState(player.jumpState);
         }
-        else if (_isTouchingWall && _grabInput)
+        else if (_isTouchingWall && _grabInput && _isTouchingLedge)
         {
             stateMachine.ChangeState(player.wallGrabState);
         }
