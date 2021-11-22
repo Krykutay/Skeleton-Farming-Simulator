@@ -59,7 +59,7 @@ public class PlayerInputHandler : MonoBehaviour
         _grabAction.performed += GrabStart;
         _grabAction.canceled += GrabCancel;
 
-        _dashAction.performed += DashStart;
+        _dashAction.started += DashStart;
         _dashAction.canceled += DashCancel;
         _dashDirectionAction.performed += DashDirectionStart;
         _dashDirectionAction.canceled += DashDirectionCancel;
@@ -82,7 +82,7 @@ public class PlayerInputHandler : MonoBehaviour
         _grabAction.performed -= GrabStart;
         _grabAction.canceled -= GrabCancel;
 
-        _dashAction.performed -= DashStart;
+        _dashAction.started -= DashStart;
         _dashAction.canceled -= DashCancel;
         _dashDirectionAction.performed -= DashDirectionStart;
         _dashDirectionAction.canceled -= DashDirectionCancel;

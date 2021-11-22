@@ -19,9 +19,11 @@ public class PlayerDashState : PlayerAbilityState
     {
     }
 
-    public override void Enter()
+    public override void Enter()    // TODO: use walking animation if on the ground
     {
         base.Enter();
+
+        isAbilityDone = false;
 
         canDash = false;
         player.inputHandler.UseDashInput();
