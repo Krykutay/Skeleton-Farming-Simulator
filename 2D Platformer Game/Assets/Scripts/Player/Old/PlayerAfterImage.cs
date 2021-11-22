@@ -35,12 +35,12 @@ public class PlayerAfterImage : MonoBehaviour
         _sr.sprite = _playerSr.sprite;
         transform.position = _player.position;
         transform.rotation = _player.rotation;
-        _timeActivated = Time.time;
+        _timeActivated = Time.unscaledTime;
     }
 
     void Update()
     {
-        _alpha -= _alphaDecay * Time.deltaTime;
+        _alpha -= _alphaDecay * Time.unscaledDeltaTime;
         _color = new Color(1f, 1f, 1f, _alpha);
         _sr.color = _color;
 

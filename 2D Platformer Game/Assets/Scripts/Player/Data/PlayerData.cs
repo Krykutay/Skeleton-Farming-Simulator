@@ -29,6 +29,15 @@ public class PlayerData : ScriptableObject
     [SerializeField] Vector2 _startOffset;
     [SerializeField] Vector2 _stopOffset;
 
+    [Header("Dash State")]
+    [SerializeField] float _dashCooldown = 1f;
+    [SerializeField] float _maxHoldTime = 1f;
+    [SerializeField] float _holdTimeScale = 0.25f;
+    [SerializeField] float _dashTime = 0.2f;
+    [SerializeField] float _dashVelocity = 30f;
+    [SerializeField] float _drag = 10f;
+    [SerializeField] float _dashEndYMultiplier = 0.2f;
+    [SerializeField] float _distBetweenAfterImages = 0.5f;
 
     [Header("Check Variables")]
     [SerializeField] float _groundCheckRadius = 0.3f;
@@ -47,6 +56,14 @@ public class PlayerData : ScriptableObject
     public float wallClimbVelocity { get { return _wallClimbVelocity; } }
     public Vector2 startOffset { get { return _startOffset; } }
     public Vector2 stopOffset { get { return _stopOffset; } }
+    public float dashCooldown { get { return _dashCooldown; } }
+    public float maxHoldTime { get { return _maxHoldTime; } }
+    public float holdTimeScale { get { return _holdTimeScale; } }
+    public float dashTime { get { return _dashTime; } }
+    public float dashVelocity { get { return _dashVelocity; } }
+    public float drag { get { return _drag; } }
+    public float dashEndYMultiplier { get { return _dashEndYMultiplier; } }
+    public float distBetweenAfterImages { get { return _distBetweenAfterImages; } }
     public float groundCheckRadius { get { return _groundCheckRadius; } }
     public float wallCheckDistance { get { return _wallCheckDistance; } }
     public LayerMask ground { get { return _ground; } }

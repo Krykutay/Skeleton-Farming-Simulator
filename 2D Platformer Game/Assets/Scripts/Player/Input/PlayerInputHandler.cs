@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    Camera _cam;
     PlayerInput _playerInput;
     InputAction _upAction;
     InputAction _downAction;
@@ -11,6 +12,7 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction _jumpAction;
     InputAction _grabAction;
     InputAction _dashAction;
+    InputAction _dashDirectionAction;
 
     public int xInput { get; private set; }
     public int yInput { get; private set;}
@@ -18,14 +20,18 @@ public class PlayerInputHandler : MonoBehaviour
     public bool jumpInputStopped { get; private set; }
     public bool grabInput { get; private set; }
     public bool dashInput { get; private set; }
+    public bool dashInputStopped { get; private set; }
+    public Vector2 rawDashDirectionInput { get; private set; }
 
     [SerializeField] float _inputHoldTime = 0.2f;
 
     float _jumpInputStartTime;
+    float _dashInputStartTime;
 
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
+        _cam = Camera.main;
         _upAction = _playerInput.actions["Up"];
         _downAction = _playerInput.actions["Down"];
         _leftAction = _playerInput.actions["Left"];
@@ -33,6 +39,7 @@ public class PlayerInputHandler : MonoBehaviour
         _jumpAction = _playerInput.actions["Jump"];
         _grabAction = _playerInput.actions["Grab"];
         _dashAction = _playerInput.actions["Dash"];
+        _dashDirectionAction = _playerInput.actions["DashDirection"];
     }
 
     void OnEnable()
@@ -54,6 +61,8 @@ public class PlayerInputHandler : MonoBehaviour
 
         _dashAction.performed += DashStart;
         _dashAction.canceled += DashCancel;
+        _dashDirectionAction.performed += DashDirectionStart;
+        _dashDirectionAction.canceled += DashDirectionCancel;
     }
 
     void OnDisable()
@@ -75,11 +84,14 @@ public class PlayerInputHandler : MonoBehaviour
 
         _dashAction.performed -= DashStart;
         _dashAction.canceled -= DashCancel;
+        _dashDirectionAction.performed -= DashDirectionStart;
+        _dashDirectionAction.canceled -= DashDirectionCancel;
     }
 
     void Update()
     {
         CheckJumpInputHoldTime();
+        CheckDashInputHoldTime();
     }
 
     public void UseJumpInput()
@@ -92,6 +104,19 @@ public class PlayerInputHandler : MonoBehaviour
         if (Time.time >= _jumpInputStartTime + _inputHoldTime)
         {
             jumpInput = false;
+        }
+    }
+
+    public void UseDashInput()
+    {
+        dashInput = false;
+    }
+
+    void CheckDashInputHoldTime()
+    {
+        if (Time.time >= _dashInputStartTime + _inputHoldTime)
+        {
+            dashInput = false;
         }
     }
 
@@ -184,10 +209,28 @@ public class PlayerInputHandler : MonoBehaviour
     void DashStart(InputAction.CallbackContext context)
     {
         dashInput = true;
+        dashInputStopped = false;
+        _dashInputStartTime = Time.time;
     }
 
     void DashCancel(InputAction.CallbackContext context)
     {
-        dashInput = false;
+        dashInputStopped = true;
+    }
+
+    void DashDirectionStart(InputAction.CallbackContext context)
+    {
+        rawDashDirectionInput = context.ReadValue<Vector2>();
+
+        if (_playerInput.currentControlScheme == "Keyboard")    // might implement for gamepads/touchpads later
+        {
+            rawDashDirectionInput = _cam.ScreenToWorldPoint((Vector3)rawDashDirectionInput) - transform.position;
+        }
+
+    }
+
+    void DashDirectionCancel(InputAction.CallbackContext context)
+    {
+        
     }
 }
