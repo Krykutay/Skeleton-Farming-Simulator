@@ -79,10 +79,10 @@ public class PlayerInputHandler : MonoBehaviour
         _dashDirectionAction.performed += DashDirectionStart;
         _dashDirectionAction.canceled += DashDirectionCancel;
 
-        _primaryAttackAction.performed += PrimaryAttackStart;
+        _primaryAttackAction.started += PrimaryAttackStart;
         _primaryAttackAction.canceled += PrimaryAttackCancel;
 
-        _secondaryAttackAction.performed += SecondaryAttackStart;
+        _secondaryAttackAction.started += SecondaryAttackStart;
         _secondaryAttackAction.canceled += SecondaryAttackCancel;
     }
 
@@ -108,10 +108,10 @@ public class PlayerInputHandler : MonoBehaviour
         _dashDirectionAction.performed -= DashDirectionStart;
         _dashDirectionAction.canceled -= DashDirectionCancel;
 
-        _primaryAttackAction.performed -= PrimaryAttackStart;
+        _primaryAttackAction.started -= PrimaryAttackStart;
         _primaryAttackAction.canceled -= PrimaryAttackCancel;
 
-        _secondaryAttackAction.performed -= SecondaryAttackStart;
+        _secondaryAttackAction.started -= SecondaryAttackStart;
         _secondaryAttackAction.canceled -= SecondaryAttackCancel;
     }
 

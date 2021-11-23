@@ -16,7 +16,7 @@ MonoBehaviour:
   _jumpVelocity: 15
   _amountOfJumps: 2
   _wallJumpVelocity: 20
-  _wallJumpTime: 0.4
+  _wallJumpTime: 0.6
   _wallJumpAngle: {x: 1, y: 2}
   _coyoteTime: 0.2
   _variableJumpHeightMultiplier: 0.5
@@ -24,6 +24,17 @@ MonoBehaviour:
   _wallClimbVelocity: 3
   _startOffset: {x: 0.4, y: 0.9}
   _stopOffset: {x: 0.5, y: 0.75}
+  _dashCooldown: 1
+  _maxHoldTime: 1
+  _holdTimeScale: 0.25
+  _dashTime: 0.2
+  _dashVelocity: 30
+  _drag: 10
+  _dashEndYMultiplier: 0.2
+  _distBetweenAfterImages: 0.5
+  _crouchMovementVelocity: 5
+  _crouchColliderHeight: 0.8
+  _standColliderHeight: 1.6
   _groundCheckRadius: 0.3
   _wallCheckDistance: 0.5
   _ground:

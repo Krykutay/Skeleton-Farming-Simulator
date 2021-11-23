@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public BoxCollider2D movementCollider { get; private set; }
     public PlayerInputHandler inputHandler { get; private set; }
     public Transform dashDirectionIndicator { get; private set; }
+    public PlayerInventory inventory { get; private set; }
 
     public Vector2 currentVelocity { get; private set; }
     public int facingDirection { get; private set; }
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
         inputHandler = GetComponent<PlayerInputHandler>();
         rb = GetComponent<Rigidbody2D>();
         movementCollider = GetComponent<BoxCollider2D>();
+        inventory = GetComponent<PlayerInventory>();
         dashDirectionIndicator = transform.Find("DashDirectionIndicator");
 
         stateMachine = new PlayerStateMachine();
@@ -69,6 +71,9 @@ public class Player : MonoBehaviour
 
     void OnEnable()
     {
+        primaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
+        //secondaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
+
         stateMachine.Initialize(idleState);
         facingDirection = 1;
         initialGravity = rb.gravityScale;
