@@ -5,7 +5,7 @@ public class PlayerAfterImage : MonoBehaviour
 {
     [SerializeField] float _activeTime = 0.2f;
     [SerializeField] float _alphaSet = 0.8f;
-    [SerializeField] float _alphaDecay = 5f;
+    [SerializeField] float _alphaDecay = 7.5f;
 
     Transform _player;
     SpriteRenderer _sr;

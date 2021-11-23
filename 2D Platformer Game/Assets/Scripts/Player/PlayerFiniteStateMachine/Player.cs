@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _ledgeCheck;
+    [SerializeField] Transform _ceilingCheck;
 
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -22,9 +23,12 @@ public class Player : MonoBehaviour
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerLedgeClimbState ledgeClimbState { get; private set; }
     public PlayerDashState dashState { get; private set; }
+    public PlayerCrouchIdleState crouchIdleState { get; private set; }
+    public PlayerCrouchMoveState crouchMoveState { get; private set; }
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public BoxCollider2D movementCollider { get; private set; }
     public PlayerInputHandler inputHandler { get; private set; }
     public Transform dashDirectionIndicator { get; private set; }
 
@@ -39,6 +43,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         inputHandler = GetComponent<PlayerInputHandler>();
         rb = GetComponent<Rigidbody2D>();
+        movementCollider = GetComponent<BoxCollider2D>();
         dashDirectionIndicator = transform.Find("DashDirectionIndicator");
 
         stateMachine = new PlayerStateMachine();
@@ -54,6 +59,8 @@ public class Player : MonoBehaviour
         wallJumpState = new PlayerWallJumpState(this, stateMachine, _playerData, "inAir");
         ledgeClimbState = new PlayerLedgeClimbState(this, stateMachine, _playerData, "ledgeClimbState");
         dashState = new PlayerDashState(this, stateMachine, _playerData, "inAir");
+        crouchIdleState = new PlayerCrouchIdleState(this, stateMachine, _playerData, "crouchIdle");
+        crouchMoveState = new PlayerCrouchMoveState(this, stateMachine, _playerData, "crouchMove");
 
     }
 
@@ -138,6 +145,11 @@ public class Player : MonoBehaviour
         return Physics2D.Raycast(_ledgeCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
     }
 
+    public bool CheckForCeiling()
+    {
+        return Physics2D.OverlapCircle(_ceilingCheck.position, _playerData.groundCheckRadius, _playerData.ground);
+    }
+
     void Flip()
     {
         facingDirection *= -1;
@@ -153,6 +165,17 @@ public class Player : MonoBehaviour
         float yDist = yHit.distance;
         _workSpace.Set(_wallCheck.position.x + xDist * facingDirection, _ledgeCheck.position.y - yDist);
         return _workSpace;
+    }
+
+    public void SetColliderHeight(float height)
+    {
+        Vector2 center = movementCollider.offset;
+        _workSpace.Set(movementCollider.size.x, height);
+
+        center.y += (height - movementCollider.size.y) / 2; 
+
+        movementCollider.size = _workSpace;
+        movementCollider.offset = center;
     }
 
     void AnimationTrigger()

@@ -6,11 +6,13 @@ public class PlayerGroundedState : PlayerState
 {
     // Inputs
     protected int xInput;
+    protected int yInput;
     bool _jumpInput;
     bool _grabInput;
     bool _dashInput;
 
     // Checks
+    protected bool isTouchingCeiling;
     bool _isGrounded;
     bool _isTouchingWall;
     bool _isTouchingLedge;
@@ -37,11 +39,12 @@ public class PlayerGroundedState : PlayerState
         base.LogicUpdate();
 
         xInput = player.inputHandler.xInput;
+        yInput = player.inputHandler.yInput;
         _jumpInput = player.inputHandler.jumpInput;
         _grabInput = player.inputHandler.grabInput;
         _dashInput = player.inputHandler.dashInput;
 
-        if (_jumpInput && player.jumpState.CanJump())
+        if (_jumpInput && player.jumpState.CanJump() && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.jumpState);
         }
@@ -54,7 +57,7 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.wallGrabState);
         }
-        else if (_dashInput && player.dashState.CheckIfCanDash())
+        else if (_dashInput && player.dashState.CheckIfCanDash() && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.dashState);
         }
@@ -72,5 +75,6 @@ public class PlayerGroundedState : PlayerState
         _isGrounded = player.CheckIfGrounded();
         _isTouchingWall = player.CheckIfTouchingWall();
         _isTouchingLedge = player.CheckIfTouchingLedge();
+        isTouchingCeiling = player.CheckForCeiling();
     }
 }

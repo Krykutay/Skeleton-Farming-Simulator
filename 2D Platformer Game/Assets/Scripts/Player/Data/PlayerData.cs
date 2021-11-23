@@ -39,6 +39,11 @@ public class PlayerData : ScriptableObject
     [SerializeField] float _dashEndYMultiplier = 0.2f;
     [SerializeField] float _distBetweenAfterImages = 0.5f;
 
+    [Header("Crouch States")]
+    [SerializeField] float _crouchMovementVelocity = 5f;
+    [SerializeField] float _crouchColliderHeight = 0.8f;
+    [SerializeField] float _standColliderHeight = 1.6f;
+
     [Header("Check Variables")]
     [SerializeField] float _groundCheckRadius = 0.3f;
     [SerializeField] float _wallCheckDistance = 0.5f;
@@ -64,6 +69,9 @@ public class PlayerData : ScriptableObject
     public float drag { get { return _drag; } }
     public float dashEndYMultiplier { get { return _dashEndYMultiplier; } }
     public float distBetweenAfterImages { get { return _distBetweenAfterImages; } }
+    public float crouchMovementVelocity { get { return _crouchMovementVelocity; } }
+    public float crouchColliderHeight { get { return _crouchColliderHeight; } }
+    public float standColliderHeight { get { return _standColliderHeight; } }
     public float groundCheckRadius { get { return _groundCheckRadius; } }
     public float wallCheckDistance { get { return _wallCheckDistance; } }
     public LayerMask ground { get { return _ground; } }
