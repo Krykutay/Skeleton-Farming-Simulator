@@ -11,6 +11,27 @@ public class WeaponAnimationToWeapon : MonoBehaviour
         _weapon = GetComponentInParent<Weapon>();
     }
 
+    void AnimationTurnOffFlipTrigger()
+    {
+        _weapon.AnimationTurnOffFlipTrigger();
+    }
+
+    void AnimationTurnOnFlipTrigger()
+    {
+        _weapon.AnimationTurnOnFlipTrigger();
+    }
+
+
+    void AnimationStartMovementTrigger()
+    {
+        _weapon.AnimationStartMovementTrigger();
+    }
+
+    void AnimationStopMovementTrigger()
+    {
+        _weapon.AnimationStopMovementTrigger();
+    }
+
     void AnimationFinishTrigger()
     {
         _weapon.AnimationFinishTrigger();

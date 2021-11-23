@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] SO_WeaponData _weaponData;
+
     protected Animator baseAnim;
     protected Animator weaponAnim;
 
-    protected PlayerAttackState state;
+    protected PlayerAttackState attackState;
+
+    protected int attackCounter;
 
     protected virtual void Awake()
     {
@@ -24,8 +28,14 @@ public class Weapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
+        if (attackCounter >= _weaponData.movementSpeed.Length)
+            attackCounter = 0;
+
         baseAnim.SetBool("attack", true);
         weaponAnim.SetBool("attack", true);
+
+        baseAnim.SetInteger("attackCounter", attackCounter);
+        weaponAnim.SetInteger("attackCounter", attackCounter);
     }
 
     public virtual void ExitWeapon()
@@ -33,17 +43,39 @@ public class Weapon : MonoBehaviour
         baseAnim.SetBool("attack", false);
         weaponAnim.SetBool("attack", false);
 
+        attackCounter++;
+
         gameObject.SetActive(false);
     }
 
     public void InitializeWeapon(PlayerAttackState state)
     {
-        this.state = state;
+        this.attackState = state;
+    }
+    public virtual void AnimationTurnOffFlipTrigger()
+    {
+        attackState.SetFlipCheck(false);
+    }
+
+    public virtual void AnimationTurnOnFlipTrigger()
+    {
+        attackState.SetFlipCheck(true);
+    }
+
+
+    public virtual void AnimationStartMovementTrigger()
+    {
+        attackState.SetPlayerVelocity(_weaponData.movementSpeed[attackCounter]);
+    }
+
+    public virtual void AnimationStopMovementTrigger()
+    {
+        attackState.SetPlayerVelocity(0f);
     }
 
     public virtual void AnimationFinishTrigger()
     {
-        state.AnimationFinishTrigger();
+        attackState.AnimationFinishTrigger();
     }
 
 }
