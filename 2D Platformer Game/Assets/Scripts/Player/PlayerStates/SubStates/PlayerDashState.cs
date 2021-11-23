@@ -98,7 +98,6 @@ public class PlayerDashState : PlayerAbilityState
 
                 player.dashDirectionIndicator.gameObject.SetActive(false);
                 PlaceAfterImage();
-
             }
         }
         else    // performing the dash Action
