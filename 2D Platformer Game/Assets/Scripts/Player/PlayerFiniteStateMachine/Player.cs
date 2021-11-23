@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public PlayerDashState dashState { get; private set; }
     public PlayerCrouchIdleState crouchIdleState { get; private set; }
     public PlayerCrouchMoveState crouchMoveState { get; private set; }
+    public PlayerAttackState primaryAttackState { get; private set; }
+    public PlayerAttackState secondaryAttackState { get; private set; }
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -61,7 +63,8 @@ public class Player : MonoBehaviour
         dashState = new PlayerDashState(this, stateMachine, _playerData, "inAir");
         crouchIdleState = new PlayerCrouchIdleState(this, stateMachine, _playerData, "crouchIdle");
         crouchMoveState = new PlayerCrouchMoveState(this, stateMachine, _playerData, "crouchMove");
-
+        primaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
+        secondaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
     }
 
     void OnEnable()

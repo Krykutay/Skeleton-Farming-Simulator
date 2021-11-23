@@ -1,5 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+public enum CombatInputs
+{
+    primary,
+    secondary
+}
 
 public class PlayerInputHandler : MonoBehaviour
 {
@@ -13,6 +20,8 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction _grabAction;
     InputAction _dashAction;
     InputAction _dashDirectionAction;
+    InputAction _primaryAttackAction;
+    InputAction _secondaryAttackAction;
 
     public int xInput { get; private set; }
     public int yInput { get; private set;}
@@ -22,6 +31,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool dashInput { get; private set; }
     public bool dashInputStopped { get; private set; }
     public Vector2 rawDashDirectionInput { get; private set; }
+    public bool[] attackInputs { get; private set; }
 
     [SerializeField] float _inputHoldTime = 0.2f;
 
@@ -40,6 +50,11 @@ public class PlayerInputHandler : MonoBehaviour
         _grabAction = _playerInput.actions["Grab"];
         _dashAction = _playerInput.actions["Dash"];
         _dashDirectionAction = _playerInput.actions["DashDirection"];
+        _primaryAttackAction = _playerInput.actions["PrimaryAttack"];
+        _secondaryAttackAction = _playerInput.actions["SecondaryAttack"];
+
+        int count = Enum.GetValues(typeof(CombatInputs)).Length;
+        attackInputs = new bool[count];
     }
 
     void OnEnable()
@@ -63,6 +78,12 @@ public class PlayerInputHandler : MonoBehaviour
         _dashAction.canceled += DashCancel;
         _dashDirectionAction.performed += DashDirectionStart;
         _dashDirectionAction.canceled += DashDirectionCancel;
+
+        _primaryAttackAction.performed += PrimaryAttackStart;
+        _primaryAttackAction.canceled += PrimaryAttackCancel;
+
+        _secondaryAttackAction.performed += SecondaryAttackStart;
+        _secondaryAttackAction.canceled += SecondaryAttackCancel;
     }
 
     void OnDisable()
@@ -86,6 +107,12 @@ public class PlayerInputHandler : MonoBehaviour
         _dashAction.canceled -= DashCancel;
         _dashDirectionAction.performed -= DashDirectionStart;
         _dashDirectionAction.canceled -= DashDirectionCancel;
+
+        _primaryAttackAction.performed -= PrimaryAttackStart;
+        _primaryAttackAction.canceled -= PrimaryAttackCancel;
+
+        _secondaryAttackAction.performed -= SecondaryAttackStart;
+        _secondaryAttackAction.canceled -= SecondaryAttackCancel;
     }
 
     void Update()
@@ -231,6 +258,26 @@ public class PlayerInputHandler : MonoBehaviour
 
     void DashDirectionCancel(InputAction.CallbackContext context)
     {
-        
+        // might implement stuff later
+    }
+
+    void PrimaryAttackStart(InputAction.CallbackContext context)
+    {
+        attackInputs[(int)CombatInputs.primary] = true;
+    }
+
+    void PrimaryAttackCancel(InputAction.CallbackContext context)
+    {
+        attackInputs[(int)CombatInputs.primary] = false;
+    }
+
+    void SecondaryAttackStart(InputAction.CallbackContext context)
+    {
+        attackInputs[(int)CombatInputs.secondary] = true;
+    }
+
+    void SecondaryAttackCancel(InputAction.CallbackContext context)
+    {
+        attackInputs[(int)CombatInputs.secondary] = false;
     }
 }
