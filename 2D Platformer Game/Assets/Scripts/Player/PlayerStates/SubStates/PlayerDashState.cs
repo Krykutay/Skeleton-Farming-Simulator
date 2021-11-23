@@ -56,8 +56,6 @@ public class PlayerDashState : PlayerAbilityState
 
         player.anim.SetBool("move", false);
         player.anim.SetBool("idle", false);
-
-        Debug.Log(player.currentVelocity);
     }
 
     public override void LogicUpdate()
