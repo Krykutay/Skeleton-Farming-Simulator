@@ -5,14 +5,14 @@ using UnityEngine;
 public class Core : MonoBehaviour
 {
     public Movement movement { get; private set; }
-    public CollusionSenses collusionSenses { get; private set; }
+    public CollisionSenses collisionSenses { get; private set; }
 
     void Awake()
     {
         movement = GetComponentInChildren<Movement>();
-        collusionSenses = GetComponentInChildren<CollusionSenses>();
+        collisionSenses = GetComponentInChildren<CollisionSenses>();
 
-        if (!movement || !collusionSenses)
+        if (!movement || !collisionSenses)
             Debug.LogError("Missing Core component(s)");
     }
 

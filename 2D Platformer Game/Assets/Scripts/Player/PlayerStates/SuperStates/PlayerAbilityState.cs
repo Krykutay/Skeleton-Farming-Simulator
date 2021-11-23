@@ -49,6 +49,6 @@ public class PlayerAbilityState : PlayerState
     {
         base.DoChecks();
 
-        _isGrounded = core.collusionSenses.ground;
+        _isGrounded = core.collisionSenses.ground;
     }
 }

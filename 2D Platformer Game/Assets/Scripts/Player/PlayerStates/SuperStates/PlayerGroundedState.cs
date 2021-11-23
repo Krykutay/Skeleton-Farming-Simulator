@@ -80,9 +80,9 @@ public class PlayerGroundedState : PlayerState
     {
         base.DoChecks();
 
-        _isGrounded = core.collusionSenses.ground;
-        _isTouchingWall = core.collusionSenses.wallFront;
-        _isTouchingLedge = core.collusionSenses.ledge;
-        isTouchingCeiling = core.collusionSenses.ceiling;
+        _isGrounded = core.collisionSenses.ground;
+        _isTouchingWall = core.collisionSenses.wallFront;
+        _isTouchingLedge = core.collisionSenses.ledge;
+        isTouchingCeiling = core.collisionSenses.ceiling;
     }
 }

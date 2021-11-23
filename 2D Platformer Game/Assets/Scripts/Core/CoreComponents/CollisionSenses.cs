@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollusionSenses : CoreComponent
+public class CollisionSenses : CoreComponent
 {
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
