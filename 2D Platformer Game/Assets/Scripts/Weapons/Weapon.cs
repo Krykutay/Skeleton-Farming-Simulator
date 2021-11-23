@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] SO_WeaponData _weaponData;
+    [SerializeField] protected SO_WeaponData weaponData;
 
     protected Animator baseAnim;
     protected Animator weaponAnim;
@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        if (attackCounter >= _weaponData.movementSpeed.Length)
+        if (attackCounter >= weaponData.amountOfAttacks)
             attackCounter = 0;
 
         baseAnim.SetBool("attack", true);
@@ -64,7 +64,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void AnimationStartMovementTrigger()
     {
-        attackState.SetPlayerVelocity(_weaponData.movementSpeed[attackCounter]);
+        attackState.SetPlayerVelocity(weaponData.movementSpeed[attackCounter]);
     }
 
     public virtual void AnimationStopMovementTrigger()
@@ -75,6 +75,11 @@ public class Weapon : MonoBehaviour
     public virtual void AnimationFinishTrigger()
     {
         attackState.AnimationFinishTrigger();
+    }
+
+    public virtual void AnimationActionTrigger()
+    {
+        
     }
 
 }

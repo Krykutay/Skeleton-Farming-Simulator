@@ -82,7 +82,7 @@ public class PlayerGroundedState : PlayerState
 
         _isGrounded = core.collusionSenses.ground;
         _isTouchingWall = core.collusionSenses.wallFront;
-        _isTouchingLedge = player.core.collusionSenses.ledge;
+        _isTouchingLedge = core.collusionSenses.ledge;
         isTouchingCeiling = core.collusionSenses.ceiling;
     }
 }

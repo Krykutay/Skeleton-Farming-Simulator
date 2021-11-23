@@ -69,8 +69,12 @@ public class Player : MonoBehaviour
         primaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
         //secondaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
 
-        stateMachine.Initialize(idleState);
         initialGravity = rb.gravityScale;
+    }
+
+    void Start()
+    {
+        stateMachine.Initialize(idleState);
     }
 
     void Update()

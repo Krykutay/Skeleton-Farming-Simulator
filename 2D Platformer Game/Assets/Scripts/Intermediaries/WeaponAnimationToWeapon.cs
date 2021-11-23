@@ -37,4 +37,9 @@ public class WeaponAnimationToWeapon : MonoBehaviour
         _weapon.AnimationFinishTrigger();
     }
 
+    void AnimationActionTrigger()
+    {
+        _weapon.AnimationActionTrigger();
+    }
+
 }
