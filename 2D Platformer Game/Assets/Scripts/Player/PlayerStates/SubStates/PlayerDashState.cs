@@ -12,6 +12,9 @@ public class PlayerDashState : PlayerAbilityState
 
     float _lastDashTime = Mathf.NegativeInfinity;
 
+    int _xInput;
+
+    bool _isGrounded;
     bool _isHolding;
     bool _dashInputStopped;
 
@@ -45,6 +48,16 @@ public class PlayerDashState : PlayerAbilityState
         {
             player.SetVelocityY(player.currentVelocity.y * playerData.dashEndYMultiplier);
         }
+
+        if (_xInput != 0)
+            player.SetVelocityX(playerData.movementVelocity * _xInput);
+        else
+            player.SetVelocityX(0f);
+
+        player.anim.SetBool("move", false);
+        player.anim.SetBool("idle", false);
+
+        Debug.Log(player.currentVelocity);
     }
 
     public override void LogicUpdate()
@@ -54,11 +67,13 @@ public class PlayerDashState : PlayerAbilityState
         if (isExitingState)
             return;
 
+        _xInput = player.inputHandler.xInput;
         player.anim.SetFloat("yVelocity", player.currentVelocity.y);
         player.anim.SetFloat("xVelocity", Mathf.Abs(player.currentVelocity.x));
 
         if (_isHolding)     // waiting for player direction
         {
+            AdjustHoldingAnim();
             _dashDirectionInput = player.inputHandler.rawDashDirectionInput;
             _dashInputStopped = player.inputHandler.dashInputStopped;
 
@@ -90,6 +105,7 @@ public class PlayerDashState : PlayerAbilityState
         }
         else    // performing the dash Action
         {
+            AdjustReleasingAnim();
             player.SetVelocity(playerData.dashVelocity, _dashDirection);
             CheckIfShouldPlaceAfterImage();
 
@@ -100,6 +116,13 @@ public class PlayerDashState : PlayerAbilityState
                 _lastDashTime = Time.time;
             }
         }
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
+
+        _isGrounded = player.CheckIfGrounded();
     }
 
 
@@ -117,9 +140,43 @@ public class PlayerDashState : PlayerAbilityState
         }
     }
 
+    void AdjustHoldingAnim()
+    {
+        if (_isGrounded)
+        {
+            player.anim.SetBool("inAir", false);
+
+            if (_xInput == 0)
+                player.anim.SetBool("idle", true);
+            else
+                player.anim.SetBool("move", true);
+        }
+        else
+        {
+            player.anim.SetBool("inAir", true);
+            player.anim.SetBool("move", false);
+            player.anim.SetBool("idle", false);
+        }
+    }
+
+    void AdjustReleasingAnim()
+    {
+        if (_isGrounded)
+        {
+            player.anim.SetBool("inAir", false);
+            player.anim.SetBool("idle", false);
+            player.anim.SetBool("move", true);
+        }
+        else
+        {
+            player.anim.SetBool("inAir", true);
+            player.anim.SetBool("move", false);
+            player.anim.SetBool("idle", false);
+        }
+    }
+
     public bool CheckIfCanDash() => canDash && Time.time >= _lastDashTime + playerData.dashCooldown;
 
     public void ResetCanDash() => canDash = true;
-
 
 }

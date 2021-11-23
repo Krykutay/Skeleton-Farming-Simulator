@@ -97,4 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _activeTime: 0.2
   _alphaSet: 0.8
-  _alphaDecay: 10
+  _alphaDecay: 7.5

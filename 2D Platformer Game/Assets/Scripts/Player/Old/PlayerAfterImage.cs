@@ -5,7 +5,7 @@ public class PlayerAfterImage : MonoBehaviour
 {
     [SerializeField] float _activeTime = 0.2f;
     [SerializeField] float _alphaSet = 0.8f;
-    [SerializeField] float _alphaDecay = 10f;
+    [SerializeField] float _alphaDecay = 5f;
 
     Transform _player;
     SpriteRenderer _sr;
@@ -44,7 +44,7 @@ public class PlayerAfterImage : MonoBehaviour
         _color = new Color(1f, 1f, 1f, _alpha);
         _sr.color = _color;
 
-        if (Time.time >= (_timeActivated + _activeTime))
+        if (Time.unscaledTime >= (_timeActivated + _activeTime))
         {
             PlayerAfterImagePool.Instance.ReturnToPool(this);
         }
