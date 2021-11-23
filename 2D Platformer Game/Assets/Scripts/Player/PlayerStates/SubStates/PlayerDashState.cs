@@ -13,6 +13,7 @@ public class PlayerDashState : PlayerAbilityState
     float _lastDashTime = Mathf.NegativeInfinity;
 
     int _xInput;
+    int _yInput;
 
     bool _isGrounded;
     bool _isHolding;
@@ -56,6 +57,8 @@ public class PlayerDashState : PlayerAbilityState
 
         player.anim.SetBool("move", false);
         player.anim.SetBool("idle", false);
+        player.anim.SetBool("crouchMove", false);
+        player.anim.SetBool("crouchIdle", false);
     }
 
     public override void LogicUpdate()
@@ -66,6 +69,7 @@ public class PlayerDashState : PlayerAbilityState
             return;
 
         _xInput = player.inputHandler.xInput;
+        _yInput = player.inputHandler.yInput;
         player.anim.SetFloat("yVelocity", player.currentVelocity.y);
         player.anim.SetFloat("xVelocity", Mathf.Abs(player.currentVelocity.x));
 
@@ -143,16 +147,22 @@ public class PlayerDashState : PlayerAbilityState
         {
             player.anim.SetBool("inAir", false);
 
-            if (_xInput == 0)
+            if (_xInput == 0 && _yInput != -1)
                 player.anim.SetBool("idle", true);
-            else
+            else if (_xInput != 0 && _yInput != -1)
                 player.anim.SetBool("move", true);
+            else if (_xInput == 0 && _yInput == -1)
+                player.anim.SetBool("crouchIdle", true);
+            else if (_xInput != 0 && _yInput == -1)
+                player.anim.SetBool("crouchMove", true);
         }
         else
         {
             player.anim.SetBool("inAir", true);
             player.anim.SetBool("move", false);
             player.anim.SetBool("idle", false);
+            player.anim.SetBool("crouchMove", false);
+            player.anim.SetBool("crouchIdle", false);
         }
     }
 
@@ -160,6 +170,8 @@ public class PlayerDashState : PlayerAbilityState
     {
         if (_isGrounded)
         {
+            player.anim.SetBool("crouchMove", false);
+            player.anim.SetBool("crouchIdle", false);
             player.anim.SetBool("inAir", false);
             player.anim.SetBool("idle", false);
             player.anim.SetBool("move", true);
