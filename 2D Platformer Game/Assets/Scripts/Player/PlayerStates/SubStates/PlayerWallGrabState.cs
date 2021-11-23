@@ -19,8 +19,8 @@ public class PlayerWallGrabState : PlayerTouchingWallState
         //_holdPosition = player.transform.position;
         //HoldPosition();
 
-        player.SetVelocityX(0f);
-        player.SetVelocityY(0f);
+        core.movement.SetVelocityX(0f);
+        core.movement.SetVelocityY(0f);
         player.rb.gravityScale = 0;
     }
 
@@ -54,7 +54,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     {
         player.transform.position = _holdPosition;
 
-        player.SetVelocityX(0f);
-        player.SetVelocityY(0f);
+        core.movement.SetVelocityX(0f);
+        core.movement.SetVelocityY(0f);
     }
 }
