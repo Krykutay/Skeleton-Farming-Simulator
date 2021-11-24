@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerStats.PlayerDied += PlayerStats_PlayerDied;
+        Player.PlayerDied += Player_PlayerDied;
     }
 
     void OnDisable()
     {
-        PlayerStats.PlayerDied += PlayerStats_PlayerDied;
+        Player.PlayerDied += Player_PlayerDied;
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         CheckRespawn();
     }
 
-    void PlayerStats_PlayerDied()
+    void Player_PlayerDied()
     {
         Respawn();
     }
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
         if (_respawn && Time.time >= _respawnTimeStart + _respawnTime)
         {
-            var tempPlayer = Instantiate(_player, _respawnPoint);
+            var tempPlayer = Instantiate(_player, _respawnPoint.position, Quaternion.Euler(0f, 0f ,0f));
             _cvc.m_Follow = tempPlayer.transform;
             _respawn = false;
         }

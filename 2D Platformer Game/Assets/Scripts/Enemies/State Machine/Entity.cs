@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, IDamageable
 {
     public FiniteStateMachine stateMachine;
 
@@ -86,7 +86,7 @@ public class Entity : MonoBehaviour
         _currentStunResistance = entityData.stunResistance;
     }
 
-    public virtual void Damage(AttackDetails attackDetails)
+    public virtual bool Damage(AttackDetails attackDetails)
     {
         _lastDamagetime = Time.time;
 
@@ -118,6 +118,8 @@ public class Entity : MonoBehaviour
         {
             Flip();
         }
+
+        return true;
     }
 
     public virtual void DamageHop(float velocity)
@@ -171,5 +173,4 @@ public class Entity : MonoBehaviour
         Gizmos.DrawWireSphere(_playerCheck.position + (Vector3)(Vector2.right * entityData.minAgroDistance * facingDirection), 0.2f);
         Gizmos.DrawWireSphere(_playerCheck.position + (Vector3)(Vector2.right * entityData.maxAgroDistance * facingDirection), 0.2f);
     }
-
 }

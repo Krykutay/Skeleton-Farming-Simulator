@@ -16,7 +16,13 @@ MonoBehaviour:
   _attackDetails:
   - attackName: Left Slash
     damageAmount: 10
+    position: {x: 0, y: 0}
+    stunDamageAmount: 1
   - attackName: Right Slash
     damageAmount: 10
+    position: {x: 0, y: 0}
+    stunDamageAmount: 1
   - attackName: Up Slash
     damageAmount: 15
+    position: {x: 0, y: 0}
+    stunDamageAmount: 1

@@ -59,8 +59,14 @@ public class Projectile : MonoBehaviour
 
         if (damageHit)
         {
-            damageHit.transform.SendMessage("Damage", _attackDetails);
-            EnemyArrowPool.Instance.ReturnToPool(this);
+            if (damageHit.TryGetComponent<IDamageable>(out var damageable))
+            {
+                bool isHit = damageable.Damage(_attackDetails);
+
+                if (isHit)
+                    EnemyArrowPool.Instance.ReturnToPool(this);
+            }
+            
         }
         else if (groundHit)
         {

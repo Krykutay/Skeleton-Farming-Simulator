@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
+    public static Action PlayerDied;
+
     [SerializeField] PlayerData _playerData;
 
     [SerializeField] Transform _groundCheck;
@@ -40,6 +43,7 @@ public class Player : MonoBehaviour
     public float initialGravity { get; private set; }
 
     Vector2 _workSpace;
+    float _currentHealth;
 
     void Awake()
     {
@@ -76,6 +80,7 @@ public class Player : MonoBehaviour
 
         stateMachine.Initialize(idleState);
         facingDirection = 1;
+        _currentHealth = _playerData.maxHealth;
         initialGravity = rb.gravityScale;
     }
 
@@ -189,6 +194,49 @@ public class Player : MonoBehaviour
 
         movementCollider.size = _workSpace;
         movementCollider.offset = center;
+    }
+
+    public bool Damage(AttackDetails attackDetails)
+    {
+        if (stateMachine.currentState == dashState)
+            return false;
+
+        DecreaseHealth(attackDetails.damageAmount);
+
+        /*
+        int enemyDirection;
+
+        if (attackDetails.position.x < transform.position.x)
+        {
+            enemyDirection = 1;
+        }
+        else
+        {
+            enemyDirection = -1;
+        }
+
+        // maybe knockback?
+        */
+
+        return true;
+    }
+
+    public void DecreaseHealth(float amount)
+    {
+        _currentHealth -= amount;
+
+        if (_currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        DeathChunkParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
+        DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
+        PlayerDied?.Invoke();
+        Destroy(gameObject);
     }
 
     void AnimationTrigger()

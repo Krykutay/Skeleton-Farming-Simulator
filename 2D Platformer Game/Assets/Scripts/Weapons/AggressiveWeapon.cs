@@ -29,11 +29,13 @@ public class AggressiveWeapon : Weapon
 
     void CheckMeleeAttack()
     {
-        WeaponAttackDetails detials = aggressiveWeaponData.attackDetails[attackCounter];
+        AttackDetails attackDetails = aggressiveWeaponData.attackDetails[attackCounter];
+
+        attackDetails.position = transform.position;
 
         foreach (IDamageable target in _detectedDamageables)
         {
-            target.Damage(detials.damageAmount);
+            target.Damage(attackDetails);
         }
     }
 

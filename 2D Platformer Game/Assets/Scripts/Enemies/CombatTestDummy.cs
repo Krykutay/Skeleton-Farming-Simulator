@@ -11,10 +11,12 @@ public class CombatTestDummy : MonoBehaviour, IDamageable
         _anim = GetComponent<Animator>();
     }
 
-    public void Damage(float amount)
+    public bool Damage(AttackDetails attackDetails)
     {
         HitParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, Random.Range(0, 360)));
         _anim.SetTrigger("damage");
+
+        return true;
     }
 
 }

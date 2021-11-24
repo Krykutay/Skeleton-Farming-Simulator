@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
 public class PlayerData : ScriptableObject
 {
+    [Header("Player Stats")]
+    [SerializeField] float _maxHealth = 50f;
+
     [Header("Move State")]
     [SerializeField] float _movementVelocity = 10f;
 
@@ -49,6 +52,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] float _wallCheckDistance = 0.5f;
     [SerializeField] LayerMask _ground;
 
+    public float maxHealth { get { return _maxHealth; } }
     public float movementVelocity { get { return _movementVelocity; } }
     public float jumpVelocity { get { return _jumpVelocity; } }
     public int amountOfJumps { get { return _amountOfJumps; } }

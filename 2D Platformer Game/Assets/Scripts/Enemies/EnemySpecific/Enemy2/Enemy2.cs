@@ -55,7 +55,7 @@ public class Enemy2 : Entity
         stateMachine.Initialize(moveState);
     }
 
-    public override void Damage(AttackDetails attackDetails)
+    public override bool Damage(AttackDetails attackDetails)
     {
         base.Damage(attackDetails);
 
@@ -69,6 +69,8 @@ public class Enemy2 : Entity
         {
             stateMachine.ChangeState(stunState);
         }
+
+        return true;
     }
 
     public override void OnDrawGizmos()

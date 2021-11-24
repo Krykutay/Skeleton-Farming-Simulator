@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct AttackDetails
-{
-    public Vector2 position;
-    public float damageAmount;
-    public float stunDamageAmount;
-}
-
 [System.Serializable]
-public struct WeaponAttackDetails
+public struct AttackDetails
 {
     public string attackName;
     public float damageAmount;
+    public Vector2 position;
+    public float stunDamageAmount;
 }
