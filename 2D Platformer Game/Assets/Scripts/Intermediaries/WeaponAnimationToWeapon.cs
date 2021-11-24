@@ -11,35 +11,25 @@ public class WeaponAnimationToWeapon : MonoBehaviour
         _weapon = GetComponentInParent<Weapon>();
     }
 
-    void AnimationTurnOffFlipTrigger()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        _weapon.AnimationTurnOffFlipTrigger();
+        if (_weapon is AggressiveWeapon)
+            _weapon.AddToDetected(collision);
     }
 
-    void AnimationTurnOnFlipTrigger()
+    void AnimationStartTrigger()
     {
-        _weapon.AnimationTurnOnFlipTrigger();
-    }
-
-
-    void AnimationStartMovementTrigger()
-    {
-        _weapon.AnimationStartMovementTrigger();
-    }
-
-    void AnimationStopMovementTrigger()
-    {
-        _weapon.AnimationStopMovementTrigger();
-    }
-
-    void AnimationFinishTrigger()
-    {
-        _weapon.AnimationFinishTrigger();
+        _weapon.AnimationStartTrigger();
     }
 
     void AnimationActionTrigger()
     {
         _weapon.AnimationActionTrigger();
+    }
+
+    void AnimationFinishTrigger()
+    {
+        _weapon.AnimationFinishTrigger();
     }
 
 }
