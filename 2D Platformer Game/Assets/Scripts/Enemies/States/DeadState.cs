@@ -13,8 +13,8 @@ public class DeadState : State
     {
         base.Enter();
 
-        DeathChunkParticlePool.Instance.Get(entity.aliveGO.transform.position, Quaternion.Euler(0f, 0f, 0f));
-        DeathBloodParticlePool.Instance.Get(entity.aliveGO.transform.position, Quaternion.Euler(0f, 0f, 0f));
+        DeathChunkParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
+        DeathBloodParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
     }
 
     public override void Exit()

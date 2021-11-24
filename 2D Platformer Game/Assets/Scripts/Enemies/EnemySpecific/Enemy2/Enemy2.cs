@@ -59,7 +59,7 @@ public class Enemy2 : Entity
     {
         base.Damage(attackDetails);
 
-        Enemy1HitParticlePool.Instance.Get(aliveGO.transform.position, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 360)));
+        Enemy1HitParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 360)));
 
         if (isDead)
         {
