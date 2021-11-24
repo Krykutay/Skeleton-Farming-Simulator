@@ -74,17 +74,14 @@ public class Player : MonoBehaviour
         primaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
         //secondaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
 
-<<<<<<< HEAD
-=======
         stateMachine.Initialize(idleState);
         facingDirection = 1;
->>>>>>> parent of cb38284 (Huge code refactoring - introducing "core" system)
         initialGravity = rb.gravityScale;
     }
 
     void Start()
     {
-        stateMachine.Initialize(idleState);
+        
     }
 
     void Update()
