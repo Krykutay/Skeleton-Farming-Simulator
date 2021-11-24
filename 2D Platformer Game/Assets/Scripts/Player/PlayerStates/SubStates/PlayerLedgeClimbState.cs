@@ -8,7 +8,6 @@ public class PlayerLedgeClimbState : PlayerState
     Vector2 _cornerPos;
     Vector2 _startPos;
     Vector2 _stopPos;
-    Vector2 _workSpace;
 
     int _xInput;
     int _yInput;
@@ -26,15 +25,14 @@ public class PlayerLedgeClimbState : PlayerState
     {
         base.Enter();
 
-        
-        core.movement.SetVelocityZero();
+        player.SetVelocityZero();
         player.rb.gravityScale = 0;
 
         player.transform.position = _detectedPos;
-        _cornerPos = DetermineCornerPosition();
+        _cornerPos = player.DetermineCornerPosition();
 
-        _startPos.Set(_cornerPos.x - (core.movement.facingDirection * playerData.startOffset.x), _cornerPos.y - playerData.startOffset.y);
-        _stopPos.Set(_cornerPos.x + (core.movement.facingDirection * playerData.stopOffset.x), _cornerPos.y + playerData.stopOffset.y);
+        _startPos.Set(_cornerPos.x - (player.facingDirection * playerData.startOffset.x), _cornerPos.y - playerData.startOffset.y);
+        _stopPos.Set(_cornerPos.x + (player.facingDirection * playerData.stopOffset.x), _cornerPos.y + playerData.stopOffset.y);
 
         player.transform.position = _startPos;
     }
@@ -71,7 +69,7 @@ public class PlayerLedgeClimbState : PlayerState
         _yInput = player.inputHandler.yInput;
         _jumpInput = player.inputHandler.jumpInput;
 
-        if (_xInput == core.movement.facingDirection && _isHanging && !_isClimbing)
+        if (_xInput == player.facingDirection && _isHanging && !_isClimbing)
         {
             CheckForSpace();
             _isClimbing = true;
@@ -109,6 +107,7 @@ public class PlayerLedgeClimbState : PlayerState
 
     void CheckForSpace()
     {
+<<<<<<< HEAD
         _isTouchingCeiling = Physics2D.Raycast(
             _cornerPos + (Vector2.up * 0.015f) + (Vector2.right * core.movement.facingDirection * 0.015f), Vector2.up,
             playerData.standColliderHeight, core.collisionSenses.groundLayer);
@@ -135,4 +134,10 @@ public class PlayerLedgeClimbState : PlayerState
         return _workSpace;
     }
 
+=======
+        _isTouchingCeiling = Physics2D.Raycast(_cornerPos + (Vector2.up * 0.015f) + (Vector2.right * player.facingDirection * 0.015f), Vector2.up, playerData.standColliderHeight, playerData.ground);
+        player.anim.SetBool("isTouchingCeiling", _isTouchingCeiling);
+    }
+
+>>>>>>> Goin-back
 }

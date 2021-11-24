@@ -6,6 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] PlayerData _playerData;
 
+    [SerializeField] Transform _groundCheck;
+    [SerializeField] Transform _wallCheck;
+    [SerializeField] Transform _ledgeCheck;
+    [SerializeField] Transform _ceilingCheck;
+
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
@@ -23,7 +28,6 @@ public class Player : MonoBehaviour
     public PlayerAttackState primaryAttackState { get; private set; }
     public PlayerAttackState secondaryAttackState { get; private set; }
 
-    public Core core { get; private set; }
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public BoxCollider2D movementCollider { get; private set; }
@@ -31,13 +35,14 @@ public class Player : MonoBehaviour
     public Transform dashDirectionIndicator { get; private set; }
     public PlayerInventory inventory { get; private set; }
 
+    public Vector2 currentVelocity { get; private set; }
+    public int facingDirection { get; private set; }
     public float initialGravity { get; private set; }
 
     Vector2 _workSpace;
 
     void Awake()
     {
-        core = GetComponentInChildren<Core>();
         anim = GetComponent<Animator>();
         inputHandler = GetComponent<PlayerInputHandler>();
         rb = GetComponent<Rigidbody2D>();
@@ -69,23 +74,110 @@ public class Player : MonoBehaviour
         primaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
         //secondaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
 
+        stateMachine.Initialize(idleState);
+        facingDirection = 1;
         initialGravity = rb.gravityScale;
     }
 
     void Start()
     {
-        stateMachine.Initialize(idleState);
+        
     }
 
     void Update()
     {
-        core.LogicUpdate();
+        currentVelocity = rb.velocity;
         stateMachine.currentState.LogicUpdate();
     }
 
     void FixedUpdate()
     {
         stateMachine.currentState.PhysicsUpdate();
+    }
+
+    public void SetVelocityZero()
+    {
+        rb.velocity = Vector2.zero;
+        currentVelocity = Vector2.zero;
+    }
+
+    public void SetVelocityX(float velocity)
+    {
+        _workSpace.Set(velocity, currentVelocity.y);
+        rb.velocity = _workSpace;
+        currentVelocity = _workSpace;
+    }
+
+    public void SetVelocityY(float velocity)
+    {
+        _workSpace.Set(currentVelocity.x, velocity);
+        rb.velocity = _workSpace;
+        currentVelocity = _workSpace;
+    }
+
+    public void SetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        _workSpace.Set(angle.x * velocity * direction, angle.y * velocity);
+        rb.velocity = _workSpace;
+        currentVelocity = _workSpace;
+    }
+
+    public void SetVelocity(float velocity, Vector2 direction)
+    {
+        _workSpace = direction * velocity;
+        rb.velocity = _workSpace;
+        currentVelocity = _workSpace;
+    }
+
+    public void CheckIfShouldFlip(int xInput)
+    {
+        if (xInput != 0 && xInput != facingDirection)
+        {
+            Flip();
+        }
+    }
+
+    public bool CheckIfGrounded()
+    {
+        return Physics2D.OverlapCircle(_groundCheck.position, _playerData.groundCheckRadius, _playerData.ground);
+    }
+
+    public bool CheckIfTouchingWall()
+    {
+        return Physics2D.Raycast(_wallCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
+    }
+
+    public bool CheckIfTouchingWallBack()
+    {
+        return Physics2D.Raycast(_wallCheck.position, Vector2.right * -facingDirection, _playerData.wallCheckDistance, _playerData.ground);
+    }
+
+    public bool CheckIfTouchingLedge()
+    {
+        return Physics2D.Raycast(_ledgeCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
+    }
+
+    public bool CheckForCeiling()
+    {
+        return Physics2D.OverlapCircle(_ceilingCheck.position, _playerData.groundCheckRadius, _playerData.ground);
+    }
+
+    void Flip()
+    {
+        facingDirection *= -1;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
+    public Vector2 DetermineCornerPosition()
+    {
+        RaycastHit2D xHit = Physics2D.Raycast(_wallCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
+        float xDist = xHit.distance;
+        _workSpace.Set((xDist + 0.015f) * facingDirection, 0f);
+        RaycastHit2D yHit = Physics2D.Raycast(_ledgeCheck.position + (Vector3)_workSpace, Vector2.down, _ledgeCheck.position.y - _wallCheck.position.y + 0.015f, _playerData.ground);
+        float yDist = yHit.distance;
+        _workSpace.Set(_wallCheck.position.x + xDist * facingDirection, _ledgeCheck.position.y - yDist);
+        return _workSpace;
     }
 
     public void SetColliderHeight(float height)

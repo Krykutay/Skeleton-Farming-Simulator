@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] protected SO_WeaponData weaponData;
+    [SerializeField] SO_WeaponData _weaponData;
+
+    public SO_WeaponData weaponData { get => _weaponData; protected set => _weaponData = value; }
 
     protected Animator baseAnim;
     protected Animator weaponAnim;
@@ -28,7 +30,7 @@ public class Weapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        if (attackCounter >= weaponData.amountOfAttacks)
+        if (attackCounter >= _weaponData.amountOfAttacks)
             attackCounter = 0;
 
         baseAnim.SetBool("attack", true);
@@ -52,24 +54,20 @@ public class Weapon : MonoBehaviour
     {
         this.attackState = state;
     }
-    public virtual void AnimationTurnOffFlipTrigger()
+
+    public virtual void AddToDetected(Collider2D collision)
     {
-        attackState.SetFlipCheck(false);
+
     }
 
-    public virtual void AnimationTurnOnFlipTrigger()
+    public virtual void AnimationStartTrigger()
     {
-        attackState.SetFlipCheck(true);
+
     }
 
-    public virtual void AnimationStartMovementTrigger()
+    public virtual void AnimationActionTrigger()
     {
-        attackState.SetPlayerVelocity(weaponData.movementSpeed[attackCounter]);
-    }
 
-    public virtual void AnimationStopMovementTrigger()
-    {
-        attackState.SetPlayerVelocity(0f);
     }
 
     public virtual void AnimationFinishTrigger()
@@ -77,9 +75,9 @@ public class Weapon : MonoBehaviour
         attackState.AnimationFinishTrigger();
     }
 
-    public virtual void AnimationActionTrigger()
+    public virtual void AnimationCancelled()
     {
-        
+        attackState.AnimationFinishTrigger();
     }
 
 }

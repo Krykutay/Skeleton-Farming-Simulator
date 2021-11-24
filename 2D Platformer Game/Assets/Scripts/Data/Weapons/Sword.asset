@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8f20e22a5f59747b16a467cbd02c60, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  _movementSpeed: 3
   _attackDetails:
   - attackName: Left Slash
-    movementSpeed: 3
     damageAmount: 10
   - attackName: Right Slash
-    movementSpeed: 4
-    damageAmount: 15
+    damageAmount: 10
   - attackName: Up Slash
-    movementSpeed: 2
-    damageAmount: 20
+    damageAmount: 15

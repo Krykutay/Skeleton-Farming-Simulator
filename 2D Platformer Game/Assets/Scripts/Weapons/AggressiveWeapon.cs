@@ -8,9 +8,13 @@ public class AggressiveWeapon : Weapon
 
     List<IDamageable> _detectedDamageables = new List<IDamageable>();
 
+    Collider2D _weaponCollider;
+
     protected override void Awake()
     {
         base.Awake();
+
+        _weaponCollider = transform.Find("Weapon").GetComponent<Collider2D>();
     }
 
     protected override void Start()
@@ -23,13 +27,6 @@ public class AggressiveWeapon : Weapon
             Debug.LogError("Wrong data for the weapon");
     }
 
-    public override void AnimationActionTrigger()
-    {
-        base.AnimationActionTrigger();
-
-        CheckMeleeAttack();
-    }
-
     void CheckMeleeAttack()
     {
         WeaponAttackDetails detials = aggressiveWeaponData.attackDetails[attackCounter];
@@ -40,7 +37,7 @@ public class AggressiveWeapon : Weapon
         }
     }
 
-    public void AddToDetected(Collider2D collision)
+    public override void AddToDetected(Collider2D collision)
     {
         if (collision.TryGetComponent<IDamageable>(out var damageable))
         {
@@ -48,12 +45,31 @@ public class AggressiveWeapon : Weapon
         }
     }
 
-    public void RemoveFromDetected(Collider2D collision)
+    public override void AnimationStartTrigger()
     {
-        if (collision.TryGetComponent<IDamageable>(out var damageable))
-        {
-            _detectedDamageables.Remove(damageable);
-        }
+        base.AnimationStartTrigger();
+
+        _weaponCollider.enabled = true;
     }
 
+    public override void AnimationActionTrigger()
+    {
+        base.AnimationActionTrigger();
+
+        CheckMeleeAttack();
+        _weaponCollider.enabled = false;
+    }
+
+    public override void AnimationFinishTrigger()
+    {
+        base.AnimationFinishTrigger();
+
+        _detectedDamageables.Clear();
+    }
+
+    public override void AnimationCancelled()
+    {
+        base.AnimationCancelled();
+        _detectedDamageables.Clear();
+    }
 }
