@@ -38,8 +38,6 @@ public class Entity : MonoBehaviour
 
     public virtual void OnEnable()
     {
-        transform.localPosition = Vector3.zero;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
         _currentHealth = entityData.maxHealth;
         _currentStunResistance = entityData.stunResistance;
         facingDirection = 1;
@@ -69,7 +67,7 @@ public class Entity : MonoBehaviour
         stateMachine.currentState.PhysicsUpdate();
     }
 
-    public virtual void SetVelocity(float velocity)
+    public virtual void SetVelocityX(float velocity)
     {
         _velocityWorkspace.Set(facingDirection * velocity, rb.velocity.y);
         rb.velocity = _velocityWorkspace;

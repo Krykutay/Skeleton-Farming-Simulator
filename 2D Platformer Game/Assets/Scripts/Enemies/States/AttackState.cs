@@ -19,7 +19,7 @@ public class AttackState : State
 
         entity.atsm.attackState = this;
         isAnimationFinished = false;
-        entity.SetVelocity(0f);
+        entity.SetVelocityX(0f);
     }
 
     public override void Exit()

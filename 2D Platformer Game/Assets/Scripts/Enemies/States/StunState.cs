@@ -46,7 +46,7 @@ public class StunState : State
         if (isGrounded && Time.time >= startTime + stateData.stunKnockbackDuration && !isMovementStopped)
         {
             isMovementStopped = true;
-            entity.SetVelocity(0f);
+            entity.SetVelocityX(0f);
         }
     }
 

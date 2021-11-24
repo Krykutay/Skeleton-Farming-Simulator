@@ -20,7 +20,7 @@ public class MoveState : State
     {
         base.Enter();
 
-        entity.SetVelocity(stateData.movementSpeed);
+        entity.SetVelocityX(stateData.movementSpeed);
     }
 
     public override void Exit()
