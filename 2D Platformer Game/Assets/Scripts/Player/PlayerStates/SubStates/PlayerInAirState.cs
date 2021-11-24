@@ -80,11 +80,9 @@ public class PlayerInAirState : PlayerState
         else if (_jumpInput && (_isTouchingWall || _isTouchingWallBack || _wallJumpCoyoteTime))
         {
             _wallJumpCoyoteTime = false;
-<<<<<<< HEAD
-            _isTouchingWall = core.collisionSenses.wallFront;
-=======
+
             _isTouchingWall = player.CheckIfTouchingWall();
->>>>>>> Goin-back
+
             player.wallJumpState.DetermineWallJumpDirection(_isTouchingWall);
             stateMachine.ChangeState(player.wallJumpState);
         }
@@ -128,17 +126,10 @@ public class PlayerInAirState : PlayerState
         _previousIsTouchingWall = _isTouchingWall;
         _previousIsTouchingWallBack = _isTouchingWallBack;
 
-<<<<<<< HEAD
-        _isGrounded = core.collisionSenses.ground;
-        _isTouchingWall = core.collisionSenses.wallFront;
-        _isTouchingWallBack = core.collisionSenses.wallBack;
-        _isTouchingLedge = player.core.collisionSenses.ledge;
-=======
         _isGrounded = player.CheckIfGrounded();
         _isTouchingWall = player.CheckIfTouchingWall();
         _isTouchingWallBack = player.CheckIfTouchingWallBack();
         _isTouchingLedge = player.CheckIfTouchingLedge();
->>>>>>> Goin-back
 
         if (_isTouchingWall && !_isTouchingLedge)
         {

@@ -107,37 +107,8 @@ public class PlayerLedgeClimbState : PlayerState
 
     void CheckForSpace()
     {
-<<<<<<< HEAD
-        _isTouchingCeiling = Physics2D.Raycast(
-            _cornerPos + (Vector2.up * 0.015f) + (Vector2.right * core.movement.facingDirection * 0.015f), Vector2.up,
-            playerData.standColliderHeight, core.collisionSenses.groundLayer);
-
-        player.anim.SetBool("isTouchingCeiling", _isTouchingCeiling);
-    }
-
-    Vector2 DetermineCornerPosition()
-    {
-        RaycastHit2D xHit = Physics2D.Raycast(
-            core.collisionSenses.wallCheck.position,
-            Vector2.right * core.movement.facingDirection, core.collisionSenses.wallCheckDistance,
-            core.collisionSenses.groundLayer);
-        float xDist = xHit.distance;
-        _workSpace.Set((xDist + 0.015f) * core.movement.facingDirection, 0f);
-
-        RaycastHit2D yHit = Physics2D.Raycast(
-            core.collisionSenses.ledgeCheck.position + (Vector3)_workSpace, Vector2.down,
-            core.collisionSenses.ledgeCheck.position.y - core.collisionSenses.wallCheck.position.y + 0.015f,
-            core.collisionSenses.groundLayer);
-        float yDist = yHit.distance;
-        _workSpace.Set(core.collisionSenses.wallCheck.position.x + xDist * core.movement.facingDirection, core.collisionSenses.ledgeCheck.position.y - yDist);
-
-        return _workSpace;
-    }
-
-=======
         _isTouchingCeiling = Physics2D.Raycast(_cornerPos + (Vector2.up * 0.015f) + (Vector2.right * player.facingDirection * 0.015f), Vector2.up, playerData.standColliderHeight, playerData.ground);
         player.anim.SetBool("isTouchingCeiling", _isTouchingCeiling);
     }
 
->>>>>>> Goin-back
 }
