@@ -33,7 +33,7 @@ public class PlayerDashState : PlayerAbilityState
         player.inputHandler.UseDashInput();
 
         _isHolding = true;
-        _dashDirection = Vector2.right * core.movement.facingDirection;
+        _dashDirection = Vector2.right * player.facingDirection;
 
         Time.timeScale = playerData.holdTimeScale;
         startTime = Time.unscaledTime;
@@ -45,15 +45,15 @@ public class PlayerDashState : PlayerAbilityState
     {
         base.Exit();
 
-        if (core.movement.currentVelocity.y > 0.01f)
+        if (player.currentVelocity.y > 0.01f)
         {
-            core.movement.SetVelocityY(core.movement.currentVelocity.y * playerData.dashEndYMultiplier);
+            player.SetVelocityY(player.currentVelocity.y * playerData.dashEndYMultiplier);
         }
 
         if (_xInput != 0)
-            core.movement.SetVelocityX(playerData.movementVelocity * _xInput);
+            player.SetVelocityX(playerData.movementVelocity * _xInput);
         else
-            core.movement.SetVelocityX(0f);
+            player.SetVelocityX(0f);
 
         player.anim.SetBool("move", false);
         player.anim.SetBool("idle", false);
@@ -70,8 +70,8 @@ public class PlayerDashState : PlayerAbilityState
 
         _xInput = player.inputHandler.xInput;
         _yInput = player.inputHandler.yInput;
-        player.anim.SetFloat("yVelocity", core.movement.currentVelocity.y);
-        player.anim.SetFloat("xVelocity", Mathf.Abs(core.movement.currentVelocity.x));
+        player.anim.SetFloat("yVelocity", player.currentVelocity.y);
+        player.anim.SetFloat("xVelocity", Mathf.Abs(player.currentVelocity.x));
 
         if (_isHolding)     // waiting for player direction
         {
@@ -95,10 +95,10 @@ public class PlayerDashState : PlayerAbilityState
                 startTime = Time.time;
 
                 int dashDirectionX = _dashDirection.x > 0f ? 1 : -1;
-                core.movement.CheckIfShouldFlip(Mathf.RoundToInt(dashDirectionX));
+                player.CheckIfShouldFlip(Mathf.RoundToInt(dashDirectionX));
 
                 player.rb.drag = playerData.drag;
-                core.movement.SetVelocity(playerData.dashVelocity, _dashDirection);
+                player.SetVelocity(playerData.dashVelocity, _dashDirection);
 
                 player.dashDirectionIndicator.gameObject.SetActive(false);
                 PlaceAfterImage();
@@ -107,7 +107,7 @@ public class PlayerDashState : PlayerAbilityState
         else    // performing the dash Action
         {
             AdjustReleasingAnim();
-            core.movement.SetVelocity(playerData.dashVelocity, _dashDirection);
+            player.SetVelocity(playerData.dashVelocity, _dashDirection);
             CheckIfShouldPlaceAfterImage();
 
             if (Time.time >= startTime + playerData.dashTime)
@@ -123,7 +123,7 @@ public class PlayerDashState : PlayerAbilityState
     {
         base.DoChecks();
 
-        _isGrounded = core.collusionSenses.ground;
+        _isGrounded = player.CheckIfGrounded();
     }
 
 

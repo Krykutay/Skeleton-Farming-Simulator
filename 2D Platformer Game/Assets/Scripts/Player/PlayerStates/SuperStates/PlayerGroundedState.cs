@@ -80,9 +80,16 @@ public class PlayerGroundedState : PlayerState
     {
         base.DoChecks();
 
+<<<<<<< HEAD
         _isGrounded = core.collusionSenses.ground;
         _isTouchingWall = core.collusionSenses.wallFront;
         _isTouchingLedge = core.collusionSenses.ledge;
         isTouchingCeiling = core.collusionSenses.ceiling;
+=======
+        _isGrounded = player.CheckIfGrounded();
+        _isTouchingWall = player.CheckIfTouchingWall();
+        _isTouchingLedge = player.CheckIfTouchingLedge();
+        isTouchingCeiling = player.CheckForCeiling();
+>>>>>>> parent of cb38284 (Huge code refactoring - introducing "core" system)
     }
 }

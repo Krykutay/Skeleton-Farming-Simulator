@@ -69,7 +69,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.secondaryAttackState);
         }
-        else if (_isGrounded && core.movement.currentVelocity.y < 0.01f)
+        else if (_isGrounded && player.currentVelocity.y < 0.01f)
         {
             stateMachine.ChangeState(player.landState);
         }
@@ -80,7 +80,7 @@ public class PlayerInAirState : PlayerState
         else if (_jumpInput && (_isTouchingWall || _isTouchingWallBack || _wallJumpCoyoteTime))
         {
             _wallJumpCoyoteTime = false;
-            _isTouchingWall = core.collusionSenses.wallFront;
+            _isTouchingWall = player.CheckIfTouchingWall();
             player.wallJumpState.DetermineWallJumpDirection(_isTouchingWall);
             stateMachine.ChangeState(player.wallJumpState);
         }
@@ -94,7 +94,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.wallGrabState);
         }
-        else if (_isTouchingWall && _xInput == core.movement.facingDirection && core.movement.currentVelocity.y < 0.01f)
+        else if (_isTouchingWall && _xInput == player.facingDirection && player.currentVelocity.y < 0.01f)
         {
             stateMachine.ChangeState(player.wallSlideState);
         }
@@ -104,11 +104,11 @@ public class PlayerInAirState : PlayerState
         }
         else
         {
-            core.movement.CheckIfShouldFlip(_xInput);
-            core.movement.SetVelocityX(playerData.movementVelocity * _xInput);
+            player.CheckIfShouldFlip(_xInput);
+            player.SetVelocityX(playerData.movementVelocity * _xInput);
 
-            player.anim.SetFloat("yVelocity", core.movement.currentVelocity.y);
-            player.anim.SetFloat("xVelocity", Mathf.Abs(core.movement.currentVelocity.x));
+            player.anim.SetFloat("yVelocity", player.currentVelocity.y);
+            player.anim.SetFloat("xVelocity", Mathf.Abs(player.currentVelocity.x));
         }
     }
 
@@ -124,10 +124,10 @@ public class PlayerInAirState : PlayerState
         _previousIsTouchingWall = _isTouchingWall;
         _previousIsTouchingWallBack = _isTouchingWallBack;
 
-        _isGrounded = core.collusionSenses.ground;
-        _isTouchingWall = core.collusionSenses.wallFront;
-        _isTouchingWallBack = core.collusionSenses.wallBack;
-        _isTouchingLedge = player.core.collusionSenses.ledge;
+        _isGrounded = player.CheckIfGrounded();
+        _isTouchingWall = player.CheckIfTouchingWall();
+        _isTouchingWallBack = player.CheckIfTouchingWallBack();
+        _isTouchingLedge = player.CheckIfTouchingLedge();
 
         if (_isTouchingWall && !_isTouchingLedge)
         {
@@ -147,10 +147,10 @@ public class PlayerInAirState : PlayerState
         
         if (_jumpInputStopped)
         {
-            core.movement.SetVelocityY(core.movement.currentVelocity.y * playerData.variableJumpHeightMultiplier);
+            player.SetVelocityY(player.currentVelocity.y * playerData.variableJumpHeightMultiplier);
             _isJumping = false;
         }
-        else if (core.movement.currentVelocity.y <= 0.01f)
+        else if (player.currentVelocity.y <= 0.01f)
         {
             _isJumping = false;
         }
