@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AggressiveWeapon : Weapon
 {
+    [SerializeField] LayerMask _damageable;
+
     protected SO_AggressiveWeaponData aggressiveWeaponData;
 
-    List<IDamageable> _detectedDamageables = new List<IDamageable>();
-
-    Collider2D _weaponCollider;
+    Transform _attackPosition;
 
     protected override void Awake()
     {
         base.Awake();
 
-        _weaponCollider = transform.Find("Weapon").GetComponent<Collider2D>();
+        _attackPosition = transform.Find("AttackPosition");
     }
 
     protected override void Start()
@@ -31,27 +31,15 @@ public class AggressiveWeapon : Weapon
     {
         AttackDetails attackDetails = aggressiveWeaponData.attackDetails[attackCounter];
 
-        attackDetails.position = transform.position;
+        Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_attackPosition.position, attackDetails.attackRadius, _damageable);
 
-        foreach (IDamageable target in _detectedDamageables)
+        foreach (Collider2D collider in detectedObjects)
         {
-            target.Damage(attackDetails);
+            if (collider.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.Damage(attackDetails);
+            }
         }
-    }
-
-    public override void AddToDetected(Collider2D collision)
-    {
-        if (collision.TryGetComponent<IDamageable>(out var damageable))
-        {
-            _detectedDamageables.Add(damageable);
-        }
-    }
-
-    public override void AnimationStartTrigger()
-    {
-        base.AnimationStartTrigger();
-
-        _weaponCollider.enabled = true;
     }
 
     public override void AnimationActionTrigger()
@@ -59,19 +47,24 @@ public class AggressiveWeapon : Weapon
         base.AnimationActionTrigger();
 
         CheckMeleeAttack();
-        _weaponCollider.enabled = false;
     }
 
     public override void AnimationFinishTrigger()
     {
         base.AnimationFinishTrigger();
-
-        _detectedDamageables.Clear();
     }
 
     public override void AnimationCancelled()
     {
         base.AnimationCancelled();
-        _detectedDamageables.Clear();
+    }
+
+    void OnDrawGizmos()
+    {
+        if(_attackPosition != null)
+        {
+            Gizmos.DrawWireSphere(_attackPosition.position, ((SO_AggressiveWeaponData)weaponData).attackDetails[0].attackRadius);
+            Gizmos.DrawWireSphere(_attackPosition.position, ((SO_AggressiveWeaponData)weaponData).attackDetails[1].attackRadius);
+        }
     }
 }

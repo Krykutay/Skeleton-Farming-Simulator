@@ -8,5 +8,6 @@ public struct AttackDetails
     public string attackName;
     public float damageAmount;
     public Vector2 position;
+    public float attackRadius;
     public float stunDamageAmount;
 }

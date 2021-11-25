@@ -75,7 +75,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void OnEnable()
     {
-        primaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
+        primaryAttackState.SetWeapon(inventory.weapons[0]);
         //secondaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
 
         stateMachine.Initialize(idleState);

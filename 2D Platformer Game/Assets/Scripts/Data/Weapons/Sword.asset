@@ -13,16 +13,20 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   _movementSpeed: 3
+  _comboDuration: 5
   _attackDetails:
-  - attackName: Left Slash
+  - attackName: LightAttack1
     damageAmount: 10
     position: {x: 0, y: 0}
-    stunDamageAmount: 1
-  - attackName: Right Slash
+    attackRadius: 0.75
+    stunDamageAmount: 0
+  - attackName: LightAttack1
     damageAmount: 10
     position: {x: 0, y: 0}
-    stunDamageAmount: 1
-  - attackName: Up Slash
+    attackRadius: 0.75
+    stunDamageAmount: 0
+  - attackName: HeavyAttack
     damageAmount: 15
     position: {x: 0, y: 0}
-    stunDamageAmount: 1
+    attackRadius: 0.75
+    stunDamageAmount: 3

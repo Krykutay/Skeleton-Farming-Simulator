@@ -8,17 +8,17 @@ public class Weapon : MonoBehaviour
 
     public SO_WeaponData weaponData { get => _weaponData; protected set => _weaponData = value; }
 
-    protected Animator baseAnim;
     protected Animator weaponAnim;
 
     protected PlayerAttackState attackState;
 
     protected int attackCounter;
 
+    float _comboStartTime = Mathf.NegativeInfinity;
+
     protected virtual void Awake()
     {
-        baseAnim = transform.Find("Base").GetComponent<Animator>();
-        weaponAnim = transform.Find("Weapon").GetComponent<Animator>();
+        weaponAnim = GetComponent<Animator>();
     }
 
     protected virtual void Start()
@@ -30,22 +30,20 @@ public class Weapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        if (attackCounter >= _weaponData.amountOfAttacks)
+        if (attackCounter >= _weaponData.amountOfAttacks || Time.time >= _comboStartTime + weaponData.comboDuration)
             attackCounter = 0;
 
-        baseAnim.SetBool("attack", true);
-        weaponAnim.SetBool("attack", true);
+        _comboStartTime = Time.time;
 
-        baseAnim.SetInteger("attackCounter", attackCounter);
+        weaponAnim.SetBool("attack", true);
         weaponAnim.SetInteger("attackCounter", attackCounter);
     }
 
     public virtual void ExitWeapon()
     {
-        baseAnim.SetBool("attack", false);
-        weaponAnim.SetBool("attack", false);
-
         attackCounter++;
+
+        weaponAnim.SetBool("attack", false);
 
         gameObject.SetActive(false);
     }
@@ -53,16 +51,6 @@ public class Weapon : MonoBehaviour
     public void InitializeWeapon(PlayerAttackState state)
     {
         this.attackState = state;
-    }
-
-    public virtual void AddToDetected(Collider2D collision)
-    {
-
-    }
-
-    public virtual void AnimationStartTrigger()
-    {
-
     }
 
     public virtual void AnimationActionTrigger()
