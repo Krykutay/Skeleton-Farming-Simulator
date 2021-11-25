@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PlayerAfterImage : MonoBehaviour
 {
-    [SerializeField] float _activeTime = 0.2f;
-    [SerializeField] float _alphaSet = 0.8f;
-    [SerializeField] float _alphaDecay = 7.5f;
+    [SerializeField] float _activeTime = 0.25f;
+    [SerializeField] float _alphaSet = 0.9f;
+    [SerializeField] float _alphaDecay = 6f;
 
     Transform _player;
     SpriteRenderer _sr;
