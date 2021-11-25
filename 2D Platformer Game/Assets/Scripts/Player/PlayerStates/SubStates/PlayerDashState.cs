@@ -159,7 +159,8 @@ public class PlayerDashState : PlayerAbilityState
         }
         else
         {
-            player.anim.SetBool("inAir", true);
+            player.anim.SetBool("dashInAir", true);
+            player.anim.SetBool("inAir", false);
             player.anim.SetBool("move", false);
             player.anim.SetBool("idle", false);
             player.anim.SetBool("crouchMove", false);
