@@ -250,4 +250,12 @@ public class Player : MonoBehaviour, IDamageable
         stateMachine.currentState.AnimationFinishTrigger();
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _playerData.wallCheckDistance, _wallCheck.position.y, _wallCheck.position.z));
+        Gizmos.DrawLine(_ledgeCheck.position, new Vector3(_ledgeCheck.position.x + _playerData.wallCheckDistance, _ledgeCheck.position.y, _ledgeCheck.position.z));
+
+        Gizmos.DrawWireSphere(_ceilingCheck.position, _playerData.groundCheckRadius);
+    }
+
 }
