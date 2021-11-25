@@ -182,6 +182,7 @@ public class Player : MonoBehaviour, IDamageable
         RaycastHit2D yHit = Physics2D.Raycast(_ledgeCheck.position + (Vector3)_workSpace, Vector2.down, _ledgeCheck.position.y - _wallCheck.position.y + 0.015f, _playerData.ground);
         float yDist = yHit.distance;
         _workSpace.Set(_wallCheck.position.x + xDist * facingDirection, _ledgeCheck.position.y - yDist);
+
         return _workSpace;
     }
 
@@ -248,4 +249,5 @@ public class Player : MonoBehaviour, IDamageable
     {
         stateMachine.currentState.AnimationFinishTrigger();
     }
+
 }
