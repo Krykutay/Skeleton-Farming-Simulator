@@ -23,12 +23,12 @@ MonoBehaviour:
   _variableJumpHeightMultiplier: 0.5
   _wallSlideVelocity: 2
   _wallClimbVelocity: 3
-  _startOffset: {x: 0.4, y: 0.9}
-  _stopOffset: {x: 0.5, y: 0.75}
+  _startOffset: {x: 0.4, y: 0.5}
+  _stopOffset: {x: 0.4, y: 1}
   _dashCooldown: 1
   _maxHoldTime: 1
   _holdTimeScale: 0.25
-  _dashTime: 0.2
+  _dashTime: 0.25
   _dashVelocity: 30
   _drag: 10
   _dashEndYMultiplier: 0.2
@@ -36,8 +36,8 @@ MonoBehaviour:
   _crouchMovementVelocity: 5
   _crouchColliderHeight: 0.8
   _standColliderHeight: 1.6
-  _groundCheckRadius: 0.3
-  _wallCheckDistance: 0.5
+  _groundCheckRadius: 0.2
+  _wallCheckDistance: 0.4
   _ground:
     serializedVersion: 2
     m_Bits: 64
