@@ -60,5 +60,5 @@ public class PlayerWallJumpState : PlayerAbilityState
         previousWallJumpXPosition = Mathf.NegativeInfinity;
     }
 
-    public bool CheckIfCanWallJump() => Mathf.Abs(player.transform.position.x - previousWallJumpXPosition) > 1f;
+    public bool CheckIfCanWallJump() => Mathf.Abs(player.transform.position.x - previousWallJumpXPosition) > 0.3f;
 }
