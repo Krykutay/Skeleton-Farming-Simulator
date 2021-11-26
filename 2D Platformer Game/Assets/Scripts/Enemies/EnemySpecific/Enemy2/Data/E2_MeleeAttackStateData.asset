@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6053dee9a5abc3545a9380b4312c22b8, type: 3}
   m_Name: E2_MeleeAttackStateData
   m_EditorClassIdentifier: 
-  attackRadius: 0.5
-  attackDamage: 10
+  _attackDetails:
+  - attackName: Bow Push
+    damageAmount: 8
+    position: {x: 0, y: 0}
+    attackRadius: 0.7
+    stunDamageAmount: 0

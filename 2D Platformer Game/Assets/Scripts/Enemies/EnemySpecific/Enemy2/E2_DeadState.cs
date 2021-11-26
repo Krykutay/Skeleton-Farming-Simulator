@@ -16,6 +16,9 @@ public class E2_DeadState : DeadState
     {
         base.Enter();
 
+        DeathChunkParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
+        DeathBloodParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
+
         Died?.Invoke(enemy);
         Enemy2Pool.Instance.ReturnToPool(enemy);
     }

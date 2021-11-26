@@ -71,7 +71,7 @@ public class Enemy1 : Entity
     {
         base.OnDrawGizmos();
 
-        Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackRadius);
+        Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
     }
 }
 

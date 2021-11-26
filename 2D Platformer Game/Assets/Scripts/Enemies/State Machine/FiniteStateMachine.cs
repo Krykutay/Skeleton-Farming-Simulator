@@ -14,5 +14,4 @@ public class FiniteStateMachine
         currentState = newState;
         currentState.Enter();
     }
-
 }

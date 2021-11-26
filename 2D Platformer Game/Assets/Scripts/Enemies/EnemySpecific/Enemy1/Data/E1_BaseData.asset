@@ -15,13 +15,13 @@ MonoBehaviour:
   maxHealth: 50
   damageHopSpeed: 8
   wallCheckDistance: 0.2
-  ledgeCheckDistance: 1
+  ledgeCheckDistance: 0.5
   groundCheckRadius: 0.3
   minAgroDistance: 6
   maxAgroDistance: 8
   stunResistance: 3
   stunRecoveryTime: 2
-  meleeRangeActionDistance: 1.75
+  meleeRangeActionDistance: 1.82
   ground:
     serializedVersion: 2
     m_Bits: 64

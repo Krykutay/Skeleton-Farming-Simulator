@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 40
   damageHopSpeed: 8
   wallCheckDistance: 0.2
-  ledgeCheckDistance: 1
+  ledgeCheckDistance: 0.5
   groundCheckRadius: 0.3
   minAgroDistance: 7
   maxAgroDistance: 8.5

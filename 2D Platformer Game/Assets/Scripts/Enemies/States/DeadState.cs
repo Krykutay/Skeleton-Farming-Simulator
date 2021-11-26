@@ -4,6 +4,10 @@ public class DeadState : State
 {
     protected D_DeadState stateData;
 
+    protected float TimeOfDeath;
+
+    protected bool isAnimationFinished;
+
     public DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -13,8 +17,9 @@ public class DeadState : State
     {
         base.Enter();
 
-        DeathChunkParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
-        DeathBloodParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
+        entity.atsm.deadState = this;
+        isAnimationFinished = false;
+        entity.SetVelocityX(0f);
     }
 
     public override void Exit()
@@ -35,5 +40,10 @@ public class DeadState : State
     public override void DoChecks()
     {
         base.DoChecks();
+    }
+
+    public virtual void Dead()
+    {
+        isAnimationFinished = true;
     }
 }

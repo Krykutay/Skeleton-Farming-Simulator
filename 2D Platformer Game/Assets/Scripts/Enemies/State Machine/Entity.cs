@@ -88,6 +88,9 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual bool Damage(AttackDetails attackDetails)
     {
+        if (isDead)
+            return true;
+
         _lastDamagetime = Time.time;
 
         _currentHealth -= attackDetails.damageAmount;
