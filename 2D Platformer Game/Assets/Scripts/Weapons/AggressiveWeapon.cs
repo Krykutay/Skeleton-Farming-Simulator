@@ -30,6 +30,7 @@ public class AggressiveWeapon : Weapon
     void CheckMeleeAttack()
     {
         AttackDetails attackDetails = aggressiveWeaponData.attackDetails[attackCounter];
+        attackDetails.position = transform.position;
 
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_attackPosition.position, attackDetails.attackRadius, _damageable);
 

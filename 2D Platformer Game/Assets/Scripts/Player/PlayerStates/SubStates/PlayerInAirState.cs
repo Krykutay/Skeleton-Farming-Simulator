@@ -77,7 +77,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.ledgeClimbState);
         }
-        else if (_jumpInput && (_isTouchingWall || _isTouchingWallBack || _wallJumpCoyoteTime))
+        else if (_jumpInput && (_isTouchingWall || _isTouchingWallBack || _wallJumpCoyoteTime) && player.wallJumpState.CheckIfCanWallJump())
         {
             _wallJumpCoyoteTime = false;
 
@@ -135,7 +135,7 @@ public class PlayerInAirState : PlayerState
             player.ledgeClimbState.SetDetectedPosition(player.transform.position);
         }
 
-        if (!_wallJumpCoyoteTime && !_isTouchingWall && !_isTouchingWallBack && (_previousIsTouchingWall || _previousIsTouchingWallBack))
+        if (!_wallJumpCoyoteTime && !_isTouchingWall && !_isTouchingWallBack && (_previousIsTouchingWall || _previousIsTouchingWallBack) && player.wallJumpState.CheckIfCanWallJump())
         {
             StartWallJumpCoyoteTime();
         }

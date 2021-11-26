@@ -76,7 +76,7 @@ public class PlayerLedgeClimbState : PlayerState
         {
             stateMachine.ChangeState(player.inAirState);
         }
-        else if (_jumpInput && !_isClimbing)
+        else if (_jumpInput && !_isClimbing && player.wallJumpState.CheckIfCanWallJump())
         {
             player.wallJumpState.DetermineWallJumpDirection(true);
             stateMachine.ChangeState(player.wallJumpState);

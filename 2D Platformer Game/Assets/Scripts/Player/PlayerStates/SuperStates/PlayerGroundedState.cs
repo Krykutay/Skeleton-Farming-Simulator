@@ -27,6 +27,7 @@ public class PlayerGroundedState : PlayerState
 
         player.jumpState.ResetAmountOfJumpsLeft();
         player.dashState.ResetCanDash();
+        player.wallJumpState.ResetPreviousWallJumpXPosition();
     }
 
     public override void Exit()
