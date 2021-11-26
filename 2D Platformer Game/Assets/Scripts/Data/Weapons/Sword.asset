@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8f20e22a5f59747b16a467cbd02c60, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  _movementSpeed: 3
+  _movementSpeed: 3.5
   _comboDuration: 5
   _attackDetails:
   - attackName: LightAttack1

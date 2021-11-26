@@ -35,6 +35,7 @@ public class PlayerLedgeClimbState : PlayerState
         _stopPos.Set(_cornerPos.x + (player.facingDirection * playerData.stopOffset.x), _cornerPos.y + playerData.stopOffset.y);
 
         player.transform.position = _startPos;
+        CheckForSpace();
     }
 
     public override void Exit()
@@ -58,10 +59,7 @@ public class PlayerLedgeClimbState : PlayerState
 
         if (isAnimationFinished)
         {
-            if (_isTouchingCeiling)
-                stateMachine.ChangeState(player.crouchIdleState);
-            else
-                stateMachine.ChangeState(player.idleState);
+            stateMachine.ChangeState(player.idleState);
             return;
         }
 
@@ -69,9 +67,8 @@ public class PlayerLedgeClimbState : PlayerState
         _yInput = player.inputHandler.yInput;
         _jumpInput = player.inputHandler.jumpInput;
 
-        if (_xInput == player.facingDirection && _isHanging && !_isClimbing)
+        if (_xInput == player.facingDirection && _isHanging && !_isClimbing && !_isTouchingCeiling)
         {
-            CheckForSpace();
             _isClimbing = true;
             player.anim.SetBool("climbLedge", true);
         }
@@ -108,7 +105,6 @@ public class PlayerLedgeClimbState : PlayerState
     void CheckForSpace()
     {
         _isTouchingCeiling = Physics2D.Raycast(_cornerPos + (Vector2.up * 0.015f) + (Vector2.right * player.facingDirection * 0.015f), Vector2.up, playerData.standColliderHeight, playerData.ground);
-        player.anim.SetBool("isTouchingCeiling", _isTouchingCeiling);
     }
 
 }

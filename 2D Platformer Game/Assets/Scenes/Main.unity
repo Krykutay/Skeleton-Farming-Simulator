@@ -131917,7 +131917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2017549834332471080}
   m_Layer: 7
-  m_Name: LedgeCheck
+  m_Name: VerticalLedgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131998,7 +131998,7 @@ MonoBehaviour:
   _playerData: {fileID: 11400000, guid: 05025a8bcb6728c4da6396d348522455, type: 2}
   _groundCheck: {fileID: 2017549835358344647}
   _wallCheck: {fileID: 2017549835956308657}
-  _ledgeCheck: {fileID: 2017549834332471080}
+  _verticalLedgeCheck: {fileID: 2017549834332471080}
   _ceilingCheck: {fileID: 2017549835763286381}
 --- !u!95 &2017549834968541266
 Animator:
@@ -132599,11 +132599,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4205050528754134649, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.66
+      value: -9.53
       objectReference: {fileID: 0}
     - target: {fileID: 4205050528754134649, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.07
+      value: 5.95
       objectReference: {fileID: 0}
     - target: {fileID: 4205050528754134649, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -132643,7 +132643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4205050528754134650, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf34aae58c3a50d469ad2869fe21271c, type: 3}
