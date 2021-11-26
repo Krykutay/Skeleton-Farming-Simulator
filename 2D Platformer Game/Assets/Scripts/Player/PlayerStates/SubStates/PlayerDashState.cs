@@ -72,11 +72,13 @@ public class PlayerDashState : PlayerAbilityState
         _xInput = player.inputHandler.xInput;
         _yInput = player.inputHandler.yInput;
         player.anim.SetFloat("yVelocity", player.currentVelocity.y);
-        player.anim.SetFloat("xVelocity", Mathf.Abs(player.currentVelocity.x));
 
         if (_isHolding)     // waiting for player direction
         {
             AdjustHoldingAnim();
+            player.CheckIfShouldFlip(_xInput);
+            player.SetVelocityX(playerData.movementVelocity * _xInput);
+
             _dashDirectionInput = player.inputHandler.rawDashDirectionInput;
             _dashInputStopped = player.inputHandler.dashInputStopped;
 
@@ -87,7 +89,7 @@ public class PlayerDashState : PlayerAbilityState
             }
 
             float angle = Vector2.SignedAngle(Vector2.right, _dashDirection);
-            player.dashDirectionIndicator.rotation = Quaternion.Euler(0f, 0f, angle - 45f);     // initial image already has 45 degrees to the +z
+            player.dashDirectionIndicator.rotation = Quaternion.Euler(0f, 0f, angle); 
 
             if (_dashInputStopped || Time.unscaledTime >= startTime + playerData.maxHoldTime)
             {
