@@ -15,7 +15,7 @@ public class PlayerGroundedState : PlayerState
     protected bool isTouchingCeiling;
     bool _isGrounded;
     bool _isTouchingWall;
-    bool _isTouchingLedge;
+    bool _isTouchingVerticalLedge;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -61,7 +61,7 @@ public class PlayerGroundedState : PlayerState
             player.inAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.inAirState);
         }
-        else if (_isTouchingWall && _grabInput && _isTouchingLedge)
+        else if (_isTouchingWall && _grabInput && _isTouchingVerticalLedge)
         {
             stateMachine.ChangeState(player.wallGrabState);
         }
@@ -82,7 +82,7 @@ public class PlayerGroundedState : PlayerState
 
         _isGrounded = player.CheckIfGrounded();
         _isTouchingWall = player.CheckIfTouchingWall();
-        _isTouchingLedge = player.CheckIfTouchingLedge();
+        _isTouchingVerticalLedge = player.CheckIfTouchingVerticalLedge();
         isTouchingCeiling = player.CheckForCeiling();
     }
 }

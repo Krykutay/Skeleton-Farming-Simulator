@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
-    [SerializeField] Transform _ledgeCheck;
+    [SerializeField] Transform _verticalLedgeCheck;
     [SerializeField] Transform _ceilingCheck;
 
     public PlayerStateMachine stateMachine { get; private set; }
@@ -158,9 +158,9 @@ public class Player : MonoBehaviour, IDamageable
         return Physics2D.Raycast(_wallCheck.position, Vector2.right * -facingDirection, _playerData.wallCheckDistance, _playerData.ground);
     }
 
-    public bool CheckIfTouchingLedge()
+    public bool CheckIfTouchingVerticalLedge()
     {
-        return Physics2D.Raycast(_ledgeCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
+        return Physics2D.Raycast(_verticalLedgeCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
     }
 
     public bool CheckForCeiling()
@@ -176,12 +176,19 @@ public class Player : MonoBehaviour, IDamageable
 
     public Vector2 DetermineCornerPosition()
     {
-        RaycastHit2D xHit = Physics2D.Raycast(_wallCheck.position, Vector2.right * facingDirection, _playerData.wallCheckDistance, _playerData.ground);
+        RaycastHit2D xHit = Physics2D.Raycast(
+            _wallCheck.position,
+            Vector2.right * facingDirection, _playerData.wallCheckDistance,
+            _playerData.ground);
         float xDist = xHit.distance;
         _workSpace.Set((xDist + 0.015f) * facingDirection, 0f);
-        RaycastHit2D yHit = Physics2D.Raycast(_ledgeCheck.position + (Vector3)_workSpace, Vector2.down, _ledgeCheck.position.y - _wallCheck.position.y + 0.015f, _playerData.ground);
+
+        RaycastHit2D yHit = Physics2D.Raycast(
+            _verticalLedgeCheck.position + (Vector3)_workSpace,
+            Vector2.down, _verticalLedgeCheck.position.y - _wallCheck.position.y + 0.015f,
+            _playerData.ground);
         float yDist = yHit.distance;
-        _workSpace.Set(_wallCheck.position.x + xDist * facingDirection, _ledgeCheck.position.y - yDist);
+        _workSpace.Set(_wallCheck.position.x + xDist * facingDirection, _verticalLedgeCheck.position.y - yDist);
 
         return _workSpace;
     }
@@ -253,7 +260,7 @@ public class Player : MonoBehaviour, IDamageable
     void OnDrawGizmos()
     {
         Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _playerData.wallCheckDistance, _wallCheck.position.y, _wallCheck.position.z));
-        Gizmos.DrawLine(_ledgeCheck.position, new Vector3(_ledgeCheck.position.x + _playerData.wallCheckDistance, _ledgeCheck.position.y, _ledgeCheck.position.z));
+        Gizmos.DrawLine(_verticalLedgeCheck.position, new Vector3(_verticalLedgeCheck.position.x + _playerData.wallCheckDistance, _verticalLedgeCheck.position.y, _verticalLedgeCheck.position.z));
 
         Gizmos.DrawWireSphere(_ceilingCheck.position, _playerData.groundCheckRadius);
     }
