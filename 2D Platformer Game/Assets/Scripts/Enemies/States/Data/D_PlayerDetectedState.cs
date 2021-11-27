@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewPlayerDetectedStateData", menuName = "Data/State Data/Player Detected State")]
 public class D_PlayerDetectedState : ScriptableObject
 {
-    public float LongRangeActionTime = 1.5f;
+    [SerializeField] float _longRangeActionTime = 1.5f;
+
+    public float LongRangeActionTime { get { return _longRangeActionTime; } }
 }

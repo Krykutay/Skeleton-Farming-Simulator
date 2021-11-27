@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewMoveStateData", menuName = "Data/State Data/Move State")]
 public class D_MoveState : ScriptableObject
 {
-    public float movementSpeed = 3f;
+    [SerializeField] float _moveSpeed = 3f;
 
+    public float movementSpeed { get { return _moveSpeed; } }
 }

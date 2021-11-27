@@ -5,21 +5,39 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEntityData", menuName = "Data/Entity Data/Base Data")]
 public class D_Entity : ScriptableObject
 {
-    public float maxHealth = 50f;
-    public float damageHopSpeed = 5f;
+    [SerializeField] float _maxHealth = 50f;
+    [SerializeField] float _damageHopSpeed = 6f;
 
-    public float wallCheckDistance = 0.2f;
-    public float ledgeCheckDistance = 0.5f;
-    public float groundCheckRadius = 0.3f;
+    [SerializeField] float _wallCheckDistance = 0.2f;
+    [SerializeField] float _ledgeCheckDistance = 0.5f;
+    [SerializeField] float _groundCheckRadius = 0.3f;
 
-    public float minAgroDistance = 6f;
-    public float maxAgroDistance = 8f;
+    [SerializeField] float _minAgroDistance = 8f;
+    [SerializeField] float _maxAgroDistance = 10f;
 
-    public float stunResistance = 3f;
-    public float stunRecoveryTime = 2f;
+    [SerializeField] float _stunResistance = 3f;
+    [SerializeField] float _stunRecoveryTime = 3f;
 
-    public float meleeRangeActionDistance = 1f;
+    [SerializeField] float _meleeRangeActionDistance = 1f;
 
-    public LayerMask ground;
-    public LayerMask player;
+    [SerializeField] LayerMask _ground;
+    [SerializeField] LayerMask _player;
+
+    public float maxHealth { get { return _maxHealth; } }
+    public float damageHopSpeed { get { return _damageHopSpeed; } }
+
+    public float wallCheckDistance { get { return _wallCheckDistance; } }
+    public float ledgeCheckDistance { get { return _ledgeCheckDistance; } }
+    public float groundCheckRadius { get { return _groundCheckRadius; } }
+
+    public float minAgroDistance { get { return _minAgroDistance; } }
+    public float maxAgroDistance { get { return _maxAgroDistance; } }
+
+    public float stunResistance { get { return _stunResistance; } }
+    public float stunRecoveryTime { get { return _stunRecoveryTime; } }
+
+    public float meleeRangeActionDistance { get { return _meleeRangeActionDistance; } }
+
+    public LayerMask ground { get { return _ground; } }
+    public LayerMask player { get { return _player; } }
 }

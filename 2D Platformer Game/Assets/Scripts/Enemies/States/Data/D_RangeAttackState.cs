@@ -3,7 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewRangeAttackStateData", menuName = "Data/State Data/Range Attack State")]
 public class D_RangeAttackState : ScriptableObject
 {
-    public float projectileDamage = 10f;
-    public float projectileSpeed = 20f;
-    public float projectileTravelDistance = 10f;
+    [SerializeField] float _projectileDamage = 15f;
+    [SerializeField] float _projectileSpeed = 20f;
+    [SerializeField] float _projectileTravelDistance = 10f;
+
+    public float projectileDamage { get { return _projectileDamage; } }
+    public float projectileSpeed { get { return _projectileSpeed; } }
+    public float projectileTravelDistance { get { return _projectileTravelDistance; } }
 }
