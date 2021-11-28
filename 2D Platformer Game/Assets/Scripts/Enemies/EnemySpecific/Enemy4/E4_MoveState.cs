@@ -23,14 +23,18 @@ public class E4_MoveState : MoveState
     {
         base.LogicUpdate();
 
-        if (isPlayerInMaxAgroRange)
-        {
-            stateMachine.ChangeState(enemy.playerDetectedState);
-        }
         if (isDetectingWall || !isDetectingLedge)
         {
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
+        }
+
+        if (!canLeaveMoveState)
+            return;
+
+        if (isPlayerInMaxAgroRange)
+        {
+            stateMachine.ChangeState(enemy.playerDetectedState);
         }
     }
 

@@ -10,6 +10,9 @@ public class MoveState : State
     protected bool isDetectingLedge;
     protected bool isPlayerInMinAgroRange;
     protected bool isPlayerInMaxAgroRange;
+    protected bool canLeaveMoveState { get; private set; }
+
+    float _moveStateEnterTime = Mathf.NegativeInfinity;
 
     public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -21,6 +24,8 @@ public class MoveState : State
         base.Enter();
 
         entity.SetVelocityX(stateData.movementSpeed);
+        _moveStateEnterTime = Time.time;
+        canLeaveMoveState = false;
     }
 
     public override void Exit()
@@ -31,6 +36,11 @@ public class MoveState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (Time.time >= _moveStateEnterTime + stateData.moveStateDelay)
+        {
+            canLeaveMoveState = true;
+        }
     }
 
     public override void PhysicsUpdate()
