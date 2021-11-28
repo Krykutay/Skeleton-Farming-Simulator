@@ -26,8 +26,6 @@ public class E4_RangeAttackState : RangeAttackState
     {
         base.LogicUpdate();
 
-        entity.RotateBodyToPlayer();
-
         if (!isAnimationFinished)
             return;
 
@@ -41,6 +39,8 @@ public class E4_RangeAttackState : RangeAttackState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        entity.RotateBodyToPlayer();
     }
 
     public override void DoChecks()

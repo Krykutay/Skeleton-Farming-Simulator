@@ -36,8 +36,6 @@ public class PlayerDetectedState : State
     {
         base.LogicUpdate();
 
-        entity.RotateBodyToPlayer();
-
         if (Time.time >= startTime + stateData.LongRangeActionTime)
         {
             performLongRangeAction = true;
@@ -47,6 +45,8 @@ public class PlayerDetectedState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        entity.RotateBodyToPlayer();
     }
 
     public override void DoChecks()

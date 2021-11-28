@@ -36,13 +36,13 @@ public class ChargeState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        entity.RotateBodyToPlayer();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        entity.RotateBodyToPlayer();
 
         if (Time.time >= startTime + stateData.chargeTime)
         {

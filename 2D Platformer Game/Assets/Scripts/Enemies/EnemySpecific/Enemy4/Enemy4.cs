@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy4 : Entity
@@ -33,6 +34,8 @@ public class Enemy4 : Entity
     Transform _head;
     Transform _leftArm;
     Transform _rightArm;
+
+    IEnumerator _resetBodyParts;
 
     public override void Awake()
     {
@@ -81,15 +84,11 @@ public class Enemy4 : Entity
         return true;
     }
 
-    public override void OnDrawGizmos()
-    {
-        base.OnDrawGizmos();
-
-        Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
-    }
-
     public override void RotateBodyToPlayer()
     {
+        if (_resetBodyParts != null)
+            StopCoroutine(_resetBodyParts);
+
         Vector3 direction = (_playerTransform.position - _head.position).normalized;
         float angle;
         Quaternion rotation;
@@ -117,15 +116,36 @@ public class Enemy4 : Entity
         _head.localRotation = Quaternion.Slerp(_head.localRotation, headRotation, Time.deltaTime * 5f);
         _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, rotation, Time.deltaTime * 5f);
         _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, rotation, Time.deltaTime * 5f);
-        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rightArm.localRotation, rotation, Time.deltaTime * 5f);
+        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, rotation, Time.deltaTime * 5f);
     }
 
     public override void ResetBodyPosition()
     {
-        _head.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        _leftArm.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        _rightArm.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        _rangeAttackPosition.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        if (_resetBodyParts != null)
+            StopCoroutine(_resetBodyParts);
+
+        _resetBodyParts = ResetBodyParts();
+        StartCoroutine(_resetBodyParts);
+    }
+
+    IEnumerator ResetBodyParts()
+    {
+        while (_rangeAttackPosition.localRotation.z > 0.01f)
+        {
+            _head.localRotation = Quaternion.Slerp(_head.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+            _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+            _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+            _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
     }
 
 }
