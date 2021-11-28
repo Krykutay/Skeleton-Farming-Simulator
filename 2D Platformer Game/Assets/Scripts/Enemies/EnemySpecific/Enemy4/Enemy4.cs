@@ -93,6 +93,7 @@ public class Enemy4 : Entity
         Vector3 direction = (_playerTransform.position - _head.position).normalized;
         float angle;
         Quaternion rotation;
+        Quaternion headRotation;
 
         if (direction.x > 0f)
         {
@@ -101,6 +102,7 @@ public class Enemy4 : Entity
 
             angle = Vector2.SignedAngle(Vector2.right, direction);
             rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            headRotation = Quaternion.AngleAxis(angle > 40 ? 40 : angle, Vector3.forward);
         }
         else
         {
@@ -109,11 +111,13 @@ public class Enemy4 : Entity
 
             angle = Vector2.SignedAngle(-Vector2.right, direction);
             rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            headRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
         }
 
-        _head.localRotation = Quaternion.Slerp(_head.localRotation, rotation, Time.deltaTime * 5f);
+        _head.localRotation = Quaternion.Slerp(_head.localRotation, headRotation, Time.deltaTime * 5f);
         _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, rotation, Time.deltaTime * 5f);
         _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, rotation, Time.deltaTime * 5f);
+        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rightArm.localRotation, rotation, Time.deltaTime * 5f);
     }
 
     public override void ResetBodyPosition()
@@ -121,6 +125,7 @@ public class Enemy4 : Entity
         _head.localRotation = Quaternion.Euler(0f, 0f, 0f);
         _leftArm.localRotation = Quaternion.Euler(0f, 0f, 0f);
         _rightArm.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        _rangeAttackPosition.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
 }

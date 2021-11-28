@@ -31,7 +31,7 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void Awake()
     {
-        _playerTransform = Player.Instance.transform.Find("Core").transform;
+        _playerTransform = Player.Instance.transform.Find("Core").Find("PlayerHitPosition").transform;
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
