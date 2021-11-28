@@ -27,7 +27,7 @@ public class Entity : MonoBehaviour, IDamageable
     float _currentStunResistance;
     float _lastDamagetime;
 
-    Transform _playerTransform;
+    protected Transform _playerTransform { get; private set; }
 
     public virtual void Awake()
     {
@@ -158,26 +158,42 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual bool CheckPlayerInMinAgroRange()
     {
-        if (Vector2.Distance(transform.position, _playerTransform.position) > entityData.minAgroDistance)
+        float distance = Vector2.Distance(_playerCheck.position, _playerTransform.position);
+
+        if (distance > entityData.minAgroDistance)
             return false;
 
-        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, entityData.minAgroDistance, entityData.ground);
+        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
     }
     
     public virtual bool CheckPlayerInMaxAgroRange()
     {
-        if (Vector2.Distance(_playerCheck.position, _playerTransform.position) > entityData.maxAgroDistance)
+        float distance = Vector2.Distance(_playerCheck.position, _playerTransform.position);
+
+        if (distance > entityData.maxAgroDistance)
             return false;
 
-        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, entityData.maxAgroDistance, entityData.ground);
+        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
     }
 
     public virtual bool CheckPlayerInMeleeRangeAction()
     {
-        if (Vector2.Distance(transform.position, _playerTransform.position) > entityData.meleeRangeActionDistance)
+        float distance = Vector2.Distance(_playerCheck.position, _playerTransform.position);
+
+        if (distance > entityData.meleeRangeActionDistance)
             return false;
 
-        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, entityData.meleeRangeActionDistance, entityData.ground);
+        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
+    }
+
+    public virtual void RotateBodyToPlayer()
+    {
+
+    }
+
+    public virtual void ResetBodyPosition()
+    {
+
     }
 
     public virtual void OnDrawGizmos()

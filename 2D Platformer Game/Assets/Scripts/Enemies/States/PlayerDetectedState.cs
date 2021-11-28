@@ -28,11 +28,15 @@ public class PlayerDetectedState : State
     public override void Exit()
     {
         base.Exit();
+
+        entity.ResetBodyPosition();
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        entity.RotateBodyToPlayer();
 
         if (Time.time >= startTime + stateData.LongRangeActionTime)
         {

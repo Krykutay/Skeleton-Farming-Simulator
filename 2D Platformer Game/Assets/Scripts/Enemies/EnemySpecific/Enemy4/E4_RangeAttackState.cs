@@ -18,24 +18,24 @@ public class E4_RangeAttackState : RangeAttackState
     public override void Exit()
     {
         base.Exit();
+
+        entity.ResetBodyPosition();
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        if (isAnimationFinished)
+        entity.RotateBodyToPlayer();
+
+        if (!isAnimationFinished)
+            return;
+
+        if (!isPlayerMaxAgroRange)
         {
-            if (isPlayerMaxAgroRange)
-            {
-                stateMachine.ChangeState(enemy.playerDetectedState);
-            }
-            else
-            {
-                //enemy.lookForPlayerState.SetTurnImmediately(true);
-                stateMachine.ChangeState(enemy.lookForPlayerState);
-            }
+            stateMachine.ChangeState(enemy.lookForPlayerState);
         }
+        
     }
 
     public override void PhysicsUpdate()

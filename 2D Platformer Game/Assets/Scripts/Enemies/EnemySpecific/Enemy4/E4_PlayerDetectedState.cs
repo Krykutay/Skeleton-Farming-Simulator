@@ -17,14 +17,14 @@ public class E4_PlayerDetectedState : PlayerDetectedState
     public override void Exit()
     {
         base.Exit();
+
+        //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(0f, 0f, 0f));
+        //enemy._head.rotation = Quaternion.Slerp(enemy._head.rotation, lookRotation, 5f);
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        Debug.Log("I'm here!");
-        enemy._head.Rotate(0f, 0f, 90f);
 
         if (performMeleeRangeAction)
         {
@@ -37,11 +37,6 @@ public class E4_PlayerDetectedState : PlayerDetectedState
                 stateMachine.ChangeState(enemy.meleeAttackState);
             }
         }
-        else if (!isDetectingLedge)
-        {
-            entity.Flip();
-            stateMachine.ChangeState(enemy.moveState);
-        }
         else if (isPlayerInMinAgroRange)
         {
             stateMachine.ChangeState(enemy.rangeAttackState);
@@ -49,6 +44,11 @@ public class E4_PlayerDetectedState : PlayerDetectedState
         else if (performLongRangeAction && isPlayerInMaxAgroRange)
         {
             stateMachine.ChangeState(enemy.rangeAttackState);
+        }
+        else if (!isDetectingLedge)
+        {
+            entity.Flip();
+            stateMachine.ChangeState(enemy.moveState);
         }
         else if (!isPlayerInMaxAgroRange)
         {

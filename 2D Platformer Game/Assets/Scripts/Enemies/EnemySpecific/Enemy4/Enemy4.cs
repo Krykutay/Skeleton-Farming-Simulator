@@ -30,8 +30,9 @@ public class Enemy4 : Entity
 
     public D_DodgeState dodgeStateData  { get { return _dodgeStateData; } }
 
-    public Transform _head;
-    public Transform head { get { return _head; } }
+    Transform _head;
+    Transform _leftArm;
+    Transform _rightArm;
 
     public override void Awake()
     {
@@ -50,7 +51,9 @@ public class Enemy4 : Entity
         initialPosition = transform.position;
         initialRotation = transform.rotation;
 
-        _head = transform.Find("Body").Find("Head");
+        _head = transform.Find("Body").Find("MoveHead");
+        _leftArm = transform.Find("Body").Find("MoveBowArm");
+        _rightArm = transform.Find("Body").Find("MoveRightArm");
     }
 
     public override void OnEnable()
@@ -83,6 +86,41 @@ public class Enemy4 : Entity
         base.OnDrawGizmos();
 
         Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
+    }
+
+    public override void RotateBodyToPlayer()
+    {
+        Vector3 direction = (_playerTransform.position - _head.position).normalized;
+        float angle;
+        Quaternion rotation;
+
+        if (direction.x > 0f)
+        {
+            if (facingDirection == -1)
+                Flip();
+
+            angle = Vector2.SignedAngle(Vector2.right, direction);
+            rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            if (facingDirection == 1)
+                Flip();
+
+            angle = Vector2.SignedAngle(-Vector2.right, direction);
+            rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        }
+
+        _head.localRotation = Quaternion.Slerp(_head.localRotation, rotation, Time.deltaTime * 5f);
+        _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, rotation, Time.deltaTime * 5f);
+        _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, rotation, Time.deltaTime * 5f);
+    }
+
+    public override void ResetBodyPosition()
+    {
+        _head.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        _leftArm.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        _rightArm.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
 }

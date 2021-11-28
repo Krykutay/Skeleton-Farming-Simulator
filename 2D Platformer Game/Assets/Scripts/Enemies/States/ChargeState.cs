@@ -29,11 +29,15 @@ public class ChargeState : State
     public override void Exit()
     {
         base.Exit();
+
+        entity.ResetBodyPosition();
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        entity.RotateBodyToPlayer();
     }
 
     public override void PhysicsUpdate()
