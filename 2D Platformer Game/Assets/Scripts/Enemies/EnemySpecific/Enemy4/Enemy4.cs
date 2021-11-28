@@ -36,6 +36,10 @@ public class Enemy4 : Entity
     Transform _rightArm;
 
     IEnumerator _resetBodyParts;
+    Vector3 _bodyLookAtDirection;
+    float _bodyLookAtAngle;
+    Quaternion _bodyLookAtRotation;
+    Quaternion _headLookAtRotation;
 
     public override void Awake()
     {
@@ -89,34 +93,31 @@ public class Enemy4 : Entity
         if (_resetBodyParts != null)
             StopCoroutine(_resetBodyParts);
 
-        Vector3 direction = (_playerTransform.position - _head.position).normalized;
-        float angle;
-        Quaternion rotation;
-        Quaternion headRotation;
+        _bodyLookAtDirection = (_playerTransform.position - _head.position).normalized;
 
-        if (direction.x > 0f)
+        if (_bodyLookAtDirection.x > 0f)
         {
             if (facingDirection == -1)
                 Flip();
 
-            angle = Vector2.SignedAngle(Vector2.right, direction);
-            rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            headRotation = Quaternion.AngleAxis(angle > 40 ? 40 : angle, Vector3.forward);
+            _bodyLookAtAngle = Vector2.SignedAngle(Vector2.right, _bodyLookAtDirection);
+            _bodyLookAtRotation = Quaternion.AngleAxis(_bodyLookAtAngle, Vector3.forward);
+            _headLookAtRotation = Quaternion.AngleAxis(_bodyLookAtAngle > 40 ? 40 : _bodyLookAtAngle, Vector3.forward);
         }
         else
         {
             if (facingDirection == 1)
                 Flip();
 
-            angle = Vector2.SignedAngle(-Vector2.right, direction);
-            rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            headRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
+            _bodyLookAtAngle = Vector2.SignedAngle(-Vector2.right, _bodyLookAtDirection);
+            _bodyLookAtRotation = Quaternion.AngleAxis(-_bodyLookAtAngle, Vector3.forward);
+            _headLookAtRotation = Quaternion.AngleAxis(-_bodyLookAtAngle > 40 ? 40 : -_bodyLookAtAngle, Vector3.forward);
         }
 
-        _head.localRotation = Quaternion.Slerp(_head.localRotation, headRotation, Time.deltaTime * 5f);
-        _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, rotation, Time.deltaTime * 5f);
-        _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, rotation, Time.deltaTime * 5f);
-        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, rotation, Time.deltaTime * 5f);
+        _head.localRotation = Quaternion.Slerp(_head.localRotation, _headLookAtRotation, Time.deltaTime * 5f);
+        _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
+        _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
+        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
     }
 
     public override void ResetBodyPosition()
