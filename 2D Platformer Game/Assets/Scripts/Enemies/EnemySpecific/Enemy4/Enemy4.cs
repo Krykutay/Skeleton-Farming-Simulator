@@ -30,6 +30,9 @@ public class Enemy4 : Entity
 
     public D_DodgeState dodgeStateData  { get { return _dodgeStateData; } }
 
+    public Transform _head;
+    public Transform head { get { return _head; } }
+
     public override void Awake()
     {
         base.Awake();
@@ -46,6 +49,8 @@ public class Enemy4 : Entity
 
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+
+        _head = transform.Find("Body").Find("Head");
     }
 
     public override void OnEnable()

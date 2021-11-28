@@ -17,9 +17,9 @@ public class Projectile : MonoBehaviour
 
     float _travelDistance;
     float _xStartPosition;
-    
 
     Rigidbody2D _rb;
+    Transform _playerTransform;
 
     bool isGravityOn;
     bool hasHitGround;
@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _playerTransform = Player.Instance.transform.Find("Core").transform;
     }
 
     void OnEnable()
@@ -94,7 +95,8 @@ public class Projectile : MonoBehaviour
 
     public void FireProjectile(float speed, float travelDistance, float damage)
     {
-        _rb.velocity = transform.right * speed;
+        Vector3 firePosition = (_playerTransform.position - transform.position).normalized;
+        _rb.velocity = firePosition * speed;
 
         this._travelDistance = travelDistance;
         _attackDetails.damageAmount = damage;

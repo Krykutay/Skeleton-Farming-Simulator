@@ -23,6 +23,9 @@ public class E4_PlayerDetectedState : PlayerDetectedState
     {
         base.LogicUpdate();
 
+        Debug.Log("I'm here!");
+        enemy._head.Rotate(0f, 0f, 90f);
+
         if (performMeleeRangeAction)
         {
             if (Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown)

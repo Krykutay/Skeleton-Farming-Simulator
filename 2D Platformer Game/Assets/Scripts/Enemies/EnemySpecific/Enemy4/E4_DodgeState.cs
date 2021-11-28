@@ -18,6 +18,8 @@ public class E4_DodgeState : DodgeState
     public override void Exit()
     {
         base.Exit();
+
+        entity.SetVelocityX(0f);
     }
 
     public override void LogicUpdate()

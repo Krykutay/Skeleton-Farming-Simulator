@@ -96,23 +96,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1109 &-6932150440678929927
-AnimatorTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: dodge
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 8732492716488758555}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 1
 --- !u!1102 &-6443468179091647715
 AnimatorState:
   serializedVersion: 6
@@ -223,9 +206,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.15
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 0.15
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -378,10 +361,10 @@ AnimatorStateMachine:
     m_Position: {x: 390, y: 730, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1021638348457141676}
-    m_Position: {x: 850, y: 570, z: 0}
+    m_Position: {x: 860, y: 570, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5144640048419140095}
-    m_Position: {x: 760, y: 710, z: 0}
+    m_Position: {x: 760, y: 730, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2032009343524632119}
     m_Position: {x: 390, y: 640, z: 0}
@@ -399,10 +382,10 @@ AnimatorStateMachine:
   - {fileID: -441742971529706979}
   - {fileID: -8249423751505030091}
   - {fileID: -5018141617919928136}
-  - {fileID: -6932150440678929927}
   - {fileID: -209976218654126717}
   - {fileID: -4242052603916771040}
   - {fileID: -3774268472997470667}
+  - {fileID: 2450088746774772780}
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 440, y: -120, z: 0}
@@ -502,6 +485,9 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: meleeAttack
     m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: meleeAttackType
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -867492047199534005}
   m_Solo: 0
@@ -583,6 +569,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: meleeAttackType
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: dead
     m_Type: 4
     m_DefaultFloat: 0
@@ -652,14 +644,31 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.1
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 0.1
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1109 &2450088746774772780
+AnimatorTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: dodge
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 8732492716488758555}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 1
 --- !u!1102 &3949349149211974623
 AnimatorState:
   serializedVersion: 6
