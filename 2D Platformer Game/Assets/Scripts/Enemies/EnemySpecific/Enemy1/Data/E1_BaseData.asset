@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abf3636f89619d499a93ace16b06937, type: 3}
   m_Name: E1_BaseData
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  damageHopSpeed: 8
-  wallCheckDistance: 0.2
-  ledgeCheckDistance: 0.5
-  groundCheckRadius: 0.3
-  minAgroDistance: 8
-  maxAgroDistance: 10
-  stunResistance: 3
-  stunRecoveryTime: 2
-  meleeRangeActionDistance: 1.82
-  ground:
+  _maxHealth: 50
+  _damageHopSpeed: 6
+  _wallCheckDistance: 0.2
+  _ledgeCheckDistance: 0.5
+  _groundCheckRadius: 0.3
+  _minAgroDistance: 8
+  _maxAgroDistance: 10
+  _stunResistance: 3
+  _stunRecoveryTime: 3
+  _meleeRangeActionDistance: 1
+  _ground:
     serializedVersion: 2
     m_Bits: 64
-  player:
+  _player:
     serializedVersion: 2
     m_Bits: 128

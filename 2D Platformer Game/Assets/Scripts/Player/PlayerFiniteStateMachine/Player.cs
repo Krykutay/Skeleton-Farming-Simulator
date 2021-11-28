@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     public static Action PlayerDied;
+    public static Player Instance { get; private set; }
 
     [SerializeField] PlayerData _playerData;
 
@@ -47,6 +48,11 @@ public class Player : MonoBehaviour, IDamageable
 
     void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Debug.LogError("There can not be two player instances at once");
+
         anim = GetComponent<Animator>();
         inputHandler = GetComponent<PlayerInputHandler>();
         rb = GetComponent<Rigidbody2D>();

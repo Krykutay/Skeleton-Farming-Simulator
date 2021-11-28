@@ -27,8 +27,12 @@ public class Entity : MonoBehaviour, IDamageable
     float _currentStunResistance;
     float _lastDamagetime;
 
+    Transform _playerTransform;
+
     public virtual void Awake()
     {
+        _playerTransform = Player.Instance.transform.Find("Core").transform;
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         atsm = GetComponent<AnimationToStateMachine>();
@@ -154,17 +158,26 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual bool CheckPlayerInMinAgroRange()
     {
-        return Physics2D.Raycast(_playerCheck.position, transform.right, entityData.minAgroDistance, entityData.player);
+        if (Vector2.Distance(transform.position, _playerTransform.position) > entityData.minAgroDistance)
+            return false;
+
+        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, entityData.minAgroDistance, entityData.ground);
     }
     
     public virtual bool CheckPlayerInMaxAgroRange()
     {
-        return Physics2D.Raycast(_playerCheck.position, transform.right, entityData.maxAgroDistance, entityData.player);
+        if (Vector2.Distance(_playerCheck.position, _playerTransform.position) > entityData.maxAgroDistance)
+            return false;
+
+        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, entityData.maxAgroDistance, entityData.ground);
     }
 
     public virtual bool CheckPlayerInMeleeRangeAction()
     {
-        return Physics2D.Raycast(_playerCheck.position, transform.right, entityData.meleeRangeActionDistance, entityData.player);
+        if (Vector2.Distance(transform.position, _playerTransform.position) > entityData.meleeRangeActionDistance)
+            return false;
+
+        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, entityData.meleeRangeActionDistance, entityData.ground);
     }
 
     public virtual void OnDrawGizmos()
