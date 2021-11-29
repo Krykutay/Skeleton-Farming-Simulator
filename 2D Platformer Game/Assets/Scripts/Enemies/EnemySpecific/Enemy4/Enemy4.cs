@@ -26,6 +26,8 @@ public class Enemy4 : Entity
     [SerializeField] D_DodgeState _dodgeStateData;
     [SerializeField] D_RangeAttackState _rangeAttackStateData;
 
+    [SerializeField] Transform _ledgeBehindCheck;
+    [SerializeField] Transform _minDodgeDistanceCheck;
     [SerializeField] Transform _meleeAttackPosition;
     [SerializeField] Transform _rangeAttackPosition;
 
@@ -145,6 +147,16 @@ public class Enemy4 : Entity
 
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    public override bool CheckLedgeBehind()
+    {
+        return Physics2D.Raycast(_ledgeBehindCheck.position, Vector2.down, entityData.ledgeBehindCheckDistance, entityData.ground);
+    }
+
+    public override bool CheckMinDodgeDistance()
+    {
+        return Physics2D.Raycast(_minDodgeDistanceCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.ground);
     }
 
     public override void OnDrawGizmos()

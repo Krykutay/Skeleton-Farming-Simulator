@@ -21,8 +21,6 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _ledgeCheck;
-    [SerializeField] Transform _ledgeBehindCheck;
-    [SerializeField]Transform _minDodgeDistanceCheck;
     [SerializeField] Transform _playerCheck;
 
     Vector2 _velocityWorkspace;
@@ -165,12 +163,12 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual bool CheckLedgeBehind()
     {
-        return Physics2D.Raycast(_ledgeBehindCheck.position, Vector2.down, entityData.ledgeBehindCheckDistance, entityData.ground);
+        return false;
     }
 
     public virtual bool CheckMinDodgeDistance()
     {
-        return Physics2D.Raycast(_minDodgeDistanceCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.ground);
+        return false;
     }
 
     public virtual bool CheckPlayerInMinAgroRange()
