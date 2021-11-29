@@ -32,7 +32,7 @@ public class E2_RangeAttackState : RangeAttackState
             }
             else
             {
-                //enemy.lookForPlayerState.SetTurnImmediately(true);
+                enemy.idleState.SetFlipAfterIdle(false);
                 stateMachine.ChangeState(enemy.idleState);
             }
         }

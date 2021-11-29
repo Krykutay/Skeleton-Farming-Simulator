@@ -33,6 +33,7 @@ public class E3_MeleeAttackState : MeleeAttackState
         }
         else
         {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
         }
         

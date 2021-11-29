@@ -35,6 +35,7 @@ public class E4_RangeAttackState : RangeAttackState
         }
         else if (!isPlayerMaxAgroRange)
         {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
         }
         

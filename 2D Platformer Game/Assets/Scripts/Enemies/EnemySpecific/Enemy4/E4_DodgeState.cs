@@ -40,6 +40,7 @@ public class E4_DodgeState : DodgeState
             }
             else if (!isPlayerInMaxAgroRange)
             {
+                enemy.idleState.SetFlipAfterIdle(false);
                 stateMachine.ChangeState(enemy.idleState);
             }
         }

@@ -158,7 +158,7 @@ public class Player : MonoBehaviour, IDamageable
     public void SetPlayerHitPositionOnLedge()
     {
         _playerHitPosition.localPosition = new Vector3(
-            _playerHitPosition.localPosition.x - _playerData.startOffset.x * facingDirection,
+            _playerHitPosition.localPosition.x + _playerData.startOffset.x,
             _initialHitPositionY,
             0f);
     }

@@ -36,10 +36,6 @@ public class Enemy4 : Entity
     Transform _rightArm;
 
     IEnumerator _resetBodyParts;
-    Vector3 _bodyLookAtDirection;
-    float _bodyLookAtAngle;
-    Quaternion _bodyLookAtRotation;
-    Quaternion _headLookAtRotation;
 
     public override void Awake()
     {
@@ -90,28 +86,41 @@ public class Enemy4 : Entity
 
     public override void RotateBodyToPlayer()
     {
+        Vector3 direction;
+        float angle;
+        Quaternion _bodyLookAtRotation;
+        Quaternion _headLookAtRotation;
+
         if (_resetBodyParts != null)
             StopCoroutine(_resetBodyParts);
 
-        _bodyLookAtDirection = (playerTransform.position - _head.position).normalized;
+        direction = (playerTransform.position - _head.position).normalized;
 
-        if (_bodyLookAtDirection.x > 0f)
+        if (direction.x > 0f)
         {
             if (facingDirection == -1)
                 Flip();
 
-            _bodyLookAtAngle = Vector2.SignedAngle(Vector2.right, _bodyLookAtDirection);
-            _bodyLookAtRotation = Quaternion.AngleAxis(_bodyLookAtAngle, Vector3.forward);
-            _headLookAtRotation = Quaternion.AngleAxis(_bodyLookAtAngle > 40 ? 40 : _bodyLookAtAngle, Vector3.forward);
+            angle = Vector2.SignedAngle(Vector2.right, direction);
+            _bodyLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            if (angle > 0f)
+                _headLookAtRotation = Quaternion.AngleAxis(angle > 40 ? 40 : angle, Vector3.forward);
+            else
+                _headLookAtRotation = Quaternion.AngleAxis(angle < -40 ? -40 : angle, Vector3.forward);
         }
         else
         {
             if (facingDirection == 1)
                 Flip();
 
-            _bodyLookAtAngle = Vector2.SignedAngle(-Vector2.right, _bodyLookAtDirection);
-            _bodyLookAtRotation = Quaternion.AngleAxis(-_bodyLookAtAngle, Vector3.forward);
-            _headLookAtRotation = Quaternion.AngleAxis(-_bodyLookAtAngle > 40 ? 40 : -_bodyLookAtAngle, Vector3.forward);
+            angle = Vector2.SignedAngle(-Vector2.right, direction);
+            _bodyLookAtRotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+
+            if (angle < 0f)
+                _headLookAtRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
+            else
+                _headLookAtRotation = Quaternion.AngleAxis(-angle < -40 ? 40 : -angle, Vector3.forward);
         }
 
         _head.localRotation = Quaternion.Slerp(_head.localRotation, _headLookAtRotation, Time.deltaTime * 5f);

@@ -52,6 +52,7 @@ public class E4_PlayerDetectedState : PlayerDetectedState
         }
         else if (!isPlayerInMaxAgroRange)
         {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
         }
     }

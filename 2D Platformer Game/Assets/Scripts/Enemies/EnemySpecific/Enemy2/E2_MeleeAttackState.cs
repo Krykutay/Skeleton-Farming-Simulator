@@ -32,7 +32,7 @@ public class E2_MeleeAttackState : MeleeAttackState
             }
             else
             {
-                enemy.lookForPlayerState.SetTurnImmediately(true);
+                enemy.idleState.SetFlipAfterIdle(false);
                 stateMachine.ChangeState(enemy.idleState);
             }
         }
