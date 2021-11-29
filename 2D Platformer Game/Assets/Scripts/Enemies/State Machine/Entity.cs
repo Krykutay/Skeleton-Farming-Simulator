@@ -16,10 +16,14 @@ public class Entity : MonoBehaviour, IDamageable
     protected bool isStunned;
     protected bool isDead;
 
+    protected Transform playerTransform { get; private set; }
+
+    [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _ledgeCheck;
+    [SerializeField] Transform _ledgeBehindCheck;
+    [SerializeField]Transform _minDodgeDistanceCheck;
     [SerializeField] Transform _playerCheck;
-    [SerializeField] Transform _groundCheck;
 
     Vector2 _velocityWorkspace;
 
@@ -27,11 +31,9 @@ public class Entity : MonoBehaviour, IDamageable
     float _currentStunResistance;
     float _lastDamagetime;
 
-    protected Transform _playerTransform { get; private set; }
-
     public virtual void Awake()
     {
-        _playerTransform = Player.Instance.transform.Find("Core").Find("PlayerHitPosition").transform;
+        playerTransform = Player.Instance.transform.Find("Core").Find("PlayerHitPosition").transform;
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -156,34 +158,44 @@ public class Entity : MonoBehaviour, IDamageable
         return Physics2D.Raycast(_ledgeCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.ground);
     }
 
+    public virtual bool CheckLedgeBehind()
+    {
+        return Physics2D.Raycast(_ledgeBehindCheck.position, Vector2.down, entityData.ledgeBehindCheckDistance, entityData.ground);
+    }
+
+    public virtual bool CheckMinDodgeDistance()
+    {
+        return Physics2D.Raycast(_minDodgeDistanceCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.ground);
+    }
+
     public virtual bool CheckPlayerInMinAgroRange()
     {
-        float distance = Vector2.Distance(_playerCheck.position, _playerTransform.position);
+        float distance = Vector2.Distance(_playerCheck.position, playerTransform.position);
 
         if (distance > entityData.minAgroDistance)
             return false;
 
-        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
+        return !Physics2D.Raycast(_playerCheck.position, (playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
     }
     
     public virtual bool CheckPlayerInMaxAgroRange()
     {
-        float distance = Vector2.Distance(_playerCheck.position, _playerTransform.position);
+        float distance = Vector2.Distance(_playerCheck.position, playerTransform.position);
 
         if (distance > entityData.maxAgroDistance)
             return false;
 
-        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
+        return !Physics2D.Raycast(_playerCheck.position, (playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
     }
 
     public virtual bool CheckPlayerInMeleeRangeAction()
     {
-        float distance = Vector2.Distance(_playerCheck.position, _playerTransform.position);
+        float distance = Vector2.Distance(_playerCheck.position, playerTransform.position);
 
         if (distance > entityData.meleeRangeActionDistance)
             return false;
 
-        return !Physics2D.Raycast(_playerCheck.position, (_playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
+        return !Physics2D.Raycast(_playerCheck.position, (playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
     }
 
     public virtual void RotateBodyToPlayer()

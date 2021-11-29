@@ -28,7 +28,7 @@ public class E4_PlayerDetectedState : PlayerDetectedState
 
         if (performMeleeRangeAction)
         {
-            if (Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown)
+            if (Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown && entity.CheckMinDodgeDistance())
             {
                 stateMachine.ChangeState(enemy.dodgeState);
             }

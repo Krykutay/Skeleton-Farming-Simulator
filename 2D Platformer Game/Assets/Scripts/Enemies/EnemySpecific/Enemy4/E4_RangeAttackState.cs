@@ -29,7 +29,11 @@ public class E4_RangeAttackState : RangeAttackState
         if (!isAnimationFinished)
             return;
 
-        if (!isPlayerMaxAgroRange)
+        if (isPlayerMinAgroRange)
+        {
+            stateMachine.ChangeState(enemy.playerDetectedState);
+        }
+        else if (!isPlayerMaxAgroRange)
         {
             stateMachine.ChangeState(enemy.lookForPlayerState);
         }

@@ -9,6 +9,9 @@ public class DodgeState : State
     protected bool isGrounded;
     protected bool isDodgeOver;
 
+    bool _isLedgeBehind;
+    bool _isLedgeDetectionActionTaken;
+
     public DodgeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DodgeState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -19,6 +22,7 @@ public class DodgeState : State
         base.Enter();
 
         isDodgeOver = false;
+        _isLedgeDetectionActionTaken = false;
         entity.SetVelocity(stateData.dodgeSpeed, stateData.dodgeAngle, -entity.facingDirection);
     }
 
@@ -36,6 +40,12 @@ public class DodgeState : State
     {
         base.PhysicsUpdate();
 
+        if (!_isLedgeBehind && !_isLedgeDetectionActionTaken)
+        {
+            entity.SetVelocityX(0f);
+            _isLedgeDetectionActionTaken = true;
+        }
+
         if (Time.time >= startTime + stateData.dodgeTime && isGrounded)
         {
             isDodgeOver = true;
@@ -49,5 +59,8 @@ public class DodgeState : State
         performedCloseRangeAction = entity.CheckPlayerInMeleeRangeAction();
         isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
         isGrounded = entity.CheckGround();
+
+        if (!_isLedgeDetectionActionTaken)
+            _isLedgeBehind = entity.CheckLedgeBehind();
     }
 }

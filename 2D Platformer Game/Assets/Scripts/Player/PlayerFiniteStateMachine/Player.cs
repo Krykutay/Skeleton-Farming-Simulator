@@ -14,6 +14,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _verticalLedgeCheck;
     [SerializeField] Transform _ceilingCheck;
+    [SerializeField] Transform _playerHitPosition;
 
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour, IDamageable
 
     Vector2 _workSpace;
     float _currentHealth;
+    float _initialHitPositionY;
 
     void Awake()
     {
@@ -92,7 +94,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void Start()
     {
-        
+        _initialHitPositionY = _playerHitPosition.localPosition.y;
     }
 
     void Update()
@@ -139,6 +141,16 @@ public class Player : MonoBehaviour, IDamageable
         _workSpace = direction * velocity;
         rb.velocity = _workSpace;
         currentVelocity = _workSpace;
+    }
+
+    public void SetPlayerHitPositionInCrouch()
+    {
+        _playerHitPosition.localPosition = new Vector3(0f, _playerHitPosition.localPosition.y * 2, 0f);
+    }
+
+    public void ResetPlayerHitPosition()
+    {
+        _playerHitPosition.localPosition = new Vector3(0f, _initialHitPositionY, 0f);
     }
 
     public void CheckIfShouldFlip(int xInput)

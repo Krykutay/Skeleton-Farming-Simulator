@@ -93,7 +93,7 @@ public class Enemy4 : Entity
         if (_resetBodyParts != null)
             StopCoroutine(_resetBodyParts);
 
-        _bodyLookAtDirection = (_playerTransform.position - _head.position).normalized;
+        _bodyLookAtDirection = (playerTransform.position - _head.position).normalized;
 
         if (_bodyLookAtDirection.x > 0f)
         {

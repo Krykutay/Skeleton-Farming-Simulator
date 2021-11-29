@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 50
   _damageHopSpeed: 6
+  _groundCheckRadius: 0.3
   _wallCheckDistance: 0.2
   _ledgeCheckDistance: 0.5
-  _groundCheckRadius: 0.3
+  _ledgeBehindCheckDistance: 3
   _minAgroDistance: 8
   _maxAgroDistance: 10
   _stunResistance: 3
   _stunRecoveryTime: 3
-  _meleeRangeActionDistance: 1
+  _meleeRangeActionDistance: 1.6
   _ground:
     serializedVersion: 2
     m_Bits: 64
