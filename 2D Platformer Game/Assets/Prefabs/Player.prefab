@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2863572711046600592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.684, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5286815135114598585}
@@ -644,6 +644,7 @@ MonoBehaviour:
   _wallCheck: {fileID: 5286815134917997239}
   _verticalLedgeCheck: {fileID: 5286815135441618734}
   _ceilingCheck: {fileID: 5286815134020368747}
+  _playerHitPosition: {fileID: 1063030693683644677}
 --- !u!114 &5286815135905763411
 MonoBehaviour:
   m_ObjectHideFlags: 0
