@@ -9,14 +9,14 @@ public class Entity : MonoBehaviour, IDamageable
     public int facingDirection { get; private set; }
     public int lastDamageDirection { get; private set; }
 
+    public Transform playerTransform { get; private set; }
+
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
     public AnimationToStateMachine atsm { get; private set; }
 
     protected bool isStunned;
     protected bool isDead;
-
-    protected Transform playerTransform { get; private set; }
 
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
@@ -199,6 +199,14 @@ public class Entity : MonoBehaviour, IDamageable
             return false;
 
         return !Physics2D.Raycast(_playerCheck.position, (playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
+    }
+
+    public virtual bool CheckIfPlayerReachableByMeleeAction()
+    {
+        float distance = Mathf.Abs(_playerCheck.position.y - playerTransform.position.y);
+
+        return entityData.meleeRangeActionDistance > distance + 0.1f;
+
     }
 
     public virtual void RotateBodyToPlayer()

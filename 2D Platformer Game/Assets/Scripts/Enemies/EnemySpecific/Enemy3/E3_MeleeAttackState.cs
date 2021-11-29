@@ -36,7 +36,6 @@ public class E3_MeleeAttackState : MeleeAttackState
             enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
         }
-        
     }
 
     public override void PhysicsUpdate()

@@ -28,11 +28,11 @@ public class E4_MoveState : MoveState
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
-
-        if (!canLeaveMoveState)
+        else if (!canLeaveMoveState)
+        {
             return;
-
-        if (isPlayerInMaxAgroRange)
+        }
+        else if (isPlayerInMaxAgroRange)
         {
             stateMachine.ChangeState(enemy.playerDetectedState);
         }

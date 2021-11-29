@@ -23,6 +23,8 @@ public class MeleeAttackState : AttackState
     {
         base.Enter();
 
+        entity.CheckIfShouldFlip();
+
         attackDetails = stateData.attackDetails;
         meleeAttackCooldown = stateData.meleeAttackCooldown;
 

@@ -17,9 +17,6 @@ public class E4_PlayerDetectedState : PlayerDetectedState
     public override void Exit()
     {
         base.Exit();
-
-        //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(0f, 0f, 0f));
-        //enemy._head.rotation = Quaternion.Slerp(enemy._head.rotation, lookRotation, 5f);
     }
 
     public override void LogicUpdate()

@@ -13,6 +13,10 @@ public class ChargeState : State
     protected bool isChargeTimeOver;
     protected bool performMeleeRangeAction;
 
+    protected bool canLeaveChargeState { get; private set; }
+
+    float _chargeStateEnterTime;
+
     public ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -21,6 +25,10 @@ public class ChargeState : State
     public override void Enter()
     {
         base.Enter();
+
+        entity.CheckIfShouldFlip();
+        canLeaveChargeState = false;
+        _chargeStateEnterTime = Time.time;
 
         isChargeTimeOver = false;
         entity.SetVelocityX(stateData.chargeSpeed);
@@ -36,6 +44,11 @@ public class ChargeState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (Time.time >= _chargeStateEnterTime + stateData.chargeStateDelay)
+        {
+            canLeaveChargeState = true;
+        }
     }
 
     public override void PhysicsUpdate()

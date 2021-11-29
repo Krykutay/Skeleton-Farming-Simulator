@@ -13,8 +13,6 @@ public class E4_MeleeAttackState : MeleeAttackState
     public override void Enter()
     {
         base.Enter();
-
-        entity.CheckIfShouldFlip();
     }
 
     public override void Exit()

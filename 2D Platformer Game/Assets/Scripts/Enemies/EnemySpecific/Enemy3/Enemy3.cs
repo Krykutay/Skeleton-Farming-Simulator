@@ -67,8 +67,6 @@ public class Enemy3 : Entity
     {
         base.Damage(attackDetails);
 
-        base.Damage(attackDetails);
-
         if (stateMachine.currentState == deadState || stateMachine.currentState == respawnState)
             return true;
 
@@ -103,7 +101,7 @@ public class Enemy3 : Entity
                 Flip();
 
             angle = Vector2.SignedAngle(Vector2.right, direction);
-            angle = Mathf.Clamp(angle, -40f, 40f);
+            angle = Mathf.Clamp(angle, -30f, 30f);
             lookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         else
@@ -112,8 +110,8 @@ public class Enemy3 : Entity
                 Flip();
 
             angle = Vector2.SignedAngle(-Vector2.right, direction);
-            angle = Mathf.Clamp(angle, -40f, 40f);
-            lookAtRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
+            angle = Mathf.Clamp(angle, -30f, 30f);
+            lookAtRotation = Quaternion.AngleAxis(-angle > 30 ? 30 : -angle, Vector3.forward);
         }
 
         _head.localRotation = Quaternion.Slerp(_head.localRotation, lookAtRotation, Time.deltaTime * 5f);

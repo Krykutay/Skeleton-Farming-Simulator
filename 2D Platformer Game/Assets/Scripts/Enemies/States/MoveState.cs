@@ -26,7 +26,6 @@ public class MoveState : State
         entity.SetVelocityX(stateData.movementSpeed);
         _moveStateEnterTime = Time.time;
         canLeaveMoveState = false;
-        //entity.ResetBodyPosition();
     }
 
     public override void Exit()

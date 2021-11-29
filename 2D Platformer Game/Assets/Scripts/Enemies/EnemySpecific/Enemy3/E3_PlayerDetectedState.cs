@@ -34,11 +34,11 @@ public class E3_PlayerDetectedState : PlayerDetectedState
             entity.Flip();
             stateMachine.ChangeState(enemy.moveState);
         }
-        else if (isPlayerInMinAgroRange)
+        else if (isPlayerInMinAgroRange && entity.CheckIfPlayerReachableByMeleeAction())
         {
             stateMachine.ChangeState(enemy.chargeState);
         }
-        else if (performLongRangeAction && isPlayerInMaxAgroRange)
+        else if (performLongRangeAction && isPlayerInMaxAgroRange && entity.CheckIfPlayerReachableByMeleeAction())
         {
             stateMachine.ChangeState(enemy.chargeState);
         }

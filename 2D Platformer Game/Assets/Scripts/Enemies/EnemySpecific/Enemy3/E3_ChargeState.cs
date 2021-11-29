@@ -14,6 +14,8 @@ public class E3_ChargeState : ChargeState
     public override void Enter()
     {
         base.Enter();
+
+        entity.CheckIfShouldFlip();
     }
 
     public override void Exit()
@@ -33,6 +35,10 @@ public class E3_ChargeState : ChargeState
         {
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
+        }
+        else if (!canLeaveChargeState)
+        {
+            return;
         }
         else if (isChargeTimeOver)
         {
