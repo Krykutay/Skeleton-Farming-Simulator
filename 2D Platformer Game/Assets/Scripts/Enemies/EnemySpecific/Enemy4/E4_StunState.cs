@@ -31,7 +31,7 @@ public class E4_StunState : StunState
             }
             else if (isPlayerInMaxAgroRange)
             {
-                //stateMachine.ChangeState(enemy.chargeState);
+                stateMachine.ChangeState(enemy.rangeAttackState);
             }
             else
             {

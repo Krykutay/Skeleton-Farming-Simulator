@@ -104,10 +104,8 @@ public class Enemy4 : Entity
             angle = Vector2.SignedAngle(Vector2.right, direction);
             _bodyLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            if (angle > 0f)
-                _headLookAtRotation = Quaternion.AngleAxis(angle > 40 ? 40 : angle, Vector3.forward);
-            else
-                _headLookAtRotation = Quaternion.AngleAxis(angle < -40 ? -40 : angle, Vector3.forward);
+            angle = Mathf.Clamp(angle, -40f, 40f);
+             _headLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         else
         {
@@ -117,10 +115,8 @@ public class Enemy4 : Entity
             angle = Vector2.SignedAngle(-Vector2.right, direction);
             _bodyLookAtRotation = Quaternion.AngleAxis(-angle, Vector3.forward);
 
-            if (angle < 0f)
-                _headLookAtRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
-            else
-                _headLookAtRotation = Quaternion.AngleAxis(-angle < -40 ? 40 : -angle, Vector3.forward);
+            angle = Mathf.Clamp(angle, -40f, 40f);
+            _headLookAtRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
         }
 
         _head.localRotation = Quaternion.Slerp(_head.localRotation, _headLookAtRotation, Time.deltaTime * 5f);
