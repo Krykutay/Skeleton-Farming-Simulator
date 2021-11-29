@@ -16,10 +16,11 @@ MonoBehaviour:
   - attackName: Upper Cut
     damageAmount: 10
     position: {x: 0, y: 0}
-    attackRadius: 0.7
+    attackRadius: 0.8
     stunDamageAmount: 0
   - attackName: Pierce
     damageAmount: 12
     position: {x: 0, y: 0}
-    attackRadius: 0.7
+    attackRadius: 0.8
     stunDamageAmount: 0
+  _meleeAttackCooldown: 0.5

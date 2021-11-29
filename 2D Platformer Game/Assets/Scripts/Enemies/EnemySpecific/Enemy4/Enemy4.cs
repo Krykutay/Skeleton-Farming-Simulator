@@ -60,7 +60,7 @@ public class Enemy4 : Entity
         initialRotation = transform.rotation;
 
         _head = transform.Find("Body").Find("MoveHead");
-        _leftArm = transform.Find("Body").Find("MoveBowArm");
+        _leftArm = transform.Find("Body").Find("MoveWeaponArm");
         _rightArm = transform.Find("Body").Find("MoveRightArm");
     }
 

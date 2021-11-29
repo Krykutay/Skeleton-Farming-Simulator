@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1abf3636f89619d499a93ace16b06937, type: 3}
-  m_Name: E3_EntityData
+  m_Name: E3_BaseData
   m_EditorClassIdentifier: 
   _maxHealth: 50
   _damageHopSpeed: 6
+  _groundCheckRadius: 0.3
   _wallCheckDistance: 0.2
   _ledgeCheckDistance: 0.5
-  _groundCheckRadius: 0.3
+  _ledgeBehindCheckDistance: 3
   _minAgroDistance: 8
   _maxAgroDistance: 10
   _stunResistance: 3
   _stunRecoveryTime: 3
-  _meleeRangeActionDistance: 1
+  _meleeRangeActionDistance: 1.75
   _ground:
     serializedVersion: 2
     m_Bits: 64

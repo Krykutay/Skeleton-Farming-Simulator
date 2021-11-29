@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class E4_RespawnState : RespawnState
+public class E3_RespawnState : RespawnState
 {
-    Enemy4 enemy;
+    Enemy3 enemy;
 
-    public E4_RespawnState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_RespawnState stateData, Enemy4 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E3_RespawnState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_RespawnState stateData, Enemy3 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
