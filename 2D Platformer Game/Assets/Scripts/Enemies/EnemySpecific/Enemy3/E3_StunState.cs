@@ -36,7 +36,7 @@ public class E3_StunState : StunState
             else
             {
                 enemy.lookForPlayerState.SetTurnImmediately(true);
-                stateMachine.ChangeState(enemy.lookForPlayerState);
+                stateMachine.ChangeState(enemy.idleState);
             }
         }
     }

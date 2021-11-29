@@ -33,7 +33,7 @@ public class E3_MeleeAttackState : MeleeAttackState
         }
         else
         {
-            stateMachine.ChangeState(enemy.lookForPlayerState);
+            stateMachine.ChangeState(enemy.idleState);
         }
         
     }

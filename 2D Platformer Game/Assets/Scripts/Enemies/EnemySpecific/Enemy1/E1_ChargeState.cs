@@ -31,7 +31,7 @@ public class E1_ChargeState : ChargeState
         }
         else if (!isDetectingLedge || isDetectingWall)
         {
-            stateMachine.ChangeState(enemy.lookForPlayerState);
+            stateMachine.ChangeState(enemy.idleState);
         }
         else if (isChargeTimeOver)
         {
@@ -42,7 +42,7 @@ public class E1_ChargeState : ChargeState
             else
             {
                 enemy.lookForPlayerState.SetTurnImmediately(true);
-                stateMachine.ChangeState(enemy.lookForPlayerState);
+                stateMachine.ChangeState(enemy.idleState);
             }
         }
     }

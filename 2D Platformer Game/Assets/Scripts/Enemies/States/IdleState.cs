@@ -25,6 +25,7 @@ public class IdleState : State
         entity.SetVelocityX(0f);
         isIdleTimeOver = false;
         SetRandomIdleTime();
+        //entity.ResetBodyPosition();
     }
 
     public override void Exit()

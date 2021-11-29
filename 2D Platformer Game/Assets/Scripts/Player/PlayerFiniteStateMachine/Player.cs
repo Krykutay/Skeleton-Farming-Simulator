@@ -46,6 +46,7 @@ public class Player : MonoBehaviour, IDamageable
 
     Vector2 _workSpace;
     float _currentHealth;
+    float _initialHitPositionX;
     float _initialHitPositionY;
 
     void Awake()
@@ -94,6 +95,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void Start()
     {
+        _initialHitPositionX = _playerHitPosition.localPosition.x;
         _initialHitPositionY = _playerHitPosition.localPosition.y;
     }
 
@@ -145,12 +147,20 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetPlayerHitPositionInCrouch()
     {
-        _playerHitPosition.localPosition = new Vector3(0f, _playerHitPosition.localPosition.y * 2, 0f);
+        _playerHitPosition.localPosition = new Vector3(_initialHitPositionX, _playerHitPosition.localPosition.y * 2, 0f);
     }
 
     public void ResetPlayerHitPosition()
     {
-        _playerHitPosition.localPosition = new Vector3(0f, _initialHitPositionY, 0f);
+        _playerHitPosition.localPosition = new Vector3(_initialHitPositionX, _initialHitPositionY, 0f);
+    }
+
+    public void SetPlayerHitPositionOnLedge()
+    {
+        _playerHitPosition.localPosition = new Vector3(
+            _playerHitPosition.localPosition.x - _playerData.startOffset.x * facingDirection,
+            _initialHitPositionY,
+            0f);
     }
 
     public void CheckIfShouldFlip(int xInput)

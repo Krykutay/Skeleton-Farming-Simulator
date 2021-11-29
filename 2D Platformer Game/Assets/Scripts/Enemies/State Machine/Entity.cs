@@ -123,11 +123,6 @@ public class Entity : MonoBehaviour, IDamageable
             isDead = true;
         }
 
-        if (!isDead && !isStunned && !CheckPlayerInMaxAgroRange())
-        {
-            Flip();
-        }
-
         return true;
     }
 
@@ -141,6 +136,16 @@ public class Entity : MonoBehaviour, IDamageable
     {
         facingDirection *= -1;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public virtual void CheckIfShouldFlip()
+    {
+        float playerDirectionOnX = playerTransform.position.x - transform.position.x;
+
+        if (playerDirectionOnX > 0f && facingDirection == -1)
+            Flip();
+        else if (playerDirectionOnX < 0f && facingDirection == 1)
+            Flip();
     }
 
     public virtual bool CheckGround()

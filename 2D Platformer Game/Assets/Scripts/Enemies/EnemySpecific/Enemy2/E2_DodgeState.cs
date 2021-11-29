@@ -38,7 +38,7 @@ public class E2_DodgeState : DodgeState
             }
             else if (!isPlayerInMaxAgroRange)
             {
-                stateMachine.ChangeState(enemy.lookForPlayerState);
+                stateMachine.ChangeState(enemy.idleState);
             }
         }
     }

@@ -32,6 +32,7 @@ public class LookForPlayerState : State
         amountOfTurnsDone = 0;
 
         entity.SetVelocityX(0f);
+        entity.ResetBodyPosition();
     }
 
     public override void Exit()

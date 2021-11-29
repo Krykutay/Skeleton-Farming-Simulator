@@ -131,7 +131,7 @@ public class Enemy4 : Entity
 
     IEnumerator ResetBodyParts()
     {
-        while (_rangeAttackPosition.localRotation.z > 0.01f)
+        while (Mathf.Abs(_head.localRotation.z) > 0.01f)
         {
             _head.localRotation = Quaternion.Slerp(_head.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
             _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);

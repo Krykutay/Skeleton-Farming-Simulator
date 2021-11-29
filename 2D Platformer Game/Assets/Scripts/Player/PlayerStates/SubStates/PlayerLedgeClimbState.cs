@@ -36,6 +36,8 @@ public class PlayerLedgeClimbState : PlayerState
 
         player.transform.position = _startPos;
         CheckForSpace();
+
+        player.SetPlayerHitPositionOnLedge();
     }
 
     public override void Exit()
@@ -51,6 +53,7 @@ public class PlayerLedgeClimbState : PlayerState
         }
 
         player.rb.gravityScale = player.initialGravity;
+        player.ResetPlayerHitPosition();
     }
 
     public override void LogicUpdate()

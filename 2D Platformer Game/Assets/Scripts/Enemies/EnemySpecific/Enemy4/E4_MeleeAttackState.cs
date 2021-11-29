@@ -13,6 +13,8 @@ public class E4_MeleeAttackState : MeleeAttackState
     public override void Enter()
     {
         base.Enter();
+
+        entity.CheckIfShouldFlip();
     }
 
     public override void Exit()
@@ -24,17 +26,16 @@ public class E4_MeleeAttackState : MeleeAttackState
     {
         base.LogicUpdate();
 
-        if (isAnimationFinished)
+        if (!isAnimationFinished)
+            return;
+
+        if (isPlayerMaxAgroRange)
         {
-            if (isPlayerMaxAgroRange)
-            {
-                stateMachine.ChangeState(enemy.playerDetectedState);
-            }
-            else
-            {
-                enemy.lookForPlayerState.SetTurnImmediately(true);
-                stateMachine.ChangeState(enemy.lookForPlayerState);
-            }
+            stateMachine.ChangeState(enemy.playerDetectedState);
+        }
+        else
+        {
+            stateMachine.ChangeState(enemy.idleState);
         }
     }
 
