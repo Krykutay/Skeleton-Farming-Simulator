@@ -16,11 +16,8 @@ public class E4_DeadState : DeadState
     {
         base.Enter();
 
-        DeathChunkParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
-        DeathBloodParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
-
+        TimeOfDeath = Time.time;
         Died?.Invoke(enemy);
-        //Enemy4Pool.Instance.ReturnToPool(enemy);
     }
 
     public override void Exit()
@@ -31,6 +28,17 @@ public class E4_DeadState : DeadState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (!isAnimationFinished)
+            return;
+
+        if (Time.time >= TimeOfDeath + stateData.respawnTime)
+        {
+
+            stateMachine.ChangeState(enemy.respawnState);
+
+            //Enemy4Pool.Instance.ReturnToPool(enemy);
+        }
     }
 
     public override void PhysicsUpdate()

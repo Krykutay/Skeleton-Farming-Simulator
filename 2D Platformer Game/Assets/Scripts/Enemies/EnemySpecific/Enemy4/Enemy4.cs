@@ -12,6 +12,7 @@ public class Enemy4 : Entity
     public E4_DeadState deadState { get; private set; }
     public E4_DodgeState dodgeState { get; private set; }
     public E4_RangeAttackState rangeAttackState { get; private set; }
+    public E4_RespawnState respawnState { get; private set; }
 
     public Vector3 initialPosition { get; private set; }
     public Quaternion initialRotation { get; private set; }
@@ -25,6 +26,7 @@ public class Enemy4 : Entity
     [SerializeField] D_DeadState _deadStateData;
     [SerializeField] D_DodgeState _dodgeStateData;
     [SerializeField] D_RangeAttackState _rangeAttackStateData;
+    [SerializeField] D_RespawnState _respawnStateData;
 
     [SerializeField] Transform _ledgeBehindCheck;
     [SerializeField] Transform _minDodgeDistanceCheck;
@@ -52,6 +54,7 @@ public class Enemy4 : Entity
         deadState = new E4_DeadState(this, stateMachine, "dead", _deadStateData, this);
         dodgeState = new E4_DodgeState(this, stateMachine, "dodge", _dodgeStateData, this);
         rangeAttackState = new E4_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData, this);
+        respawnState = new E4_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
 
         initialPosition = transform.position;
         initialRotation = transform.rotation;
@@ -71,6 +74,9 @@ public class Enemy4 : Entity
     public override bool Damage(AttackDetails attackDetails)
     {
         base.Damage(attackDetails);
+
+        if (stateMachine.currentState == deadState || stateMachine.currentState == respawnState)
+            return true;
 
         Enemy1HitParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 360)));
 

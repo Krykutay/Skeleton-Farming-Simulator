@@ -131976,8 +131976,6 @@ MonoBehaviour:
   _groundCheck: {fileID: 1287230826}
   _wallCheck: {fileID: 237987849}
   _ledgeCheck: {fileID: 1353962786}
-  _ledgeBehindCheck: {fileID: 579752560}
-  _minDodgeDistanceCheck: {fileID: 58635279}
   _playerCheck: {fileID: 1843313223}
   _moveStateData: {fileID: 11400000, guid: a5fd0ef5b46de814e9bf8262af2e0f37, type: 2}
   _idleStateData: {fileID: 11400000, guid: 33d0ab36146ac6c448b1eb06d665bf4b, type: 2}
@@ -131988,6 +131986,9 @@ MonoBehaviour:
   _deadStateData: {fileID: 11400000, guid: 12fd34312e6a1a04789c1e293c7bd334, type: 2}
   _dodgeStateData: {fileID: 11400000, guid: a3c0a78939706984692d2d9c975061d7, type: 2}
   _rangeAttackStateData: {fileID: 11400000, guid: 44fcb2b08313beb4a84e2e4b67a26679, type: 2}
+  _respawnStateData: {fileID: 11400000, guid: 56ae535e451f99a4e84faf0a4dd21f0d, type: 2}
+  _ledgeBehindCheck: {fileID: 579752560}
+  _minDodgeDistanceCheck: {fileID: 58635279}
   _meleeAttackPosition: {fileID: 2056165205}
   _rangeAttackPosition: {fileID: 549461620}
 --- !u!114 &1745690679

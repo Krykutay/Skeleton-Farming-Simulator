@@ -32,7 +32,7 @@ public class E3_DeadState : DeadState
         if (!isAnimationFinished)
             return;
 
-        if (Time.time >= TimeOfDeath + stateData.corpseDuration)
+        if (Time.time >= TimeOfDeath + stateData.respawnTime)
         {
             //entity.anim.SetBool("dead", false);
             isAnimationFinished = false;

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewDeadStateData", menuName = "Data/State Data/Dead State")]
 public class D_DeadState : ScriptableObject
 {
-    [SerializeField] float _corpseDuration = 2f;
+    [SerializeField] float _respawnTime = 4f;
 
-    public float corpseDuration { get { return _corpseDuration; } }
+    public float respawnTime { get { return _respawnTime; } }
 }

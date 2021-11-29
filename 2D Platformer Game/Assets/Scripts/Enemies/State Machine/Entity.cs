@@ -211,6 +211,14 @@ public class Entity : MonoBehaviour, IDamageable
 
     }
 
+    public virtual void Respawned()
+    {
+        _currentHealth = entityData.maxHealth;
+        _currentStunResistance = entityData.stunResistance;
+        isStunned = false;
+        isDead = false;
+    }
+
     public virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(_wallCheck.position, _wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
