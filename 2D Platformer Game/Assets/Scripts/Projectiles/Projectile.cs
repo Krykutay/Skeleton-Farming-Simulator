@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] protected float _projectileDurationAfterHitGround = 1f;
+    [SerializeField] float _projectileDurationAfterHitGround = 1f;
 
     protected Rigidbody2D rb;
     protected Transform playerTransform;
@@ -15,6 +15,8 @@ public class Projectile : MonoBehaviour
     protected float xStartPosition;
 
     protected bool hasHitGround;
+
+    protected float projectileDurationAfterHitGround { get { return _projectileDurationAfterHitGround; } }
 
     protected virtual void Awake()
     {

@@ -61,7 +61,7 @@ public class ProjectileSkill : Projectile
             hasHitGround = true;
             rb.gravityScale = 0f;
             rb.velocity = Vector2.zero;
-            StartCoroutine(DisableProjectile(_projectileDurationAfterHitGround));
+            StartCoroutine(DisableProjectile(projectileDurationAfterHitGround));
         }
     }
 
