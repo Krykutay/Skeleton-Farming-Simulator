@@ -14,7 +14,8 @@ public class MeleeAttackState : AttackState
     float meleeAttackFinishTime = Mathf.NegativeInfinity;
     bool _attackStance;
 
-    public MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData) : base(entity, stateMachine, animBoolName, attackPosition)
+    public MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData)
+        : base(entity, stateMachine, animBoolName, attackPosition)
     {
         this.stateData = stateData;
     }
