@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] protected float _projectileDurationAfterHitGround = 0.3f;
+    [SerializeField] protected float _projectileDurationAfterHitGround = 1f;
 
     protected Rigidbody2D rb;
     protected Transform playerTransform;

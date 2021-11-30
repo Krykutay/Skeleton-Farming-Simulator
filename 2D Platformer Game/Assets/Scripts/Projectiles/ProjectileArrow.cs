@@ -41,7 +41,7 @@ public class ProjectileArrow : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("player"))
+        if (collision.CompareTag("Player"))
         {
             attackDetails.position = transform.position;
 
@@ -56,7 +56,7 @@ public class ProjectileArrow : Projectile
                 }
             }
         }
-        else if (collision.CompareTag("ground"))
+        else
         {
             hasHitGround = true;
             rb.gravityScale = 0f;

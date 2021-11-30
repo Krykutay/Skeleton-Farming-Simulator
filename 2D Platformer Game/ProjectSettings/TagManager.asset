@@ -17,8 +17,8 @@ TagManager:
   - Player
   - Damageable
   - Dead
+  - PlayerWeapon
   - EnemyProjectile
-  - 
   - 
   - 
   - 

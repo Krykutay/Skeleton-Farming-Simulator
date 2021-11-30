@@ -130,13 +130,15 @@ public class Enemy4 : Entity
         _head.localRotation = Quaternion.Slerp(_head.localRotation, _headLookAtRotation, Time.deltaTime * 5f);
         _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
         _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
-        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
+        _rangeAttackPosition.localRotation = _bodyLookAtRotation;
     }
 
     public override void ResetBodyPosition()
     {
         if (_resetBodyParts != null)
             StopCoroutine(_resetBodyParts);
+
+        _rangeAttackPosition.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
         _resetBodyParts = ResetBodyParts();
         StartCoroutine(_resetBodyParts);
@@ -149,7 +151,6 @@ public class Enemy4 : Entity
             _head.localRotation = Quaternion.Slerp(_head.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
             _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
             _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
-            _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
 
             yield return new WaitForFixedUpdate();
         }
