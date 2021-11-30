@@ -1,0 +1,176 @@
+using System.Collections;
+using UnityEngine;
+
+public class Enemy6 : Entity
+{
+    public E6_MoveState moveState { get; private set; }
+    public E6_IdleState idleState { get; private set; }
+    public E6_PlayerDetectedState playerDetectedState { get; private set; }
+    public E6_LookForPlayerState lookForPlayerState { get; private set; }
+    public E6_MeleeAttackState meleeAttackState { get; private set; }
+    public E6_StunState stunState { get; private set; }
+    public E6_DeadState deadState { get; private set; }
+    public E6_TeleportState teleportState { get; private set; }
+    public E6_RangeAttackState rangeAttackState { get; private set; }
+    public E6_RespawnState respawnState { get; private set; }
+
+    public Vector3 initialPosition { get; private set; }
+    public Quaternion initialRotation { get; private set; }
+
+    [SerializeField] D_MoveState _moveStateData;
+    [SerializeField] D_IdleState _idleStateData;
+    [SerializeField] D_PlayerDetectedState _playerDetectedStateData;
+    [SerializeField] D_LookForPlayerState _lookForPlayerStateData;
+    [SerializeField] D_MeleeAttackState _meleeAttackStateData;
+    [SerializeField] D_StunState _stunStateData;
+    [SerializeField] D_DeadState _deadStateData;
+    [SerializeField] D_TeleportState _teleportStateData;
+    [SerializeField] D_RangeAttackState _rangeAttackStateData;
+    [SerializeField] D_RespawnState _respawnStateData;
+
+    [SerializeField] Transform _ledgeBehindCheck;
+    [SerializeField] Transform _minDodgeDistanceCheck;
+    [SerializeField] Transform _meleeAttackPosition;
+    [SerializeField] Transform _rangeAttackPosition;
+
+    public D_TeleportState dodgeStateData  { get { return _teleportStateData; } }
+
+    Transform _head;
+    Transform _leftArm;
+    Transform _rightArm;
+
+    IEnumerator _resetBodyParts;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        moveState = new E6_MoveState(this, stateMachine, "move", _moveStateData, this);
+        idleState = new E6_IdleState(this, stateMachine, "idle", _idleStateData, this);
+        playerDetectedState = new E6_PlayerDetectedState(this, stateMachine, "playerDetected", _playerDetectedStateData, this);
+        lookForPlayerState = new E6_LookForPlayerState(this, stateMachine, "lookForPlayer", _lookForPlayerStateData, this);
+        meleeAttackState = new E6_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData, this);
+        stunState = new E6_StunState(this, stateMachine, "stun", _stunStateData, this);
+        deadState = new E6_DeadState(this, stateMachine, "dead", _deadStateData, this);
+        teleportState = new E6_TeleportState(this, stateMachine, "teleport", _teleportStateData, this);
+        rangeAttackState = new E6_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData, this);
+        respawnState = new E6_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
+
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+
+        _head = transform.Find("Body").Find("MoveHead");
+        _leftArm = transform.Find("Body").Find("MoveWeaponArm");
+        _rightArm = transform.Find("Body").Find("MoveRightArm");
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+
+        stateMachine.Initialize(moveState);
+    }
+
+    public override bool Damage(AttackDetails attackDetails)
+    {
+        base.Damage(attackDetails);
+
+        if (stateMachine.currentState == deadState || stateMachine.currentState == respawnState)
+            return true;
+
+        Enemy1HitParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 360)));
+
+        if (isDead)
+        {
+            stateMachine.ChangeState(deadState);
+        }
+        else if (isStunned && stateMachine.currentState != stunState)
+        {
+            stateMachine.ChangeState(stunState);
+        }
+
+        return true;
+    }
+
+    public override void RotateBodyToPlayer()
+    {
+        Vector3 direction;
+        float angle;
+        Quaternion _bodyLookAtRotation;
+        Quaternion _headLookAtRotation;
+
+        if (_resetBodyParts != null)
+            StopCoroutine(_resetBodyParts);
+
+        direction = (playerTransform.position - _head.position).normalized;
+
+        if (direction.x > 0f)
+        {
+            if (facingDirection == -1)
+                Flip();
+
+            angle = Vector2.SignedAngle(Vector2.right, direction);
+            _bodyLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            angle = Mathf.Clamp(angle, -40f, 40f);
+             _headLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            if (facingDirection == 1)
+                Flip();
+
+            angle = Vector2.SignedAngle(-Vector2.right, direction);
+            _bodyLookAtRotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+
+            angle = Mathf.Clamp(angle, -40f, 40f);
+            _headLookAtRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
+        }
+
+        _head.localRotation = Quaternion.Slerp(_head.localRotation, _headLookAtRotation, Time.deltaTime * 5f);
+        _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
+        _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
+        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
+    }
+
+    public override void ResetBodyPosition()
+    {
+        if (_resetBodyParts != null)
+            StopCoroutine(_resetBodyParts);
+
+        _resetBodyParts = ResetBodyParts();
+        StartCoroutine(_resetBodyParts);
+    }
+
+    IEnumerator ResetBodyParts()
+    {
+        while (Mathf.Abs(_head.localRotation.z) > 0.01f)
+        {
+            _head.localRotation = Quaternion.Slerp(_head.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+            _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+            _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+            _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public override bool CheckLedgeBehind()
+    {
+        return Physics2D.Raycast(_ledgeBehindCheck.position, Vector2.down, entityData.ledgeBehindCheckDistance, entityData.ground);
+    }
+
+    public override bool CheckMinDodgeDistance()
+    {
+        return Physics2D.Raycast(_minDodgeDistanceCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.ground);
+    }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        if (_meleeAttackStateData.attackDetails.Length > 0)
+            Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
+    }
+
+}
