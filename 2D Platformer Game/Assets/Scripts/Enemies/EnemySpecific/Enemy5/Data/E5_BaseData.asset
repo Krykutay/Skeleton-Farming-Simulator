@@ -22,7 +22,7 @@ MonoBehaviour:
   _maxAgroDistance: 10
   _stunResistance: 3
   _stunRecoveryTime: 3
-  _meleeRangeActionDistance: 1
+  _meleeRangeActionDistance: 2.5
   _ground:
     serializedVersion: 2
     m_Bits: 64

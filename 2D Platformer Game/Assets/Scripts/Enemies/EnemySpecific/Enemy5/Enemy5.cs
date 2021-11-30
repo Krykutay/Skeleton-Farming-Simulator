@@ -145,7 +145,11 @@ public class Enemy5 : Entity
         base.OnDrawGizmos();
 
         if (_meleeAttackStateData.attackDetails.Length > 0)
-            Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
+        {
+            //Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
+            Gizmos.DrawWireCube(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].size);
+        }
+            
     }
 }
 
