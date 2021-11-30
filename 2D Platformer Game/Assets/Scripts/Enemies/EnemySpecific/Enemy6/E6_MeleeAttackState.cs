@@ -50,7 +50,15 @@ public class E6_MeleeAttackState : MeleeAttackState
 
     public override void TriggerAttack()
     {
-        base.TriggerAttack();
+        Collider2D[] detectedObjects = Physics2D.OverlapBoxAll(attackPosition.position, attackDetails[meleeAttackType].size, 0f, entity.entityData.player);
+
+        foreach (Collider2D collider in detectedObjects)
+        {
+            if (collider.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.Damage(attackDetails[meleeAttackType]);
+            }
+        }
     }
 
     public override void FinishAttack()

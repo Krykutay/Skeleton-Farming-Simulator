@@ -17,5 +17,5 @@ MonoBehaviour:
     damageAmount: 8
     stunDamageAmount: 0
     attackRadius: 0
-    size: {x: 0, y: 0}
+    size: {x: 1.81, y: 1}
   _meleeAttackCooldown: 0.5

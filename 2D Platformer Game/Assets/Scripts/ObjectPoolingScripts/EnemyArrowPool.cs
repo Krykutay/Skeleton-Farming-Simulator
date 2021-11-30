@@ -1,4 +1,4 @@
-public class EnemyArrowPool : GenericObjectPool<Projectile>
+public class EnemyArrowPool : GenericObjectPool<ProjectileArrow>
 {
 
 }

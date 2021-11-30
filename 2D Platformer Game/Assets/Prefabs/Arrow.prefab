@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &398614938018085499
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7688106611943988828}
-  m_Layer: 0
-  m_Name: DamagePosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7688106611943988828
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398614938018085499}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.396, y: 0.021, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5764954313944772826}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8882021157082491691
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,6 +11,7 @@ GameObject:
   - component: {fileID: 5764954313944772826}
   - component: {fileID: 7787828086856318072}
   - component: {fileID: 8782759245530812550}
+  - component: {fileID: 7718660516834665149}
   - component: {fileID: 4803047411898281148}
   m_Layer: 0
   m_Name: Arrow
@@ -59,8 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.944, y: 8.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7688106611943988828}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130,12 +100,28 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!58 &7718660516834665149
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882021157082491691}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.38, y: 0.02}
+  serializedVersion: 2
+  m_Radius: 0.15
 --- !u!114 &4803047411898281148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,13 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45674ce6279a6243845e163260fefa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravity: 3
-  _damageRadius: 0.15
   _projectileDurationAfterHitGround: 0.3
-  _ground:
-    serializedVersion: 2
-    m_Bits: 64
-  _player:
-    serializedVersion: 2
-    m_Bits: 128
-  _damagePosition: {fileID: 7688106611943988828}
+  _gravity: 3

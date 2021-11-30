@@ -33,11 +33,9 @@ public class Enemy6 : Entity
     [SerializeField] Transform _meleeAttackPosition;
     [SerializeField] Transform _rangeAttackPosition;
 
-    public D_TeleportState dodgeStateData  { get { return _teleportStateData; } }
+    public D_TeleportState teleportStateData  { get { return _teleportStateData; } }
 
     Transform _head;
-    Transform _leftArm;
-    Transform _rightArm;
 
     IEnumerator _resetBodyParts;
 
@@ -60,8 +58,6 @@ public class Enemy6 : Entity
         initialRotation = transform.rotation;
 
         _head = transform.Find("Body").Find("MoveHead");
-        _leftArm = transform.Find("Body").Find("MoveWeaponArm");
-        _rightArm = transform.Find("Body").Find("MoveRightArm");
     }
 
     public override void OnEnable()
@@ -112,7 +108,7 @@ public class Enemy6 : Entity
             angle = Vector2.SignedAngle(Vector2.right, direction);
             _bodyLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            angle = Mathf.Clamp(angle, -40f, 40f);
+            angle = Mathf.Clamp(angle, -20f, 20f);
              _headLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         else
@@ -123,20 +119,20 @@ public class Enemy6 : Entity
             angle = Vector2.SignedAngle(-Vector2.right, direction);
             _bodyLookAtRotation = Quaternion.AngleAxis(-angle, Vector3.forward);
 
-            angle = Mathf.Clamp(angle, -40f, 40f);
+            angle = Mathf.Clamp(angle, -20f, 20f);
             _headLookAtRotation = Quaternion.AngleAxis(-angle > 40 ? 40 : -angle, Vector3.forward);
         }
 
         _head.localRotation = Quaternion.Slerp(_head.localRotation, _headLookAtRotation, Time.deltaTime * 5f);
-        _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
-        _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
-        _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, _bodyLookAtRotation, Time.deltaTime * 5f);
+        _rangeAttackPosition.localRotation = _bodyLookAtRotation;
     }
 
     public override void ResetBodyPosition()
     {
         if (_resetBodyParts != null)
             StopCoroutine(_resetBodyParts);
+
+        _rangeAttackPosition.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
         _resetBodyParts = ResetBodyParts();
         StartCoroutine(_resetBodyParts);
@@ -147,9 +143,6 @@ public class Enemy6 : Entity
         while (Mathf.Abs(_head.localRotation.z) > 0.01f)
         {
             _head.localRotation = Quaternion.Slerp(_head.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
-            _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
-            _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
-            _rangeAttackPosition.localRotation = Quaternion.Slerp(_rangeAttackPosition.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * 5f);
 
             yield return new WaitForFixedUpdate();
         }
@@ -170,7 +163,7 @@ public class Enemy6 : Entity
         base.OnDrawGizmos();
 
         if (_meleeAttackStateData.attackDetails.Length > 0)
-            Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
+            Gizmos.DrawWireCube(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].size);
     }
 
 }
