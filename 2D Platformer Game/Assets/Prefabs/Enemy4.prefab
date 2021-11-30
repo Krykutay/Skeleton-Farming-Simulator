@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3427618965906579952}
   - component: {fileID: 3427618965906579958}
   - component: {fileID: 3427618965906579959}
-  - component: {fileID: 3427618965906579956}
   - component: {fileID: 3427618965906579957}
+  - component: {fileID: 3427618965906579956}
   m_Layer: 8
   m_Name: Enemy4
   m_TagString: Enemy
@@ -49,7 +49,7 @@ Animator:
   m_GameObject: {fileID: 3427618965906579954}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0dee31cac27992d43a3f02a42448e0a9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6560f4eeb714f4048baee4783c758d1f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -105,18 +105,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.82, y: 1.55}
   m_EdgeRadius: 0
---- !u!114 &3427618965906579956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3427618965906579954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154ff97b2b0d48140b10d79c3d4c8942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3427618965906579957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +136,18 @@ MonoBehaviour:
   _minDodgeDistanceCheck: {fileID: 3427618967432426956}
   _meleeAttackPosition: {fileID: 3427618966217119382}
   _rangeAttackPosition: {fileID: 3427618966851149751}
+--- !u!114 &3427618965906579956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427618965906579954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154ff97b2b0d48140b10d79c3d4c8942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3427618965995879301
 GameObject:
   m_ObjectHideFlags: 0

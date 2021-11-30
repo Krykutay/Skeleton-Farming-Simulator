@@ -169,7 +169,8 @@ public class Enemy4 : Entity
     {
         base.OnDrawGizmos();
 
-        Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
+        if (_meleeAttackStateData.attackDetails.Length > 0)
+            Gizmos.DrawWireSphere(_meleeAttackPosition.position, _meleeAttackStateData.attackDetails[0].attackRadius);
     }
 
 }

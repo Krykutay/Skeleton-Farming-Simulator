@@ -1,17 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy3 : Entity
+public class Enemy5 : Entity
 {
-    public E3_IdleState idleState { get; private set; }
-    public E3_MoveState moveState { get; private set; }
-    public E3_PlayerDetectedState playerDetectedState { get; private set; }
-    public E3_ChargeState chargeState { get; private set; }
-    public E3_LookForPlayerState lookForPlayerState { get; private set; }
-    public E3_MeleeAttackState meleeAttackState { get; private set; }
-    public E3_StunState stunState { get; private set; }
-    public E3_DeadState deadState { get; private set; }
-    public E3_RespawnState respawnState { get; private set; }
+    public E5_IdleState idleState { get; private set; }
+    public E5_MoveState moveState { get; private set; }
+    public E5_PlayerDetectedState playerDetectedState { get; private set; }
+    public E5_ChargeState chargeState { get; private set; }
+    public E5_LookForPlayerState lookForPlayerState { get; private set; }
+    public E5_MeleeAttackState meleeAttackState { get; private set; }
+    public E5_StunState stunState { get; private set; }
+    public E5_DeadState deadState { get; private set; }
+    public E5_RespawnState respawnState { get; private set; }
 
     public Vector3 initialPosition { get; private set; }
     public Quaternion initialRotation { get; private set; }
@@ -38,15 +38,15 @@ public class Enemy3 : Entity
     {
         base.Awake();
 
-        moveState = new E3_MoveState(this, stateMachine, "move", _moveStateData, this);
-        idleState = new E3_IdleState(this, stateMachine, "idle", _idleStateData, this);
-        playerDetectedState = new E3_PlayerDetectedState(this, stateMachine, "playerDetected", _playerDetectedStateData, this);
-        chargeState = new E3_ChargeState(this, stateMachine, "charge", _chargeStateData, this);
-        lookForPlayerState = new E3_LookForPlayerState(this, stateMachine, "lookForPlayer", _lookForPlayerStateData, this);
-        meleeAttackState = new E3_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData, this);
-        stunState = new E3_StunState(this, stateMachine, "stun", _stunStateData, this);
-        deadState = new E3_DeadState(this, stateMachine, "dead", _deadStateData, this);
-        respawnState = new E3_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
+        moveState = new E5_MoveState(this, stateMachine, "move", _moveStateData, this);
+        idleState = new E5_IdleState(this, stateMachine, "idle", _idleStateData, this);
+        playerDetectedState = new E5_PlayerDetectedState(this, stateMachine, "playerDetected", _playerDetectedStateData, this);
+        chargeState = new E5_ChargeState(this, stateMachine, "charge", _chargeStateData, this);
+        lookForPlayerState = new E5_LookForPlayerState(this, stateMachine, "lookForPlayer", _lookForPlayerStateData, this);
+        meleeAttackState = new E5_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData, this);
+        stunState = new E5_StunState(this, stateMachine, "stun", _stunStateData, this);
+        deadState = new E5_DeadState(this, stateMachine, "dead", _deadStateData, this);
+        respawnState = new E5_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
 
         initialPosition = transform.position;
         initialRotation = transform.rotation;
