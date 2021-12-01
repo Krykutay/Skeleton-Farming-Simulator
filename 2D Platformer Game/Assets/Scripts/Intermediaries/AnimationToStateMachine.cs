@@ -8,6 +8,11 @@ public class AnimationToStateMachine : MonoBehaviour
     public DeadState deadState;
     public RespawnState respawnState;
 
+    void StartAttack()
+    {
+        attackState.StartAttack();
+    }
+
     void TriggerAttack()
     {
         attackState.TriggerAttack();

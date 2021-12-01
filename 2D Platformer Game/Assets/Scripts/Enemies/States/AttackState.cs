@@ -45,6 +45,11 @@ public class AttackState : State
         isPlayerMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
     }
 
+    public virtual void StartAttack()
+    {
+
+    }
+
     public virtual void TriggerAttack()
     {
 

@@ -4,70 +4,83 @@ using UnityEngine;
 
 public class ProjectileSkill : Projectile
 {
-    [SerializeField] float _gravity;
+    Animator _anim;
+    Collider2D _collider;
 
-    bool isGravityOn;
+    Vector3 _fireDirection;
+
+    bool _isCasting;
 
     protected override void Awake()
     {
         base.Awake();
+
+        _anim = GetComponent<Animator>();
+        _collider = GetComponent<Collider2D>();
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        rb.gravityScale = 0f;
+        _fireDirection = (playerTransform.position - transform.position).normalized;
+        hasHitGround = false;
+        _isCasting = true;
+        startPosition = transform.position;
+        _anim.SetBool("isCasting", _isCasting);
+    }
 
-        xStartPosition = transform.position.x;
-        isGravityOn = false;
+    private void OnDisable()
+    {
+        _collider.enabled = false;
     }
 
     void FixedUpdate()
     {
-        if (isGravityOn)
+        if (Vector3.Distance(startPosition, transform.position) >= travelDistance && !hasHitGround)
         {
-            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        if (Mathf.Abs(xStartPosition - transform.position.x) >= travelDistance && !isGravityOn && !hasHitGround)
-        {
-            hasHitGround = false;
-            isGravityOn = true;
-            rb.gravityScale = _gravity;
+            EnemySkillPool.Instance.ReturnToPool(this);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        attackDetails.position = transform.position;
+
+        if (collision.TryGetComponent<IDamageable>(out var damageable))
         {
-            attackDetails.position = transform.position;
+            bool isHit = damageable.Damage(attackDetails);
 
-            if (collision.TryGetComponent<IDamageable>(out var damageable))
+            if (isHit)
             {
-                bool isHit = damageable.Damage(attackDetails);
-
-                if (isHit)
-                {
-                    rb.velocity = Vector2.zero;
-                    //EnemyArrowPool.Instance.ReturnToPool(this);
-                }
+                rb.velocity = Vector2.zero;
+                EnemySkillPool.Instance.ReturnToPool(this);
             }
         }
         else
         {
             hasHitGround = true;
-            rb.gravityScale = 0f;
             rb.velocity = Vector2.zero;
-            StartCoroutine(DisableProjectile(projectileDurationAfterHitGround));
+            if (gameObject.activeSelf)
+                StartCoroutine(DisableProjectile(projectileDurationAfterHitGround));
         }
     }
 
     IEnumerator DisableProjectile(float duration)
     {
         yield return new WaitForSeconds(duration);
-        //EnemyArrowPool.Instance.ReturnToPool(this);
+        EnemySkillPool.Instance.ReturnToPool(this);
     }
+
+    public override void FireProjectile(float speed, float travelDistance, float damage)
+    {
+        rb.velocity = _fireDirection * speed;
+        this.travelDistance = travelDistance;
+        attackDetails.damageAmount = damage;
+
+        _isCasting = false;
+        _anim.SetBool("isCasting", _isCasting);
+        _collider.enabled = true;
+    }
+
 }

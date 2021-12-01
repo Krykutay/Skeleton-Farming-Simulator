@@ -11,8 +11,8 @@ public class Projectile : MonoBehaviour
 
     protected AttackDetails attackDetails;
 
-    protected float travelDistance;
-    protected float xStartPosition;
+    protected float travelDistance = Mathf.Infinity;
+    protected Vector2 startPosition;
 
     protected bool hasHitGround;
 
@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         attackDetails.position = transform.position;
     }
     
-    public void FireProjectile(float speed, float travelDistance, float damage)
+    public virtual void FireProjectile(float speed, float travelDistance, float damage)
     {
         Vector3 firePosition = (playerTransform.position - transform.position).normalized;
         rb.velocity = firePosition * speed;

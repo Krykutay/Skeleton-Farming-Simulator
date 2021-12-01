@@ -53,11 +53,17 @@ public class E6_RangeAttackState : RangeAttackState
         base.DoChecks();
     }
 
+    public override void StartAttack()
+    {
+        base.StartAttack();
+
+        projectile = EnemySkillPool.Instance.Get(attackPosition.position, attackPosition.rotation);
+    }
+
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-
-        projectile = EnemyArrowPool.Instance.Get(attackPosition.position, attackPosition.rotation);
+        
         projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);
     }
 

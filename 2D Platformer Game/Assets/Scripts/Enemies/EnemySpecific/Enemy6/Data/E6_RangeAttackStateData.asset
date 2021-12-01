@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bc1631f26288d4cab54f4c60405905, type: 3}
   m_Name: E6_RangeAttackStateData
   m_EditorClassIdentifier: 
-  _projectileDamage: 15
-  _projectileSpeed: 20
-  _projectileTravelDistance: 10
+  _projectileDamage: 20
+  _projectileSpeed: 30
+  _projectileTravelDistance: 20
   _rangeAttackCooldown: 0.5

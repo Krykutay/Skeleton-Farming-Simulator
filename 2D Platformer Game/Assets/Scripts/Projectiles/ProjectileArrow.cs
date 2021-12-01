@@ -19,7 +19,7 @@ public class ProjectileArrow : Projectile
 
         rb.gravityScale = 0f;
 
-        xStartPosition = transform.position.x;
+        startPosition = transform.position;
         isGravityOn = false;
     }
 
@@ -31,7 +31,7 @@ public class ProjectileArrow : Projectile
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        if (Mathf.Abs(xStartPosition - transform.position.x) >= travelDistance && !isGravityOn && !hasHitGround)
+        if (Vector3.Distance(startPosition, transform.position) >= travelDistance && !isGravityOn && !hasHitGround)
         {
             hasHitGround = false;
             isGravityOn = true;
@@ -39,21 +39,18 @@ public class ProjectileArrow : Projectile
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        attackDetails.position = transform.position;
+
+        if (collision.TryGetComponent<IDamageable>(out var damageable))
         {
-            attackDetails.position = transform.position;
+            bool isHit = damageable.Damage(attackDetails);
 
-            if (collision.TryGetComponent<IDamageable>(out var damageable))
+            if (isHit)
             {
-                bool isHit = damageable.Damage(attackDetails);
-
-                if (isHit)
-                {
-                    rb.velocity = Vector2.zero;
-                    EnemyArrowPool.Instance.ReturnToPool(this);
-                }
+                rb.velocity = Vector2.zero;
+                EnemyArrowPool.Instance.ReturnToPool(this);
             }
         }
         else

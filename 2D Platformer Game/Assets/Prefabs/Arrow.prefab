@@ -134,5 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45674ce6279a6243845e163260fefa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileDurationAfterHitGround: 0.3
+  _projectileDurationAfterHitGround: 0.7
   _gravity: 3
