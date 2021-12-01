@@ -161,11 +161,6 @@ public class Enemy4 : Entity
         return Physics2D.Raycast(_ledgeBehindCheck.position, Vector2.down, entityData.ledgeBehindCheckDistance, entityData.ground);
     }
 
-    public override bool CheckMinDodgeDistance()
-    {
-        return Physics2D.Raycast(_minDodgeDistanceCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.ground);
-    }
-
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

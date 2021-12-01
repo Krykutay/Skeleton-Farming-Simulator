@@ -63,4 +63,13 @@ public class DodgeState : State
         if (!_isLedgeDetectionActionTaken)
             _isLedgeBehind = entity.CheckLedgeBehind();
     }
+
+    public bool CheckCanDodge(Vector3 position)
+    {
+        bool isLedge = !Physics2D.Raycast(position, Vector2.down, entity.entityData.ledgeCheckDistance, entity.entityData.ground);
+        bool isWall = Physics2D.Raycast(position, -Vector2.right, entity.entityData.wallCheckDistance, entity.entityData.ground);
+
+        return (!isLedge && !isWall);
+    }
+
 }

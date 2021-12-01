@@ -25,7 +25,7 @@ public class E6_PlayerDetectedState : PlayerDetectedState
 
         if (performMeleeRangeAction)
         {
-            if (Time.time >= enemy.teleportState.startTime + enemy.teleportStateData.dodgeCooldown && entity.CheckMinDodgeDistance())
+            if (Time.time >= enemy.teleportState.startTime + enemy.teleportStateData.dodgeCooldown)
             {
                 stateMachine.ChangeState(enemy.teleportState);
             }

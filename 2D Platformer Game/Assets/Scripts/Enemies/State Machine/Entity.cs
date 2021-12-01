@@ -166,11 +166,6 @@ public class Entity : MonoBehaviour, IDamageable
         return false;
     }
 
-    public virtual bool CheckMinDodgeDistance()
-    {
-        return false;
-    }
-
     public virtual bool CheckPlayerInMinAgroRange()
     {
         float distance = Vector2.Distance(_playerCheck.position, playerTransform.position);
