@@ -149,7 +149,7 @@ public class Enemy6 : Entity
 
     public override bool CheckLedgeBehind()
     {
-        return Physics2D.Raycast(_ledgeBehindCheck.position, Vector2.down, entityData.ledgeBehindCheckDistance, entityData.ground);
+        return Physics2D.Raycast(_ledgeBehindCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.ground);
     }
 
     public override void OnDrawGizmos()
