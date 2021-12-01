@@ -4,9 +4,6 @@ public class E4_PlayerDetectedState : PlayerDetectedState
 {
     Enemy4 enemy;
 
-    Vector3 _minDodgeLeftLength;
-    Vector3 _minDodgeRightLength;
-
     public E4_PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData, Enemy4 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
@@ -28,9 +25,9 @@ public class E4_PlayerDetectedState : PlayerDetectedState
 
         if (performMeleeRangeAction)
         {
-            if (Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown)
+            if (Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown && enemy.dodgeState.TransitionToDodgeState())
             {
-                TransitionToDodgeState();
+                stateMachine.ChangeState(enemy.dodgeState);
             }
             else
             {
@@ -65,25 +62,5 @@ public class E4_PlayerDetectedState : PlayerDetectedState
     public override void DoChecks()
     {
         base.DoChecks();
-    }
-
-    void TransitionToDodgeState()
-    {
-        _minDodgeLeftLength.Set(enemy.transform.position.x - 1.5f * enemy.facingDirection, enemy.transform.position.y, enemy.transform.position.z);
-        _minDodgeRightLength.Set(enemy.transform.position.x + 1.5f * enemy.facingDirection, enemy.transform.position.y, enemy.transform.position.z);
-
-        if (enemy.dodgeState.CheckCanDodge(_minDodgeLeftLength))
-        {
-            stateMachine.ChangeState(enemy.dodgeState);
-        }
-        else if (enemy.dodgeState.CheckCanDodge(_minDodgeRightLength))
-        {
-            entity.Flip();
-            stateMachine.ChangeState(enemy.dodgeState);
-        }
-        else
-        {
-            stateMachine.ChangeState(enemy.meleeAttackState);
-        }
     }
 }

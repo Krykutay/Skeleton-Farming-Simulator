@@ -12,6 +12,9 @@ public class DodgeState : State
     bool _isLedgeBehind;
     bool _isLedgeDetectionActionTaken;
 
+    Vector3 _minDodgeLeftLength;
+    Vector3 _minDodgeRightLength;
+
     public DodgeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DodgeState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -70,6 +73,26 @@ public class DodgeState : State
         bool isWall = Physics2D.Raycast(position, -Vector2.right, entity.entityData.wallCheckDistance, entity.entityData.ground);
 
         return (!isLedge && !isWall);
+    }
+
+    public bool TransitionToDodgeState()
+    {
+        _minDodgeLeftLength.Set(entity.transform.position.x - 1.5f * entity.facingDirection, entity.transform.position.y, entity.transform.position.z);
+        _minDodgeRightLength.Set(entity.transform.position.x + 1.5f * entity.facingDirection, entity.transform.position.y, entity.transform.position.z);
+
+        if (CheckCanDodge(_minDodgeLeftLength))
+        {
+            return true;
+        }
+        else if (CheckCanDodge(_minDodgeRightLength))
+        {
+            entity.Flip();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
