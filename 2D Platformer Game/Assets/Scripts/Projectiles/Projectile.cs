@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerTransform = Player.Instance.transform.Find("Core").transform;
+        playerTransform = Player.Instance.transform.Find("Core").Find("PlayerHitPosition").transform;
     }
 
     protected virtual void OnEnable()
