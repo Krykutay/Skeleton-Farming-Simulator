@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b183e887df55846a368ca7480125d0, type: 3}
   m_Name: E6_TeleportStateData
   m_EditorClassIdentifier: 
-  _dodgeSpeed: 15
-  _dodgeTime: 0.2
-  _dodgeCooldown: 2
-  _dodgeAngle: {x: 1, y: 1}
+  _teleportSpeed: 4.5
+  _teleportDuration: 1
+  _teleportCooldown: 2
