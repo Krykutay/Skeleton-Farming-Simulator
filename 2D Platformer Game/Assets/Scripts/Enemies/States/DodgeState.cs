@@ -46,7 +46,7 @@ public class DodgeState : State
             _isLedgeDetectionActionTaken = true;
         }
 
-        if (Time.time >= startTime + stateData.dodgeTime && isGrounded)
+        if (Time.time >= startTime + stateData.dodgeDuration && isGrounded)
         {
             isDodgeOver = true;
         }

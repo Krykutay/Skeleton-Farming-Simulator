@@ -28,22 +28,23 @@ public class E4_DodgeState : DodgeState
 
         enemy.anim.SetFloat("yVelocity", enemy.rb.velocity.y);
 
-        if (isDodgeOver)
+        if (!isDodgeOver)
+            return;
+
+        if (isPlayerInMaxAgroRange && performedCloseRangeAction)
         {
-            if (isPlayerInMaxAgroRange && performedCloseRangeAction)
-            {
-                stateMachine.ChangeState(enemy.meleeAttackState);
-            }
-            else if (isPlayerInMaxAgroRange && !performedCloseRangeAction)
-            {
-                stateMachine.ChangeState(enemy.rangeAttackState);
-            }
-            else if (!isPlayerInMaxAgroRange)
-            {
-                enemy.idleState.SetFlipAfterIdle(false);
-                stateMachine.ChangeState(enemy.idleState);
-            }
+            stateMachine.ChangeState(enemy.meleeAttackState);
         }
+        else if (isPlayerInMaxAgroRange && !performedCloseRangeAction)
+        {
+            stateMachine.ChangeState(enemy.rangeAttackState);
+        }
+        else if (!isPlayerInMaxAgroRange)
+        {
+            enemy.idleState.SetFlipAfterIdle(false);
+            stateMachine.ChangeState(enemy.idleState);
+        }
+        
     }
 
     public override void PhysicsUpdate()

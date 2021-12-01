@@ -7,10 +7,12 @@ public class TeleportState : State
     protected bool performedCloseRangeAction;
     protected bool isPlayerInMaxAgroRange;
     protected bool isGrounded;
-    protected bool isDodgeOver;
+    protected bool isTeleportOver;
 
     bool _isLedgeBehind;
     bool _isLedgeDetectionActionTaken;
+    bool _isTeleportStarted;
+    bool _isTeleportBackAnimTriggered;
 
     public TeleportState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_TeleportState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -21,9 +23,11 @@ public class TeleportState : State
     {
         base.Enter();
 
-        isDodgeOver = false;
+        entity.atsm.teleportState = this;
+        _isTeleportStarted = false;
+        isTeleportOver = false;
         _isLedgeDetectionActionTaken = false;
-        entity.SetVelocity(stateData.dodgeSpeed, stateData.dodgeAngle, -entity.facingDirection);
+        _isTeleportBackAnimTriggered = false;
     }
 
     public override void Exit()
@@ -40,15 +44,15 @@ public class TeleportState : State
     {
         base.PhysicsUpdate();
 
-        if (!_isLedgeBehind && !_isLedgeDetectionActionTaken)
+        if (_isTeleportBackAnimTriggered)
+            return;
+
+        if (_isTeleportStarted && (!_isLedgeBehind || Time.time >= startTime + stateData.teleportDuration))
         {
             entity.SetVelocityX(0f);
+            entity.anim.SetTrigger("teleportBack");
             _isLedgeDetectionActionTaken = true;
-        }
-
-        if (Time.time >= startTime + stateData.dodgeTime && isGrounded)
-        {
-            isDodgeOver = true;
+            _isTeleportBackAnimTriggered = true;
         }
     }
 
@@ -62,5 +66,25 @@ public class TeleportState : State
 
         if (!_isLedgeDetectionActionTaken)
             _isLedgeBehind = entity.CheckLedgeBehind();
+    }
+
+    public bool CheckCanTeleport(Vector3 position)
+    {
+        bool isLedge = !Physics2D.Raycast(position, Vector2.down, entity.entityData.ledgeCheckDistance, entity.entityData.ground);
+        bool isWall = Physics2D.Raycast(position, -Vector2.right, entity.entityData.wallCheckDistance, entity.entityData.ground);
+
+        return (!isLedge && !isWall);
+    }
+
+    public void TeleportStarted()
+    {
+        _isTeleportStarted = true;
+        startTime = Time.time;
+        entity.SetVelocity(stateData.teleportSpeed, Vector2.right, -entity.facingDirection);
+    }
+
+    public void TeleportEnded()
+    {
+        isTeleportOver = true;
     }
 }

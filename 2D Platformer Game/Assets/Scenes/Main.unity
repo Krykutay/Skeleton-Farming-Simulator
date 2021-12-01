@@ -969,7 +969,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294942790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: -0.3, z: 0}
+  m_LocalPosition: {x: -0.543, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2263212297254369616}
@@ -2246,36 +2246,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &795949374
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 795949375}
-  m_Layer: 0
-  m_Name: MinDodgeDistanceCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &795949375
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795949374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -0.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2263212297254369616}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &822027943
 GameObject:
   m_ObjectHideFlags: 0
@@ -4229,7 +4199,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2263212297254369616}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1635763560
 GameObject:
@@ -4259,7 +4229,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2263212297254369616}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1643825349
 GameObject:
@@ -53886,7 +53856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2263212295689845522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.86, y: 13.272, z: 0}
+  m_LocalPosition: {x: 0.43, y: 16.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2263212297254369616}
@@ -53942,7 +53912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2263212295689845523
 Animator:
   serializedVersion: 3
@@ -53990,7 +53960,7 @@ MonoBehaviour:
   _rangeAttackStateData: {fileID: 11400000, guid: cee9f1d85516556458af1e73ec2242e2, type: 2}
   _respawnStateData: {fileID: 11400000, guid: d732d10d5cb24c3408394a1cfc959c29, type: 2}
   _ledgeBehindCheck: {fileID: 294942791}
-  _minDodgeDistanceCheck: {fileID: 795949375}
+  _minDodgeDistanceCheck: {fileID: 0}
   _meleeAttackPosition: {fileID: 1635763561}
   _rangeAttackPosition: {fileID: 1615055044}
 --- !u!50 &2263212295689845526
@@ -54499,7 +54469,6 @@ Transform:
   - {fileID: 1883046216}
   - {fileID: 825636205}
   - {fileID: 294942791}
-  - {fileID: 795949375}
   - {fileID: 1635763561}
   - {fileID: 1615055044}
   m_Father: {fileID: 2263212295689845520}

@@ -29,7 +29,6 @@ public class Enemy4 : Entity
     [SerializeField] D_RespawnState _respawnStateData;
 
     [SerializeField] Transform _ledgeBehindCheck;
-    [SerializeField] Transform _minDodgeDistanceCheck;
     [SerializeField] Transform _meleeAttackPosition;
     [SerializeField] Transform _rangeAttackPosition;
 

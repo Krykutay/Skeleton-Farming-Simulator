@@ -7,6 +7,7 @@ public class AnimationToStateMachine : MonoBehaviour
     public AttackState attackState;
     public DeadState deadState;
     public RespawnState respawnState;
+    public TeleportState teleportState;
 
     void StartAttack()
     {
@@ -31,5 +32,15 @@ public class AnimationToStateMachine : MonoBehaviour
     void Respawned()
     {
         respawnState.Respawned();
+    }
+
+    void Teleported()
+    {
+        teleportState.TeleportStarted();
+    }
+
+    void TeleportEnded()
+    {
+        teleportState.TeleportEnded();
     }
 }

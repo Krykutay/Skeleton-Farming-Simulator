@@ -26,24 +26,23 @@ public class E6_TeleportState : TeleportState
     {
         base.LogicUpdate();
 
-        enemy.anim.SetFloat("yVelocity", enemy.rb.velocity.y);
+        if (!isTeleportOver)
+            return;
 
-        if (isDodgeOver)
+        if (isPlayerInMaxAgroRange && performedCloseRangeAction)
         {
-            if (isPlayerInMaxAgroRange && performedCloseRangeAction)
-            {
-                stateMachine.ChangeState(enemy.meleeAttackState);
-            }
-            else if (isPlayerInMaxAgroRange && !performedCloseRangeAction)
-            {
-                stateMachine.ChangeState(enemy.rangeAttackState);
-            }
-            else if (!isPlayerInMaxAgroRange)
-            {
-                enemy.idleState.SetFlipAfterIdle(false);
-                stateMachine.ChangeState(enemy.idleState);
-            }
+            stateMachine.ChangeState(enemy.meleeAttackState);
         }
+        else if (isPlayerInMaxAgroRange && !performedCloseRangeAction)
+        {
+            stateMachine.ChangeState(enemy.rangeAttackState);
+        }
+        else if (!isPlayerInMaxAgroRange)
+        {
+            enemy.idleState.SetFlipAfterIdle(false);
+            stateMachine.ChangeState(enemy.idleState);
+        }
+        
     }
 
     public override void PhysicsUpdate()

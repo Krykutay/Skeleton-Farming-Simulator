@@ -4,6 +4,9 @@ public class E6_PlayerDetectedState : PlayerDetectedState
 {
     Enemy6 enemy;
 
+    Vector3 _minTeleportLeftLength;
+    Vector3 _minTeleportRightLength;
+
     public E6_PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData, Enemy6 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
@@ -25,9 +28,9 @@ public class E6_PlayerDetectedState : PlayerDetectedState
 
         if (performMeleeRangeAction)
         {
-            if (Time.time >= enemy.teleportState.startTime + enemy.teleportStateData.dodgeCooldown)
+            if (Time.time >= enemy.teleportState.startTime + enemy.teleportStateData.teleportCooldown)
             {
-                stateMachine.ChangeState(enemy.teleportState);
+                TransitionToTeleportState();
             }
             else
             {
@@ -62,5 +65,49 @@ public class E6_PlayerDetectedState : PlayerDetectedState
     public override void DoChecks()
     {
         base.DoChecks();
+    }
+
+    void TransitionToTeleportState()
+    {
+        _minTeleportLeftLength.Set(enemy.transform.position.x - 1.5f * enemy.facingDirection, enemy.transform.position.y, enemy.transform.position.z);
+        _minTeleportRightLength.Set(enemy.transform.position.x + 1.5f * enemy.facingDirection, enemy.transform.position.y, enemy.transform.position.z);
+
+        bool canTeleportLeft = enemy.teleportState.CheckCanTeleport(_minTeleportLeftLength);
+        bool canTeleportRight = enemy.teleportState.CheckCanTeleport(_minTeleportRightLength);
+
+        float randomAction = Random.Range(0, 2);
+
+        if (randomAction == 0)
+        {
+            if (canTeleportLeft)
+            {
+                stateMachine.ChangeState(enemy.teleportState);
+            }
+            else if (canTeleportRight)
+            {
+                entity.Flip();
+                stateMachine.ChangeState(enemy.teleportState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemy.meleeAttackState);
+            }
+        }
+        else
+        {
+            if (canTeleportRight)
+            {
+                entity.Flip();
+                stateMachine.ChangeState(enemy.teleportState);
+            }
+            else if (canTeleportLeft)
+            {
+                stateMachine.ChangeState(enemy.teleportState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemy.meleeAttackState);
+            }
+        }
     }
 }
