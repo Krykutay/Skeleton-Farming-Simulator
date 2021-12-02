@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour, IDamageable, IKnockbackable
 {
     public static Action PlayerDied;
     public static Player Instance { get; private set; }
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerCrouchMoveState crouchMoveState { get; private set; }
     public PlayerAttackState primaryAttackState { get; private set; }
     public PlayerAttackState secondaryAttackState { get; private set; }
+    public PlayerKnockbackState knockbackState { get; private set; }
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour, IDamageable
     public Vector2 currentVelocity { get; private set; }
     public int facingDirection { get; private set; }
     public float initialGravity { get; private set; }
+    public float stunDuration { get; private set; }
 
     Vector2 _workSpace;
     float _currentHealth;
@@ -80,6 +82,7 @@ public class Player : MonoBehaviour, IDamageable
         crouchMoveState = new PlayerCrouchMoveState(this, stateMachine, _playerData, "crouchMove");
         primaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
         secondaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
+        knockbackState = new PlayerKnockbackState(this, stateMachine, _playerData, "inAir");
     }
 
     void OnEnable()
@@ -232,27 +235,30 @@ public class Player : MonoBehaviour, IDamageable
         movementCollider.offset = center;
     }
 
+    public bool Knockback(AttackDetails attackDetails)
+    {
+        int enemyDirection;
+
+        if (attackDetails.position.x < _playerHitPosition.position.x)
+            enemyDirection = 1;
+        else
+            enemyDirection = -1;
+
+        if (attackDetails.knockbackStrength > 0f)
+        {
+            stateMachine.ChangeState(knockbackState);
+            SetVelocity(attackDetails.knockbackStrength, attackDetails.knockbackAngle, enemyDirection);
+        }
+
+        return true;
+    }
+
     public bool Damage(AttackDetails attackDetails)
     {
         if (stateMachine.currentState == dashState)
             return false;
 
         DecreaseHealth(attackDetails.damageAmount);
-
-        /*
-        int enemyDirection;
-
-        if (attackDetails.position.x < transform.position.x)
-        {
-            enemyDirection = 1;
-        }
-        else
-        {
-            enemyDirection = -1;
-        }
-
-        // maybe knockback?
-        */
 
         return true;
     }
