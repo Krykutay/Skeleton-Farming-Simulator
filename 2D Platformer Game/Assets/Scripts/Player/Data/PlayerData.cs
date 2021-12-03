@@ -49,7 +49,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Check Variables")]
     [SerializeField] float _groundCheckRadius = 0.2f;
-    [SerializeField] float _wallCheckDistance = 0.36f;
+    [SerializeField] float _wallCheckDistance = 0.5f;
     [SerializeField] LayerMask _ground;
 
     public float maxHealth { get { return _maxHealth; } }

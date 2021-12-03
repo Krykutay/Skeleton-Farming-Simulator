@@ -37,7 +37,7 @@ MonoBehaviour:
   _crouchColliderHeight: 0.8
   _standColliderHeight: 1.6
   _groundCheckRadius: 0.24
-  _wallCheckDistance: 0.4
+  _wallCheckDistance: 0.7
   _ground:
     serializedVersion: 2
     m_Bits: 64
