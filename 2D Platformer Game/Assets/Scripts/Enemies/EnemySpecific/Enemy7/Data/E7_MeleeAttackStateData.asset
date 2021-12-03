@@ -13,36 +13,14 @@ MonoBehaviour:
   m_Name: E7_MeleeAttackStateData
   m_EditorClassIdentifier: 
   _attackDetails:
-  - attackName: Shield Slam1
-    damageAmount: 0
-    stunDamageAmount: 0
-    attackRadius: 0.8
-    size: {x: 0, y: 0}
-    knockbackAngle: {x: 1, y: 1}
-    knockbackStrength: 12
-    knockbackDuration: 0.3
   - attackName: Upper Cut
-    damageAmount: 0
+    damageAmount: 10
     stunDamageAmount: 0
     attackRadius: 0.8
     size: {x: 0, y: 0}
-    knockbackAngle: {x: 0, y: 0}
-    knockbackStrength: 0
-    knockbackDuration: 0
-  - attackName: Shield Slam2
-    damageAmount: 0
-    stunDamageAmount: 0
-    attackRadius: 0.8
-    size: {x: 0, y: 0}
-    knockbackAngle: {x: 1, y: 1}
-    knockbackStrength: 12
-    knockbackDuration: 0.3
   - attackName: Pierce
-    damageAmount: 0
+    damageAmount: 12
     stunDamageAmount: 0
     attackRadius: 0.8
     size: {x: 0, y: 0}
-    knockbackAngle: {x: 0, y: 0}
-    knockbackStrength: 0
-    knockbackDuration: 0
   _meleeAttackCooldown: 0.5

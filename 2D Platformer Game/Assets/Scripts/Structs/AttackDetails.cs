@@ -15,10 +15,5 @@ public struct AttackDetails
     [Header("Hit Box")]
     public Vector2 size;
 
-    [Header("Knockback")]
-    public Vector2 knockbackAngle;
-    public float knockbackStrength;
-    public float knockbackDuration;
-
     [System.NonSerialized] public Vector2 position;
 }
