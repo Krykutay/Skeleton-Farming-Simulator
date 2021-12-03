@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour
 {
     public static Action PlayerDied;
     public static Player Instance { get; private set; }
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerCrouchMoveState crouchMoveState { get; private set; }
     public PlayerAttackState primaryAttackState { get; private set; }
     public PlayerAttackState secondaryAttackState { get; private set; }
+    public PlayerKnockbackState knockbackState { get; private set; }
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -44,10 +45,15 @@ public class Player : MonoBehaviour, IDamageable
     public int facingDirection { get; private set; }
     public float initialGravity { get; private set; }
 
+    float _knockbackStrength;
+    Vector2 _knockbackAngle;
+    int _knockbackDirection;
+
     Vector2 _workSpace;
     float _currentHealth;
     float _initialHitPositionX;
     float _initialHitPositionY;
+    bool _knockbacked;
 
     void Awake()
     {
@@ -80,6 +86,7 @@ public class Player : MonoBehaviour, IDamageable
         crouchMoveState = new PlayerCrouchMoveState(this, stateMachine, _playerData, "crouchMove");
         primaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
         secondaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
+        knockbackState = new PlayerKnockbackState(this, stateMachine, _playerData, "inAir");
     }
 
     void OnEnable()
@@ -103,6 +110,15 @@ public class Player : MonoBehaviour, IDamageable
     {
         currentVelocity = rb.velocity;
         stateMachine.currentState.LogicUpdate();
+    }
+
+    void LateUpdate()
+    {
+        if (_knockbacked)
+        {
+            stateMachine.ChangeState(knockbackState);
+            SetVelocity(_knockbackStrength, _knockbackAngle, _knockbackDirection);
+        }
     }
 
     void FixedUpdate()
@@ -161,6 +177,11 @@ public class Player : MonoBehaviour, IDamageable
             _playerHitPosition.localPosition.x + _playerData.startOffset.x,
             _initialHitPositionY,
             0f);
+    }
+
+    public void SetKnockbackOver()
+    {
+        _knockbacked = false;
     }
 
     public void CheckIfShouldFlip(int xInput)
@@ -232,17 +253,11 @@ public class Player : MonoBehaviour, IDamageable
         movementCollider.offset = center;
     }
 
-    public bool Damage(AttackDetails attackDetails)
+    public void Knockback(AttackDetails attackDetails)
     {
-        if (stateMachine.currentState == dashState)
-            return false;
-
-        DecreaseHealth(attackDetails.damageAmount);
-
-        /*
         int enemyDirection;
 
-        if (attackDetails.position.x < transform.position.x)
+        if (attackDetails.position.x < _playerHitPosition.position.x)
         {
             enemyDirection = 1;
         }
@@ -251,13 +266,24 @@ public class Player : MonoBehaviour, IDamageable
             enemyDirection = -1;
         }
 
-        // maybe knockback?
-        */
+        _knockbackStrength = attackDetails.knockbackStrength;
+        _knockbackAngle = attackDetails.knockbackAngle;
+        _knockbackDirection = enemyDirection;
+
+        _knockbacked = true;
+    }
+
+    public bool Damage(AttackDetails attackDetails)
+    {
+        if (stateMachine.currentState == dashState)
+            return false;
+
+        DecreaseHealth(attackDetails.damageAmount);
 
         return true;
     }
 
-    public void DecreaseHealth(float amount)
+    void DecreaseHealth(float amount)
     {
         _currentHealth -= amount;
 

@@ -8,7 +8,11 @@ public struct AttackDetails
     public string attackName;
     public float damageAmount;
     public float stunDamageAmount;
-    
+
+    [Header("Knockback")]
+    public float knockbackStrength;
+    public Vector2 knockbackAngle;
+
     [Header("Hit Circle")]
     public float attackRadius;
 

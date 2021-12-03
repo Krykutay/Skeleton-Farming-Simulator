@@ -43,9 +43,9 @@ public class ProjectileArrow : Projectile
     {
         attackDetails.position = transform.position;
 
-        if (collision.TryGetComponent<IDamageable>(out var damageable))
+        if (collision.CompareTag("Player"))
         {
-            bool isHit = damageable.Damage(attackDetails);
+            bool isHit = Player.Instance.Damage(attackDetails);
 
             if (isHit)
             {

@@ -38,6 +38,7 @@ public class Entity : MonoBehaviour, IDamageable
         atsm = GetComponent<AnimationToStateMachine>();
 
         stateMachine = new FiniteStateMachine();
+        
     }
 
     public virtual void OnEnable()
@@ -51,7 +52,7 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void Start()
     {
-
+        
     }
 
     public virtual void Update()
