@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     float _initialHitPositionX;
     float _initialHitPositionY;
     bool _knockbacked;
+    AttackDetails _attackDetails;
 
     void Awake()
     {
@@ -125,6 +126,20 @@ public class Player : MonoBehaviour
     {
         stateMachine.currentState.PhysicsUpdate();
     }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (stateMachine.currentState != dashState)
+            return;
+
+        _attackDetails.damageAmount = _playerData.dashDamage;
+
+        if (collision.TryGetComponent<IDamageable>(out var damageable))
+        {
+            damageable.Damage(_attackDetails);
+        }
+    }  
 
     public void SetVelocityZero()
     {

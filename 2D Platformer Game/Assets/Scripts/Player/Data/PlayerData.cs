@@ -41,6 +41,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] float _drag = 10f;
     [SerializeField] float _dashEndYMultiplier = 0.2f;
     [SerializeField] float _distBetweenAfterImages = 0.5f;
+    [SerializeField] float _dashDamage = 8f;
 
     [Header("Crouch States")]
     [SerializeField] float _crouchMovementVelocity = 5f;
@@ -73,6 +74,7 @@ public class PlayerData : ScriptableObject
     public float drag { get { return _drag; } }
     public float dashEndYMultiplier { get { return _dashEndYMultiplier; } }
     public float distBetweenAfterImages { get { return _distBetweenAfterImages; } }
+    public float dashDamage { get { return _dashDamage; } }
     public float crouchMovementVelocity { get { return _crouchMovementVelocity; } }
     public float crouchColliderHeight { get { return _crouchColliderHeight; } }
     public float standColliderHeight { get { return _standColliderHeight; } }

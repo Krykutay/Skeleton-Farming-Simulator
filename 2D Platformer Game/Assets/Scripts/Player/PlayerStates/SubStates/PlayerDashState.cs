@@ -60,6 +60,7 @@ public class PlayerDashState : PlayerAbilityState
         player.anim.SetBool("crouchMove", false);
         player.anim.SetBool("crouchIdle", false);
         player.anim.SetBool("dashInAir", false);
+        player.anim.ResetTrigger("dashTrigger");
     }
 
     public override void LogicUpdate()
@@ -182,6 +183,7 @@ public class PlayerDashState : PlayerAbilityState
         }
         else
         {
+            player.anim.SetTrigger("dashTrigger");
             player.anim.SetBool("dashInAir", true);
             player.anim.SetBool("inAir", false);
             player.anim.SetBool("move", false);
