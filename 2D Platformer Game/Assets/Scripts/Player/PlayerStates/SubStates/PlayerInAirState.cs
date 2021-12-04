@@ -40,10 +40,12 @@ public class PlayerInAirState : PlayerState
     {
         base.Exit();
 
+        player.anim.SetBool("isGrounded", false);
         _previousIsTouchingWall = false;
         _previousIsTouchingWallBack = false;
         _isTouchingWall = false;
         _isTouchingWallBack = false;
+        player.anim.SetFloat("yVelocity", 0f);
     }
 
     public override void LogicUpdate()  // TODO: may change instantly stopping on the air
@@ -88,6 +90,7 @@ public class PlayerInAirState : PlayerState
         }
         else if (_jumpInput && player.jumpState.CanJump())
         {
+            player.anim.SetTrigger("jump");
             _coyoteTime = false;
             player.inputHandler.UseJumpInput();
             stateMachine.ChangeState(player.jumpState);

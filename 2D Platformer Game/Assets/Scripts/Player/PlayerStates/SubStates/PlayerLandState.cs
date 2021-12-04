@@ -14,6 +14,13 @@ public class PlayerLandState : PlayerGroundedState
 
         if (isExitingState)
             return;
+
+        //player.CheckIfShouldFlip(xInput);
+
+        //player.SetVelocityX(playerData.movementVelocity * xInput);
+
+        //if (!isAnimationFinished)
+          //  return;
         
         if (xInput != 0)
         {

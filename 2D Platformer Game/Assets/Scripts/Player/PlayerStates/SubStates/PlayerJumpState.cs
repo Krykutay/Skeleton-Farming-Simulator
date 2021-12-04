@@ -15,6 +15,8 @@ public class PlayerJumpState : PlayerAbilityState
     {
         base.Enter();
 
+        player.anim.SetBool("isGrounded", player.CheckIfGrounded());
+
         player.inputHandler.UseJumpInput();
         player.SetVelocityY(playerData.jumpVelocity);
         _amountOfJumpsLeft--;

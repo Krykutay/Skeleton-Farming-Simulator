@@ -48,7 +48,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] float _standColliderHeight = 1.6f;
 
     [Header("Check Variables")]
-    [SerializeField] float _groundCheckRadius = 0.2f;
+    [SerializeField] float _groundCheckRadius = 0.3f;
     [SerializeField] float _wallCheckDistance = 0.5f;
     [SerializeField] LayerMask _ground;
 
