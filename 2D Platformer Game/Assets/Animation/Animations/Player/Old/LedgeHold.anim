@@ -19,9 +19,12 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_EulerCurves: []
   m_PositionCurves: []
 =======
+=======
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
@@ -145,7 +148,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: {x: 0, y: 0, z: 89.34}
+=======
+        value: {x: 0, y: 0, z: 98.132}
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: {x: 0, y: 0, z: 98.132}
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -174,7 +181,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: {x: 0, y: 0, z: 92.314}
+=======
+        value: {x: 0, y: 0, z: 101.96}
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: {x: 0, y: 0, z: 101.96}
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -203,7 +214,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: {x: 0, y: 0, z: 89.34}
+=======
+        value: {x: 0, y: 0, z: 98.132}
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: {x: 0, y: 0, z: 98.132}
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -392,7 +407,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: {x: 0.656, y: 0.352, z: -0}
+=======
+        value: {x: 0.684, y: 0.347, z: 0}
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: {x: 0.684, y: 0.347, z: 0}
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -421,7 +440,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: {x: 0.671, y: 0.36, z: 0}
+=======
+        value: {x: 0.692, y: 0.355, z: 0}
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: {x: 0.692, y: 0.355, z: 0}
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -450,7 +473,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: {x: 0.656, y: 0.352, z: -0}
+=======
+        value: {x: 0.684, y: 0.347, z: 0}
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: {x: 0.684, y: 0.347, z: 0}
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -529,7 +556,10 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 07c3fef (Revert "Ledge Grab fix")
+=======
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
@@ -595,6 +625,9 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
@@ -702,6 +735,9 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
@@ -714,6 +750,7 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -817,6 +854,8 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
+=======
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -851,9 +890,12 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_EditorCurves: []
   m_EulerEditorCurves: []
 =======
+=======
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
@@ -1506,7 +1548,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 0.656
+=======
+        value: 0.684
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0.684
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1535,7 +1581,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 0.671
+=======
+        value: 0.692
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0.692
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1564,7 +1614,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 0.656
+=======
+        value: 0.684
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0.684
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1603,7 +1657,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 0.352
+=======
+        value: 0.347
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0.347
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1632,7 +1690,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 0.36
+=======
+        value: 0.355
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0.355
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1661,7 +1723,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 0.352
+=======
+        value: 0.347
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0.347
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1700,7 +1766,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: -0
+=======
+        value: 0
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1738,7 +1808,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: -0
+=======
+        value: 0
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 0
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1851,7 +1925,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 89.34
+=======
+        value: 98.132
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 98.132
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1880,7 +1958,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 92.314
+=======
+        value: 101.96
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 101.96
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -1909,7 +1991,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         value: 89.34
+=======
+        value: 98.132
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
         value: 98.132
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2363,7 +2449,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/Chest
+=======
+    path: BodyParts/Body/Head
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/Head
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2393,7 +2483,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/Chest
+=======
+    path: BodyParts/Body/Head
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/Head
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2423,7 +2517,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/Chest
+=======
+    path: BodyParts/Body/Head
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/Head
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2453,7 +2551,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/RightLeg
+=======
+    path: BodyParts/LeftLeg
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/LeftLeg
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2483,7 +2585,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/RightLeg
+=======
+    path: BodyParts/LeftLeg
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/LeftLeg
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2513,7 +2619,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/RightLeg
+=======
+    path: BodyParts/LeftLeg
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/LeftLeg
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2543,7 +2653,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/LeftLeg
+=======
+    path: BodyParts/RightLeg
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/RightLeg
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2573,7 +2687,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/LeftLeg
+=======
+    path: BodyParts/RightLeg
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/RightLeg
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2603,7 +2721,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/LeftLeg
+=======
+    path: BodyParts/RightLeg
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/RightLeg
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2633,7 +2755,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/LeftArm
+=======
+    path: BodyParts/Body/Chest
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/Chest
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2663,7 +2789,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/LeftArm
+=======
+    path: BodyParts/Body/Chest
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/Chest
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2693,7 +2823,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/LeftArm
+=======
+    path: BodyParts/Body/Chest
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/Chest
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2718,6 +2852,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2739,6 +2874,9 @@ AnimationClip:
 =======
     path: BodyParts/Body/RightArm
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
+=======
+    path: BodyParts/Body/RightArm
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2753,7 +2891,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/Head
+=======
+    path: BodyParts/Body/RightArm
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/RightArm
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2783,7 +2925,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/Head
+=======
+    path: BodyParts/Body/RightArm
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/RightArm
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2813,7 +2959,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/RightArm
+=======
+    path: BodyParts/Body/LeftArm
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/LeftArm
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2843,7 +2993,11 @@ AnimationClip:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: BodyParts/Body/RightArm
+=======
+    path: BodyParts/Body/LeftArm
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/LeftArm
 >>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
@@ -2868,6 +3022,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2877,6 +3032,11 @@ AnimationClip:
     classID: 4
     script: {fileID: 0}
 >>>>>>> parent of 07c3fef (Revert "Ledge Grab fix")
+=======
+    path: BodyParts/Body/LeftArm
+    classID: 4
+    script: {fileID: 0}
+>>>>>>> parent of bab885e (Revert "LedgeGrap & Ledge Hold & Wall slide")
 =======
     path: BodyParts/Body/LeftArm
     classID: 4
