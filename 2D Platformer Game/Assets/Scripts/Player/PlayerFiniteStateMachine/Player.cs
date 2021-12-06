@@ -31,7 +31,8 @@ public class Player : MonoBehaviour
     public PlayerCrouchIdleState crouchIdleState { get; private set; }
     public PlayerCrouchMoveState crouchMoveState { get; private set; }
     public PlayerAttackState primaryAttackState { get; private set; }
-    public PlayerAttackState secondaryAttackState { get; private set; }
+    public PlayerDefenseState defenseState { get; private set; }
+    public PlayerDefenseMoveState defenseMoveState { get; private set; }
     public PlayerKnockbackState knockbackState { get; private set; }
 
     public Animator anim { get; private set; }
@@ -86,7 +87,8 @@ public class Player : MonoBehaviour
         crouchIdleState = new PlayerCrouchIdleState(this, stateMachine, _playerData, "crouchIdle");
         crouchMoveState = new PlayerCrouchMoveState(this, stateMachine, _playerData, "crouchMove");
         primaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
-        secondaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
+        defenseState = new PlayerDefenseState(this, stateMachine, _playerData, "parry");
+        defenseMoveState = new PlayerDefenseMoveState(this, stateMachine, _playerData, "parryMove");
         knockbackState = new PlayerKnockbackState(this, stateMachine, _playerData, "inAir");
     }
 

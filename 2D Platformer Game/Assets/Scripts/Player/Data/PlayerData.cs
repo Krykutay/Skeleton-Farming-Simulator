@@ -9,6 +9,9 @@ public class PlayerData : ScriptableObject
     [Header("Move State")]
     [SerializeField] float _movementVelocity = 10f;
 
+    [Header("Defense State")]
+    [SerializeField] float _parryMovementVelocity = 5f;
+
     [Header("Jump State")]
     [SerializeField] float _jumpVelocity = 15f;
     [SerializeField] int _amountOfJumps = 2;
@@ -55,6 +58,7 @@ public class PlayerData : ScriptableObject
 
     public float maxHealth { get { return _maxHealth; } }
     public float movementVelocity { get { return _movementVelocity; } }
+    public float parryMovementVelocity { get { return _parryMovementVelocity; } }
     public float jumpVelocity { get { return _jumpVelocity; } }
     public int amountOfJumps { get { return _amountOfJumps; } }
     public float wallJumpVelocity { get { return _wallJumpVelocity; } }

@@ -10,6 +10,8 @@ public class PlayerGroundedState : PlayerState
     bool _jumpInput;
     bool _grabInput;
     bool _dashInput;
+    bool _attackInput;
+    bool _defenseInput;
 
     // Checks
     protected bool isTouchingCeiling;
@@ -44,14 +46,16 @@ public class PlayerGroundedState : PlayerState
         _jumpInput = player.inputHandler.jumpInput;
         _grabInput = player.inputHandler.grabInput;
         _dashInput = player.inputHandler.dashInput;
+        _attackInput = player.inputHandler.attackInput;
+        _defenseInput = player.inputHandler.defenseInput;
 
-        if (player.inputHandler.attackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
+        if (_attackInput && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.primaryAttackState);
         }
-        else if (player.inputHandler.attackInputs[(int)CombatInputs.secondary] && !isTouchingCeiling)
+        else if (_defenseInput && !isTouchingCeiling)
         {
-            stateMachine.ChangeState(player.secondaryAttackState);
+            stateMachine.ChangeState(player.defenseState);
         }
         else if (_jumpInput && player.jumpState.CanJump() && !isTouchingCeiling)
         {

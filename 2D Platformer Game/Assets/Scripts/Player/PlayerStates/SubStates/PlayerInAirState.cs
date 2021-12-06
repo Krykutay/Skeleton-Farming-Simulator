@@ -10,6 +10,8 @@ public class PlayerInAirState : PlayerState
     bool _jumpInputStopped;
     bool _grabInput;
     bool _dashInput;
+    bool _attackInput;
+    bool _defenseInput;
 
     // Checks
     bool _isGrounded;
@@ -60,16 +62,18 @@ public class PlayerInAirState : PlayerState
         _jumpInputStopped = player.inputHandler.jumpInputStopped;
         _grabInput = player.inputHandler.grabInput;
         _dashInput = player.inputHandler.dashInput;
+        _attackInput = player.inputHandler.attackInput;
+        _defenseInput = player.inputHandler.defenseInput;
 
         CheckJumpMultiplier();
 
-        if (player.inputHandler.attackInputs[(int)CombatInputs.primary])
+        if (_attackInput)
         {
             stateMachine.ChangeState(player.primaryAttackState);
         }
-        else if (player.inputHandler.attackInputs[(int)CombatInputs.secondary])
+        else if (_defenseInput)
         {
-            stateMachine.ChangeState(player.secondaryAttackState);
+            stateMachine.ChangeState(player.defenseState);
         }
         else if (_isGrounded && player.currentVelocity.y < 0.01f)
         {

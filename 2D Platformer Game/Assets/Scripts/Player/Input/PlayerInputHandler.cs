@@ -2,12 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum CombatInputs
-{
-    primary,
-    secondary
-}
-
 public class PlayerInputHandler : MonoBehaviour
 {
     Camera _cam;
@@ -21,7 +15,7 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction _dashAction;
     InputAction _dashDirectionAction;
     InputAction _primaryAttackAction;
-    InputAction _secondaryAttackAction;
+    InputAction _defenseAction;
 
     public int xInput { get; private set; }
     public int yInput { get; private set;}
@@ -31,7 +25,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool dashInput { get; private set; }
     public bool dashInputStopped { get; private set; }
     public Vector2 rawDashDirectionInput { get; private set; }
-    public bool[] attackInputs { get; private set; }
+    public bool attackInput { get; private set; }
+    public bool defenseInput { get; private set; }
 
     [SerializeField] float _inputHoldTime = 0.2f;
 
@@ -51,10 +46,7 @@ public class PlayerInputHandler : MonoBehaviour
         _dashAction = _playerInput.actions["Dash"];
         _dashDirectionAction = _playerInput.actions["DashDirection"];
         _primaryAttackAction = _playerInput.actions["PrimaryAttack"];
-        _secondaryAttackAction = _playerInput.actions["SecondaryAttack"];
-
-        int count = Enum.GetValues(typeof(CombatInputs)).Length;
-        attackInputs = new bool[count];
+        _defenseAction = _playerInput.actions["Parry"];
     }
 
     void OnEnable()
@@ -82,8 +74,8 @@ public class PlayerInputHandler : MonoBehaviour
         _primaryAttackAction.started += PrimaryAttackStart;
         _primaryAttackAction.canceled += PrimaryAttackCancel;
 
-        _secondaryAttackAction.started += SecondaryAttackStart;
-        _secondaryAttackAction.canceled += SecondaryAttackCancel;
+        _defenseAction.started += DefenseStart;
+        _defenseAction.canceled += DefenseCancel;
     }
 
     void OnDisable()
@@ -111,8 +103,8 @@ public class PlayerInputHandler : MonoBehaviour
         _primaryAttackAction.started -= PrimaryAttackStart;
         _primaryAttackAction.canceled -= PrimaryAttackCancel;
 
-        _secondaryAttackAction.started -= SecondaryAttackStart;
-        _secondaryAttackAction.canceled -= SecondaryAttackCancel;
+        _defenseAction.started -= DefenseStart;
+        _defenseAction.canceled -= DefenseCancel;
     }
 
     void Update()
@@ -263,21 +255,21 @@ public class PlayerInputHandler : MonoBehaviour
 
     void PrimaryAttackStart(InputAction.CallbackContext context)
     {
-        attackInputs[(int)CombatInputs.primary] = true;
+        attackInput = true;
     }
 
     void PrimaryAttackCancel(InputAction.CallbackContext context)
     {
-        attackInputs[(int)CombatInputs.primary] = false;
+        attackInput = false;
     }
 
-    void SecondaryAttackStart(InputAction.CallbackContext context)
+    void DefenseStart(InputAction.CallbackContext context)
     {
-        attackInputs[(int)CombatInputs.secondary] = true;
+        defenseInput = true;
     }
 
-    void SecondaryAttackCancel(InputAction.CallbackContext context)
+    void DefenseCancel(InputAction.CallbackContext context)
     {
-        attackInputs[(int)CombatInputs.secondary] = false;
+        defenseInput = false;
     }
 }
