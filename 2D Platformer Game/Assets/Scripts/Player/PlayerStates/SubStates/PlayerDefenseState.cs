@@ -29,6 +29,8 @@ public class PlayerDefenseState : PlayerState
             player.dashState.ResetCanDash();
             player.wallJumpState.ResetPreviousWallJumpXPosition();
         }
+
+        player.SetVelocityX(0f);
     }
 
     public override void Exit()

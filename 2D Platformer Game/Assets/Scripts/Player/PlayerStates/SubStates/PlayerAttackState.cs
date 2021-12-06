@@ -8,6 +8,7 @@ public class PlayerAttackState : PlayerAbilityState
 
     int _xInput;
     bool _jumpInput;
+    bool _defenseInput;
 
     bool _isTouchingCeiling;
 
@@ -37,6 +38,7 @@ public class PlayerAttackState : PlayerAbilityState
 
         _xInput = player.inputHandler.xInput;
         _jumpInput = player.inputHandler.jumpInput;
+        _defenseInput = player.inputHandler.defenseInput;
 
         player.CheckIfShouldFlip(_xInput);
         player.SetVelocityX(_weapon.weaponData.movementSpeed * _xInput);
@@ -45,6 +47,11 @@ public class PlayerAttackState : PlayerAbilityState
         {
             _weapon.AnimationCancelled();
             stateMachine.ChangeState(player.jumpState);
+        }
+        else if (_defenseInput)
+        {
+            _weapon.AnimationCancelled();
+            stateMachine.ChangeState(player.defenseState);
         }
     }
 

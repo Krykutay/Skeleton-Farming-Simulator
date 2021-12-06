@@ -295,14 +295,34 @@ public class Player : MonoBehaviour
         if (stateMachine.currentState == dashState)
             return false;
 
-        DecreaseHealth(attackDetails.damageAmount);
+        DecreaseHealth(attackDetails);
+        Debug.Log(_currentHealth);
 
         return true;
     }
 
-    void DecreaseHealth(float amount)
+    void DecreaseHealth(AttackDetails attackDetails)
     {
-        _currentHealth -= amount;
+        if (stateMachine.currentState == defenseState || stateMachine.currentState == defenseMoveState)
+        {
+            int enemyDirection;
+
+            if (attackDetails.position.x < _playerHitPosition.position.x)
+            {
+                enemyDirection = 1;
+            }
+            else
+            {
+                enemyDirection = -1;
+            }
+
+            if (enemyDirection == -facingDirection)
+                _currentHealth -= attackDetails.damageAmount * 0.5f;
+            else
+                _currentHealth -= attackDetails.damageAmount;
+        }
+        else
+            _currentHealth -= attackDetails.damageAmount;
 
         if (_currentHealth <= 0f)
         {
