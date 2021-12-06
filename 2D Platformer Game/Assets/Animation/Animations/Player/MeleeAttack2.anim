@@ -386,7 +386,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.6333333
-        value: {x: -0.01, y: -0.59, z: 0}
+        value: {x: -0.01, y: -0.56, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -937,7 +937,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6333333
-        value: -0.59
+        value: -0.56
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3213,7 +3213,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: BodyParts/Body/Chest
+    path: BodyParts/Body/LeftArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3223,7 +3223,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: BodyParts/Body/Chest
+    path: BodyParts/Body/LeftArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3233,7 +3233,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: BodyParts/Body/Chest
+    path: BodyParts/Body/LeftArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3333,7 +3333,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: BodyParts/Body/LeftArm
+    path: BodyParts/Body/Chest
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3343,7 +3343,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: BodyParts/Body/LeftArm
+    path: BodyParts/Body/Chest
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3353,7 +3353,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: BodyParts/Body/LeftArm
+    path: BodyParts/Body/Chest
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
