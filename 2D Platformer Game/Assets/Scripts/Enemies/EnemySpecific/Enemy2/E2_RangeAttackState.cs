@@ -53,7 +53,7 @@ public class E2_RangeAttackState : RangeAttackState
         base.TriggerAttack();
 
         projectile = EnemyArrowPool.Instance.Get(attackPosition.position, attackPosition.rotation);
-        projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);
+        projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage, entity);
     }
 
     public override void FinishAttack()

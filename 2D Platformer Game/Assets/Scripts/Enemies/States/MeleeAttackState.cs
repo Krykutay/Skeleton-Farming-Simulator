@@ -73,7 +73,7 @@ public class MeleeAttackState : AttackState
 
         if (playerObject != null)
         {
-            Player.Instance.Damage(attackDetails[meleeAttackType]);
+            Player.Instance.Damage(attackDetails[meleeAttackType], entity, true);
         }
     }
 

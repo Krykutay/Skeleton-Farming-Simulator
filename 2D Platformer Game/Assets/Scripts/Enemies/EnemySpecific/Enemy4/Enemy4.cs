@@ -91,6 +91,14 @@ public class Enemy4 : Entity
         return true;
     }
 
+    public override void StunnedByPlayerParry()
+    {
+        base.StunnedByPlayerParry();
+
+        if (stateMachine.currentState != deadState || stateMachine.currentState != respawnState)
+            stateMachine.ChangeState(stunState);
+    }
+
     public override void RotateBodyToPlayer()
     {
         Vector3 direction;

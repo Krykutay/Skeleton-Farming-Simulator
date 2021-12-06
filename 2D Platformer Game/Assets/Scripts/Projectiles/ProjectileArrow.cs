@@ -45,7 +45,7 @@ public class ProjectileArrow : Projectile
 
         if (collision.CompareTag("Player"))
         {
-            bool isHit = Player.Instance.Damage(attackDetails);
+            bool isHit = Player.Instance.Damage(attackDetails, entity, false);
 
             if (isHit)
             {

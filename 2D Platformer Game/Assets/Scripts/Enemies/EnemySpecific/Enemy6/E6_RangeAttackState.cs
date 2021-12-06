@@ -64,7 +64,7 @@ public class E6_RangeAttackState : RangeAttackState
     {
         base.TriggerAttack();
         
-        projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);
+        projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage, entity);
     }
 
     public override void FinishAttack()

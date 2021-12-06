@@ -54,7 +54,7 @@ public class E7_MeleeAttackState : MeleeAttackState
 
         if (playerObject != null)
         {
-            Player.Instance.Damage(attackDetails[meleeAttackType]);
+            Player.Instance.Damage(attackDetails[meleeAttackType], entity, true);
 
             if (attackDetails[meleeAttackType].knockbackStrength > 0.01f)
             {

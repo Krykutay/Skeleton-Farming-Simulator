@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] float _projectileDurationAfterHitGround = 1f;
 
+    protected Entity entity;
+
     protected Rigidbody2D rb;
     protected Transform playerTransform;
 
@@ -29,13 +31,15 @@ public class Projectile : MonoBehaviour
         attackDetails.position = transform.position;
     }
     
-    public virtual void FireProjectile(float speed, float travelDistance, float damage)
+    public virtual void FireProjectile(float speed, float travelDistance, float damage, Entity entity)
     {
         Vector3 firePosition = (playerTransform.position - transform.position).normalized;
         rb.velocity = firePosition * speed;
 
         this.travelDistance = travelDistance;
         attackDetails.damageAmount = damage;
+
+        this.entity = entity;
     }
 
 }

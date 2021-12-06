@@ -54,7 +54,7 @@ public class E5_MeleeAttackState : MeleeAttackState
 
         if (playerObject != null)
         {
-            Player.Instance.Damage(attackDetails[meleeAttackType]);
+            Player.Instance.Damage(attackDetails[meleeAttackType], entity, true);
         }
     }
 

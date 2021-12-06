@@ -6,7 +6,7 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
 
-    protected float startTime;
+    public float startTime { get; protected set; }
 
     protected bool isAnimationFinished = false;
     protected bool isExitingState;

@@ -49,7 +49,7 @@ public class ProjectileSkill : Projectile
 
         if (collision.CompareTag("Player"))
         {
-            bool isHit = Player.Instance.Damage(attackDetails);
+            bool isHit = Player.Instance.Damage(attackDetails, entity, false);
 
             if (isHit)
             {
@@ -72,7 +72,7 @@ public class ProjectileSkill : Projectile
         EnemySkillPool.Instance.ReturnToPool(this);
     }
 
-    public override void FireProjectile(float speed, float travelDistance, float damage)
+    public override void FireProjectile(float speed, float travelDistance, float damage, Entity entity)
     {
         rb.velocity = _fireDirection * speed;
         this.travelDistance = travelDistance;
@@ -81,6 +81,8 @@ public class ProjectileSkill : Projectile
         _isCasting = false;
         _anim.SetBool("isCasting", _isCasting);
         _collider.enabled = true;
+
+        this.entity = entity;
     }
 
 }

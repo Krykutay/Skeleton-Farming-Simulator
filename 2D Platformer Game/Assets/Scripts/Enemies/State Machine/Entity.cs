@@ -125,6 +125,11 @@ public class Entity : MonoBehaviour, IDamageable
         return true;
     }
 
+    public virtual void StunnedByPlayerParry()
+    {
+
+    }
+
     public virtual void DamageHop(float velocity)
     {
         _velocityWorkspace.Set(rb.velocity.x, velocity);

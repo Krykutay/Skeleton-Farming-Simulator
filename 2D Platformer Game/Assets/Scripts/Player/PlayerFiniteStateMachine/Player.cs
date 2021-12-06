@@ -290,36 +290,36 @@ public class Player : MonoBehaviour
         _knockbacked = true;
     }
 
-    public bool Damage(AttackDetails attackDetails)
+    public bool Damage(AttackDetails attackDetails, Entity entity, bool isMeleeHit)
     {
         if (stateMachine.currentState == dashState)
             return false;
 
-        DecreaseHealth(attackDetails);
+        DecreaseHealth(attackDetails, entity, isMeleeHit);
         Debug.Log(_currentHealth);
 
         return true;
     }
 
-    void DecreaseHealth(AttackDetails attackDetails)
+    void DecreaseHealth(AttackDetails attackDetails, Entity entity, bool isMeleeHit)
     {
-        if (stateMachine.currentState == defenseState || stateMachine.currentState == defenseMoveState)
+        int enemyDirection;
+
+        if (attackDetails.position.x < _playerHitPosition.position.x)
+            enemyDirection = 1;
+        else
+            enemyDirection = -1;
+
+        if ((stateMachine.currentState == defenseState || stateMachine.currentState == defenseMoveState) && enemyDirection == -facingDirection)
         {
-            int enemyDirection;
-
-            if (attackDetails.position.x < _playerHitPosition.position.x)
+            if (Time.time - stateMachine.currentState.startTime < 0.5f)
             {
-                enemyDirection = 1;
-            }
-            else
-            {
-                enemyDirection = -1;
+                if (isMeleeHit)
+                    entity.StunnedByPlayerParry();
+                return;
             }
 
-            if (enemyDirection == -facingDirection)
-                _currentHealth -= attackDetails.damageAmount * 0.5f;
-            else
-                _currentHealth -= attackDetails.damageAmount;
+            _currentHealth -= attackDetails.damageAmount * 0.5f;
         }
         else
             _currentHealth -= attackDetails.damageAmount;
