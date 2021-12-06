@@ -54,6 +54,7 @@ public class E6_MeleeAttackState : MeleeAttackState
 
         if (playerObject != null)
         {
+            attackDetails[meleeAttackType].position = entity.transform.position;
             Player.Instance.Damage(attackDetails[meleeAttackType], enemy, true);
         }
     }

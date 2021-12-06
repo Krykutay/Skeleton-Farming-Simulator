@@ -54,11 +54,11 @@ public class E7_MeleeAttackState : MeleeAttackState
 
         if (playerObject != null)
         {
+            attackDetails[meleeAttackType].position = entity.transform.position;
             Player.Instance.Damage(attackDetails[meleeAttackType], entity, true);
 
             if (attackDetails[meleeAttackType].knockbackStrength > 0.01f)
             {
-                attackDetails[meleeAttackType].position = enemy.transform.position;
                 Player.Instance.Knockback(attackDetails[meleeAttackType]);
             }
         }

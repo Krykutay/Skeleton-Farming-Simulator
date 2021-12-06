@@ -296,7 +296,6 @@ public class Player : MonoBehaviour
             return false;
 
         DecreaseHealth(attackDetails, entity, isMeleeHit);
-        Debug.Log(_currentHealth);
 
         return true;
     }
