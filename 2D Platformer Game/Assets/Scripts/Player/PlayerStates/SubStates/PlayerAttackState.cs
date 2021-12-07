@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerAbilityState
 {
-    Weapon _weapon;
+    WeaponData _weaponData;
+    Transform _attackPosition;
+
+    int _attackCounter;
+    float _comboStartTime = Mathf.NegativeInfinity;
 
     int _xInput;
     bool _jumpInput;
@@ -12,8 +16,11 @@ public class PlayerAttackState : PlayerAbilityState
 
     bool _isTouchingCeiling;
 
-    public PlayerAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName, WeaponData weaponData, Transform attackPosition) :
+        base(player, stateMachine, playerData, animBoolName)
     {
+        _weaponData = weaponData;
+        _attackPosition = attackPosition;
     }
 
     public override void Enter()
@@ -22,14 +29,28 @@ public class PlayerAttackState : PlayerAbilityState
 
         isAbilityDone = false;
 
-        _weapon.EnterWeapon();
+        if (_attackCounter >= _weaponData.amountOfAttacks)
+        {
+            _attackCounter = 0;
+        }
+        else if (Time.time >= _comboStartTime + _weaponData.comboDuration)
+        {
+            int randomAttackCounter = Random.Range(0, 2);
+            if (randomAttackCounter == 0)
+                _attackCounter = 0;
+            else
+                _attackCounter = 3;
+        }
+
+        _comboStartTime = Time.time;
+        player.anim.SetInteger("attackCounter", _attackCounter);
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        _weapon.ExitWeapon();
+        _attackCounter++;
     }
 
     public override void LogicUpdate()
@@ -41,16 +62,16 @@ public class PlayerAttackState : PlayerAbilityState
         _defenseInput = player.inputHandler.defenseInput;
 
         player.CheckIfShouldFlip(_xInput);
-        player.SetVelocityX(_weapon.weaponData.movementSpeed * _xInput);
+        player.SetVelocityX(_weaponData.movementSpeed * _xInput);
 
         if (_jumpInput && player.jumpState.CanJump() && !_isTouchingCeiling)
         {
-            _weapon.AnimationCancelled();
+            AnimationFinishTrigger();
             stateMachine.ChangeState(player.jumpState);
         }
         else if (_defenseInput)
         {
-            _weapon.AnimationCancelled();
+            AnimationFinishTrigger();
             stateMachine.ChangeState(player.defenseState);
         }
     }
@@ -62,10 +83,27 @@ public class PlayerAttackState : PlayerAbilityState
         _isTouchingCeiling = player.CheckForCeiling();
     }
 
-    public void SetWeapon(Weapon weapon)
+    void CheckMeleeAttack()
     {
-        this._weapon = weapon;
-        weapon.InitializeWeapon(this);
+        AttackDetails attackDetails = _weaponData.attackDetails[_attackCounter];
+        attackDetails.position = player.transform.position;
+
+        Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_attackPosition.position, attackDetails.attackRadius, _weaponData.damageable);
+
+        foreach (Collider2D collider in detectedObjects)
+        {
+            if (collider.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.Damage(attackDetails);
+            }
+        }
+    }
+
+    public override void AnimationTrigger()
+    {
+        base.AnimationTrigger();
+
+        CheckMeleeAttack();
     }
 
     public override void AnimationFinishTrigger()

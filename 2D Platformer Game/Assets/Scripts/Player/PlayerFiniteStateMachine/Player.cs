@@ -9,12 +9,14 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     [SerializeField] PlayerData _playerData;
+    [SerializeField] WeaponData _weaponData;
 
     [SerializeField] Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _verticalLedgeCheck;
     [SerializeField] Transform _ceilingCheck;
     [SerializeField] Transform _playerHitPosition;
+    [SerializeField] Transform _attackPosition;
 
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
         dashState = new PlayerDashState(this, stateMachine, _playerData, "inAir");
         crouchIdleState = new PlayerCrouchIdleState(this, stateMachine, _playerData, "crouchIdle");
         crouchMoveState = new PlayerCrouchMoveState(this, stateMachine, _playerData, "crouchMove");
-        primaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack");
+        primaryAttackState = new PlayerAttackState(this, stateMachine, _playerData, "attack", _weaponData, _attackPosition);
         defenseState = new PlayerDefenseState(this, stateMachine, _playerData, "parry");
         defenseMoveState = new PlayerDefenseMoveState(this, stateMachine, _playerData, "parryMove");
         knockbackState = new PlayerKnockbackState(this, stateMachine, _playerData, "inAir");
@@ -94,9 +96,6 @@ public class Player : MonoBehaviour
 
     void OnEnable()
     {
-        primaryAttackState.SetWeapon(inventory.weapons[0]);
-        //secondaryAttackState.SetWeapon(inventory.weapons[(int)CombatInputs.primary]);
-
         stateMachine.Initialize(idleState);
         facingDirection = 1;
         _currentHealth = _playerData.maxHealth;
@@ -353,6 +352,10 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(_verticalLedgeCheck.position, new Vector3(_verticalLedgeCheck.position.x + _playerData.wallCheckDistance, _verticalLedgeCheck.position.y, _verticalLedgeCheck.position.z));
 
         Gizmos.DrawWireSphere(_ceilingCheck.position, _playerData.groundCheckRadius);
-    }
 
+        if (_attackPosition != null)
+        {
+            Gizmos.DrawWireSphere(_attackPosition.position, _weaponData.attackDetails[0].attackRadius);
+        }
+    }
 }
