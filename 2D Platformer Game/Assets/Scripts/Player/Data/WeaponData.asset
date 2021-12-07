@@ -33,11 +33,11 @@ MonoBehaviour:
     attackRadius: 1
     size: {x: 0, y: 0}
   - attackName: Finisher1
-    damageAmount: 0
+    damageAmount: 15
     stunDamageAmount: 3
     knockbackStrength: 0
     knockbackAngle: {x: 0, y: 0}
-    attackRadius: 15
+    attackRadius: 1
     size: {x: 0, y: 0}
   - attackName: Slash2
     damageAmount: 10
