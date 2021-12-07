@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a970940d7df2d6e4f9306300a4aa9914, type: 3}
+  m_Name: WeaponData
+  m_EditorClassIdentifier: 
+  _movementSpeed: 10
+  _comboDuration: 4
+  _damageable:
+    serializedVersion: 2
+    m_Bits: 256
+  _attackDetails:
+  - attackName: Slash1
+    damageAmount: 10
+    stunDamageAmount: 0
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 1
+    size: {x: 0, y: 0}
+  - attackName: Pierce1
+    damageAmount: 12
+    stunDamageAmount: 0
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 1
+    size: {x: 0, y: 0}
+  - attackName: Finisher1
+    damageAmount: 0
+    stunDamageAmount: 3
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 15
+    size: {x: 0, y: 0}
+  - attackName: Slash2
+    damageAmount: 10
+    stunDamageAmount: 0
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 1
+    size: {x: 0, y: 0}
+  - attackName: Pierce2
+    damageAmount: 12
+    stunDamageAmount: 0
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 1
+    size: {x: 0, y: 0}
+  - attackName: Finisher2
+    damageAmount: 15
+    stunDamageAmount: 3
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 1
+    size: {x: 0, y: 0}
