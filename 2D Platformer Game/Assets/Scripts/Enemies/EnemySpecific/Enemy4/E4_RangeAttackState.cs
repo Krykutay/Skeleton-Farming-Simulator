@@ -57,6 +57,7 @@ public class E4_RangeAttackState : RangeAttackState
     {
         base.TriggerAttack();
 
+        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonBow);
         projectile = EnemyArrowPool.Instance.Get(attackPosition.position, attackPosition.rotation);
         projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage, entity);
     }

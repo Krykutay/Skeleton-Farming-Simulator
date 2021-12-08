@@ -15,6 +15,7 @@ public class PlayerJumpState : PlayerAbilityState
     {
         base.Enter();
 
+        SoundManager.Instance.Play(SoundManager.SoundTags.PlayerJump);
         player.anim.SetBool("isGrounded", player.CheckIfGrounded());
 
         player.inputHandler.UseJumpInput();

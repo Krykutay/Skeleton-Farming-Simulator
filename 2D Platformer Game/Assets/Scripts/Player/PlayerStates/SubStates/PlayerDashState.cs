@@ -39,6 +39,8 @@ public class PlayerDashState : PlayerAbilityState
         startTime = Time.unscaledTime;
 
         player.dashDirectionIndicator.gameObject.SetActive(true);
+
+        SoundManager.Instance.Play(SoundManager.SoundTags.PlayerDashPre);
     }
 
     public override void Exit()
@@ -106,6 +108,7 @@ public class PlayerDashState : PlayerAbilityState
 
                 player.dashDirectionIndicator.gameObject.SetActive(false);
                 PlaceAfterImage();
+                SoundManager.Instance.Play(SoundManager.SoundTags.PlayerDash);
             }
         }
         else    // performing the dash Action

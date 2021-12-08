@@ -16,6 +16,7 @@ public class PlayerWallJumpState : PlayerAbilityState
     {
         base.Enter();
 
+        SoundManager.Instance.Play(SoundManager.SoundTags.PlayerJump);
         previousWallJumpXPosition = player.transform.position.x;
 
         isAbilityDone = false;

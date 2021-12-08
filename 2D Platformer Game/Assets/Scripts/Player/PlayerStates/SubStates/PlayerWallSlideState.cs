@@ -8,6 +8,20 @@ public class PlayerWallSlideState : PlayerTouchingWallState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+
+        SoundManager.Instance.Play(SoundManager.SoundTags.PlayerWallSlide);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        SoundManager.Instance.Stop(SoundManager.SoundTags.PlayerWallSlide);
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();

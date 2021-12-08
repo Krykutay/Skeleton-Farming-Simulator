@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager Instance;
+    public static SoundManager Instance { get; private set; }
 
     public Sound[] sounds;
     private static Dictionary<SoundTags, float> soundTimerDictionary;
@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
         PlayerMelee2,
         PlayerMelee3,
         PlayerDash,
+        PlayerDashPre,
         PlayerHurt1,
         PlayerHurt2,
         PlayerJump,
@@ -37,6 +38,11 @@ public class SoundManager : MonoBehaviour
         SkeletonRespawn,
         SkeletonSpell,
         SkeletonTeleport,
+        PlayerLedgeClimb,
+        PlayerWalk1,
+        PlayerWalk2,
+        PlayerWalk3,
+        PlayerWalk4,
     }
 
     public enum SoundTypes
@@ -44,12 +50,6 @@ public class SoundManager : MonoBehaviour
         Effect,
         Music,
     }
-
-    public static SoundManager GetInstance()
-    {
-        return Instance;
-    }
-
 
     void Awake()
     {

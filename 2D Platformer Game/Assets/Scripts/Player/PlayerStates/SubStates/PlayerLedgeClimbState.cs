@@ -74,6 +74,7 @@ public class PlayerLedgeClimbState : PlayerState
         {
             _isClimbing = true;
             player.anim.SetBool("climbLedge", true);
+            SoundManager.Instance.Play(SoundManager.SoundTags.PlayerLedgeClimb);
         }
         else if (_yInput == -1 && _isHanging && !_isClimbing)
         {

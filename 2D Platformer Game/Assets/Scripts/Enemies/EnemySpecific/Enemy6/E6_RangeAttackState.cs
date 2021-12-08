@@ -63,7 +63,8 @@ public class E6_RangeAttackState : RangeAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-        
+
+        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonSpell);
         projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage, entity);
     }
 

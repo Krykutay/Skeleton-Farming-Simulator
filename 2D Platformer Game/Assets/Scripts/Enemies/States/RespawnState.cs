@@ -17,6 +17,7 @@ public class RespawnState : State
     {
         base.Enter();
 
+        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonRespawn);
         entity.atsm.respawnState = this;
         isAnimationFinished = false;
         entity.SetVelocityX(0f);

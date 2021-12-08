@@ -29,6 +29,8 @@ public class TeleportState : State
     {
         base.Enter();
 
+        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonTeleport);
+
         entity.atsm.teleportState = this;
         _isTeleportStarted = false;
         isTeleportOver = false;

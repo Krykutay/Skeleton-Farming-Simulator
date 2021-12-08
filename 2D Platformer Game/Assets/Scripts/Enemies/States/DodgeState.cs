@@ -24,6 +24,8 @@ public class DodgeState : State
     {
         base.Enter();
 
+        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDodge);
+
         isDodgeOver = false;
         _isLedgeDetectionActionTaken = false;
         entity.SetVelocity(stateData.dodgeSpeed, stateData.dodgeAngle, -entity.facingDirection);

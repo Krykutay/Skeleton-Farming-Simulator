@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     float _initialHitPositionY;
     bool _knockbacked;
     AttackDetails _attackDetails;
+    int _randInt;
 
     void Awake()
     {
@@ -310,17 +311,28 @@ public class Player : MonoBehaviour
 
         if ((stateMachine.currentState == defenseState || stateMachine.currentState == defenseMoveState) && enemyDirection == -facingDirection)
         {
-            if (Time.time - stateMachine.currentState.startTime < 0.5f)
+            if (Time.time - stateMachine.currentState.startTime < 0.3f)
             {
                 if (isMeleeHit)
                     entity.StunnedByPlayerParry();
+
+                SoundManager.Instance.Play(SoundManager.SoundTags.PlayerParry);
                 return;
             }
 
+            SoundManager.Instance.Play(SoundManager.SoundTags.PlayerParry);
             _currentHealth -= attackDetails.damageAmount * 0.5f;
         }
         else
+        {
+            _randInt = UnityEngine.Random.Range(0, 2);
+            if (_randInt == 0)
+                SoundManager.Instance.Play(SoundManager.SoundTags.PlayerHurt1);
+            else
+                SoundManager.Instance.Play(SoundManager.SoundTags.PlayerHurt2);
+
             _currentHealth -= attackDetails.damageAmount;
+        }
 
         if (_currentHealth <= 0f)
         {

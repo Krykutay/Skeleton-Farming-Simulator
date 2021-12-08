@@ -44,6 +44,13 @@ public class PlayerAttackState : PlayerAbilityState
 
         _comboStartTime = Time.time;
         player.anim.SetInteger("attackCounter", _attackCounter);
+
+        if (_attackCounter == 0 || _attackCounter == 3)
+            SoundManager.Instance.Play(SoundManager.SoundTags.PlayerMelee1);
+        else if (_attackCounter == 1 || _attackCounter == 4)
+            SoundManager.Instance.Play(SoundManager.SoundTags.PlayerMelee2);
+        else
+            SoundManager.Instance.Play(SoundManager.SoundTags.PlayerMelee3);
     }
 
     public override void Exit()
@@ -99,6 +106,7 @@ public class PlayerAttackState : PlayerAbilityState
 
                 if (!isScreenShaked && isHit)
                 {
+                    SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonHurt);
                     CinemachineShake.Instance.ShakeCamera(1.5f, 0.1f);
                     isScreenShaked = true;
                 }
