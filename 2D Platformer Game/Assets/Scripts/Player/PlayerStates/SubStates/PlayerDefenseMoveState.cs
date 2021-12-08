@@ -49,6 +49,7 @@ public class PlayerDefenseMoveState : PlayerState
         _isGrounded = player.CheckIfGrounded();
         if (!_justGrounded && _isGrounded && player.currentVelocity.y < -0.01f)
         {
+            CinemachineShake.Instance.ShakeCamera(1.75f, 0.1f);
             DustJumpParticlePool.Instance.Get(player._groundCheck.position, Quaternion.Euler(-90f, 0f, 0f));
             _justGrounded = true;
             player.jumpState.ResetAmountOfJumpsLeft();

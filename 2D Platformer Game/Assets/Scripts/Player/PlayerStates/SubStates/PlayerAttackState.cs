@@ -89,12 +89,19 @@ public class PlayerAttackState : PlayerAbilityState
         attackDetails.position = player.transform.position;
 
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(_attackPosition.position, attackDetails.attackRadius, _weaponData.damageable);
+        bool isScreenShaked = false;
 
         foreach (Collider2D collider in detectedObjects)
         {
             if (collider.TryGetComponent<IDamageable>(out var damageable))
             {
-                damageable.Damage(attackDetails);
+                bool isHit = damageable.Damage(attackDetails);
+
+                if (!isScreenShaked && isHit)
+                {
+                    CinemachineShake.Instance.ShakeCamera(1.5f, 0.1f);
+                    isScreenShaked = true;
+                }
             }
         }
     }

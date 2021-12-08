@@ -12,6 +12,7 @@ public class PlayerLandState : PlayerGroundedState
     {
         base.Enter();
 
+        CinemachineShake.Instance.ShakeCamera(1.75f, 0.1f);
         DustJumpParticlePool.Instance.Get(player._groundCheck.position, Quaternion.Euler(-90f, 0f, 0f));
     }
 
