@@ -85,6 +85,7 @@ public class PlayerInAirState : PlayerState
         }
         else if (_jumpInput && (_isTouchingWall || _isTouchingWallBack || _wallJumpCoyoteTime) && player.wallJumpState.CheckIfCanWallJump())
         {
+            DustJumpParticlePool.Instance.Get(player._groundCheck.position, Quaternion.Euler(0f, 0f, 0f));
             _wallJumpCoyoteTime = false;
 
             _isTouchingWall = player.CheckIfTouchingWall();

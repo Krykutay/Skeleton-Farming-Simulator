@@ -8,6 +8,13 @@ public class PlayerLandState : PlayerGroundedState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+
+        DustJumpParticlePool.Instance.Get(player._groundCheck.position, Quaternion.Euler(-90f, 0f, 0f));
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -26,7 +33,7 @@ public class PlayerLandState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.moveState);
         }
-        else if (isAnimationFinished)
+        else
         {
             stateMachine.ChangeState(player.idleState);
         }

@@ -49,6 +49,7 @@ public class PlayerDefenseMoveState : PlayerState
         _isGrounded = player.CheckIfGrounded();
         if (!_justGrounded && _isGrounded && player.currentVelocity.y < -0.01f)
         {
+            DustJumpParticlePool.Instance.Get(player._groundCheck.position, Quaternion.Euler(-90f, 0f, 0f));
             _justGrounded = true;
             player.jumpState.ResetAmountOfJumpsLeft();
             player.dashState.ResetCanDash();
@@ -57,6 +58,8 @@ public class PlayerDefenseMoveState : PlayerState
 
         if (_jumpInput && player.jumpState.CanJump() && !_isTouchingCeiling)
         {
+            if (_isGrounded)
+                DustJumpParticlePool.Instance.Get(player._groundCheck.position, Quaternion.Euler(-90f, 0f, 0f));
             player.anim.SetBool("parryStarted", false);
             player.inputHandler.UseJumpInput();
             stateMachine.ChangeState(player.jumpState);

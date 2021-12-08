@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerData _playerData;
     [SerializeField] WeaponData _weaponData;
 
-    [SerializeField] Transform _groundCheck;
+    public Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _verticalLedgeCheck;
     [SerializeField] Transform _ceilingCheck;

@@ -59,6 +59,7 @@ public class PlayerGroundedState : PlayerState
         }
         else if (_jumpInput && player.jumpState.CanJump() && !isTouchingCeiling)
         {
+            DustJumpParticlePool.Instance.Get(player._groundCheck.position, Quaternion.Euler(-90f, 0f, 0f));
             stateMachine.ChangeState(player.jumpState);
         }
         else if (!_isGrounded)
