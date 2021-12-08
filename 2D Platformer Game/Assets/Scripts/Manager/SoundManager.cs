@@ -11,7 +11,6 @@ public class SoundManager : MonoBehaviour
 
     public enum SoundTags
     {
-        EnemyBow,
         GrassMove1,
         GrassMove2,
         GrassMove3,
@@ -26,17 +25,18 @@ public class SoundManager : MonoBehaviour
         PlayerParry,
         PlayerRun,
         PlayerWallSlide,
-        EnemyAttack1,
-        EnemyAttack2,
-        EnemyAttack3,
-        EnemyDetection1,
-        EnemyDetection2,
-        EnemyDie,
-        EnemyDodge,
-        EnemyHurt,
-        EnemyRespawn,
-        EnemySpell,
-        EnemyTeleport,
+        SkeletonAttack1,
+        SkeletonAttack2,
+        SkeletonAttack3,
+        SkeletonBow,
+        SkeletonDetection1,
+        SkeletonDetection2,
+        SkeletonDie,
+        SkeletonDodge,
+        SkeletonHurt,
+        SkeletonRespawn,
+        SkeletonSpell,
+        SkeletonTeleport,
     }
 
     public enum SoundTypes
