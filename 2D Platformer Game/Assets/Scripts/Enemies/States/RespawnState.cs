@@ -8,6 +8,9 @@ public class RespawnState : State
 
     protected bool isAnimationFinished;
 
+    float _playSoundDelay = 0.33f;
+    bool _hasSoundStarted;
+
     public RespawnState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_RespawnState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -17,10 +20,10 @@ public class RespawnState : State
     {
         base.Enter();
 
-        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonRespawn);
         entity.atsm.respawnState = this;
         isAnimationFinished = false;
         entity.SetVelocityX(0f);
+        _hasSoundStarted = false;
     }
 
     public override void Exit()
@@ -31,6 +34,12 @@ public class RespawnState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (Time.time >= startTime + _playSoundDelay && !_hasSoundStarted)
+        {
+            _hasSoundStarted = true;
+            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonRespawn);
+        }
     }
 
     public override void PhysicsUpdate()

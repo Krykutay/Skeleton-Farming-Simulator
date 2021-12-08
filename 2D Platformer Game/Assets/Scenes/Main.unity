@@ -1508,7 +1508,7 @@ MonoBehaviour:
   - name: 10
     type: 0
     clip: {fileID: 8300000, guid: 74f5f96382d506f4196818d05a8faae2, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -1619,8 +1619,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: 24
     type: 0
-    clip: {fileID: 8300000, guid: 0cb5ab41ac06c994f82bc92da0a8a610, type: 3}
-    volume: 0.6
+    clip: {fileID: 8300000, guid: 4dbcb7de1e59e3140ba3c183cbf881be, type: 3}
+    volume: 0.4
     pitch: 1
     isLoop: 0
     hasCooldown: 0
