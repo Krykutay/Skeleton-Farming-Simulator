@@ -1619,8 +1619,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: 24
     type: 0
-    clip: {fileID: 8300000, guid: 12975d8ff87c57146b665901f86a299f, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 0cb5ab41ac06c994f82bc92da0a8a610, type: 3}
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -1637,6 +1637,46 @@ MonoBehaviour:
     type: 0
     clip: {fileID: 8300000, guid: 0f995d89e865ec045838def582535010, type: 3}
     volume: 0.6
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 27
+    type: 0
+    clip: {fileID: 8300000, guid: d211f319f461fa64a86054aae1c6371a, type: 3}
+    volume: 0.4
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 28
+    type: 0
+    clip: {fileID: 8300000, guid: 0d3b4819bbeefda4994fda59cd2bf253, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 29
+    type: 0
+    clip: {fileID: 8300000, guid: 126beb40542733347a7d2e189393b0a5, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 30
+    type: 0
+    clip: {fileID: 8300000, guid: 7514e8cd839e27344a76fc825f633fe0, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 31
+    type: 0
+    clip: {fileID: 8300000, guid: a5fe8a286651235439416e8e951ecf4c, type: 3}
+    volume: 1
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -55501,6 +55541,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3948380510083717643, guid: 01f8780732f914e4ebc18fedba3b7ff2, type: 3}
+      propertyPath: m_GravityScale
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948380510083717644, guid: 01f8780732f914e4ebc18fedba3b7ff2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3948380510083717645, guid: 01f8780732f914e4ebc18fedba3b7ff2, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -55548,6 +55596,10 @@ PrefabInstance:
     - target: {fileID: 3948380510083717647, guid: 01f8780732f914e4ebc18fedba3b7ff2, type: 3}
       propertyPath: m_Name
       value: Enemy6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948380510083717647, guid: 01f8780732f914e4ebc18fedba3b7ff2, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3948380510083717647, guid: 01f8780732f914e4ebc18fedba3b7ff2, type: 3}
       propertyPath: m_IsActive

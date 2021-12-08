@@ -107,6 +107,7 @@ public class Player : MonoBehaviour
     {
         _initialHitPositionX = _playerHitPosition.localPosition.x;
         _initialHitPositionY = _playerHitPosition.localPosition.y;
+        AudioListener.volume = 0.5f;
     }
 
     void Update()

@@ -4,6 +4,9 @@ public class E6_RangeAttackState : RangeAttackState
 {
     Enemy6 enemy;
 
+    bool _attackStarted;
+    bool _attackTriggered;
+
     public E6_RangeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData, Enemy6 enemy)
         : base(entity, stateMachine, animBoolName, attackPosition, stateData)
     {
@@ -13,6 +16,8 @@ public class E6_RangeAttackState : RangeAttackState
     public override void Enter()
     {
         base.Enter();
+
+        _attackTriggered = false;
     }
 
     public override void Exit()
@@ -20,6 +25,9 @@ public class E6_RangeAttackState : RangeAttackState
         base.Exit();
 
         entity.ResetBodyPosition();
+
+        if (_attackStarted && !_attackTriggered)
+            EnemySkillPool.Instance.ReturnToPool((ProjectileSkill)projectile);
     }
 
     public override void LogicUpdate()
@@ -58,6 +66,7 @@ public class E6_RangeAttackState : RangeAttackState
         base.StartAttack();
 
         projectile = EnemySkillPool.Instance.Get(attackPosition.position, attackPosition.rotation);
+        _attackStarted = true;
     }
 
     public override void TriggerAttack()
@@ -66,6 +75,7 @@ public class E6_RangeAttackState : RangeAttackState
 
         SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonSpell);
         projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage, entity);
+        _attackTriggered = true;
     }
 
     public override void FinishAttack()
