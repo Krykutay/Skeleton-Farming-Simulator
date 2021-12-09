@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - BluePotionBar
+  - Coins
+  - GreenPotionBar
+  - RedPotionBar
+  - Potion
+  - PlayerFireball
   layers:
   - Default
   - TransparentFX
@@ -40,11 +46,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 2718942549
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Decoration
     uniqueID: 4175524257

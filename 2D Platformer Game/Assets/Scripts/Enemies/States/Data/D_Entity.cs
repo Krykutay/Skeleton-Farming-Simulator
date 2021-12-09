@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEntityData", menuName = "Data/Entity Data/Base Data")]
 public class D_Entity : ScriptableObject
 {
-    [SerializeField] float _maxHealth = 50f;
+    [SerializeField] int _maxHealth = 50;
     [SerializeField] float _damageHopSpeed = 6f;
 
     [SerializeField] float _groundCheckRadius = 0.3f;
@@ -24,7 +24,7 @@ public class D_Entity : ScriptableObject
     [SerializeField] LayerMask _ground;
     [SerializeField] LayerMask _player;
 
-    public float maxHealth { get { return _maxHealth; } }
+    public int maxHealth { get { return _maxHealth; } }
     public float damageHopSpeed { get { return _damageHopSpeed; } }
 
     public float groundCheckRadius { get { return _groundCheckRadius; } }

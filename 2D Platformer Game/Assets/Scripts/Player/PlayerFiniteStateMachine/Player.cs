@@ -8,9 +8,11 @@ public class Player : MonoBehaviour
     public static Action PlayerDied;
     public static Player Instance { get; private set; }
 
+    [Header("Data")]
     [SerializeField] PlayerData _playerData;
     [SerializeField] WeaponData _weaponData;
 
+    [Header("Checks")]
     public Transform _groundCheck;
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _verticalLedgeCheck;
@@ -48,6 +50,9 @@ public class Player : MonoBehaviour
     public int facingDirection { get; private set; }
     public float initialGravity { get; private set; }
 
+    Animator _bodyAnim;
+    IEnumerator _hurt;
+
     float _knockbackStrength;
     Vector2 _knockbackAngle;
     int _knockbackDirection;
@@ -73,6 +78,7 @@ public class Player : MonoBehaviour
         movementCollider = GetComponent<BoxCollider2D>();
         inventory = GetComponent<PlayerInventory>();
         dashDirectionIndicator = transform.Find("DashDirectionIndicator");
+        _bodyAnim = transform.Find("BodyParts").GetComponent<Animator>();
 
         stateMachine = new PlayerStateMachine();
 
@@ -323,6 +329,11 @@ public class Player : MonoBehaviour
 
             SoundManager.Instance.Play(SoundManager.SoundTags.PlayerParry);
             _currentHealth -= attackDetails.damageAmount * 0.5f;
+            _bodyAnim.SetBool("hurt", true);
+            if (_hurt != null)
+                StopCoroutine(_hurt);
+            _hurt = Hurt();
+            StartCoroutine(_hurt);
         }
         else
         {
@@ -333,6 +344,12 @@ public class Player : MonoBehaviour
                 SoundManager.Instance.Play(SoundManager.SoundTags.PlayerHurt2);
 
             _currentHealth -= attackDetails.damageAmount;
+
+            _bodyAnim.SetBool("hurt", true);
+            if (_hurt != null)
+                StopCoroutine(_hurt);
+            _hurt = Hurt();
+            StartCoroutine(_hurt);
         }
 
         if (_currentHealth <= 0f)
@@ -347,6 +364,12 @@ public class Player : MonoBehaviour
         DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
         PlayerDied?.Invoke();
         Destroy(gameObject);
+    }
+
+    IEnumerator Hurt()
+    {
+        yield return new WaitForSeconds(1.73f);
+        _bodyAnim.SetBool("hurt", false);
     }
 
     void AnimationTrigger()

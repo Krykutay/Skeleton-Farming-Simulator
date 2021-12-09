@@ -15,6 +15,8 @@ public class Entity : MonoBehaviour, IDamageable
     public Animator anim { get; private set; }
     public AnimationToStateMachine atsm { get; private set; }
 
+    protected EnemyHealthBar healthbar { get; private set; }
+
     protected bool isStunned;
     protected bool isDead;
 
@@ -32,6 +34,7 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual void Awake()
     {
         playerTransform = Player.Instance.transform.Find("Core").Find("PlayerHitPosition").transform;
+        healthbar = transform.Find("Canvas").Find("HealthBar").GetComponent<EnemyHealthBar>();
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -43,11 +46,15 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void OnEnable()
     {
+        healthbar.gameObject.SetActive(true);
         _currentHealth = entityData.maxHealth;
         _currentStunResistance = entityData.stunResistance;
         facingDirection = 1;
         isStunned = false;
         isDead = false;
+
+        healthbar.SetMaxHealth(entityData.maxHealth);
+        healthbar.SetCurrentHealth(entityData.maxHealth, 0);
     }
 
     public virtual void Start()
@@ -99,6 +106,7 @@ public class Entity : MonoBehaviour, IDamageable
         _lastDamagetime = Time.time;
 
         _currentHealth -= attackDetails.damageAmount;
+        healthbar.SetCurrentHealth((int)_currentHealth, (int)attackDetails.damageAmount);
         _currentStunResistance -= attackDetails.stunDamageAmount;
 
         DamageHop(entityData.damageHopSpeed);
@@ -226,6 +234,9 @@ public class Entity : MonoBehaviour, IDamageable
         _currentStunResistance = entityData.stunResistance;
         isStunned = false;
         isDead = false;
+        healthbar.gameObject.SetActive(true);
+        healthbar.SetMaxHealth(entityData.maxHealth);
+        healthbar.SetCurrentHealth(entityData.maxHealth, 0);
     }
 
     public virtual void OnDrawGizmos()

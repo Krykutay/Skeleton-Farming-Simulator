@@ -73,6 +73,7 @@ public class Enemy3 : Entity
         if (isDead)
         {
             SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDie);
+            healthbar.gameObject.SetActive(false);
             stateMachine.ChangeState(deadState);
         }
         else if (isStunned && stateMachine.currentState != stunState)
