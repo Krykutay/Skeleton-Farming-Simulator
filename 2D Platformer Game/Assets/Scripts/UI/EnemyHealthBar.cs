@@ -10,6 +10,9 @@ public class EnemyHealthBar : MonoBehaviour
 
     float _maxHealth;
     float _currentHealth;
+    float _normalizedHealth;
+
+    Vector2 _workSpace;
 
     void Awake()
     {
@@ -22,13 +25,13 @@ public class EnemyHealthBar : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         _barImage.fillAmount = HealthNormalized();
-        edgeRectTransform.gameObject.SetActive(HealthNormalized() < 1f);
+        edgeRectTransform.gameObject.SetActive(false);
     }
 
     void Start()
     {
         _barImage.fillAmount = 1f;
-        edgeRectTransform.gameObject.SetActive(HealthNormalized() < 1f);
+        edgeRectTransform.gameObject.SetActive(false);
     }
 
     float HealthNormalized() => _currentHealth / _maxHealth;
@@ -43,19 +46,23 @@ public class EnemyHealthBar : MonoBehaviour
 
     IEnumerator DropHealthSmoothly(int healthAfterHit, int damageTaken)
     {
-        float normalizedHealth;
+        edgeRectTransform.gameObject.SetActive(true);
 
         while (healthAfterHit < _currentHealth)
         {
-            normalizedHealth = HealthNormalized();
-            _currentHealth -= 0.04f * damageTaken;
-            _barImage.fillAmount = normalizedHealth;
-            edgeRectTransform.anchoredPosition = new Vector2(HealthNormalized() * _barRectTransform.sizeDelta.x, 0);
+            _currentHealth -= 0.035f * damageTaken;
+            DropHealth();
             yield return new WaitForFixedUpdate();
         }
         _currentHealth = healthAfterHit;
-        _barImage.fillAmount = HealthNormalized();
-        edgeRectTransform.anchoredPosition = new Vector2(HealthNormalized() * _barRectTransform.sizeDelta.x, 0);
-        edgeRectTransform.gameObject.SetActive(_currentHealth < _maxHealth);
+        DropHealth();
+    }
+
+    void DropHealth()
+    {
+        _normalizedHealth = HealthNormalized();
+        _barImage.fillAmount = _normalizedHealth;
+        _workSpace.Set(_normalizedHealth * _barRectTransform.sizeDelta.x, 0);
+        edgeRectTransform.anchoredPosition = _workSpace;
     }
 }
