@@ -4,36 +4,20 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    RawImage barRawImage;
-    float barMaskWidth;
-    RectTransform barMaskRectTransform;
-    RectTransform edgeRectTransform;
+    Image _barImage;
 
     float _maxHealth;
     float _currentHealth;
 
     void Awake()
     {
-        barMaskRectTransform = transform.Find("barMask").GetComponent<RectTransform>();
-        barRawImage = transform.Find("barMask").Find("bar").GetComponent<RawImage>();
-        edgeRectTransform = transform.Find("edge").GetComponent<RectTransform>();
-
-        barMaskWidth = barMaskRectTransform.sizeDelta.x;
+        _barImage = transform.Find("bar").GetComponent<Image>();
     }
 
-    void Update()
+    void OnEnable()
     {
-            Rect uvRect = barRawImage.uvRect;
-            uvRect.x -= 0.2f * Time.deltaTime;
-            barRawImage.uvRect = uvRect;
-
-            Vector2 barMaskSizeDelta = barMaskRectTransform.sizeDelta;
-            barMaskSizeDelta.x = HealthNormalized() * barMaskWidth;
-            barMaskRectTransform.sizeDelta = barMaskSizeDelta;
-
-            edgeRectTransform.anchoredPosition = new Vector2(HealthNormalized() * barMaskWidth, 0);
-
-            edgeRectTransform.gameObject.SetActive(HealthNormalized() < 1f);
+        _currentHealth = _maxHealth;
+        _barImage.fillAmount = HealthNormalized();
     }
 
     float HealthNormalized() => _currentHealth / _maxHealth;
@@ -42,7 +26,8 @@ public class EnemyHealthBar : MonoBehaviour
 
     public void SetCurrentHealth(int currentHealth, int damageTaken)
     {
-        StartCoroutine(DropHealthSmoothly(currentHealth, damageTaken));
+        if (currentHealth != _maxHealth)
+            StartCoroutine(DropHealthSmoothly(currentHealth, damageTaken));
     }
 
     IEnumerator DropHealthSmoothly(int healthAfterHit, int damageTaken)
@@ -50,8 +35,10 @@ public class EnemyHealthBar : MonoBehaviour
         while (healthAfterHit < _currentHealth)
         {
             _currentHealth -= 0.04f * damageTaken;
-            yield return new WaitForSeconds(0.01f);
+            _barImage.fillAmount = HealthNormalized();
+            yield return new WaitForFixedUpdate();
         }
         _currentHealth = healthAfterHit;
+        _barImage.fillAmount = HealthNormalized();
     }
 }

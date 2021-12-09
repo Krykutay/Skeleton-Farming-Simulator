@@ -25,6 +25,7 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] Transform _ledgeCheck;
     [SerializeField] Transform _playerCheck;
 
+    Transform _hpCanvas;
     Vector2 _velocityWorkspace;
 
     float _currentHealth;
@@ -34,7 +35,8 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual void Awake()
     {
         playerTransform = Player.Instance.transform.Find("Core").Find("PlayerHitPosition").transform;
-        healthbar = transform.Find("Canvas").Find("HealthBar").GetComponent<EnemyHealthBar>();
+        _hpCanvas = transform.Find("Canvas");
+        healthbar = _hpCanvas.Find("HealthBar").GetComponent<EnemyHealthBar>();
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -148,6 +150,7 @@ public class Entity : MonoBehaviour, IDamageable
     {
         facingDirection *= -1;
         transform.Rotate(0f, 180f, 0f);
+        _hpCanvas.Rotate(0f, 180f, 0f);
     }
 
     public virtual void CheckIfShouldFlip()
@@ -192,12 +195,16 @@ public class Entity : MonoBehaviour, IDamageable
     
     public virtual bool CheckPlayerInMaxAgroRange()
     {
+        /*
         float distance = Vector2.Distance(_playerCheck.position, playerTransform.position);
 
         if (distance > entityData.maxAgroDistance)
             return false;
 
         return !Physics2D.Raycast(_playerCheck.position, (playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
+        */
+
+        return false;
     }
 
     public virtual bool CheckPlayerInMeleeRangeAction()
