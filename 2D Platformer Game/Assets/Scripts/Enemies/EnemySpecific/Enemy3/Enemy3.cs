@@ -70,8 +70,6 @@ public class Enemy3 : Entity
         if (stateMachine.currentState == deadState || stateMachine.currentState == respawnState)
             return true;
 
-        Enemy1HitParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 360)));
-
         if (isDead)
         {
             SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDie);

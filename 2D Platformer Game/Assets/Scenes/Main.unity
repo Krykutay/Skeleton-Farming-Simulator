@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 226336740}
   - component: {fileID: 226336739}
   - component: {fileID: 226336738}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grass9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2141,7 +2141,7 @@ GameObject:
   - component: {fileID: 458260176}
   - component: {fileID: 458260175}
   - component: {fileID: 458260174}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grass6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2885,7 +2885,7 @@ GameObject:
   - component: {fileID: 640112093}
   - component: {fileID: 640112092}
   - component: {fileID: 640112091}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grass3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5368,7 +5368,7 @@ GameObject:
   - component: {fileID: 1337114333}
   - component: {fileID: 1337114332}
   - component: {fileID: 1337114331}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grass4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56538,7 +56538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8982771504117960289, guid: 75fca2579c668e64fbbd78508b0f3596, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8982771504117960303, guid: 75fca2579c668e64fbbd78508b0f3596, type: 3}
       propertyPath: m_RootOrder
