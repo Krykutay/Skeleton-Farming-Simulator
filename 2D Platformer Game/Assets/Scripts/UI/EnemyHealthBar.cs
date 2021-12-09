@@ -20,6 +20,11 @@ public class EnemyHealthBar : MonoBehaviour
         _barImage.fillAmount = HealthNormalized();
     }
 
+    void Start()
+    {
+        _barImage.fillAmount = 1f;
+    }
+
     float HealthNormalized() => _currentHealth / _maxHealth;
 
     public void SetMaxHealth(int maxHealth) => _maxHealth = (float)maxHealth;
