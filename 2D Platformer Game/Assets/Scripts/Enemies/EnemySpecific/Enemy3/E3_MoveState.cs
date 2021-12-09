@@ -36,6 +36,7 @@ public class E3_MoveState : MoveState
         }
         else if (isPlayerInMaxAgroRange)
         {
+            enemy.playerDetectedState.PlayDetectionSound();
             stateMachine.ChangeState(enemy.playerDetectedState);
         }
     }

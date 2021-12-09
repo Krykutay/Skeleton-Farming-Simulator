@@ -27,6 +27,7 @@ public class E3_IdleState : IdleState
 
         if (isPlayerInMaxAgroRange)
         {
+            enemy.playerDetectedState.PlayDetectionSound();
             stateMachine.ChangeState(enemy.playerDetectedState);
         }
         else if (isIdleTimeOver)

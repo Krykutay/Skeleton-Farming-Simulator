@@ -12,8 +12,6 @@ public class PlayerDetectedState : State
     protected bool performMeleeRangeAction;
     protected bool isDetectingLedge;
 
-    int _randInt;
-
     public PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -22,12 +20,6 @@ public class PlayerDetectedState : State
     public override void Enter()
     {
         base.Enter();
-
-        _randInt = Random.Range(0, 2);
-        if (_randInt == 0)
-            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDetection1);
-        else
-            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDetection2);
 
         performLongRangeAction = false;
         entity.SetVelocityX(0f);
@@ -65,5 +57,15 @@ public class PlayerDetectedState : State
         isPlayerInMaxAgroRange = entity.CheckPlayerInMaxAgroRange();
         performMeleeRangeAction = entity.CheckPlayerInMeleeRangeAction();
         isDetectingLedge = entity.CheckLedge();
+    }
+
+    public void PlayDetectionSound()
+    {
+        int _randInt;
+        _randInt = Random.Range(0, 2);
+        if (_randInt == 0)
+            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDetection1);
+        else
+            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDetection2);
     }
 }
