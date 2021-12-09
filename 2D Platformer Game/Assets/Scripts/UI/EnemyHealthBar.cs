@@ -30,6 +30,7 @@ public class EnemyHealthBar : MonoBehaviour
 
     void Start()
     {
+        _currentHealth = _maxHealth;
         _barImage.fillAmount = 1f;
         edgeRectTransform.gameObject.SetActive(false);
     }

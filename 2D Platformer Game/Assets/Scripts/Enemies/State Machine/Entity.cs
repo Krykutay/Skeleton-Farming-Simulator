@@ -195,16 +195,12 @@ public class Entity : MonoBehaviour, IDamageable
     
     public virtual bool CheckPlayerInMaxAgroRange()
     {
-        /*
         float distance = Vector2.Distance(_playerCheck.position, playerTransform.position);
 
         if (distance > entityData.maxAgroDistance)
             return false;
 
         return !Physics2D.Raycast(_playerCheck.position, (playerTransform.position - _playerCheck.position).normalized, distance, entityData.ground);
-        */
-
-        return false;
     }
 
     public virtual bool CheckPlayerInMeleeRangeAction()
