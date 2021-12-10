@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598369578348093345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0430002, y: -0.26800013, z: 0}
+  m_LocalPosition: {x: 1.18, y: -0.268, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6673966333427904825}
@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1598369578984776513
 Transform:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598369578984776512}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.8, y: -5.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 840012395
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7942249098920568159, guid: ab113ed7294287d4fa4433e7bd5c858d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -269,10 +269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityData: {fileID: 11400000, guid: 5080db1e07a67094d9e28144aebb3e08, type: 2}
+  _groundCheck: {fileID: 1598369579385112552}
   _wallCheck: {fileID: 1598369578704023021}
   _ledgeCheck: {fileID: 1598369577933228046}
   _playerCheck: {fileID: 1598369579506300739}
-  _groundCheck: {fileID: 1598369579385112552}
   _idleStateData: {fileID: 11400000, guid: 256f0c5a1442c8e4392a32012af572b7, type: 2}
   _moveStateData: {fileID: 11400000, guid: 71d27e3781ab3b44991db15c0e02ebb2, type: 2}
   _playerDetectedStateData: {fileID: 11400000, guid: d4956ac818ce8f54b94ad35e99d343be, type: 2}
