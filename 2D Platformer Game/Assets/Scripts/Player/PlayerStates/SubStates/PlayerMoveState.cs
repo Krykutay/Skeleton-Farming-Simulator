@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMoveState : PlayerGroundedState
 {
     int _currentStep;
-    float _lastStepTime = Mathf.NegativeInfinity;
-    float _TimeBetweenSteps = 0.35f;
+    //float _lastStepTime = Mathf.NegativeInfinity;
+    //float _TimeBetweenSteps = 0.35f;
 
     public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
