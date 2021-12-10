@@ -80,7 +80,6 @@ public class PlayerDashState : PlayerAbilityState
         {
             AdjustHoldingAnim();
             player.CheckIfShouldFlip(_xInput);
-            player.SetVelocityX(playerData.movementVelocity * _xInput);
 
             _dashDirectionInput = player.inputHandler.rawDashDirectionInput;
             _dashInputStopped = player.inputHandler.dashInputStopped;
@@ -114,7 +113,6 @@ public class PlayerDashState : PlayerAbilityState
         else    // performing the dash Action
         {
             AdjustReleasingAnim();
-            player.SetVelocity(playerData.dashVelocity, _dashDirection);
             CheckIfShouldPlaceAfterImage();
 
             if (Time.time >= startTime + playerData.dashTime)
@@ -124,6 +122,16 @@ public class PlayerDashState : PlayerAbilityState
                 _lastDashTime = Time.time;
             }
         }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        if (_isHolding)
+            player.SetVelocityX(playerData.movementVelocity * _xInput);
+        else
+            player.SetVelocity(playerData.dashVelocity, _dashDirection);
     }
 
     public override void DoChecks()
@@ -198,4 +206,8 @@ public class PlayerDashState : PlayerAbilityState
 
     public void ResetCanDash() => canDash = true;
 
+    public override void AnimationFinishTrigger()
+    {
+        base.AnimationFinishTrigger();
+    }
 }

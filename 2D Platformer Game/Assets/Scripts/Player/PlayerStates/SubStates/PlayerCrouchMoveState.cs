@@ -25,9 +25,6 @@ public class PlayerCrouchMoveState : PlayerGroundedState
         if (isExitingState)
             return;
 
-        player.SetVelocityX(playerData.crouchMovementVelocity * xInput);
-        player.CheckIfShouldFlip(xInput);
-
         if (xInput == 0)
         {
             stateMachine.ChangeState(player.crouchIdleState);
@@ -36,6 +33,13 @@ public class PlayerCrouchMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.moveState);
         }
+    }
 
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        player.SetVelocityX(playerData.crouchMovementVelocity * xInput);
+        player.CheckIfShouldFlip(xInput);
     }
 }

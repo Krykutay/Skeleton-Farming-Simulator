@@ -1983,7 +1983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 937388793387021323, guid: ca862322cca88b14599ae5b621f97bde, type: 3}
-  _initialPoolSize: 7
+  _initialPoolSize: 12
 --- !u!114 &362191537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2643,7 +2643,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 0
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 0
+  m_UpdateMethod: 1
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -56115,6 +56115,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy4
       objectReference: {fileID: 0}
+    - target: {fileID: 3427618965906579954, guid: 064fc7b272574f842b81e174a642e938, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427618965906579958, guid: 064fc7b272574f842b81e174a642e938, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064fc7b272574f842b81e174a642e938, type: 3}
 --- !u!1001 &4205050529838449771
@@ -56191,7 +56199,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 12ebd2bfc3d9b7f4fab46eb2fbc46fc9, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4

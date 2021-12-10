@@ -44,8 +44,6 @@ public class PlayerDefenseMoveState : PlayerState
         _jumpInput = player.inputHandler.jumpInput;
         _defenseInput = player.inputHandler.defenseInput;
 
-        player.SetVelocityX(playerData.parryMovementVelocity * _xInput);
-
         _isGrounded = player.CheckIfGrounded();
         if (!_justGrounded && _isGrounded && player.currentVelocity.y < -0.01f)
         {
@@ -80,6 +78,13 @@ public class PlayerDefenseMoveState : PlayerState
             player.anim.SetBool("parryStarted", false);
             stateMachine.ChangeState(player.inAirState);
         }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        player.SetVelocityX(playerData.parryMovementVelocity * _xInput);
     }
 
     public override void DoChecks()

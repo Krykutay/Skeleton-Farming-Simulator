@@ -68,9 +68,6 @@ public class PlayerAttackState : PlayerAbilityState
         _jumpInput = player.inputHandler.jumpInput;
         _defenseInput = player.inputHandler.defenseInput;
 
-        player.CheckIfShouldFlip(_xInput);
-        player.SetVelocityX(_weaponData.movementSpeed * _xInput);
-
         if (_jumpInput && player.jumpState.CanJump() && !_isTouchingCeiling)
         {
             AnimationFinishTrigger();
@@ -81,6 +78,14 @@ public class PlayerAttackState : PlayerAbilityState
             AnimationFinishTrigger();
             stateMachine.ChangeState(player.defenseState);
         }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        player.CheckIfShouldFlip(_xInput);
+        player.SetVelocityX(_weaponData.movementSpeed * _xInput);
     }
 
     public override void DoChecks()

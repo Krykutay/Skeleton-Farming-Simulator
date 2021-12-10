@@ -29,8 +29,6 @@ public class PlayerWallSlideState : PlayerTouchingWallState
         if (isExitingState)
             return;
 
-        player.SetVelocityY(-playerData.wallSlideVelocity);
-
         if (grabInput && yInput == 0)
         {
             stateMachine.ChangeState(player.wallGrabState);
@@ -40,5 +38,12 @@ public class PlayerWallSlideState : PlayerTouchingWallState
             stateMachine.ChangeState(player.wallClimbState);
         }
 
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        player.SetVelocityY(-playerData.wallSlideVelocity);
     }
 }
