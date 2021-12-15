@@ -10,6 +10,7 @@ public class UI_Assistant : MonoBehaviour
 
     Button _button;
     TextWriter.TextWriterSingle _textWriterSingle;
+    SoundManager.SoundTags _currentDialogSound;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class UI_Assistant : MonoBehaviour
 
     void Start()
     {
+        /*
         SoundManager.Instance.Play(SoundManager.SoundTags.Talking);
         _textWriterSingle = TextWriter.AddWriter_Static(_messageText, "Aloha", 0.05f, true, true, StopTalkingSound);
 
@@ -44,11 +46,42 @@ public class UI_Assistant : MonoBehaviour
             }
 
         });
+        */
+    }
+
+    public void NpcTalk(string[] messages, SoundManager.SoundTags[] dialogSounds)
+    {
+        int count = 1;
+        SoundManager.Instance.Play(dialogSounds[0]);
+        _currentDialogSound = dialogSounds[0];
+        _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[0], 0.05f, true, true, StopTalkingSound);
+
+        _button.onClick.AddListener(() =>
+        {
+            if (_textWriterSingle != null && _textWriterSingle.IsActive())
+            {
+                // Currently active TextWriter
+                _textWriterSingle.WriteAllAndDestroy();
+            }
+            else
+            {
+                if (count >= messages.Length)
+                {
+                    gameObject.SetActive(false);
+                    return;
+                }
+
+                SoundManager.Instance.Play(dialogSounds[count]);
+                _currentDialogSound = dialogSounds[count];
+                _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[count], 0.05f, true, true, StopTalkingSound);
+                count++;
+            }
+        });
     }
 
     void StopTalkingSound()
     {
-        SoundManager.Instance.Stop(SoundManager.SoundTags.Talking);
+        SoundManager.Instance.Stop(_currentDialogSound);
     }
 
 }

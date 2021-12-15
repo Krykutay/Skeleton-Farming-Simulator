@@ -67644,17 +67644,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538275185}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1874042849}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 929, y: -500}
-  m_SizeDelta: {x: 400, y: 400}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 634, y: -468}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &538275187
 MonoBehaviour:
@@ -67676,7 +67676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f1dc68edce6b9b408cdd6b6d2bf02ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 615a79574bdf45046a0067ce6d099d33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -68886,6 +68886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 708676155}
+  - component: {fileID: 708676156}
   m_Layer: 0
   m_Name: NPCs
   m_TagString: Untagged
@@ -68908,6 +68909,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708676156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708676154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb8969b05a85845b679f0810ba55d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiAssistant: {fileID: 1874042850}
 --- !u!1 &736755751
 GameObject:
   m_ObjectHideFlags: 0
@@ -78510,7 +78524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1874042849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -128424,6 +128438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2138625120}
   - component: {fileID: 2138625121}
+  - component: {fileID: 2138625122}
   m_Layer: 5
   m_Name: message
   m_TagString: Untagged
@@ -128496,3 +128511,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!111 &2138625122
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138625119}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d8a8ce690d481fe498c7ecfcc3f151f8, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d8a8ce690d481fe498c7ecfcc3f151f8, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
