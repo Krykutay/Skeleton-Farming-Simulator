@@ -43,6 +43,7 @@ public class SoundManager : MonoBehaviour
         PlayerWalk2,
         PlayerWalk3,
         PlayerWalk4,
+        Talking,
     }
 
     public enum SoundTypes
