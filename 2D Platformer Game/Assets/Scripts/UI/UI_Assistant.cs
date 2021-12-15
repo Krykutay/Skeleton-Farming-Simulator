@@ -18,6 +18,9 @@ public class UI_Assistant : MonoBehaviour
 
     void Start()
     {
+        SoundManager.Instance.Play(SoundManager.SoundTags.Talking);
+        _textWriterSingle = TextWriter.AddWriter_Static(_messageText, "Aloha", 0.05f, true, true, StopTalkingSound);
+
         _button.onClick.AddListener(() =>
         {
             if (_textWriterSingle != null && _textWriterSingle.IsActive())
