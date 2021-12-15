@@ -2972,6 +2972,7 @@ GameObject:
   - component: {fileID: 370242313}
   - component: {fileID: 370242312}
   - component: {fileID: 370242311}
+  - component: {fileID: 370242327}
   m_Layer: 0
   m_Name: ObjectPoolingManager
   m_TagString: Untagged
@@ -3217,6 +3218,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 937388793387021323, guid: ca862322cca88b14599ae5b621f97bde, type: 3}
   _initialPoolSize: 12
+--- !u!114 &370242327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370242309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48f119d189cf80438706b8eef503895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: -5345404544388415550, guid: d7d2eff5f928b5f41b95d3134d611616, type: 3}
+  _initialPoolSize: 2
 --- !u!1 &392997647
 GameObject:
   m_ObjectHideFlags: 0
@@ -72752,6 +72767,7 @@ GameObject:
   - component: {fileID: 1184931785}
   - component: {fileID: 1184931784}
   - component: {fileID: 1184931793}
+  - component: {fileID: 1184931794}
   m_Layer: 0
   m_Name: Gamemanager
   m_TagString: Untagged
@@ -72895,6 +72911,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed0d80cb37fb6d4e868337a5f4ec72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1184931794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184931783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b324ad84045884478cdd040c7e476a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damagePopupPrefab: {fileID: 6916446409645012195, guid: d7d2eff5f928b5f41b95d3134d611616, type: 3}
 --- !u!1 &1187715014
 GameObject:
   m_ObjectHideFlags: 0
@@ -78772,11 +78801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9026879162023764505, guid: 0bcd726d3d9f9394a9406a791bda8830, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 154.71
+      value: -4.05
       objectReference: {fileID: 0}
     - target: {fileID: 9026879162023764505, guid: 0bcd726d3d9f9394a9406a791bda8830, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.32
+      value: -0.53
       objectReference: {fileID: 0}
     - target: {fileID: 9026879162023764505, guid: 0bcd726d3d9f9394a9406a791bda8830, type: 3}
       propertyPath: m_LocalPosition.z

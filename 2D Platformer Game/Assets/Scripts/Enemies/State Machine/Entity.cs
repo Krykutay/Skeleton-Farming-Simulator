@@ -111,6 +111,13 @@ public class Entity : MonoBehaviour, IDamageable
         healthbar.SetCurrentHealth((int)_currentHealth, (int)attackDetails.damageAmount);
         _currentStunResistance -= attackDetails.stunDamageAmount;
 
+        DamagePopup damagePopup = DamagePopupPool.Instance.Get(transform.position, Quaternion.identity);
+
+        if (attackDetails.stunDamageAmount > 0)
+            damagePopup.Setup((int)attackDetails.damageAmount, true);
+        else
+            damagePopup.Setup((int)attackDetails.damageAmount, false);
+
         DamageHop(entityData.damageHopSpeed);
 
         if (attackDetails.position.x > transform.position.x)
