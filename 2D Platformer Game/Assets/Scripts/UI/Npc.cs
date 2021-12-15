@@ -36,4 +36,12 @@ public class Npc : MonoBehaviour
         uiAssistant.NpcTalk(_initialDialog, _dialogSounds);
     }
 
+    void FixedUpdate()
+    {
+        if (Vector3.Distance(Player.Instance.transform.position, transform.position) < 5f)
+        {
+            // game object press E active
+        }
+    }
+
 }

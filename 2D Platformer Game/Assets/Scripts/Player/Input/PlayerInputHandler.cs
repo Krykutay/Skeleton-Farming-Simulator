@@ -16,6 +16,7 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction _dashDirectionAction;
     InputAction _primaryAttackAction;
     InputAction _defenseAction;
+    InputAction _talkAction;
 
     public int xInput { get; private set; }
     public int yInput { get; private set;}
@@ -27,6 +28,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 rawDashDirectionInput { get; private set; }
     public bool attackInput { get; private set; }
     public bool defenseInput { get; private set; }
+    public bool talkInput { get; private set; }
 
     [SerializeField] float _inputHoldTime = 0.2f;
 
@@ -47,6 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
         _dashDirectionAction = _playerInput.actions["DashDirection"];
         _primaryAttackAction = _playerInput.actions["PrimaryAttack"];
         _defenseAction = _playerInput.actions["Parry"];
+        _talkAction = _playerInput.actions["Talk"];
     }
 
     void OnEnable()
@@ -76,6 +79,8 @@ public class PlayerInputHandler : MonoBehaviour
 
         _defenseAction.started += DefenseStart;
         _defenseAction.canceled += DefenseCancel;
+
+        _talkAction.started += TalkStart;
     }
 
     void OnDisable()
@@ -105,6 +110,8 @@ public class PlayerInputHandler : MonoBehaviour
 
         _defenseAction.started -= DefenseStart;
         _defenseAction.canceled -= DefenseCancel;
+
+        _talkAction.started -= TalkStart;
     }
 
     void Update()
@@ -271,5 +278,10 @@ public class PlayerInputHandler : MonoBehaviour
     void DefenseCancel(InputAction.CallbackContext context)
     {
         defenseInput = false;
+    }
+
+    void TalkStart(InputAction.CallbackContext context)
+    {
+        talkInput = true;
     }
 }
