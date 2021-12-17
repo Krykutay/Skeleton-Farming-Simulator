@@ -17,44 +17,14 @@ public class UI_Assistant : MonoBehaviour
         _button = transform.Find("message").GetComponent<Button>();
     }
 
-    void Start()
-    {
-        /*
-        SoundManager.Instance.Play(SoundManager.SoundTags.Talking);
-        _textWriterSingle = TextWriter.AddWriter_Static(_messageText, "Aloha", 0.05f, true, true, StopTalkingSound);
-
-        _button.onClick.AddListener(() =>
-        {
-            if (_textWriterSingle != null && _textWriterSingle.IsActive())
-            {
-                // Currently active TextWriter
-                _textWriterSingle.WriteAllAndDestroy();
-            }
-            else
-            {
-                string[] messageArray = new string[]
-                {
-                "This is the assistant speaking, hello and goodbye, see you next time!",
-                "Hey there!",
-                "This is a really cool and usefull effect",
-                "Let's learn some code and make awesome games!",
-                };
-
-                string message = messageArray[Random.Range(0, messageArray.Length)];
-                SoundManager.Instance.Play(SoundManager.SoundTags.Talking);
-                _textWriterSingle = TextWriter.AddWriter_Static(_messageText, message, 0.05f, true, true, StopTalkingSound);
-            }
-
-        });
-        */
-    }
-
     public void NpcTalk(string[] messages, SoundManager.SoundTags[] dialogSounds)
     {
         int count = 1;
         SoundManager.Instance.Play(dialogSounds[0]);
         _currentDialogSound = dialogSounds[0];
         _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[0], 0.05f, true, true, StopTalkingSound);
+
+        _button.onClick.RemoveAllListeners();
 
         _button.onClick.AddListener(() =>
         {
