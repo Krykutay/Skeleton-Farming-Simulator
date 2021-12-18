@@ -11,6 +11,7 @@ public class NpcTalk6 : MonoBehaviour
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
+    float[] _typeSpeed;
 
     bool _isPlayerInRange;
 
@@ -45,22 +46,30 @@ public class NpcTalk6 : MonoBehaviour
 
         _initialDialog = new string[]
         {
-            "Ah, the eternals.. Let's get you to fighting, eh!",
+            "Ah, the eternals.. Let's get you to fighting now.",
             "Press [Left Button] to attack, [Right Button] to parry the incoming attack.",
             "If you time it well, you perform a Perfect Parry and take no hit, and stun the enemy.",
-            "All you need to do is parry right before the incoming attack, and ta daa!",
+            "All you need to do is parry right before the incoming attack, and that's all!",
         };
 
         _dialogSounds = new SoundManager.SoundTags[]
         {
-        SoundManager.SoundTags.Talking,
-        SoundManager.SoundTags.Talking,
-        SoundManager.SoundTags.Talking,
-        SoundManager.SoundTags.Talking,
+        SoundManager.SoundTags.NpcTalk6_1,
+        SoundManager.SoundTags.NpcTalk6_2,
+        SoundManager.SoundTags.NpcTalk6_3,
+        SoundManager.SoundTags.NpcTalk6_4,
+        };
+
+        _typeSpeed = new float[]
+        {
+            0.065f,
+            0.065f,
+            0.065f,
+            0.065f,
         };
 
         _uiAssistant.gameObject.SetActive(true);
-        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds);
+        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
 
     }
 

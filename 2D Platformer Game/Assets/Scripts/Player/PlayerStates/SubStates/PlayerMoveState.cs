@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundedState
 {
-    int _currentStep;
+    //int _currentStep;
     //float _lastStepTime = Mathf.NegativeInfinity;
     //float _TimeBetweenSteps = 0.35f;
 
@@ -16,7 +16,7 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.Enter();
 
-        _currentStep = 0;
+        //_currentStep = 0;
         SoundManager.Instance.Play(SoundManager.SoundTags.PlayerRun);
     }
 
@@ -67,6 +67,7 @@ public class PlayerMoveState : PlayerGroundedState
 
     void PlayRunSound()
     {
+        /*
         if (_currentStep == 0)
             SoundManager.Instance.Play(SoundManager.SoundTags.PlayerWalk1);
         else if (_currentStep == 1)
@@ -80,5 +81,7 @@ public class PlayerMoveState : PlayerGroundedState
         }
 
         _currentStep++;
+
+        */
     }
 }

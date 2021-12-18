@@ -11,6 +11,7 @@ public class NpcTalk5 : MonoBehaviour
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
+    float[] _typeSpeed;
 
     bool _isPlayerInRange;
 
@@ -46,19 +47,26 @@ public class NpcTalk5 : MonoBehaviour
         _initialDialog = new string[]
         {
             "Not bad so far, now let's learn to Dash!",
-            "Press [Left Shift] and aim with Mouse Position",
+            "Press [Left Shift] and aim with Mouse, easy peasy.",
             "Then release it or charge it. Remember, dashing can also hurt the eternals, and makes you invincible!",
         };
 
         _dialogSounds = new SoundManager.SoundTags[]
         {
-        SoundManager.SoundTags.Talking,
-        SoundManager.SoundTags.Talking,
-        SoundManager.SoundTags.Talking,
+        SoundManager.SoundTags.NpcTalk5_1,
+        SoundManager.SoundTags.NpcTalk5_2,
+        SoundManager.SoundTags.NpcTalk5_3,
+        };
+
+        _typeSpeed = new float[]
+        {
+            0.065f,
+            0.065f,
+            0.065f,
         };
 
         _uiAssistant.gameObject.SetActive(true);
-        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds);
+        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
 
     }
 

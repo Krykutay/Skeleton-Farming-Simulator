@@ -11,6 +11,7 @@ public class NpcTalk4 : MonoBehaviour
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
+    float[] _typeSpeed;
 
     bool _isPlayerInRange;
 
@@ -50,11 +51,16 @@ public class NpcTalk4 : MonoBehaviour
 
         _dialogSounds = new SoundManager.SoundTags[]
         {
-        SoundManager.SoundTags.Talking,
+        SoundManager.SoundTags.NpcTalk4_1,
+        };
+
+        _typeSpeed = new float[]
+        {
+            0.065f,
         };
 
         _uiAssistant.gameObject.SetActive(true);
-        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds);
+        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
 
     }
 

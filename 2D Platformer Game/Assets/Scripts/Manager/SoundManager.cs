@@ -39,17 +39,30 @@ public class SoundManager : MonoBehaviour
         SkeletonSpell,
         SkeletonTeleport,
         PlayerLedgeClimb,
-        PlayerWalk1,
-        PlayerWalk2,
-        PlayerWalk3,
-        PlayerWalk4,
-        Talking,
+        NpcTalk1_1,
+        NpcTalk1_2,
+        NpcTalk1_3,
+        NpcTalk1_4,
+        NpcTalk2_1,
+        NpcTalk3_1,
+        NpcTalk3_2,
+        NpcTalk4_1,
+        NpcTalk5_1,
+        NpcTalk5_2,
+        NpcTalk5_3,
+        NpcTalk6_1,
+        NpcTalk6_2,
+        NpcTalk6_3,
+        NpcTalk6_4,
+        NpcTalk7_1,
+        NpcTalk7_2,
     }
 
     public enum SoundTypes
     {
         Effect,
         Music,
+        Voice,
     }
 
     void Awake()

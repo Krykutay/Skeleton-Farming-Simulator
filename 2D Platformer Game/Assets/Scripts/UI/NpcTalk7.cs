@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NpcTalk2 : MonoBehaviour
+public class NpcTalk7 : MonoBehaviour
 {
     [SerializeField] UI_Assistant _uiAssistant;
     [SerializeField] TMP_Text _talkText;
@@ -27,7 +27,7 @@ public class NpcTalk2 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        _talkText.text = "Listen (E)";
+        _talkText.text = "Talk (E)";
         _isPlayerInRange = true;
 
     }
@@ -46,18 +46,20 @@ public class NpcTalk2 : MonoBehaviour
 
         _initialDialog = new string[]
         {
-            "Press [Space] to jump, jump twice if you like!",              
+            "The mining pits are just ahead, we must claim it back.",
+            "Oh, and be careful lad.",
         };
 
         _dialogSounds = new SoundManager.SoundTags[]
         {
-        SoundManager.SoundTags.NpcTalk2_1,
+        SoundManager.SoundTags.NpcTalk7_1,
+        SoundManager.SoundTags.NpcTalk7_2,
         };
 
         _typeSpeed = new float[]
         {
             0.065f,
-
+            0.065f,
         };
 
         _uiAssistant.gameObject.SetActive(true);

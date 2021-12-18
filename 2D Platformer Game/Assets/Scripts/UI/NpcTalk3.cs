@@ -11,6 +11,7 @@ public class NpcTalk3 : MonoBehaviour
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
+    float[] _typeSpeed;
 
     bool _isPlayerInRange;
 
@@ -45,18 +46,25 @@ public class NpcTalk3 : MonoBehaviour
 
         _initialDialog = new string[]
         {
-            "Touch the wall and Press [Space], ta daa Wall Jump!",
-            "Push the wall with [A] or [D] to Slide on the wall!"
+            "Touch the wall and Press [Space], and that's, Wall Jump eh!",
+            "Push the wall with [A] or [D] to Slide on the wall, it's super fun!"
         };
 
         _dialogSounds = new SoundManager.SoundTags[]
         {
-        SoundManager.SoundTags.Talking,
-        SoundManager.SoundTags.Talking,
+        SoundManager.SoundTags.NpcTalk3_1,
+        SoundManager.SoundTags.NpcTalk3_2,
         };
 
+        _typeSpeed = new float[]
+        {
+            0.065f,
+            0.065f,
+        };
+
+
         _uiAssistant.gameObject.SetActive(true);
-        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds);
+        _uiAssistant.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
 
     }
 

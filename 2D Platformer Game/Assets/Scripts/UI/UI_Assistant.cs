@@ -17,12 +17,12 @@ public class UI_Assistant : MonoBehaviour
         _button = transform.Find("message").GetComponent<Button>();
     }
 
-    public void NpcTalk(string[] messages, SoundManager.SoundTags[] dialogSounds)
+    public void NpcTalk(string[] messages, SoundManager.SoundTags[] dialogSounds, float[] typeSpeed)
     {
         int count = 1;
         SoundManager.Instance.Play(dialogSounds[0]);
         _currentDialogSound = dialogSounds[0];
-        _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[0], 0.05f, true, true, StopTalkingSound);
+        _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[0], typeSpeed[0], true, true, StopTalkingSound);
 
         _button.onClick.RemoveAllListeners();
 
@@ -43,7 +43,7 @@ public class UI_Assistant : MonoBehaviour
 
                 SoundManager.Instance.Play(dialogSounds[count]);
                 _currentDialogSound = dialogSounds[count];
-                _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[count], 0.05f, true, true, StopTalkingSound);
+                _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[count], typeSpeed[count], true, true, StopTalkingSound);
                 count++;
             }
         });
