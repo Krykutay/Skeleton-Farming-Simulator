@@ -56,6 +56,8 @@ public class SoundManager : MonoBehaviour
         NpcTalk6_4,
         NpcTalk7_1,
         NpcTalk7_2,
+        ButtonClick,
+        ScoreCalculation,
     }
 
     public enum SoundTypes
