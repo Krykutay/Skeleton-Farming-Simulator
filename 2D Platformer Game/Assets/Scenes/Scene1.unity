@@ -80308,7 +80308,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1881691608}
   - component: {fileID: 1881691611}
-  - component: {fileID: 1881691609}
   - component: {fileID: 1881691610}
   - component: {fileID: 1881691612}
   m_Layer: 12
@@ -80333,20 +80332,6 @@ Transform:
   m_Father: {fileID: 708676155}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1881691609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881691607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d4ef545ab453544e95df1386cfeb377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiAssistant: {fileID: 1874042850}
-  _talkText: {fileID: 2090559636}
 --- !u!58 &1881691610
 CircleCollider2D:
   m_ObjectHideFlags: 0

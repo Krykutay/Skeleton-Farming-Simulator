@@ -58,8 +58,8 @@ public class NpcTalk3 : MonoBehaviour
 
         _typeSpeed = new float[]
         {
-            0.065f,
-            0.065f,
+            0.06f,
+            0.058f,
         };
 
 

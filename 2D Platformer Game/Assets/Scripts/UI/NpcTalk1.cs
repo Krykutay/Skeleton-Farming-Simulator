@@ -62,10 +62,10 @@ public class NpcTalk1 : MonoBehaviour
 
         _typeSpeed = new float[]
         {
-            0.065f,
-            0.065f,
-            0.065f,
-            0.065f,
+            0.07f,
+            0.062f,
+            0.05f,
+            0.062f,
         };
 
         _uiAssistant.gameObject.SetActive(true);
