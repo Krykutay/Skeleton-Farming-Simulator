@@ -88,6 +88,8 @@ public class LoadPrefs : MonoBehaviour
         var rebinds = PlayerPrefs.GetString(REBINDS);
         if (!string.IsNullOrEmpty(rebinds))
         {
+            _actions.LoadBindingOverridesFromJson(rebinds);
+
             _leftControlsTextValue.text = InputControlPath.ToHumanReadableString(
                 _actions.actionMaps[0].actions[0].bindings[0].effectivePath,
                 InputControlPath.HumanReadableStringOptions.OmitDevice);
