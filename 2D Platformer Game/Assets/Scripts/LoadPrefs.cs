@@ -97,28 +97,28 @@ public class LoadPrefs : MonoBehaviour
                 InputControlPath.HumanReadableStringOptions.OmitDevice);
 
             _jumpControlsTextValue.text = InputControlPath.ToHumanReadableString(
-            _actions.actionMaps[0].actions[2].bindings[0].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
+                _actions.actionMaps[0].actions[2].bindings[0].effectivePath,
+                InputControlPath.HumanReadableStringOptions.OmitDevice);
 
             _attackControlsTextValue.text = InputControlPath.ToHumanReadableString(
-            _actions.actionMaps[0].actions[3].bindings[0].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
+                _actions.actionMaps[0].actions[3].bindings[0].effectivePath,
+                InputControlPath.HumanReadableStringOptions.OmitDevice);
 
             _parryControlsTextValue.text = InputControlPath.ToHumanReadableString(
-            _actions.actionMaps[0].actions[4].bindings[0].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
+                _actions.actionMaps[0].actions[4].bindings[0].effectivePath,
+                InputControlPath.HumanReadableStringOptions.OmitDevice);
 
             _dashControlsTextValue.text = InputControlPath.ToHumanReadableString(
-            _actions.actionMaps[0].actions[5].bindings[0].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
+                _actions.actionMaps[0].actions[5].bindings[0].effectivePath,
+                InputControlPath.HumanReadableStringOptions.OmitDevice);
 
             _crouchControlsTextValue.text = InputControlPath.ToHumanReadableString(
-            _actions.actionMaps[0].actions[6].bindings[0].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
+                _actions.actionMaps[0].actions[6].bindings[0].effectivePath,
+                InputControlPath.HumanReadableStringOptions.OmitDevice);
 
             _interactControlsTextValue.text = InputControlPath.ToHumanReadableString(
-            _actions.actionMaps[0].actions[7].bindings[0].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
+                _actions.actionMaps[0].actions[7].bindings[0].effectivePath,
+                InputControlPath.HumanReadableStringOptions.OmitDevice);
         }  
         else
         {

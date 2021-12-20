@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 4624118190023136883}
   - component: {fileID: 4669132590799356462}
   - component: {fileID: 6778234062244058144}
-  - component: {fileID: 6778234063680707200}
   m_Layer: 5
   m_Name: ResetToDefaultButton
   m_TagString: Untagged
@@ -270,18 +269,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6778234062244058144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115910505648507052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1ea294351ba2a4cb4e64a9002c65bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6778234063680707200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -730,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6778234063635196358
 RectTransform:
   m_ObjectHideFlags: 0
@@ -902,7 +889,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294243770
+    rgba: 3355443200
   m_fontColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -975,7 +962,6 @@ GameObject:
   - component: {fileID: 6801584682105596053}
   - component: {fileID: 4371940066421032431}
   - component: {fileID: 6778234062244058147}
-  - component: {fileID: 6778234063279720144}
   m_Layer: 5
   m_Name: TriggerRebindButton
   m_TagString: Untagged
@@ -1110,18 +1096,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6778234062244058147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8154213656786453986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1ea294351ba2a4cb4e64a9002c65bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6778234063279720144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

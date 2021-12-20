@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 7574095252801040104}
   - component: {fileID: 7637166140349119157}
   - component: {fileID: 8584321077284400315}
-  - component: {fileID: 8584321076988338715}
   m_Layer: 5
   m_Name: ResetToDefaultButton
   m_TagString: Untagged
@@ -270,18 +269,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &8584321077284400315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2759650830090219575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1ea294351ba2a4cb4e64a9002c65bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8584321076988338715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -440,7 +427,6 @@ GameObject:
   - component: {fileID: 8598682603589570574}
   - component: {fileID: 1557397944699665780}
   - component: {fileID: 8584321077284400312}
-  - component: {fileID: 8584321076317683275}
   m_Layer: 5
   m_Name: TriggerRebindButton
   m_TagString: Untagged
@@ -575,18 +561,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &8584321077284400312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6348152843195170169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1ea294351ba2a4cb4e64a9002c65bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8584321076317683275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 9100968064034728441}
   - component: {fileID: 9127986760951610788}
   - component: {fileID: 6949079742367935402}
-  - component: {fileID: 6949079742927774986}
   m_Layer: 5
   m_Name: ResetToDefaultButton
   m_TagString: Untagged
@@ -270,18 +269,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6949079742367935402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3539137112760186662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1ea294351ba2a4cb4e64a9002c65bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6949079742927774986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -440,7 +427,6 @@ GameObject:
   - component: {fileID: 6918969361526085407}
   - component: {fileID: 201897346267904613}
   - component: {fileID: 6949079742367935401}
-  - component: {fileID: 6949079743329941850}
   m_Layer: 5
   m_Name: TriggerRebindButton
   m_TagString: Untagged
@@ -586,18 +572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1ea294351ba2a4cb4e64a9002c65bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6949079743329941850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5712990797336672872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf1ea294351ba2a4cb4e64a9002c65bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6949079742533810904
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +646,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294243770
+    rgba: 3355443200
   m_fontColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_enableVertexGradient: 0
   m_colorMode: 3
