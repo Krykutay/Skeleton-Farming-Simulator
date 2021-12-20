@@ -19,6 +19,11 @@ public class SoundDialogMenu : MonoBehaviour
     [SerializeField] TMP_Text _musicVolumeTextValue;
     [SerializeField] float _defaultMusicVolume = 100f;
 
+    [Header("Voice Volume Setting")]
+    [SerializeField] Slider _voiceVolumeSlider;
+    [SerializeField] TMP_Text _voiceVolumeTextValue;
+    [SerializeField] float _defaultVoiceVolume = 100f;
+
     [Header("ConfirmationPopup")]
     [SerializeField] GameObject _confirmationPopup;
 
@@ -28,11 +33,13 @@ public class SoundDialogMenu : MonoBehaviour
     float _masterVolume;
     float _effectVolume;
     float _musicVolume;
+    float _voiceVolume;
     bool _isAudioChanged;
 
     const string MASTER_VOLUME = "masterVolume";
     const string EFFECT_VOLUME = "masterEffect";
     const string MUSIC_VOLUME = "masterMusic";
+    const string VOICE_VOLUME = "masterVoice";
 
     void OnEnable()
     {
@@ -49,6 +56,7 @@ public class SoundDialogMenu : MonoBehaviour
         _masterVolume = _masterVolumeSlider.value;
         _effectVolume = _effectVolumeSlider.value;
         _musicVolume = _musicVolumeSlider.value;
+        _voiceVolume = _voiceVolumeSlider.value;
         _isAudioChanged = false;
     }
 
@@ -97,11 +105,27 @@ public class SoundDialogMenu : MonoBehaviour
         _musicVolumeTextValue.text = volume.ToString("0");
     }
 
+    public void SetVoiceVolumes(float volume)
+    {
+        foreach (var sound in SoundManager.Instance.sounds)
+        {
+            if (sound.type == SoundManager.SoundTypes.Voice)
+            {
+                _isAudioChanged = true;
+                sound.volume = sound._defaultMaxVolume * volume * 0.01f;
+                sound.source.volume = sound._defaultMaxVolume * volume * 0.01f;
+                _voiceVolume = volume;
+            }
+        }
+        _voiceVolumeTextValue.text = volume.ToString("0");
+    }
+
     public void VolumeApply()
     {
         PlayerPrefs.SetFloat(MASTER_VOLUME, _masterVolume);
         PlayerPrefs.SetFloat(EFFECT_VOLUME, _effectVolume);
         PlayerPrefs.SetFloat(MUSIC_VOLUME, _musicVolume);
+        PlayerPrefs.SetFloat(VOICE_VOLUME, _voiceVolume);
         _isAudioChanged = false;
     }
 
@@ -154,6 +178,22 @@ public class SoundDialogMenu : MonoBehaviour
 
         _musicVolumeSlider.value = _defaultMusicVolume;
         _musicVolumeTextValue.text = _defaultMusicVolume.ToString("0");
+    }
+
+    public void ResetVoiceVolume()
+    {
+        foreach (var sound in SoundManager.Instance.sounds)
+        {
+            if (sound.type == SoundManager.SoundTypes.Voice)
+            {
+                sound.volume = sound._defaultMaxVolume;
+                sound.source.volume = sound._defaultMaxVolume;
+            }
+        }
+        _voiceVolume = _defaultVoiceVolume;
+
+        _voiceVolumeSlider.value = _defaultVoiceVolume;
+        _voiceVolumeTextValue.text = _defaultVoiceVolume.ToString("0");
     }
 
     public void BackButton()

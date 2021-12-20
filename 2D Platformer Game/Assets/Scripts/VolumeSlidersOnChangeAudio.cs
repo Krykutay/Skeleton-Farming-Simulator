@@ -9,6 +9,7 @@ public class VolumeSlidersOnChangeAudio : MonoBehaviour
     [SerializeField] Slider _masterVolumeSlider;
     [SerializeField] Slider _effectVolumeSlider;
     [SerializeField] Slider _musicVolumeSlider;
+    [SerializeField] Slider _voiceVolumeSlider;
 
     void Start()
     {
@@ -25,6 +26,12 @@ public class VolumeSlidersOnChangeAudio : MonoBehaviour
         });
 
         _musicVolumeSlider.onValueChanged.AddListener(_ =>
+        {
+            if (_soundDialogMenu.activeSelf)
+                PlayAudio();
+        });
+
+        _voiceVolumeSlider.onValueChanged.AddListener(_ =>
         {
             if (_soundDialogMenu.activeSelf)
                 PlayAudio();

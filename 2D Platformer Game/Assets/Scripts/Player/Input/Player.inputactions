@@ -6,24 +6,6 @@
             "id": "625bc3a2-977e-4797-a726-134a15421894",
             "actions": [
                 {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "f10d4a2a-5361-4f13-a09b-580a960121b6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "e416bfcb-4bd9-4c35-9ffb-5090d418251b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Left",
                     "type": "Button",
                     "id": "64c7c97f-4863-4659-8c8f-adea69e44e2b",
@@ -51,33 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grab",
-                    "type": "Button",
-                    "id": "61073605-ea0f-4d20-b99c-0be6e44fdde9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "eaf7f1bd-4cef-4d0d-8fd8-4e93f48d14f4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "DashDirection",
-                    "type": "Value",
-                    "id": "93c0ee24-130d-41bd-88b0-82fb92a62faf",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "PrimaryAttack",
                     "type": "Button",
                     "id": "f53edd25-fb90-4969-95b1-cfbd79191e5d",
@@ -96,9 +51,54 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "eaf7f1bd-4cef-4d0d-8fd8-4e93f48d14f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "e416bfcb-4bd9-4c35-9ffb-5090d418251b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Talk",
                     "type": "Button",
                     "id": "489cd179-be05-4c1b-b077-c810c6329e40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "61073605-ea0f-4d20-b99c-0be6e44fdde9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DashDirection",
+                    "type": "Value",
+                    "id": "93c0ee24-130d-41bd-88b0-82fb92a62faf",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "f10d4a2a-5361-4f13-a09b-580a960121b6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -108,23 +108,45 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "23c06d57-e273-4d91-b8f6-c0ef3079c8ed",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "53bc788c-4764-45dd-b7bb-371e7b3c953d",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be4da7d6-503a-444e-9202-e3054286caab",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4da19607-df6a-46c0-8a93-8c1904365de7",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DashDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23c06d57-e273-4d91-b8f6-c0ef3079c8ed",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -152,45 +174,12 @@
                 },
                 {
                     "name": "",
-                    "id": "be4da7d6-503a-444e-9202-e3054286caab",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Grab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "63817024-33f5-44f1-bff3-ed3c972b8e07",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c341efc9-30e8-447e-9803-6967af3b2536",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4da19607-df6a-46c0-8a93-8c1904365de7",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "DashDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -213,6 +202,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Parry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c341efc9-30e8-447e-9803-6967af3b2536",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

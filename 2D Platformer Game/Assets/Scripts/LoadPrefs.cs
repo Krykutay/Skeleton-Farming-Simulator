@@ -17,6 +17,8 @@ public class LoadPrefs : MonoBehaviour
     [SerializeField] TMP_Text _effectVolumeTextValue;
     [SerializeField] Slider _musicVolumeSlider;
     [SerializeField] TMP_Text _musicVolumeTextValue;
+    [SerializeField] Slider _voiceVolumeSlider;
+    [SerializeField] TMP_Text _voiceVolumeTextValue;
 
     [Header("Quality Level Setting")]
     [SerializeField] TMP_Dropdown _qualityDropdown;
@@ -29,14 +31,21 @@ public class LoadPrefs : MonoBehaviour
 
     [Header("Controls Setting")]
     [SerializeField] InputActionAsset _actions;
+    [SerializeField] TMP_Text _leftControlsTextValue;
+    [SerializeField] TMP_Text _rightControlsTextValue;
     [SerializeField] TMP_Text _jumpControlsTextValue;
-    [SerializeField] TMP_Text _fireControlsTextValue;
+    [SerializeField] TMP_Text _attackControlsTextValue;
+    [SerializeField] TMP_Text _parryControlsTextValue;
+    [SerializeField] TMP_Text _dashControlsTextValue;
+    [SerializeField] TMP_Text _crouchControlsTextValue;
+    [SerializeField] TMP_Text _interactControlsTextValue;
 
     const string REBINDS = "rebinds";
 
     const string MASTER_VOLUME = "masterVolume";
     const string EFFECT_VOLUME = "masterEffect";
     const string MUSIC_VOLUME = "masterMusic";
+    const string VOICE_VOLUME = "masterVoice";
 
     const string MASTER_QUALITY = "masterQuality";
     const string MASTER_FULLSCREEN = "masterFullscreen";
@@ -63,6 +72,7 @@ public class LoadPrefs : MonoBehaviour
         LoadMasterVolume();
         LoadEffectVolume();
         LoadMusicVolume();
+        LoadVoiceVolume();
     }
 
     public void LoadGraphics()
@@ -78,19 +88,49 @@ public class LoadPrefs : MonoBehaviour
         var rebinds = PlayerPrefs.GetString(REBINDS);
         if (!string.IsNullOrEmpty(rebinds))
         {
-            _jumpControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _leftControlsTextValue.text = InputControlPath.ToHumanReadableString(
                 _actions.actionMaps[0].actions[0].bindings[0].effectivePath,
                 InputControlPath.HumanReadableStringOptions.OmitDevice);
 
-            _fireControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _rightControlsTextValue.text = InputControlPath.ToHumanReadableString(
                 _actions.actionMaps[0].actions[1].bindings[0].effectivePath,
                 InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+            _jumpControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _actions.actionMaps[0].actions[2].bindings[0].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+            _attackControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _actions.actionMaps[0].actions[3].bindings[0].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+            _parryControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _actions.actionMaps[0].actions[4].bindings[0].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+            _dashControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _actions.actionMaps[0].actions[5].bindings[0].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+            _crouchControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _actions.actionMaps[0].actions[6].bindings[0].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+            _interactControlsTextValue.text = InputControlPath.ToHumanReadableString(
+            _actions.actionMaps[0].actions[7].bindings[0].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
         }  
         else
         {
-            _jumpControlsTextValue.text = "Left Button";
-            _fireControlsTextValue.text = "Space";
-            
+            _leftControlsTextValue.text = "A";
+            _rightControlsTextValue.text = "D";
+            _jumpControlsTextValue.text = "Space";
+            _attackControlsTextValue.text = "Left Button";
+            _parryControlsTextValue.text = "Right Button";
+            _dashControlsTextValue.text = "Left Shift";
+            _crouchControlsTextValue.text = "S";
+            _interactControlsTextValue.text = "E";
+
             foreach (InputActionMap map in _actions.actionMaps)
             {
                 map.RemoveAllBindingOverrides();
@@ -155,6 +195,28 @@ public class LoadPrefs : MonoBehaviour
         else
         {
             _soundDialogMenu.ResetMusicVolume();
+        }
+    }
+
+    void LoadVoiceVolume()
+    {
+        if (PlayerPrefs.HasKey(VOICE_VOLUME))
+        {
+            float localVolume = PlayerPrefs.GetFloat(VOICE_VOLUME);
+            foreach (var sound in SoundManager.Instance.sounds)
+            {
+                if (sound.type == SoundManager.SoundTypes.Voice)
+                {
+                    sound.volume = sound._defaultMaxVolume * localVolume * 0.01f;
+                    sound.source.volume = sound._defaultMaxVolume * localVolume * 0.01f;
+                }
+            }
+            _voiceVolumeSlider.value = localVolume;
+            _voiceVolumeTextValue.text = localVolume.ToString();
+        }
+        else
+        {
+            _soundDialogMenu.ResetVoiceVolume();
         }
     }
 
