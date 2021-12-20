@@ -49,7 +49,7 @@ public class UI_Assistant : MonoBehaviour
         });
     }
 
-    void StopTalkingSound()
+    public void StopTalkingSound()
     {
         SoundManager.Instance.Stop(_currentDialogSound);
     }
