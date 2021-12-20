@@ -8,6 +8,7 @@ public class NpcTalk2 : MonoBehaviour
 {
     [SerializeField] UI_Assistant _uiAssistant;
     [SerializeField] TMP_Text _talkText;
+    [SerializeField] TMP_Text _currentJumpKeybindText;
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
@@ -47,7 +48,7 @@ public class NpcTalk2 : MonoBehaviour
 
         _initialDialog = new string[]
         {
-            "Press [Space] to jump, jump twice if you like!",              
+            "Press [" + _currentJumpKeybindText.text + "] to jump, jump twice if you like!",              
         };
 
         _dialogSounds = new SoundManager.SoundTags[]

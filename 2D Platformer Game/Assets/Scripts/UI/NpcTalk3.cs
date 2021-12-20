@@ -8,6 +8,9 @@ public class NpcTalk3 : MonoBehaviour
 {
     [SerializeField] UI_Assistant _uiAssistant;
     [SerializeField] TMP_Text _talkText;
+    [SerializeField] TMP_Text _currentJumpKeybindText;
+    [SerializeField] TMP_Text _currentMoveLeftKeybindText;
+    [SerializeField] TMP_Text _currentMoveRightKeybindText;
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
@@ -47,8 +50,8 @@ public class NpcTalk3 : MonoBehaviour
 
         _initialDialog = new string[]
         {
-            "Touch the wall and Press [Space], and that's, Wall Jump eh!",
-            "Push the wall with [A] or [D] to Slide on the wall, it's super fun!"
+            "Touch the wall and Press ["+ _currentJumpKeybindText.text +"], and that's, Wall Jump eh!",
+            "Push the wall with ["+ _currentMoveLeftKeybindText.text +"] or ["+ _currentMoveRightKeybindText.text +"] to Slide on the wall, it's super fun!"
         };
 
         _dialogSounds = new SoundManager.SoundTags[]

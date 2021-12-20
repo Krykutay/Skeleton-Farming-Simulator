@@ -8,6 +8,7 @@ public class NpcTalk5 : MonoBehaviour
 {
     [SerializeField] UI_Assistant _uiAssistant;
     [SerializeField] TMP_Text _talkText;
+    [SerializeField] TMP_Text _currentDashKeybindText;
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
@@ -48,7 +49,7 @@ public class NpcTalk5 : MonoBehaviour
         _initialDialog = new string[]
         {
             "Not bad so far, now let's learn to Dash!",
-            "Press [Left Shift] and aim with Mouse, easy peasy.",
+            "Press ["+ _currentDashKeybindText.text +"] and aim with Mouse, easy peasy.",
             "Then release it or charge it. Remember, dashing can also hurt the eternals, and makes you invincible!",
         };
 

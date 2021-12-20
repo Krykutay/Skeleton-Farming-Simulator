@@ -8,6 +8,8 @@ public class NpcTalk6 : MonoBehaviour
 {
     [SerializeField] UI_Assistant _uiAssistant;
     [SerializeField] TMP_Text _talkText;
+    [SerializeField] TMP_Text _currentAttackKeybindText;
+    [SerializeField] TMP_Text _currentParryKeybindText;
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
@@ -48,7 +50,7 @@ public class NpcTalk6 : MonoBehaviour
         _initialDialog = new string[]
         {
             "Ah, the eternals.. Let's get you to fighting now.",
-            "Press [Left Button] to attack, [Right Button] to parry the incoming attack.",
+            "Press ["+ _currentAttackKeybindText.text +"] to attack, [" + _currentParryKeybindText.text + "] to parry the incoming attack.",
             "If you time it well, you perform a Perfect Parry and take no hit, and stun the enemy.",
             "All you need to do is parry right before the incoming attack, and that's all!",
         };
