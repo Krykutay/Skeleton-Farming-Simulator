@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
+
+public enum PlayPauseState
+{
+    Playing,
+    Paused,
+}
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Transform _respawnPoint;
-
+    [SerializeField] GameObject _menu;
+    //[SerializeField] GameObject _gameoverPanel;
     [SerializeField] GameObject _player;
+
+    [SerializeField] Transform _respawnPoint;
 
     [SerializeField] float _respawnTime;
 
@@ -16,10 +25,13 @@ public class GameManager : MonoBehaviour
     bool _respawn;
 
     CinemachineVirtualCamera _cvc;
+    PlayPauseState _currentState;
 
     void Awake()
     {
         _cvc = transform.Find("Cameras").Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
+
+        _currentState = PlayPauseState.Playing;
     }
 
     void OnEnable()
@@ -35,6 +47,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckRespawn();
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            Game_Paused();
+        }
     }
 
     void Player_PlayerDied()
@@ -57,4 +74,27 @@ public class GameManager : MonoBehaviour
             _respawn = false;
         }
     }
+
+    public void Game_Resumed()
+    {
+        Time.timeScale = 1f;
+        _currentState = PlayPauseState.Playing;
+    }
+
+    public void Game_Paused()
+    {
+        if (_currentState != PlayPauseState.Playing)
+            return;
+
+        _menu.gameObject.SetActive(true);
+        Time.timeScale = 0f;
+        _currentState = PlayPauseState.Paused;
+    }
+
+    /*
+    public PlayPauseState GetCurrentState()
+    {
+        return GameController.GetInstance()._currentState;
+    }
+    */
 }

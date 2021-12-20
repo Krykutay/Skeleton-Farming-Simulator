@@ -146,7 +146,6 @@ public class ControlsDialogMenu : MonoBehaviour
             //InputBinding binding = action.actionMap.bindings[i];
             InputBinding binding = _actions.actionMaps[0].actions[i].bindings[bindingIndex];
 
-            Debug.Log(binding);
             if (binding.action == newBinding.action)
             {
                 continue;
