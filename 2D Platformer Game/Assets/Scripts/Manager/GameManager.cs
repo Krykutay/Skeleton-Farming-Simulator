@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        _cvc = transform.Find("Cameras").Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
+        _cvc = transform.parent.Find("Cameras").Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
 
         _currentState = PlayPauseState.Playing;
     }

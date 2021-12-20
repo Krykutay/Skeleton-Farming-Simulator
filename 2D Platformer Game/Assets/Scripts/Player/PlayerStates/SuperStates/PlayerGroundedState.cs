@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerGroundedState : PlayerState
 {
@@ -51,7 +52,8 @@ public class PlayerGroundedState : PlayerState
 
         if (_attackInput && !isTouchingCeiling)
         {
-            stateMachine.ChangeState(player.primaryAttackState);
+            if (!EventSystem.current.IsPointerOverGameObject())
+                stateMachine.ChangeState(player.primaryAttackState);
         }
         else if (_defenseInput && !isTouchingCeiling)
         {

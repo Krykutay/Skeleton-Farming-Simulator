@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerInAirState : PlayerState
 {
@@ -69,7 +70,8 @@ public class PlayerInAirState : PlayerState
 
         if (_attackInput)
         {
-            stateMachine.ChangeState(player.primaryAttackState);
+            if (!EventSystem.current.IsPointerOverGameObject())
+                stateMachine.ChangeState(player.primaryAttackState);
         }
         else if (_defenseInput)
         {
