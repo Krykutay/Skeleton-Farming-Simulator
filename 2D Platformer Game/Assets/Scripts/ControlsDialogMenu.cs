@@ -23,6 +23,16 @@ public class ControlsDialogMenu : MonoBehaviour
 
     const int TOTAL_BINDINGS_COUNT = 8;
 
+    void OnDisable()
+    {
+        if (_waitingForInputPanels[_keybindIndex].activeSelf)
+        {
+            _waitingForInputPanels[_keybindIndex].SetActive(false);
+            _actions.Enable();
+            _rebindingOperation.Dispose();
+        }
+    }
+
     public void AssignKeybinding(int keybindIndex)  // 0 for jump, 1 for Fire
     {
         _keybindIndex = keybindIndex;
@@ -140,7 +150,7 @@ public class ControlsDialogMenu : MonoBehaviour
             }
             if (binding.effectivePath == newBinding.path)
             {
-                Debug.Log("Duplicate binding found for reset to default: " + newBinding.effectivePath);
+                //Debug.Log("Duplicate binding found for reset to default: " + newBinding.effectivePath);
                 // Swap the two actions.
                 action.actionMap.FindAction(binding.action).ApplyBindingOverride(0, newBinding.overridePath);
                 action.RemoveBindingOverride(bindingIndex);

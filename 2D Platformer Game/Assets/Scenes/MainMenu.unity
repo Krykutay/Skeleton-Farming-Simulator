@@ -25047,9 +25047,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 299259572}
+    - target: {fileID: 1204315229366249597, guid: b49938817a49c7746bc96167fbd43d75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1686444028259128416, guid: b49938817a49c7746bc96167fbd43d75, type: 3}
       propertyPath: m_Name
       value: RebindMoveRightKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686444028259128416, guid: b49938817a49c7746bc96167fbd43d75, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1686444028259128431, guid: b49938817a49c7746bc96167fbd43d75, type: 3}
       propertyPath: m_Pivot.x
@@ -25439,6 +25447,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 299259572}
+    - target: {fileID: 6949079743117071949, guid: 639f244f9efa75c428dd103b33399e52, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7467516357217233488, guid: 639f244f9efa75c428dd103b33399e52, type: 3}
       propertyPath: m_Name
       value: RebindMoveLeftKey
