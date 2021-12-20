@@ -143,7 +143,10 @@ public class ControlsDialogMenu : MonoBehaviour
         // Check all of the bindings in the current action map to make sure there are no duplicates.
         for (int i = 0; i < TOTAL_BINDINGS_COUNT; i++)
         {
-            InputBinding binding = action.actionMap.bindings[i];
+            //InputBinding binding = action.actionMap.bindings[i];
+            InputBinding binding = _actions.actionMaps[0].actions[i].bindings[bindingIndex];
+
+            Debug.Log(binding);
             if (binding.action == newBinding.action)
             {
                 continue;
@@ -152,12 +155,15 @@ public class ControlsDialogMenu : MonoBehaviour
             {
                 //Debug.Log("Duplicate binding found for reset to default: " + newBinding.effectivePath);
                 // Swap the two actions.
+                
+                _bindingDisplayNameTexts[i].text = GetBindingDisplayName(_actionReferences[keybindIndex].action, bindingIndex);
+
                 action.actionMap.FindAction(binding.action).ApplyBindingOverride(0, newBinding.overridePath);
                 action.RemoveBindingOverride(bindingIndex);
 
                 _bindingDisplayNameTexts[keybindIndex].text = GetBindingDisplayName(_actionReferences[keybindIndex].action, bindingIndex);
-                _bindingDisplayNameTexts[i].text = GetBindingDisplayName(_actionReferences[i].action, bindingIndex);
 
+                _hasControlsChanged = true;
                 return true;
             }
         }

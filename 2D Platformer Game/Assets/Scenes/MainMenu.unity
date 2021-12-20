@@ -25321,6 +25321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RebindInteractKey
       objectReference: {fileID: 0}
+    - target: {fileID: 6778234063635196359, guid: fb48459343e3e99449c4c5b7591a12f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb48459343e3e99449c4c5b7591a12f5, type: 3}
 --- !u!1001 &5653750132399859910
