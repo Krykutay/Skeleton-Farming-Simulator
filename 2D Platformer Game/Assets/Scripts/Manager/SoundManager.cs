@@ -57,6 +57,11 @@ public class SoundManager : MonoBehaviour
         NpcTalk7_1,
         NpcTalk7_2,
         ButtonClick,
+        DarknessTalk1,
+        DarknessTalk2,
+        DarknessTalk3,
+        DarknessTalk4,
+        DarknessTalkOnDeath,
         ScoreCalculation,
     }
 

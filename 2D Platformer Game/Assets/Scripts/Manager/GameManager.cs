@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
-        Player.PlayerDied += Player_PlayerDied;
+        Player.Instance.PlayerDied += Player_PlayerDied;
     }
 
     void OnDisable()
     {
-        Player.PlayerDied += Player_PlayerDied;
+        Player.Instance.PlayerDied += Player_PlayerDied;
     }
 
     void Update()

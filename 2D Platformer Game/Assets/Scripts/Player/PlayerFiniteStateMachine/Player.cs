@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Action PlayerDied;
+    public Action PlayerDied;
     public static Player Instance { get; private set; }
 
     [Header("Data")]
