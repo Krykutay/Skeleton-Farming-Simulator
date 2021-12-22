@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class HealthPowerup : MonoBehaviour
 {
-    public static event Action Collected;
-
     [SerializeField] float _duration;
 
     float _spawnTime;
@@ -18,14 +16,14 @@ public class HealthPowerup : MonoBehaviour
     {
         if (Time.time >= _spawnTime + _duration)
         {
-            // Return to the pool
+            HealthPowerupPool.Instance.ReturnToPool(this);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         // play sound
-        Collected?.Invoke();
-        //return to the pool
+        PowerupManager.Instance.HealthPowerupCollected();
+        HealthPowerupPool.Instance.ReturnToPool(this);
     }
 }

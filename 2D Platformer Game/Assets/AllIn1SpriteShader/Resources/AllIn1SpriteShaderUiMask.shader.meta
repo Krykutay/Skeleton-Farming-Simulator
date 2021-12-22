@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a53f4bb29f3644b43b5075c6dcfecb32
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {instanceID: 0}
+  - _GlowTex: {instanceID: 0}
+  - _FadeTex: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
+  - _FadeBurnTex: {fileID: 2800000, guid: 677cca399782dea41aedc1d292ecb67d, type: 3}
+  - _OutlineTex: {fileID: 2800000, guid: 74087f6d03f233e4a8a142fa01f9e5cf, type: 3}
+  - _OutlineDistortTex: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97,
+      type: 3}
+  - _ColorSwapTex: {instanceID: 0}
+  - _ColorRampTex: {fileID: 2800000, guid: 279657edc397ece4b8029c727adf6ddc, type: 3}
+  - _DistortTex: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

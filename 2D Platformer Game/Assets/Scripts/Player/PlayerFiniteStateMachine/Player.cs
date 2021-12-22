@@ -371,6 +371,12 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void SetCurrentHealth()
+    {
+        _currentHealth = _playerData.maxHealth;
+        _playerHealth.SetHealthIndicatorColor();
+    }
+
     IEnumerator Hurt()
     {
         yield return new WaitForSeconds(1.73f);

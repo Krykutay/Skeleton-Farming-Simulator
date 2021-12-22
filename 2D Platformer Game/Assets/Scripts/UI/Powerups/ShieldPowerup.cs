@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class ShieldPowerup : MonoBehaviour
 {
-    public static event Action Collected;
-
     [SerializeField] float _duration;
 
     float _spawnTime;
@@ -18,14 +16,14 @@ public class ShieldPowerup : MonoBehaviour
     {
         if (Time.time >= _spawnTime + _duration)
         {
-            // Return to the pool
+            ShieldPowerupPool.Instance.ReturnToPool(this);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         // play sound
-        Collected?.Invoke();
-        //return to the pool
+        PowerupManager.Instance.ShieldPowerupCollected();
+        ShieldPowerupPool.Instance.ReturnToPool(this);
     }
 }
