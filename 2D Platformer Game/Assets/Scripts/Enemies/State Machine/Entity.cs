@@ -105,18 +105,22 @@ public class Entity : MonoBehaviour, IDamageable
         if (isDead)
             return true;
 
+        float damageAmount = attackDetails.damageAmount;
+        if (PowerupManager.Instance.isDamagePowerupActive)
+            damageAmount *= 2;
+
         _lastDamagetime = Time.time;
 
-        _currentHealth -= attackDetails.damageAmount;
-        healthbar.SetCurrentHealth((int)_currentHealth, (int)attackDetails.damageAmount);
+        _currentHealth -= damageAmount;
+        healthbar.SetCurrentHealth((int)_currentHealth, (int)damageAmount);
         _currentStunResistance -= attackDetails.stunDamageAmount;
 
         DamagePopup damagePopup = DamagePopupPool.Instance.Get(transform.position, Quaternion.identity);
 
         if (attackDetails.stunDamageAmount > 0)
-            damagePopup.Setup((int)attackDetails.damageAmount, true);
+            damagePopup.Setup((int)damageAmount, true);
         else
-            damagePopup.Setup((int)attackDetails.damageAmount, false);
+            damagePopup.Setup((int)damageAmount, false);
 
         DamageHop(entityData.damageHopSpeed);
 
