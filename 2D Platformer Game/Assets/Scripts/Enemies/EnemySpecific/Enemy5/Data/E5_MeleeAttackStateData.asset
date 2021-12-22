@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDetails:
   - attackName: Spear
-    damageAmount: 15
+    damageAmount: 1
     stunDamageAmount: 0
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
     attackRadius: 0
     size: {x: 2.3, y: 0.64}
   _meleeAttackCooldown: 0.5

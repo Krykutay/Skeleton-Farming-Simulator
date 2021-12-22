@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDetails:
   - attackName: Upper Cut
-    damageAmount: 10
-    position: {x: 0, y: 0}
-    attackRadius: 0.8
+    damageAmount: 1
     stunDamageAmount: 0
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 0.8
+    size: {x: 0, y: 0}
   - attackName: Pierce
-    damageAmount: 12
-    position: {x: 0, y: 0}
-    attackRadius: 0.8
+    damageAmount: 1
     stunDamageAmount: 0
+    knockbackStrength: 0
+    knockbackAngle: {x: 0, y: 0}
+    attackRadius: 0.8
+    size: {x: 0, y: 0}
   _meleeAttackCooldown: 0.5

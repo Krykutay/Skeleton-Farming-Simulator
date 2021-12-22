@@ -44,11 +44,14 @@ public class Player : MonoBehaviour
     public BoxCollider2D movementCollider { get; private set; }
     public PlayerInputHandler inputHandler { get; private set; }
     public Transform dashDirectionIndicator { get; private set; }
-    public PlayerInventory inventory { get; private set; }
 
     public Vector2 currentVelocity { get; private set; }
     public int facingDirection { get; private set; }
     public float initialGravity { get; private set; }
+    public float currentHealth { get { return _currentHealth; } }
+    public float maxHealth { get { return _playerData.maxHealth; } }
+
+    PlayerHealth _playerHealth;
 
     Animator _bodyAnim;
     IEnumerator _hurt;
@@ -76,9 +79,9 @@ public class Player : MonoBehaviour
         inputHandler = GetComponent<PlayerInputHandler>();
         rb = GetComponent<Rigidbody2D>();
         movementCollider = GetComponent<BoxCollider2D>();
-        inventory = GetComponent<PlayerInventory>();
         dashDirectionIndicator = transform.Find("DashDirectionIndicator");
         _bodyAnim = transform.Find("BodyParts").GetComponent<Animator>();
+        _playerHealth = GetComponent<PlayerHealth>();
 
         stateMachine = new PlayerStateMachine();
 
@@ -329,6 +332,7 @@ public class Player : MonoBehaviour
 
             SoundManager.Instance.Play(SoundManager.SoundTags.PlayerParry);
             _currentHealth -= attackDetails.damageAmount * 0.5f;
+            _playerHealth.SetHealthIndicatorColor();
             _bodyAnim.SetBool("hurt", true);
             if (_hurt != null)
                 StopCoroutine(_hurt);
@@ -344,6 +348,7 @@ public class Player : MonoBehaviour
                 SoundManager.Instance.Play(SoundManager.SoundTags.PlayerHurt2);
 
             _currentHealth -= attackDetails.damageAmount;
+            _playerHealth.SetHealthIndicatorColor();
 
             _bodyAnim.SetBool("hurt", true);
             if (_hurt != null)

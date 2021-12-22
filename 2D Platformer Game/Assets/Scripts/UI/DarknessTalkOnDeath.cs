@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DarknessTalkOnDeath : MonoBehaviour
@@ -8,18 +9,24 @@ public class DarknessTalkOnDeath : MonoBehaviour
     SoundManager.SoundTags[] _dialogSounds;
     float[] _typeSpeed;
 
+    bool isPlayerDead;
+
     void OnEnable()
     {
         Player.Instance.PlayerDied += Player_PlayerDied;
+        _darknessTalk.SpeechEnd += CoroutineDisableGameObject;
     }
 
     void OnDisable()
     {
-        Player.Instance.PlayerDied += Player_PlayerDied;
+        Player.Instance.PlayerDied -= Player_PlayerDied;
+        _darknessTalk.SpeechEnd -= CoroutineDisableGameObject;
     }
 
     void Player_PlayerDied()
     {
+        isPlayerDead = true;
+
         _initialDialog = new string[]
         {
             "Your last breath is my blessing.",
@@ -32,15 +39,24 @@ public class DarknessTalkOnDeath : MonoBehaviour
 
         _typeSpeed = new float[]
         {
-            0.068f,
+            0.12f,
         };
 
         _darknessTalk.gameObject.SetActive(true);
         _darknessTalk.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void CoroutineDisableGameObject()
     {
+        if (isPlayerDead)
+            StartCoroutine(DisableGameObject());
+    }
+
+    IEnumerator DisableGameObject()
+    {
+        yield return new WaitForSeconds(1.8f);
+
+        isPlayerDead = false;
         _darknessTalk.gameObject.SetActive(false);
     }
 

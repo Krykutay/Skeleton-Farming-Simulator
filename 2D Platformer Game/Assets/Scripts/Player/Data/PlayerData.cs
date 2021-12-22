@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Player Stats")]
-    [SerializeField] float _maxHealth = 50f;
+    [SerializeField] float _maxHealth = 5f;
 
     [Header("Move State")]
     [SerializeField] float _movementVelocity = 10f;

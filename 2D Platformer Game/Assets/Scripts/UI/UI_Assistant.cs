@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using TMPro;
 
 public class UI_Assistant : MonoBehaviour
 {
+    public Action SpeechEnd;
+
     [SerializeField] TMP_Text _messageText;
 
     Button _button;
@@ -52,6 +55,7 @@ public class UI_Assistant : MonoBehaviour
     public void StopTalkingSound()
     {
         SoundManager.Instance.Stop(_currentDialogSound);
+        SpeechEnd?.Invoke();
     }
 
 }
