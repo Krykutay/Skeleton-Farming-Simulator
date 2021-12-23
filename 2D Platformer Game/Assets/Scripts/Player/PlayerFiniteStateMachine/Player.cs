@@ -330,6 +330,12 @@ public class Player : MonoBehaviour
                 return;
             }
 
+            if (PowerupManager.Instance.isShieldPowerupActive)
+            {
+                SoundManager.Instance.Play(SoundManager.SoundTags.Shield);
+                return;
+            }
+
             SoundManager.Instance.Play(SoundManager.SoundTags.PlayerParry);
             _currentHealth -= attackDetails.damageAmount * 0.5f;
             _playerHealth.SetHealthIndicatorColor();
@@ -341,6 +347,12 @@ public class Player : MonoBehaviour
         }
         else
         {
+            if (PowerupManager.Instance.isShieldPowerupActive)
+            {
+                SoundManager.Instance.Play(SoundManager.SoundTags.Shield);
+                return;
+            }
+
             _randInt = UnityEngine.Random.Range(0, 2);
             if (_randInt == 0)
                 SoundManager.Instance.Play(SoundManager.SoundTags.PlayerHurt1);
@@ -356,6 +368,38 @@ public class Player : MonoBehaviour
             _hurt = Hurt();
             StartCoroutine(_hurt);
         }
+
+        if (_currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    public void DamageBySurface()
+    {
+        if (stateMachine.currentState == dashState)
+            return;
+
+        if (PowerupManager.Instance.isShieldPowerupActive)
+        {
+            SoundManager.Instance.Play(SoundManager.SoundTags.Shield);
+            return;
+        }
+
+        _randInt = UnityEngine.Random.Range(0, 2);
+        if (_randInt == 0)
+            SoundManager.Instance.Play(SoundManager.SoundTags.PlayerHurt1);
+        else
+            SoundManager.Instance.Play(SoundManager.SoundTags.PlayerHurt2);
+
+        _currentHealth -= 1;
+        _playerHealth.SetHealthIndicatorColor();
+
+        _bodyAnim.SetBool("hurt", true);
+        if (_hurt != null)
+            StopCoroutine(_hurt);
+        _hurt = Hurt();
+        StartCoroutine(_hurt);
 
         if (_currentHealth <= 0f)
         {

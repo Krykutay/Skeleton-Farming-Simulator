@@ -67,6 +67,7 @@ public class SoundManager : MonoBehaviour
         DropLoot1,
         DropLoot2,
         DropLoot3,
+        Shield,
     }
 
     public enum SoundTypes
