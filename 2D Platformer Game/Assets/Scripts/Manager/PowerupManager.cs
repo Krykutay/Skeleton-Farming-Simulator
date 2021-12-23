@@ -70,7 +70,7 @@ public class PowerupManager : MonoBehaviour
     {
         isDamagePowerupActive = true;
 
-        if (_deactivateShieldPowerup != null)
+        if (isShieldPowerupActive)
         {
             foreach (var part in _bodyParts)
             {
@@ -105,7 +105,7 @@ public class PowerupManager : MonoBehaviour
         //_damagePowerupCountdownBar.gameObject.SetActive(false);
         _deactivateDamagePowerup = null;
 
-        if (_deactivateShieldPowerup != null)
+        if (isShieldPowerupActive)
         {
             foreach (var part in _bodyParts)
             {
@@ -128,7 +128,7 @@ public class PowerupManager : MonoBehaviour
     {
         isShieldPowerupActive = true;
 
-        if (_deactivateDamagePowerup != null)
+        if (isDamagePowerupActive)
         {
             foreach (var part in _bodyParts)
             {
@@ -163,7 +163,7 @@ public class PowerupManager : MonoBehaviour
         //_damagePowerupCountdownBar.gameObject.SetActive(false);
         _deactivateShieldPowerup = null;
 
-        if (_deactivateDamagePowerup != null)
+        if (isDamagePowerupActive)
         {
             foreach (var part in _bodyParts)
             {
