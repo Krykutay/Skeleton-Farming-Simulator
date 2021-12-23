@@ -63,6 +63,10 @@ public class SoundManager : MonoBehaviour
         DarknessTalk4,
         DarknessTalkOnDeath,
         ScoreCalculation,
+        Powerup,
+        DropLoot1,
+        DropLoot2,
+        DropLoot3,
     }
 
     public enum SoundTypes

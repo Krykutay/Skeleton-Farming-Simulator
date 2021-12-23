@@ -22,7 +22,7 @@ public class HealthPowerup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // play sound
+        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
         PowerupManager.Instance.HealthPowerupCollected();
         HealthPowerupPool.Instance.ReturnToPool(this);
     }

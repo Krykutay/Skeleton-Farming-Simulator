@@ -22,7 +22,7 @@ public class DamagePowerup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // play sound
+        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
         PowerupManager.Instance.DamagePowerupCollected();
         DamagePowerupPool.Instance.ReturnToPool(this);
     }

@@ -141,6 +141,7 @@ public class Entity : MonoBehaviour, IDamageable
         if (_currentHealth <= 0)
         {
             isDead = true;
+            DropLootOnDeath();
         }
 
         return true;
@@ -155,6 +156,27 @@ public class Entity : MonoBehaviour, IDamageable
     {
         _velocityWorkspace.Set(rb.velocity.x, velocity);
         rb.velocity = _velocityWorkspace;
+    }
+
+    void DropLootOnDeath()
+    {
+        int amountOfLoots = Random.Range(2, 5);
+        for (int i = 0; i < amountOfLoots; i++)
+        {
+            int lootColor = Random.Range(0, 6);
+            if (lootColor == 0)
+                DropLootRedPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+            else if (lootColor == 1)
+                DropLootYellowPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+            else if (lootColor == 2)
+                DropLootGreenPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+            else if (lootColor == 3)
+                DropLootCyanPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+            else if (lootColor == 4)
+                DropLootBluePool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+            else
+                DropLootPurplePool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+        }
     }
 
     public virtual void Flip()
