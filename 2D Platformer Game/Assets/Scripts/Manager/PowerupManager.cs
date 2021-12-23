@@ -8,20 +8,24 @@ public class PowerupManager : MonoBehaviour
     public bool isDamagePowerupActive { get; private set; }
     public bool isShieldPowerupActive { get; private set; }
 
+    [SerializeField] float _durationHealth = 1f;
     [SerializeField] float _durationDamage = 8f;
     [SerializeField] float _durationShield = 8f;
     [SerializeField] float _durationVaporize = 1.3f;
 
+    [SerializeField] GameObject _healthPowerupCountdown;
     [SerializeField] GameObject _damagePowerupCountdown;
     [SerializeField] GameObject _shieldPowerupCountdown;
     [SerializeField] GameObject _vaporizePowerupCountdown;
 
     [SerializeField] SpriteRenderer[] _bodyParts;
 
-    //PowerupCountdownBar _damagePowerupCountdownBar;
-    //PowerupCountdownBar _shieldPowerupCountdownBar;
-    //PowerupCountdownBar _vaporizePowerupCountdownBar;
+    PowerupCountdownBar _healthPowerupCountdownBar;
+    PowerupCountdownBar _damagePowerupCountdownBar;
+    PowerupCountdownBar _shieldPowerupCountdownBar;
+    PowerupCountdownBar _vaporizePowerupCountdownBar;
 
+    IEnumerator _deactivateHealthPowerup;
     IEnumerator _deactivateDamagePowerup;
     IEnumerator _deactivateShieldPowerup;
     IEnumerator _deactivateVaporizePowerup;
@@ -38,9 +42,10 @@ public class PowerupManager : MonoBehaviour
     {
         Instance = this;
 
-        //_damagePowerupCountdownBar = _damagePowerupCountdown.GetComponent<PowerupCountdownBar>();
-        //_shieldPowerupCountdownBar = _shieldPowerupCountdown.GetComponent<PowerupCountdownBar>();
-        //_vaporizePowerupCountdownBar = _vaporizePowerupCountdown.GetComponent<PowerupCountdownBar>();
+        _healthPowerupCountdownBar = _healthPowerupCountdown.GetComponent<PowerupCountdownBar>();
+        _damagePowerupCountdownBar = _damagePowerupCountdown.GetComponent<PowerupCountdownBar>();
+        _shieldPowerupCountdownBar = _shieldPowerupCountdown.GetComponent<PowerupCountdownBar>();
+        _vaporizePowerupCountdownBar = _vaporizePowerupCountdown.GetComponent<PowerupCountdownBar>();
 
         _bodyAnims = Player.Instance.transform.Find("BodyParts").GetComponent<Animator>();
     }
@@ -56,18 +61,51 @@ public class PowerupManager : MonoBehaviour
 
     void Start()
     {
-        //_damagePowerupCountdownBar.gameObject.SetActive(false);
-        //_shieldPowerupCountdownBar.gameObject.SetActive(false);
-        //_vaporizePowerupCountdownBar.gameObject.SetActive(false);
+        _healthPowerupCountdownBar.gameObject.SetActive(false);
+        _damagePowerupCountdownBar.gameObject.SetActive(false);
+        _shieldPowerupCountdownBar.gameObject.SetActive(false);
+        _vaporizePowerupCountdownBar.gameObject.SetActive(false);
     }
 
     public void HealthPowerupCollected()
     {
+        _healthPowerupCountdownBar.gameObject.SetActive(true);
+        _healthPowerupCountdownBar.StartCountdown(_durationHealth * 3);
+
         Player.Instance.SetCurrentHealth();
+        HealthPowerupParticlePool.Instance.Get(Player.Instance.transform.position, Quaternion.Euler(-90f, 0f, 0f));
+
+        if (_deactivateHealthPowerup != null)
+            StopCoroutine(_deactivateHealthPowerup);
+        _deactivateHealthPowerup = DeactivateHealthPowerup();
+        StartCoroutine(_deactivateHealthPowerup);
+    }
+
+    IEnumerator DeactivateHealthPowerup()
+    {
+        yield return new WaitForSeconds(_durationHealth);
+        Player.Instance.SetCurrentHealth();
+        HealthPowerupParticlePool.Instance.Get(Player.Instance.transform.position, Quaternion.Euler(-90f, 0f, 0f));
+        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
+
+        yield return new WaitForSeconds(_durationHealth);
+        Player.Instance.SetCurrentHealth();
+        HealthPowerupParticlePool.Instance.Get(Player.Instance.transform.position, Quaternion.Euler(-90f, 0f, 0f));
+        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
+
+        yield return new WaitForSeconds(_durationHealth);
+        Player.Instance.SetCurrentHealth();
+        HealthPowerupParticlePool.Instance.Get(Player.Instance.transform.position, Quaternion.Euler(-90f, 0f, 0f));
+        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
+
+        _healthPowerupCountdownBar.gameObject.SetActive(false);
+        _deactivateHealthPowerup = null;
     }
 
     public void DamagePowerupCollected()
     {
+        _damagePowerupCountdownBar.gameObject.SetActive(true);
+        _damagePowerupCountdownBar.StartCountdown(_durationDamage);
         isDamagePowerupActive = true;
 
         if (isShieldPowerupActive)
@@ -102,7 +140,7 @@ public class PowerupManager : MonoBehaviour
         yield return new WaitForSeconds(_durationDamage);
 
         isDamagePowerupActive = false;
-        //_damagePowerupCountdownBar.gameObject.SetActive(false);
+        _damagePowerupCountdownBar.gameObject.SetActive(false);
         _deactivateDamagePowerup = null;
 
         if (isShieldPowerupActive)
@@ -126,6 +164,8 @@ public class PowerupManager : MonoBehaviour
 
     public void ShieldPowerupCollected()
     {
+        _shieldPowerupCountdownBar.gameObject.SetActive(true);
+        _shieldPowerupCountdownBar.StartCountdown(_durationShield);
         isShieldPowerupActive = true;
 
         if (isDamagePowerupActive)
@@ -160,7 +200,7 @@ public class PowerupManager : MonoBehaviour
         yield return new WaitForSeconds(_durationShield);
 
         isShieldPowerupActive = false;
-        //_damagePowerupCountdownBar.gameObject.SetActive(false);
+        _shieldPowerupCountdownBar.gameObject.SetActive(false);
         _deactivateShieldPowerup = null;
 
         if (isDamagePowerupActive)

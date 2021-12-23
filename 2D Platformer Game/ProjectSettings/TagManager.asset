@@ -6,12 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Ground
-  - BluePotionBar
-  - Coins
-  - GreenPotionBar
-  - RedPotionBar
-  - Potion
-  - PlayerFireball
   layers:
   - Default
   - TransparentFX

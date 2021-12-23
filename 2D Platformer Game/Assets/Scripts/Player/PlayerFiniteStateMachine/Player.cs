@@ -417,7 +417,7 @@ public class Player : MonoBehaviour
 
     public void SetCurrentHealth()
     {
-        _currentHealth = _playerData.maxHealth;
+        _currentHealth++;
         _playerHealth.SetHealthIndicatorColor();
     }
 
