@@ -4445,6 +4445,7 @@ GameObject:
   - component: {fileID: 370242334}
   - component: {fileID: 370242333}
   - component: {fileID: 370242338}
+  - component: {fileID: 370242339}
   m_Layer: 0
   m_Name: ObjectPoolingManager
   m_TagString: Untagged
@@ -4548,7 +4549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c473b0761b9ead479d8714fd603cadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 8982771504117960296, guid: 75fca2579c668e64fbbd78508b0f3596, type: 3}
+  _prefab: {fileID: 2659823487080061357, guid: 75fca2579c668e64fbbd78508b0f3596, type: 3}
   _initialPoolSize: 0
 --- !u!114 &370242317
 MonoBehaviour:
@@ -4858,6 +4859,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1193970136991394827, guid: e5560d7ebc21701439aac12bf8cf93a9, type: 3}
   _initialPoolSize: 2
+--- !u!114 &370242339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370242309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1190758d72f5642a36bb98fc1b5bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 3429807173955726935, guid: 5ea50fa03801c744b83a7e194d6f475e, type: 3}
+  _initialPoolSize: 5
 --- !u!1 &392997647
 GameObject:
   m_ObjectHideFlags: 0
@@ -80311,13 +80326,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1184931792}
   - component: {fileID: 1184931791}
-  - component: {fileID: 1184931790}
   - component: {fileID: 1184931789}
-  - component: {fileID: 1184931788}
   - component: {fileID: 1184931787}
-  - component: {fileID: 1184931786}
-  - component: {fileID: 1184931785}
-  - component: {fileID: 1184931784}
   - component: {fileID: 1184931793}
   m_Layer: 0
   m_Name: Gamemanager
@@ -80326,45 +80336,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1184931784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184931783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df6174bbdf93b9547b6ba3a4961e57ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemySpawnDuration: 3
---- !u!114 &1184931785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184931783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c3e53a5271fb94ca01eb84419d9470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemySpawnDuration: 3
---- !u!114 &1184931786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184931783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc859b5279aa7545976874d6c5167ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemySpawnDuration: 3
 --- !u!114 &1184931787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80378,19 +80349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpawnDuration: 3
---- !u!114 &1184931788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184931783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56117acfb59c344993546f21340ebcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _basicEnemySpawnDuration: 3
 --- !u!114 &1184931789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80404,19 +80362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _combatDummySpawnTime: 3
---- !u!114 &1184931790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184931783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb4403d7ab3d374481ab53c43ab6b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _basicEnemySpawnDuration: 3
 --- !u!114 &1184931791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87646,11 +87591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3427618965906579953, guid: 064fc7b272574f842b81e174a642e938, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 130.06
+      value: 22.7
       objectReference: {fileID: 0}
     - target: {fileID: 3427618965906579953, guid: 064fc7b272574f842b81e174a642e938, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.41
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3427618965906579953, guid: 064fc7b272574f842b81e174a642e938, type: 3}
       propertyPath: m_LocalPosition.z
@@ -91538,11 +91483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2659823487080061354, guid: 75fca2579c668e64fbbd78508b0f3596, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.18
+      value: 33.09
       objectReference: {fileID: 0}
     - target: {fileID: 2659823487080061354, guid: 75fca2579c668e64fbbd78508b0f3596, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51
+      value: 2.61
       objectReference: {fileID: 0}
     - target: {fileID: 2659823487080061354, guid: 75fca2579c668e64fbbd78508b0f3596, type: 3}
       propertyPath: m_LocalPosition.z

@@ -14,9 +14,6 @@ public class Enemy6 : Entity
     public E6_RangeAttackState rangeAttackState { get; private set; }
     public E6_RespawnState respawnState { get; private set; }
 
-    public Vector3 initialPosition { get; private set; }
-    public Quaternion initialRotation { get; private set; }
-
     [SerializeField] D_MoveState _moveStateData;
     [SerializeField] D_IdleState _idleStateData;
     [SerializeField] D_PlayerDetectedState _playerDetectedStateData;
@@ -53,9 +50,6 @@ public class Enemy6 : Entity
         rangeAttackState = new E6_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData, this);
         respawnState = new E6_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
 
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
-
         _head = transform.Find("Body").Find("MoveHead");
     }
 
@@ -63,6 +57,7 @@ public class Enemy6 : Entity
     {
         base.OnEnable();
 
+        ResetBodyPosition();
         stateMachine.Initialize(moveState);
     }
 
@@ -93,6 +88,13 @@ public class Enemy6 : Entity
 
         if (stateMachine.currentState != deadState || stateMachine.currentState != respawnState)
             stateMachine.ChangeState(stunState);
+    }
+
+    public override void PowerupManager_Vaporize()
+    {
+        base.PowerupManager_Vaporize();
+
+        Enemy6Pool.Instance.ReturnToPool(this);
     }
 
     public override void RotateBodyToPlayer()

@@ -11,9 +11,6 @@ public class Enemy1 : Entity
     public E1_StunState stunState { get; private set; }
     public E1_DeadState deadState { get; private set; }
 
-    public Vector3 initialPosition { get; private set; }
-    public Quaternion initialRotation { get; private set; }
-
     [SerializeField] D_IdleState _idleStateData;
     [SerializeField] D_MoveState _moveStateData;
     [SerializeField] D_PlayerDetectedState _playerDetectedStateData;
@@ -37,9 +34,6 @@ public class Enemy1 : Entity
         meleeAttackState = new E1_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData, this);
         stunState = new E1_StunState(this, stateMachine, "stun", _stunStateData, this);
         deadState = new E1_DeadState(this, stateMachine, "dead", _deadStateData, this);
-
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
     }
 
     public override void OnEnable()

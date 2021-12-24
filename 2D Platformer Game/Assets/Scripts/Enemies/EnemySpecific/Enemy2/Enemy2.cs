@@ -12,9 +12,6 @@ public class Enemy2 : Entity
     public E2_DodgeState dodgeState { get; private set; }
     public E2_RangeAttackState rangeAttackState { get; private set; }
 
-    public Vector3 initialPosition { get; private set; }
-    public Quaternion initialRotation { get; private set; }
-
     [SerializeField] D_MoveState _moveStateData;
     [SerializeField] D_IdleState _idleStateData;
     [SerializeField] D_PlayerDetectedState _playerDetectedStateData;
@@ -43,9 +40,6 @@ public class Enemy2 : Entity
         deadState = new E2_DeadState(this, stateMachine, "dead", _deadStateData, this);
         dodgeState = new E2_DodgeState(this, stateMachine, "dodge", _dodgeStateData, this);
         rangeAttackState = new E2_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData, this);
-
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
     }
 
     public override void OnEnable()

@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class E3_DeadState : DeadState
 {
-    public static Action<Enemy3> Died;
-
     Enemy3 enemy;
 
     public E3_DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData, Enemy3 enemy) : base(entity, stateMachine, animBoolName, stateData)
@@ -39,7 +37,7 @@ public class E3_DeadState : DeadState
 
 
             // TODO: If some other case like it falls from ledge etc, send it to object pool and get it back
-            //Enemy4Pool.Instance.ReturnToPool(enemy);
+            //Enemy3Pool.Instance.ReturnToPool(enemy);
         }
     }
 

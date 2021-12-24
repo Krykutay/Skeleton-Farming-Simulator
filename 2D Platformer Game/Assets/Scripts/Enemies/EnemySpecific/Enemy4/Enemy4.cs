@@ -14,9 +14,6 @@ public class Enemy4 : Entity
     public E4_RangeAttackState rangeAttackState { get; private set; }
     public E4_RespawnState respawnState { get; private set; }
 
-    public Vector3 initialPosition { get; private set; }
-    public Quaternion initialRotation { get; private set; }
-
     [SerializeField] D_MoveState _moveStateData;
     [SerializeField] D_IdleState _idleStateData;
     [SerializeField] D_PlayerDetectedState _playerDetectedStateData;
@@ -55,9 +52,6 @@ public class Enemy4 : Entity
         rangeAttackState = new E4_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData, this);
         respawnState = new E4_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
 
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
-
         _head = transform.Find("Body").Find("MoveHead");
         _leftArm = transform.Find("Body").Find("MoveWeaponArm");
         _rightArm = transform.Find("Body").Find("MoveRightArm");
@@ -67,6 +61,7 @@ public class Enemy4 : Entity
     {
         base.OnEnable();
 
+        ResetBodyPosition();
         stateMachine.Initialize(moveState);
     }
 
@@ -97,6 +92,13 @@ public class Enemy4 : Entity
 
         if (stateMachine.currentState != deadState || stateMachine.currentState != respawnState)
             stateMachine.ChangeState(stunState);
+    }
+
+    public override void PowerupManager_Vaporize()
+    {
+        base.PowerupManager_Vaporize();
+
+        Enemy4Pool.Instance.ReturnToPool(this);
     }
 
     public override void RotateBodyToPlayer()

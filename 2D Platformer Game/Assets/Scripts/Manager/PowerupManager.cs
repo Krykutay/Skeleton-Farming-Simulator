@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PowerupManager : MonoBehaviour
 {
     public static PowerupManager Instance { get; private set; }
+    public Action Vaporize; 
     public bool isDamagePowerupActive { get; private set; }
     public bool isShieldPowerupActive { get; private set; }
 
@@ -224,7 +226,21 @@ public class PowerupManager : MonoBehaviour
 
     public void VaporizePowerupCollected()
     {
+        _vaporizePowerupCountdownBar.gameObject.SetActive(true);
+        _vaporizePowerupCountdownBar.StartCountdown(_durationVaporize);
+        Vaporize?.Invoke();
 
+        if (_deactivateVaporizePowerup != null)
+            StopCoroutine(_deactivateVaporizePowerup);
+        _deactivateVaporizePowerup = DeactivateVaporizePowerup();
+        StartCoroutine(_deactivateVaporizePowerup);
     }
 
+    IEnumerator DeactivateVaporizePowerup()
+    {
+        yield return new WaitForSeconds(_durationVaporize);
+
+        _vaporizePowerupCountdownBar.gameObject.SetActive(false);
+        _deactivateVaporizePowerup = null;
+    }
 }

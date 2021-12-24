@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Entity : MonoBehaviour, IDamageable
 {
+    public static Action<Entity> Died;
+
     public FiniteStateMachine stateMachine;
 
     public D_Entity entityData;
@@ -15,6 +18,8 @@ public class Entity : MonoBehaviour, IDamageable
     public Animator anim { get; private set; }
     public AnimationToStateMachine atsm { get; private set; }
 
+    public Vector3 initialPosition { get; private set; }
+    public Quaternion initialRotation { get; private set; }
     protected EnemyHealthBar healthbar { get; private set; }
 
     protected bool isStunned;
@@ -48,6 +53,9 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void OnEnable()
     {
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+
         healthbar.gameObject.SetActive(true);
         _currentHealth = entityData.maxHealth;
         _currentStunResistance = entityData.stunResistance;
@@ -57,6 +65,13 @@ public class Entity : MonoBehaviour, IDamageable
 
         healthbar.SetMaxHealth(entityData.maxHealth);
         healthbar.SetCurrentHealth(entityData.maxHealth, 0);
+
+        PowerupManager.Instance.Vaporize += PowerupManager_Vaporize;
+    }
+
+    void OnDisable()
+    {
+        PowerupManager.Instance.Vaporize -= PowerupManager_Vaporize;
     }
 
     public virtual void Start()
@@ -147,6 +162,13 @@ public class Entity : MonoBehaviour, IDamageable
         return true;
     }
 
+    public virtual void PowerupManager_Vaporize()
+    {
+        DropLootOnDeath();
+        VaporizeParticle1Pool.Instance.Get(transform.position, Quaternion.identity);
+        Died?.Invoke(this);
+    }
+
     public virtual void StunnedByPlayerParry()
     {
 
@@ -160,22 +182,22 @@ public class Entity : MonoBehaviour, IDamageable
 
     void DropLootOnDeath()
     {
-        int amountOfLoots = Random.Range(2, 5);
+        int amountOfLoots = UnityEngine.Random.Range(2, 5);
         for (int i = 0; i < amountOfLoots; i++)
         {
-            int lootColor = Random.Range(0, 6);
+            int lootColor = UnityEngine.Random.Range(0, 6);
             if (lootColor == 0)
-                DropLootRedPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+                DropLootRedPool.Instance.Get(new Vector3(transform.position.x + UnityEngine.Random.Range(-0.6f, 0.6f), transform.position.y + UnityEngine.Random.Range(-0.6f, 0.6f)), Quaternion.identity);
             else if (lootColor == 1)
-                DropLootYellowPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+                DropLootYellowPool.Instance.Get(new Vector3(transform.position.x + UnityEngine.Random.Range(-0.6f, 0.6f), transform.position.y + UnityEngine.Random.Range(-0.6f, 0.6f)), Quaternion.identity);
             else if (lootColor == 2)
-                DropLootGreenPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+                DropLootGreenPool.Instance.Get(new Vector3(transform.position.x + UnityEngine.Random.Range(-0.6f, 0.6f), transform.position.y + UnityEngine.Random.Range(-0.6f, 0.6f)), Quaternion.identity);
             else if (lootColor == 3)
-                DropLootCyanPool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+                DropLootCyanPool.Instance.Get(new Vector3(transform.position.x + UnityEngine.Random.Range(-0.6f, 0.6f), transform.position.y + UnityEngine.Random.Range(-0.6f, 0.6f)), Quaternion.identity);
             else if (lootColor == 4)
-                DropLootBluePool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+                DropLootBluePool.Instance.Get(new Vector3(transform.position.x + UnityEngine.Random.Range(-0.6f, 0.6f), transform.position.y + UnityEngine.Random.Range(-0.6f, 0.6f)), Quaternion.identity);
             else
-                DropLootPurplePool.Instance.Get(new Vector3(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(-0.6f, 0.6f)), Quaternion.identity);
+                DropLootPurplePool.Instance.Get(new Vector3(transform.position.x + UnityEngine.Random.Range(-0.6f, 0.6f), transform.position.y + UnityEngine.Random.Range(-0.6f, 0.6f)), Quaternion.identity);
         }
     }
 
