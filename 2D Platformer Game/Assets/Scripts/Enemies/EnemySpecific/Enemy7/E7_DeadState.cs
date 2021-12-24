@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class E7_DeadState : DeadState
 {
-    public static Action<Enemy7> Died;
-
     Enemy7 enemy;
 
     public E7_DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData, Enemy7 enemy) : base(entity, stateMachine, animBoolName, stateData)

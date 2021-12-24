@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class E1_DeadState : DeadState
 {
-    public static Action<Enemy1> Died;
-
     Enemy1 enemy;
 
     public E1_DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData, Enemy1 enemy) : base(entity, stateMachine, animBoolName, stateData)
@@ -19,7 +17,6 @@ public class E1_DeadState : DeadState
         DeathChunkParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
         DeathBloodParticlePool.Instance.Get(entity.transform.position, Quaternion.Euler(0f, 0f, 0f));
 
-        Died?.Invoke(enemy);
         Enemy1Pool.Instance.ReturnToPool(enemy);
     }
 
