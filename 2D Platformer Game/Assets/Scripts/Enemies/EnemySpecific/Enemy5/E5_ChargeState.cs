@@ -33,8 +33,16 @@ public class E5_ChargeState : ChargeState
         }
         else if (!isDetectingLedge || isDetectingWall)
         {
-            enemy.idleState.SetFlipAfterIdle(true);
-            stateMachine.ChangeState(enemy.idleState);
+            if (!isPlayerInMaxAgroRange)
+            {
+                enemy.idleState.SetFlipAfterIdle(true);
+                stateMachine.ChangeState(enemy.idleState);
+            }
+            else
+            {
+                entity.SetVelocityX(0f);
+                stateMachine.ChangeState(enemy.playerDetectedState);
+            }
         }
         else if (!canLeaveChargeState)
         {

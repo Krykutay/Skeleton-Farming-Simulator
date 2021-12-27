@@ -31,8 +31,15 @@ public class E7_PlayerDetectedState : PlayerDetectedState
         }
         else if (!isDetectingLedge)
         {
-            entity.Flip();
-            stateMachine.ChangeState(enemy.moveState);
+            if (!isPlayerInMaxAgroRange)
+            {
+                enemy.idleState.SetFlipAfterIdle(true);
+                stateMachine.ChangeState(enemy.idleState);
+            }
+            else
+            {
+                entity.SetVelocityX(0f);
+            }
         }
         else if (isPlayerInMinAgroRange && entity.CheckIfPlayerReachableByMeleeAction())
         {

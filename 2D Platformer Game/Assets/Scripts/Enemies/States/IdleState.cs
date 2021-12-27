@@ -10,6 +10,7 @@ public class IdleState : State
     protected bool isIdleTimeOver;
     protected bool isPlayerInMinAgroRange;
     protected bool isPlayerInMaxAgroRange;
+    protected bool detectionSoundPlayed;
 
     protected float idleTime;
 
@@ -32,7 +33,7 @@ public class IdleState : State
     {
         base.Exit();
 
-        if (flipAfterIdle)
+        if (flipAfterIdle && !isPlayerInMaxAgroRange)
         {
             entity.Flip();
         }

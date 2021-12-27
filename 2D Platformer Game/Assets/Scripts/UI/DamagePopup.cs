@@ -48,7 +48,8 @@ public class DamagePopup : MonoBehaviour
         _sortingOrder++;
         _textMesh.sortingOrder = _sortingOrder;
 
-        _moveVector.Set(0.7f, 1f, 0);
+        int facingDirection = Player.Instance.transform.position.x < transform.position.x ? 1 : -1;
+        _moveVector.Set(0.7f * facingDirection, 1f, 0);
     }
 
     void Update()

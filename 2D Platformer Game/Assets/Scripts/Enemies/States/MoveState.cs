@@ -23,7 +23,11 @@ public class MoveState : State
     {
         base.Enter();
 
-        entity.SetVelocityX(stateData.movementSpeed);
+        if (entity.CheckLedge())
+            entity.SetVelocityX(stateData.movementSpeed);
+        else
+            entity.SetVelocityX(0f);
+
         _moveStateEnterTime = Time.time;
         canLeaveMoveState = false;
     }

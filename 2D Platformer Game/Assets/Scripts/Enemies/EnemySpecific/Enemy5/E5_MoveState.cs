@@ -27,8 +27,17 @@ public class E5_MoveState : MoveState
 
         if (isDetectingWall || !isDetectingLedge)
         {
-            enemy.idleState.SetFlipAfterIdle(true);
-            stateMachine.ChangeState(enemy.idleState);
+            if (!isPlayerInMaxAgroRange)
+            {
+                enemy.idleState.SetFlipAfterIdle(true);
+                stateMachine.ChangeState(enemy.idleState);
+            }
+            else
+            {
+                entity.SetVelocityX(0f);
+                stateMachine.ChangeState(enemy.playerDetectedState);
+            }
+
         }
         else if (!canLeaveMoveState)
         {

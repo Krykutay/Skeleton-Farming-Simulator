@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E3_BaseData
   m_EditorClassIdentifier: 
   _maxHealth: 50
-  _damageHopSpeed: 6
+  _damageHopSpeed: 7
   _groundCheckRadius: 0.3
   _wallCheckDistance: 0.2
   _ledgeCheckDistance: 0.5

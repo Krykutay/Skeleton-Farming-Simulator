@@ -27,11 +27,17 @@ public class E5_IdleState : IdleState
 
         if (isPlayerInMaxAgroRange)
         {
-            enemy.playerDetectedState.PlayDetectionSound();
+            if (!detectionSoundPlayed)
+            {
+                enemy.playerDetectedState.PlayDetectionSound();
+                detectionSoundPlayed = true;
+            }
+            
             stateMachine.ChangeState(enemy.playerDetectedState);
         }
         else if (isIdleTimeOver)
         {
+            detectionSoundPlayed = false;
             stateMachine.ChangeState(enemy.moveState);
         }
     }

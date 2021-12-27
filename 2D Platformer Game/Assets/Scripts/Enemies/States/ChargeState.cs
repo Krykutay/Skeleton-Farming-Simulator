@@ -31,7 +31,11 @@ public class ChargeState : State
         _chargeStateEnterTime = Time.time;
 
         isChargeTimeOver = false;
-        entity.SetVelocityX(stateData.chargeSpeed);
+
+        if (entity.CheckLedge())
+            entity.SetVelocityX(stateData.chargeSpeed);
+        else
+            entity.SetVelocityX(0f);
     }
 
     public override void Exit()

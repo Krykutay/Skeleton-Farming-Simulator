@@ -121,7 +121,7 @@ public class Entity : MonoBehaviour, IDamageable
 
         float damageAmount = attackDetails.damageAmount;
         if (PowerupManager.Instance.isDamagePowerupActive)
-            damageAmount *= 2;
+            damageAmount *= 1.5f;
 
         _lastDamagetime = Time.time;
 

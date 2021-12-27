@@ -339,7 +339,6 @@ public class Player : MonoBehaviour
             SoundManager.Instance.Play(SoundManager.SoundTags.PlayerParry);
             _currentHealth -= attackDetails.damageAmount * 0.5f;
             _playerHealth.SetHealthIndicatorColor();
-            _bodyAnim.SetBool("hurt", true);
             if (_hurt != null)
                 StopCoroutine(_hurt);
             _hurt = Hurt();
@@ -362,7 +361,6 @@ public class Player : MonoBehaviour
             _currentHealth -= attackDetails.damageAmount;
             _playerHealth.SetHealthIndicatorColor();
 
-            _bodyAnim.SetBool("hurt", true);
             if (_hurt != null)
                 StopCoroutine(_hurt);
             _hurt = Hurt();
@@ -394,8 +392,6 @@ public class Player : MonoBehaviour
 
         _currentHealth -= 1;
         _playerHealth.SetHealthIndicatorColor();
-
-        _bodyAnim.SetBool("hurt", true);
         if (_hurt != null)
             StopCoroutine(_hurt);
         _hurt = Hurt();
@@ -426,6 +422,7 @@ public class Player : MonoBehaviour
 
     IEnumerator Hurt()
     {
+        _bodyAnim.SetBool("hurt", true);
         yield return new WaitForSeconds(1.73f);
         _bodyAnim.SetBool("hurt", false);
     }
