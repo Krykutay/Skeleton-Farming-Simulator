@@ -20,7 +20,7 @@ TagManager:
   - PlayerWeapon
   - EnemyProjectile
   - PlayerCollisionOnly
-  - 
+  - PlayerAndDamagableOnly
   - 
   - 
   - 

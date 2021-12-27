@@ -125,6 +125,13 @@ public class Entity : MonoBehaviour, IDamageable
 
         _lastDamagetime = Time.time;
 
+        if (attackDetails.position.x > transform.position.x)
+            lastDamageDirection = -1;
+        else
+            lastDamageDirection = 1;
+
+        DamageHop(entityData.damageHopSpeed);
+
         _currentHealth -= damageAmount;
         healthbar.SetCurrentHealth((int)_currentHealth, (int)damageAmount);
         _currentStunResistance -= attackDetails.stunDamageAmount;
@@ -132,20 +139,9 @@ public class Entity : MonoBehaviour, IDamageable
         DamagePopup damagePopup = DamagePopupPool.Instance.Get(transform.position, Quaternion.identity);
 
         if (attackDetails.stunDamageAmount > 0)
-            damagePopup.Setup((int)damageAmount, true);
+            damagePopup.Setup((int)damageAmount, true, lastDamageDirection);
         else
-            damagePopup.Setup((int)damageAmount, false);
-
-        DamageHop(entityData.damageHopSpeed);
-
-        if (attackDetails.position.x > transform.position.x)
-        {
-            lastDamageDirection = -1;
-        }
-        else
-        {
-            lastDamageDirection = 1;
-        }
+            damagePopup.Setup((int)damageAmount, false, lastDamageDirection);
 
         if (_currentStunResistance <= 0)
         {
@@ -161,6 +157,25 @@ public class Entity : MonoBehaviour, IDamageable
         return true;
     }
 
+    public virtual void DamageBySurface()
+    {
+        if (isDead)
+            return;
+
+        _currentHealth -= 10;
+        healthbar.SetCurrentHealth((int)_currentHealth, 10);
+
+        DamagePopup damagePopup = DamagePopupPool.Instance.Get(transform.position, Quaternion.identity);
+
+        damagePopup.Setup(10, false, facingDirection);
+
+        if (_currentHealth <= 0f)
+        {
+            isDead = true;
+            DropLootOnDeath();
+        }
+    }
+
     public virtual void PowerupManager_Vaporize()
     {
         DropLootOnDeath();
@@ -171,9 +186,9 @@ public class Entity : MonoBehaviour, IDamageable
         anim.WriteDefaultValues();
     }
 
-    public virtual void StunnedByPlayerParry()
+    public virtual void StunnedByPlayerParry(int parryDirection)
     {
-
+        lastDamageDirection = parryDirection;
     }
 
     public virtual void DamageHop(float velocity)
@@ -182,7 +197,7 @@ public class Entity : MonoBehaviour, IDamageable
         rb.velocity = _velocityWorkspace;
     }
 
-    void DropLootOnDeath()
+    public void DropLootOnDeath()
     {
         int amountOfLoots = UnityEngine.Random.Range(2, 5);
         for (int i = 0; i < amountOfLoots; i++)

@@ -324,7 +324,7 @@ public class Player : MonoBehaviour
             if (Time.time - stateMachine.currentState.parryStartTime < 0.3f)
             {
                 if (isMeleeHit)
-                    entity.StunnedByPlayerParry();
+                    entity.StunnedByPlayerParry(-enemyDirection);
 
                 SoundManager.Instance.Play(SoundManager.SoundTags.PlayerParry);
                 return;

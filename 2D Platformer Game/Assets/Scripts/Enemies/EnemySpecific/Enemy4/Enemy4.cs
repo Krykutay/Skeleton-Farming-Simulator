@@ -74,9 +74,7 @@ public class Enemy4 : Entity
 
         if (isDead)
         {
-            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDie);
-            healthbar.gameObject.SetActive(false);
-            stateMachine.ChangeState(deadState);
+            JustDied();
         }
         else if (isStunned && stateMachine.currentState != stunState)
         {
@@ -86,9 +84,28 @@ public class Enemy4 : Entity
         return true;
     }
 
-    public override void StunnedByPlayerParry()
+    public override void DamageBySurface()
     {
-        base.StunnedByPlayerParry();
+        base.DamageBySurface();
+
+        if (stateMachine.currentState == deadState || stateMachine.currentState == respawnState)
+            return;
+
+        if (isDead)
+            JustDied();
+    }
+
+    public void JustDied()
+    {
+        isDead = true;
+        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDie);
+        healthbar.gameObject.SetActive(false);
+        stateMachine.ChangeState(deadState);
+    }
+
+    public override void StunnedByPlayerParry(int parryDirection)
+    {
+        base.StunnedByPlayerParry(parryDirection);
 
         if (stateMachine.currentState != deadState || stateMachine.currentState != respawnState)
             stateMachine.ChangeState(stunState);

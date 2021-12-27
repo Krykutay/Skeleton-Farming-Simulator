@@ -23,21 +23,29 @@ public class E3_StunState : StunState
     {
         base.LogicUpdate();
 
-        if (isStunDurationOver)
+        if (isGrounded && (yPosBeforeKnockback - entity.transform.position.y) > 3f)
         {
-            if (performedMeleeRangeAction)
-            {
-                stateMachine.ChangeState(enemy.meleeAttackState);
-            }
-            else if (isPlayerInMaxAgroRange)
-            {
-                stateMachine.ChangeState(enemy.chargeState);
-            }
-            else
-            {
-                enemy.idleState.SetFlipAfterIdle(false);
-                stateMachine.ChangeState(enemy.idleState);
-            }
+            entity.SetVelocityX(0f);
+            enemy.JustDied();
+            entity.DropLootOnDeath();
+            return;
+        }
+
+        if (!isStunDurationOver)
+            return;
+
+        if (performedMeleeRangeAction)
+        {
+            stateMachine.ChangeState(enemy.meleeAttackState);
+        }
+        else if (isPlayerInMaxAgroRange)
+        {
+            stateMachine.ChangeState(enemy.chargeState);
+        }
+        else
+        {
+            enemy.idleState.SetFlipAfterIdle(false);
+            stateMachine.ChangeState(enemy.idleState);
         }
     }
 

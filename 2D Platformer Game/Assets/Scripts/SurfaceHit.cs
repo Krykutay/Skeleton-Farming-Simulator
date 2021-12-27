@@ -10,14 +10,21 @@ public class SurfaceHit : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         _trigerEnterTime = Time.time;
-        Player.Instance.DamageBySurface();
+        if (collision.TryGetComponent<Entity>(out Entity entity))
+            entity.DamageBySurface();
+        else
+            Player.Instance.DamageBySurface();
     }
 
     void OnTriggerStay2D(Collider2D collision)
     {
         if (Time.time >= _trigerEnterTime + _damageFrequency)
         {
-            Player.Instance.DamageBySurface();
+            if (collision.TryGetComponent<Entity>(out Entity entity))
+                entity.DamageBySurface();
+            else
+                Player.Instance.DamageBySurface();
+
             _trigerEnterTime = Time.time;
         }
     }

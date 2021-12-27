@@ -27,7 +27,7 @@ public class DamagePopup : MonoBehaviour
         _textMesh.color = _initialTextColor;
     }
 
-    public void Setup(int damageAmount, bool isCriticalHit)
+    public void Setup(int damageAmount, bool isCriticalHit, int facingDirection)
     {
         _textMesh.SetText(damageAmount.ToString());
 
@@ -48,7 +48,6 @@ public class DamagePopup : MonoBehaviour
         _sortingOrder++;
         _textMesh.sortingOrder = _sortingOrder;
 
-        int facingDirection = Player.Instance.transform.position.x < transform.position.x ? 1 : -1;
         _moveVector.Set(0.7f * facingDirection, 1f, 0);
     }
 

@@ -13,6 +13,8 @@ public class StunState : State
     protected bool isPlayerInMinAgroRange;
     protected bool isPlayerInMaxAgroRange;
 
+    protected float yPosBeforeKnockback;
+
     public StunState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_StunState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -24,6 +26,7 @@ public class StunState : State
 
         isStunDurationOver = false;
         isMovementStopped = false;
+        yPosBeforeKnockback = entity.transform.position.y;
         entity.SetVelocity(stateData.stunKnockbackSpeed, stateData.stunKnockbackAngle, entity.lastDamageDirection);
     }
 
