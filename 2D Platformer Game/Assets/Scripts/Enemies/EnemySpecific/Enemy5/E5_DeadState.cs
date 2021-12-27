@@ -1,11 +1,11 @@
-using System;
 using UnityEngine;
 
 public class E5_DeadState : DeadState
 {
-    Enemy5 enemy;
+    readonly Enemy5 enemy;
 
-    public E5_DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData, Enemy5 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E5_DeadState(Enemy5 enemy, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData)
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -15,11 +15,6 @@ public class E5_DeadState : DeadState
         base.Enter();
 
         timeOfDeath = Time.time;
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void LogicUpdate()
@@ -42,12 +37,4 @@ public class E5_DeadState : DeadState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
 }

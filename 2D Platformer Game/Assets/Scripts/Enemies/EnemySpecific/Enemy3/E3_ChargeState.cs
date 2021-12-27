@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class E3_ChargeState : ChargeState
 {
-    Enemy3 enemy;
+    readonly Enemy3 enemy;
 
-    public E3_ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData, Enemy3 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E3_ChargeState(Enemy3 enemy, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData) 
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -16,11 +13,6 @@ public class E3_ChargeState : ChargeState
         base.Enter();
 
         entity.CheckIfShouldFlip();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void LogicUpdate()
@@ -62,13 +54,4 @@ public class E3_ChargeState : ChargeState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
 }

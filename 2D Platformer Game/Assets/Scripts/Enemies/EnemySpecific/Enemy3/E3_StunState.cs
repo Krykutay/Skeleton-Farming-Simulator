@@ -1,22 +1,11 @@
-using UnityEngine;
-
 public class E3_StunState : StunState
 {
-    Enemy3 enemy;
+    readonly Enemy3 enemy;
 
-    public E3_StunState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_StunState stateData, Enemy3 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E3_StunState(Enemy3 enemy, FiniteStateMachine stateMachine, string animBoolName, D_StunState stateData) 
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void LogicUpdate()
@@ -48,13 +37,4 @@ public class E3_StunState : StunState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
 }

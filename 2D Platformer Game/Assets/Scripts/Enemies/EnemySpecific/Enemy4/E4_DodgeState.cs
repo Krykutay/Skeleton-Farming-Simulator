@@ -1,18 +1,11 @@
-using UnityEngine;
-
 public class E4_DodgeState : DodgeState
 {
-    Enemy4 enemy;
+    readonly Enemy4 enemy;
 
-    public E4_DodgeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DodgeState stateData, Enemy4 enemy)
-        : base(entity, stateMachine, animBoolName, stateData)
+    public E4_DodgeState(Enemy4 enemy, FiniteStateMachine stateMachine, string animBoolName, D_DodgeState stateData) 
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
     }
 
     public override void Exit()
@@ -45,16 +38,6 @@ public class E4_DodgeState : DodgeState
             stateMachine.ChangeState(enemy.idleState);
         }
         
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
     }
 
 }

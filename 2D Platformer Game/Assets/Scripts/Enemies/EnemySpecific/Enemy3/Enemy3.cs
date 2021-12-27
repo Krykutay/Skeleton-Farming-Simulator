@@ -7,7 +7,6 @@ public class Enemy3 : Entity
     public E3_MoveState moveState { get; private set; }
     public E3_PlayerDetectedState playerDetectedState { get; private set; }
     public E3_ChargeState chargeState { get; private set; }
-    public E3_LookForPlayerState lookForPlayerState { get; private set; }
     public E3_MeleeAttackState meleeAttackState { get; private set; }
     public E3_StunState stunState { get; private set; }
     public E3_DeadState deadState { get; private set; }
@@ -17,7 +16,6 @@ public class Enemy3 : Entity
     [SerializeField] D_MoveState _moveStateData;
     [SerializeField] D_PlayerDetectedState _playerDetectedStateData;
     [SerializeField] D_ChargeState _chargeStateData;
-    [SerializeField] D_LookForPlayerState _lookForPlayerStateData;
     [SerializeField] D_MeleeAttackState _meleeAttackStateData;
     [SerializeField] D_StunState _stunStateData;
     [SerializeField] D_DeadState _deadStateData;
@@ -35,19 +33,23 @@ public class Enemy3 : Entity
     {
         base.Awake();
 
-        moveState = new E3_MoveState(this, stateMachine, "move", _moveStateData, this);
-        idleState = new E3_IdleState(this, stateMachine, "idle", _idleStateData, this);
-        playerDetectedState = new E3_PlayerDetectedState(this, stateMachine, "playerDetected", _playerDetectedStateData, this);
-        chargeState = new E3_ChargeState(this, stateMachine, "charge", _chargeStateData, this);
-        lookForPlayerState = new E3_LookForPlayerState(this, stateMachine, "lookForPlayer", _lookForPlayerStateData, this);
-        meleeAttackState = new E3_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData, this);
-        stunState = new E3_StunState(this, stateMachine, "stun", _stunStateData, this);
-        deadState = new E3_DeadState(this, stateMachine, "dead", _deadStateData, this);
-        respawnState = new E3_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
+        moveState = new E3_MoveState(this, stateMachine, "move", _moveStateData);
+        idleState = new E3_IdleState(this, stateMachine, "idle", _idleStateData);
+        playerDetectedState = new E3_PlayerDetectedState(this, stateMachine, "playerDetected", _playerDetectedStateData);
+        chargeState = new E3_ChargeState(this, stateMachine, "charge", _chargeStateData);
+        meleeAttackState = new E3_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData);
+        stunState = new E3_StunState(this, stateMachine, "stun", _stunStateData);
+        deadState = new E3_DeadState(this, stateMachine, "dead", _deadStateData);
+        respawnState = new E3_RespawnState(this, stateMachine, "respawn", _respawnStateData);
 
         _head = transform.Find("Body").Find("MoveHead");
         _leftArm = transform.Find("Body").Find("MoveWeaponArm");
         _rightArm = transform.Find("Body").Find("MoveRightArm");
+    }
+
+    void LateUpdate()
+    {
+        
     }
 
     public override void OnEnable()

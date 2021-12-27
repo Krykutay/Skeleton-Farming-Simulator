@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class E6_RangeAttackState : RangeAttackState
 {
-    Enemy6 enemy;
+    readonly Enemy6 enemy;
 
     bool _attackStarted;
     bool _attackTriggered;
 
-    public E6_RangeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData, Enemy6 enemy)
-        : base(entity, stateMachine, animBoolName, attackPosition, stateData)
+    public E6_RangeAttackState(Enemy6 enemy, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData)
+        : base(enemy, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;
     }
@@ -56,11 +56,6 @@ public class E6_RangeAttackState : RangeAttackState
         entity.RotateBodyToPlayer();
     }
 
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
-
     public override void StartAttack()
     {
         base.StartAttack();
@@ -78,8 +73,4 @@ public class E6_RangeAttackState : RangeAttackState
         _attackTriggered = true;
     }
 
-    public override void FinishAttack()
-    {
-        base.FinishAttack();
-    }
 }

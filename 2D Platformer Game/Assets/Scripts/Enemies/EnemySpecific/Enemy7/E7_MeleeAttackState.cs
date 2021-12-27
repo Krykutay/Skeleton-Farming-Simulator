@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class E7_MeleeAttackState : MeleeAttackState
 {
-    Enemy7 enemy;
+    readonly Enemy7 enemy;
 
-    public E7_MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData, Enemy7 enemy) 
-        : base(entity, stateMachine, animBoolName, attackPosition, stateData)
+    public E7_MeleeAttackState(Enemy7 enemy, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData) 
+        : base(enemy, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;
     }

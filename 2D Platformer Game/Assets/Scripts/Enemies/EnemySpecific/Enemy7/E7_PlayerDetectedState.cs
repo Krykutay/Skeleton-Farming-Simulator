@@ -1,24 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class E7_PlayerDetectedState : PlayerDetectedState
 {
-    Enemy7 enemy;
+    readonly Enemy7 enemy;
 
-    public E7_PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData, Enemy7 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E7_PlayerDetectedState(Enemy7 enemy, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData)
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void LogicUpdate()
@@ -56,8 +43,4 @@ public class E7_PlayerDetectedState : PlayerDetectedState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
 }

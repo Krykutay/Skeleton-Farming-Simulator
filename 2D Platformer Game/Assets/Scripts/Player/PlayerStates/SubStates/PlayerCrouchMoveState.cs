@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerCrouchMoveState : PlayerGroundedState
 {
     public PlayerCrouchMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -11,11 +7,17 @@ public class PlayerCrouchMoveState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+
+        player.SetColliderHeight(playerData.crouchColliderHeight);
+        player.SetPlayerHitPositionInCrouch();
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        player.SetColliderHeight(playerData.standColliderHeight);
+        player.ResetPlayerHitPosition();
     }
 
     public override void LogicUpdate()

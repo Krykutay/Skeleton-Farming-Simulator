@@ -2,17 +2,12 @@ using UnityEngine;
 
 public class E4_RangeAttackState : RangeAttackState
 {
-    Enemy4 enemy;
+    readonly Enemy4 enemy;
 
-    public E4_RangeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData, Enemy4 enemy)
-        : base(entity, stateMachine, animBoolName, attackPosition, stateData)
+    public E4_RangeAttackState(Enemy4 enemy, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData) 
+        : base(enemy, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
     }
 
     public override void Exit()
@@ -38,19 +33,6 @@ public class E4_RangeAttackState : RangeAttackState
             enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
         }
-        
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-
-        entity.RotateBodyToPlayer();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
     }
 
     public override void TriggerAttack()
@@ -62,8 +44,4 @@ public class E4_RangeAttackState : RangeAttackState
         projectile.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage, entity);
     }
 
-    public override void FinishAttack()
-    {
-        base.FinishAttack();
-    }
 }

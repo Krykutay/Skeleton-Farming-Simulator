@@ -2,22 +2,12 @@ using UnityEngine;
 
 public class E5_MeleeAttackState : MeleeAttackState
 {
-    Enemy5 enemy;
+    readonly Enemy5 enemy;
 
-    public E5_MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData, Enemy5 enemy) 
-        : base(entity, stateMachine, animBoolName, attackPosition, stateData)
+    public E5_MeleeAttackState(Enemy5 enemy, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData) 
+        : base(enemy, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void LogicUpdate()
@@ -38,16 +28,6 @@ public class E5_MeleeAttackState : MeleeAttackState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
-
     public override void TriggerAttack()
     {
         Collider2D playerObject = Physics2D.OverlapBox(attackPosition.position, attackDetails[meleeAttackType].size, 0f, entity.entityData.player);
@@ -59,8 +39,4 @@ public class E5_MeleeAttackState : MeleeAttackState
         }
     }
 
-    public override void FinishAttack()
-    {
-        base.FinishAttack();
-    }
 }

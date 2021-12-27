@@ -2,21 +2,12 @@ using UnityEngine;
 
 public class E6_PlayerDetectedState : PlayerDetectedState
 {
-    Enemy6 enemy;
+    readonly Enemy6 enemy;
 
-    public E6_PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData, Enemy6 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E6_PlayerDetectedState(Enemy6 enemy, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData) 
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void LogicUpdate()
@@ -61,13 +52,4 @@ public class E6_PlayerDetectedState : PlayerDetectedState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
 }

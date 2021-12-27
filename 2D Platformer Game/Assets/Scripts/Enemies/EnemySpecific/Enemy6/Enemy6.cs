@@ -6,7 +6,6 @@ public class Enemy6 : Entity
     public E6_MoveState moveState { get; private set; }
     public E6_IdleState idleState { get; private set; }
     public E6_PlayerDetectedState playerDetectedState { get; private set; }
-    public E6_LookForPlayerState lookForPlayerState { get; private set; }
     public E6_MeleeAttackState meleeAttackState { get; private set; }
     public E6_StunState stunState { get; private set; }
     public E6_DeadState deadState { get; private set; }
@@ -17,7 +16,6 @@ public class Enemy6 : Entity
     [SerializeField] D_MoveState _moveStateData;
     [SerializeField] D_IdleState _idleStateData;
     [SerializeField] D_PlayerDetectedState _playerDetectedStateData;
-    [SerializeField] D_LookForPlayerState _lookForPlayerStateData;
     [SerializeField] D_MeleeAttackState _meleeAttackStateData;
     [SerializeField] D_StunState _stunStateData;
     [SerializeField] D_DeadState _deadStateData;
@@ -39,16 +37,15 @@ public class Enemy6 : Entity
     {
         base.Awake();
 
-        moveState = new E6_MoveState(this, stateMachine, "move", _moveStateData, this);
-        idleState = new E6_IdleState(this, stateMachine, "idle", _idleStateData, this);
-        playerDetectedState = new E6_PlayerDetectedState(this, stateMachine, "playerDetected", _playerDetectedStateData, this);
-        lookForPlayerState = new E6_LookForPlayerState(this, stateMachine, "lookForPlayer", _lookForPlayerStateData, this);
-        meleeAttackState = new E6_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData, this);
-        stunState = new E6_StunState(this, stateMachine, "stun", _stunStateData, this);
-        deadState = new E6_DeadState(this, stateMachine, "dead", _deadStateData, this);
-        teleportState = new E6_TeleportState(this, stateMachine, "teleport", _teleportStateData, this);
-        rangeAttackState = new E6_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData, this);
-        respawnState = new E6_RespawnState(this, stateMachine, "respawn", _respawnStateData, this);
+        moveState = new E6_MoveState(this, stateMachine, "move", _moveStateData);
+        idleState = new E6_IdleState(this, stateMachine, "idle", _idleStateData);
+        playerDetectedState = new E6_PlayerDetectedState(this, stateMachine, "playerDetected", _playerDetectedStateData);
+        meleeAttackState = new E6_MeleeAttackState(this, stateMachine, "meleeAttack", _meleeAttackPosition, _meleeAttackStateData);
+        stunState = new E6_StunState(this, stateMachine, "stun", _stunStateData);
+        deadState = new E6_DeadState(this, stateMachine, "dead", _deadStateData);
+        teleportState = new E6_TeleportState(this, stateMachine, "teleport", _teleportStateData);
+        rangeAttackState = new E6_RangeAttackState(this, stateMachine, "rangeAttack", _rangeAttackPosition, _rangeAttackStateData);
+        respawnState = new E6_RespawnState(this, stateMachine, "respawn", _respawnStateData);
 
         _head = transform.Find("Body").Find("MoveHead");
     }

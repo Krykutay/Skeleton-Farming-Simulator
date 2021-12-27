@@ -1,22 +1,11 @@
-using UnityEngine;
-
 public class E4_IdleState : IdleState
 {
-    Enemy4 enemy;
+    readonly Enemy4 enemy;
 
-    public E4_IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, Enemy4 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E4_IdleState(Enemy4 enemy, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) 
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void LogicUpdate()
@@ -40,13 +29,4 @@ public class E4_IdleState : IdleState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
 }

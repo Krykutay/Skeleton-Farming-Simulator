@@ -1,18 +1,11 @@
-using UnityEngine;
-
 public class E6_TeleportState : TeleportState
 {
-    Enemy6 enemy;
+    readonly Enemy6 enemy;
 
-    public E6_TeleportState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_TeleportState stateData, Enemy6 enemy)
-        : base(entity, stateMachine, animBoolName, stateData)
+    public E6_TeleportState(Enemy6 enemy, FiniteStateMachine stateMachine, string animBoolName, D_TeleportState stateData)
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
     }
 
     public override void Exit()
@@ -43,16 +36,6 @@ public class E6_TeleportState : TeleportState
             stateMachine.ChangeState(enemy.idleState);
         }
         
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
     }
 
 }

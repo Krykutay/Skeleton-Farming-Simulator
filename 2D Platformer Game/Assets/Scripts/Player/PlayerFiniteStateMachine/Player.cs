@@ -139,7 +139,6 @@ public class Player : MonoBehaviour
         stateMachine.currentState.PhysicsUpdate();
     }
 
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (stateMachine.currentState != dashState)

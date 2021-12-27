@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class E7_IdleState : IdleState
 {
-    Enemy7 enemy;
+    readonly Enemy7 enemy;
 
-    public E7_IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, Enemy7 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E7_IdleState(Enemy7 enemy, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData)
+        : base(enemy, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -42,8 +39,4 @@ public class E7_IdleState : IdleState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
 }

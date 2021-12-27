@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerKnockbackState : PlayerState
 {
     bool _isGrounded;
@@ -31,7 +29,7 @@ public class PlayerKnockbackState : PlayerState
         {
             stateMachine.ChangeState(player.dashState);
         }
-        if (_isGrounded && player.currentVelocity.y < 0.01f)
+        else if (_isGrounded && player.currentVelocity.y < 0.01f)
         {
             player.SetVelocityX(0f);
             stateMachine.ChangeState(player.landState);
