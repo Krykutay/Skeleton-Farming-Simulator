@@ -48,7 +48,6 @@ public class Entity : MonoBehaviour, IDamageable
         atsm = GetComponent<AnimationToStateMachine>();
 
         stateMachine = new FiniteStateMachine();
-        
     }
 
     public virtual void OnEnable()
@@ -167,6 +166,9 @@ public class Entity : MonoBehaviour, IDamageable
         DropLootOnDeath();
         VaporizeParticle1Pool.Instance.Get(transform.position, Quaternion.identity);
         Died?.Invoke(this);
+
+        SoundManager.Instance.Stop(SoundManager.SoundTags.SkeletonRespawn);
+        anim.WriteDefaultValues();
     }
 
     public virtual void StunnedByPlayerParry()

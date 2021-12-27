@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         Respawn();
     }
 
-    public void Respawn()
+    void Respawn()
     {
         _respawnTimeStart = Time.time;
         _respawn = true;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PowerupManager : MonoBehaviour
 {
     public static PowerupManager Instance { get; private set; }
-    public Action Vaporize; 
+    public Action Vaporize;
     public bool isDamagePowerupActive { get; private set; }
     public bool isShieldPowerupActive { get; private set; }
 
@@ -88,17 +88,14 @@ public class PowerupManager : MonoBehaviour
         yield return new WaitForSeconds(_durationHealth);
         Player.Instance.SetCurrentHealth();
         HealthPowerupParticlePool.Instance.Get(Player.Instance.transform.position, Quaternion.Euler(-90f, 0f, 0f));
-        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
 
         yield return new WaitForSeconds(_durationHealth);
         Player.Instance.SetCurrentHealth();
         HealthPowerupParticlePool.Instance.Get(Player.Instance.transform.position, Quaternion.Euler(-90f, 0f, 0f));
-        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
 
         yield return new WaitForSeconds(_durationHealth);
         Player.Instance.SetCurrentHealth();
         HealthPowerupParticlePool.Instance.Get(Player.Instance.transform.position, Quaternion.Euler(-90f, 0f, 0f));
-        SoundManager.Instance.Play(SoundManager.SoundTags.Powerup);
 
         _healthPowerupCountdownBar.gameObject.SetActive(false);
         _deactivateHealthPowerup = null;

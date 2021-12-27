@@ -417,8 +417,11 @@ public class Player : MonoBehaviour
 
     public void SetCurrentHealth()
     {
-        _currentHealth++;
-        _playerHealth.SetHealthIndicatorColor();
+        if (_currentHealth < maxHealth)
+        {
+            _currentHealth++;
+            _playerHealth.SetHealthIndicatorColor();
+        }
     }
 
     IEnumerator Hurt()
