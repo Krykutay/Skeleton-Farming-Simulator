@@ -14,8 +14,7 @@ public class E5_DeadState : DeadState
     {
         base.Enter();
 
-        TimeOfDeath = Time.time;
-        //Died?.Invoke(enemy);
+        timeOfDeath = Time.time;
     }
 
     public override void Exit()
@@ -30,14 +29,16 @@ public class E5_DeadState : DeadState
         if (!isAnimationFinished)
             return;
 
-        if (Time.time >= TimeOfDeath + stateData.respawnTime)
+        if (Time.time >= timeOfDeath + stateData.respawnTime)
         {
-
-            stateMachine.ChangeState(enemy.respawnState);
-
-
-            // TODO: If some other case like it falls from ledge etc, send it to object pool and get it back
-            //Enemy4Pool.Instance.ReturnToPool(enemy);
+            if (enemy.deathCount == 1)
+                stateMachine.ChangeState(enemy.respawnState);
+            else
+            {
+                Entity.Died?.Invoke(enemy);
+                enemy.anim.WriteDefaultValues();
+                Enemy5Pool.Instance.ReturnToPool(enemy);
+            }
         }
     }
 

@@ -91,11 +91,10 @@ public class Enemy6 : Entity
             JustDied();
     }
 
-    public void JustDied()
+    public override void JustDied()
     {
-        isDead = true;
-        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDie);
-        healthbar.gameObject.SetActive(false);
+        base.JustDied();
+
         stateMachine.ChangeState(deadState);
     }
 

@@ -27,7 +27,6 @@ public class E3_StunState : StunState
         {
             entity.SetVelocityX(0f);
             enemy.JustDied();
-            entity.DropLootOnDeath();
             return;
         }
 

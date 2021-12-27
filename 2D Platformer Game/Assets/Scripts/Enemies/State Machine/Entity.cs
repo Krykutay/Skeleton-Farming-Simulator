@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour, IDamageable
 
     public int facingDirection { get; private set; }
     public int lastDamageDirection { get; private set; }
+    public int deathCount { get; private set; }
 
     public Transform playerTransform { get; private set; }
 
@@ -20,7 +21,6 @@ public class Entity : MonoBehaviour, IDamageable
 
     public Vector3 initialPosition { get; private set; }
     public Quaternion initialRotation { get; private set; }
-    protected EnemyHealthBar healthbar { get; private set; }
 
     protected bool isStunned;
     protected bool isDead;
@@ -29,6 +29,8 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] Transform _wallCheck;
     [SerializeField] Transform _ledgeCheck;
     [SerializeField] Transform _playerCheck;
+
+    EnemyHealthBar _healthbar;
 
     Transform _hpCanvas;
     Vector2 _velocityWorkspace;
@@ -41,7 +43,7 @@ public class Entity : MonoBehaviour, IDamageable
     {
         playerTransform = Player.Instance.transform.Find("Core").Find("PlayerHitPosition").transform;
         _hpCanvas = transform.Find("Canvas");
-        healthbar = _hpCanvas.Find("HealthBar").GetComponent<EnemyHealthBar>();
+        _healthbar = _hpCanvas.Find("HealthBar").GetComponent<EnemyHealthBar>();
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -55,15 +57,16 @@ public class Entity : MonoBehaviour, IDamageable
         initialPosition = transform.position;
         initialRotation = transform.rotation;
 
-        healthbar.gameObject.SetActive(true);
+        _healthbar.gameObject.SetActive(true);
         _currentHealth = entityData.maxHealth;
         _currentStunResistance = entityData.stunResistance;
         facingDirection = 1;
+        deathCount = 0;
         isStunned = false;
         isDead = false;
 
-        healthbar.SetMaxHealth(entityData.maxHealth);
-        healthbar.SetCurrentHealth(entityData.maxHealth, 0);
+        _healthbar.SetMaxHealth(entityData.maxHealth);
+        _healthbar.SetCurrentHealth(entityData.maxHealth, 0);
 
         PowerupManager.Instance.Vaporize += PowerupManager_Vaporize;
     }
@@ -133,7 +136,7 @@ public class Entity : MonoBehaviour, IDamageable
         DamageHop(entityData.damageHopSpeed);
 
         _currentHealth -= damageAmount;
-        healthbar.SetCurrentHealth((int)_currentHealth, (int)damageAmount);
+        _healthbar.SetCurrentHealth((int)_currentHealth, (int)damageAmount);
         _currentStunResistance -= attackDetails.stunDamageAmount;
 
         DamagePopup damagePopup = DamagePopupPool.Instance.Get(transform.position, Quaternion.identity);
@@ -151,7 +154,6 @@ public class Entity : MonoBehaviour, IDamageable
         if (_currentHealth <= 0)
         {
             isDead = true;
-            DropLootOnDeath();
         }
 
         return true;
@@ -163,7 +165,7 @@ public class Entity : MonoBehaviour, IDamageable
             return;
 
         _currentHealth -= 10;
-        healthbar.SetCurrentHealth((int)_currentHealth, 10);
+        _healthbar.SetCurrentHealth((int)_currentHealth, 10);
 
         DamagePopup damagePopup = DamagePopupPool.Instance.Get(transform.position, Quaternion.identity);
 
@@ -172,18 +174,29 @@ public class Entity : MonoBehaviour, IDamageable
         if (_currentHealth <= 0f)
         {
             isDead = true;
-            DropLootOnDeath();
         }
     }
 
     public virtual void PowerupManager_Vaporize()
     {
+        if (deathCount == 1)
+            deathCount = 2;
+
         DropLootOnDeath();
         VaporizeParticle1Pool.Instance.Get(transform.position, Quaternion.identity);
         Died?.Invoke(this);
 
         SoundManager.Instance.Stop(SoundManager.SoundTags.SkeletonRespawn);
         anim.WriteDefaultValues();
+    }
+
+    public virtual void JustDied()
+    {
+        deathCount++;
+        isDead = true;
+        SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDie);
+        _healthbar.gameObject.SetActive(false);
+        DropLootOnDeath();
     }
 
     public virtual void StunnedByPlayerParry(int parryDirection)
@@ -197,9 +210,18 @@ public class Entity : MonoBehaviour, IDamageable
         rb.velocity = _velocityWorkspace;
     }
 
-    public void DropLootOnDeath()
+    void DropLootOnDeath()
     {
-        int amountOfLoots = UnityEngine.Random.Range(2, 5);
+        int amountOfLoots;
+
+        if (deathCount == 0)
+            amountOfLoots = UnityEngine.Random.Range(3, 6);
+        else if (deathCount == 1)
+            amountOfLoots = UnityEngine.Random.Range(1, 3);
+        else
+            amountOfLoots = UnityEngine.Random.Range(2, 4);
+
+
         for (int i = 0; i < amountOfLoots; i++)
         {
             int lootColor = UnityEngine.Random.Range(0, 6);
@@ -309,9 +331,9 @@ public class Entity : MonoBehaviour, IDamageable
         _currentStunResistance = entityData.stunResistance;
         isStunned = false;
         isDead = false;
-        healthbar.gameObject.SetActive(true);
-        healthbar.SetMaxHealth(entityData.maxHealth);
-        healthbar.SetCurrentHealth(entityData.maxHealth, 0);
+        _healthbar.gameObject.SetActive(true);
+        _healthbar.SetMaxHealth(entityData.maxHealth);
+        _healthbar.SetCurrentHealth(entityData.maxHealth, 0);
     }
 
     public virtual void OnDrawGizmos()

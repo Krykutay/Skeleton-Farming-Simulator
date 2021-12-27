@@ -4,7 +4,7 @@ public class DeadState : State
 {
     protected D_DeadState stateData;
 
-    protected float TimeOfDeath;
+    protected float timeOfDeath;
 
     protected bool isAnimationFinished;
 
