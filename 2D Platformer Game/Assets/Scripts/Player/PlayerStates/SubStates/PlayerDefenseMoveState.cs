@@ -20,6 +20,11 @@ public class PlayerDefenseMoveState : PlayerState
     {
         base.Enter();
 
+        if (stateMachine.previousState != player.defenseState)
+        {
+            parryStartTime = Time.time;
+        }
+
         _isGrounded = player.CheckIfGrounded();
         _justGrounded = _isGrounded;
 

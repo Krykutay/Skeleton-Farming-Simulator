@@ -321,7 +321,7 @@ public class Player : MonoBehaviour
 
         if ((stateMachine.currentState == defenseState || stateMachine.currentState == defenseMoveState) && enemyDirection == -facingDirection)
         {
-            if (Time.time - stateMachine.currentState.startTime < 0.3f)
+            if (Time.time - stateMachine.currentState.parryStartTime < 0.3f)
             {
                 if (isMeleeHit)
                     entity.StunnedByPlayerParry();

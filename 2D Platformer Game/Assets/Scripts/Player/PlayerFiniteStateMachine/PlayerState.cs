@@ -7,6 +7,7 @@ public class PlayerState
     protected PlayerData playerData;
 
     public float startTime { get; protected set; }
+    public float parryStartTime { get; protected set; }
 
     protected bool isAnimationFinished = false;
     protected bool isExitingState;
