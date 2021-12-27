@@ -1684,7 +1684,6 @@ MonoBehaviour:
   _moveStateData: {fileID: 11400000, guid: 0d5ddc2e6b21dcf4d98a11052a8f1b53, type: 2}
   _playerDetectedStateData: {fileID: 11400000, guid: fe1df12a065cf444e9f8499a7e0b5046, type: 2}
   _chargeStateData: {fileID: 11400000, guid: d52bfe45ac818d1488e64835ead2057d, type: 2}
-  _lookForPlayerStateData: {fileID: 11400000, guid: 2c346816627b8064f99aba2f23430634, type: 2}
   _meleeAttackStateData: {fileID: 11400000, guid: 2736a372e14fda54ab6c458517bbddc0, type: 2}
   _stunStateData: {fileID: 11400000, guid: d7e74cafdc55e074e8ffd4d849c1d9c2, type: 2}
   _deadStateData: {fileID: 11400000, guid: 93d8da8f3378cf7499f7c00c9736789d, type: 2}
