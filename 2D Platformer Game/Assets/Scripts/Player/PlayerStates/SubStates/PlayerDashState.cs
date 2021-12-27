@@ -16,12 +16,15 @@ public class PlayerDashState : PlayerAbilityState
     bool _isGrounded;
     bool _isHolding;
     bool _dashInputStopped;
+    bool _isOnAirAnimTriggered;
+    bool _isHoldingAimAdjusted;
+    bool _isReleasingAimAdjusted;
 
     public PlayerDashState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
-    public override void Enter()    // TODO: use walking animation if on the ground
+    public override void Enter()
     {
         base.Enter();
 
@@ -32,6 +35,10 @@ public class PlayerDashState : PlayerAbilityState
 
         _isHolding = true;
         _dashDirection = Vector2.right * player.facingDirection;
+
+        _isOnAirAnimTriggered = false;
+        _isHoldingAimAdjusted = false;
+        _isReleasingAimAdjusted = false;
 
         Time.timeScale = playerData.holdTimeScale;
         startTime = Time.unscaledTime;
@@ -76,7 +83,12 @@ public class PlayerDashState : PlayerAbilityState
 
         if (_isHolding)     // waiting for player direction
         {
-            AdjustHoldingAnim();
+            if (!_isHoldingAimAdjusted)
+            {
+                _isHoldingAimAdjusted = true;
+                AdjustHoldingAnim();
+            }
+
             player.CheckIfShouldFlip(_xInput);
 
             _dashDirectionInput = player.inputHandler.rawDashDirectionInput;
@@ -110,7 +122,12 @@ public class PlayerDashState : PlayerAbilityState
         }
         else    // performing the dash Action
         {
-            AdjustReleasingAnim();
+            if (!_isReleasingAimAdjusted)
+            {
+                AdjustReleasingAnim();
+                _isReleasingAimAdjusted = true;
+            }
+
             CheckIfShouldPlaceAfterImage();
 
             if (Time.time >= startTime + playerData.dashTime)
@@ -171,6 +188,7 @@ public class PlayerDashState : PlayerAbilityState
         }
         else
         {
+            _isOnAirAnimTriggered = true;
             player.anim.SetBool("dashInAir", true);
             player.anim.SetBool("inAir", false);
             player.anim.SetBool("move", false);
@@ -184,11 +202,18 @@ public class PlayerDashState : PlayerAbilityState
     {
         if (_isGrounded)
         {
+            if (_isOnAirAnimTriggered)
+                player.anim.SetTrigger("dashTrigger");
+            else
+            {
+                player.anim.SetBool("inAir", false);
+                player.anim.SetBool("move", true);
+            }
+
             player.anim.SetBool("crouchMove", false);
             player.anim.SetBool("crouchIdle", false);
-            player.anim.SetBool("inAir", false);
             player.anim.SetBool("idle", false);
-            player.anim.SetBool("move", true);
+
         }
         else
         {
