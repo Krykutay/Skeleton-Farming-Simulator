@@ -12,6 +12,7 @@ public class DropLootPurple : DropLoot
     IEnumerator DelayBeforeDisappear()
     {
         yield return new WaitForSeconds(0.25f);
+        ScoreManager.Instance.Orb_Collected();
         DropLootPurplePool.Instance.ReturnToPool(this);
     }
 }

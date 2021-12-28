@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ScoreCalculationOnGameOver : MonoBehaviour
 {
+    /*
     [SerializeField] TMP_Text _coinScoreText;
     [SerializeField] TMP_Text _enemyScoreText;
     [SerializeField] TMP_Text _handScoreText;
@@ -107,4 +108,5 @@ public class ScoreCalculationOnGameOver : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.4f);
         _gameoverAnimator.SetTrigger("CalculationsDone");
     }
+    */
 }

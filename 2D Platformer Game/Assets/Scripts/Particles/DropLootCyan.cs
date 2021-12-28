@@ -12,6 +12,7 @@ public class DropLootCyan : DropLoot
     IEnumerator DelayBeforeDisappear()
     {
         yield return new WaitForSeconds(0.25f);
+        ScoreManager.Instance.Orb_Collected();
         DropLootCyanPool.Instance.ReturnToPool(this);
     }
 }
