@@ -15,7 +15,8 @@ public class Items
         GreenSkin,
         YellowSkin,
         BrownSkin,
-        ExtraHealth
+        DefenseBoost,
+        OffenseBoost
     }
 
     public static int GetCost(ItemType itemType)
@@ -26,26 +27,28 @@ public class Items
             case ItemType.DefaultSword:
                 return 0;
             case ItemType.BlueSword:
-                return 10;
+                return 12;
             case ItemType.CyanSword:
-                return 10;
+                return 12;
             case ItemType.GreenSword:
-                return 10;
+                return 12;
             case ItemType.RedSword:
-                return 10;
+                return 12;
             case ItemType.PurpleSword:
-                return 10;
+                return 12;
             case ItemType.DefaultSkin:
                 return 0;
             case ItemType.BlueSkin:
-                return 5;
+                return 8;
             case ItemType.GreenSkin:
-                return 5;
+                return 8;
             case ItemType.YellowSkin:
-                return 5;
+                return 8;
             case ItemType.BrownSkin:
-                return 5;
-            case ItemType.ExtraHealth:
+                return 8;
+            case ItemType.DefenseBoost:
+                return 30;
+            case ItemType.OffenseBoost:
                 return 30;
         }
     }
@@ -77,8 +80,10 @@ public class Items
                 return GameAssets.Instance.s_YellowSkin;
             case ItemType.BrownSkin:
                 return GameAssets.Instance.s_BrownSkin;
-            case ItemType.ExtraHealth:
-                return GameAssets.Instance.s_DefaultSkin;
+            case ItemType.DefenseBoost:
+                return GameAssets.Instance.s_DefenseBoost;
+            case ItemType.OffenseBoost:
+                return GameAssets.Instance.s_OffenseBoost;
         }
     }
 

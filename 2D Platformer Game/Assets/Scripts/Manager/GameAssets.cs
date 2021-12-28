@@ -22,4 +22,6 @@ public class GameAssets : MonoBehaviour
     public Sprite[] s_GreenSkin;
     public Sprite[] s_YellowSkin;
     public Sprite[] s_BrownSkin;
+    public Sprite[] s_DefenseBoost;
+    public Sprite[] s_OffenseBoost;
 }
