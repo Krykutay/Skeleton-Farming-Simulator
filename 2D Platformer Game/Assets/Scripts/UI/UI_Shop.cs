@@ -9,12 +9,23 @@ public class UI_Shop : MonoBehaviour
     Transform _shopSwordTemplate;
     Transform _shopUpgradeTemplate;
 
+    Image _currentSword;
+    Image _currentOutfit;
+
+    Color _initialItemColor;
+    Color _onUseItemColor;
+
+    IShopCustomer _shopCustomer;
+
     void Awake()
     {
         _container = transform.Find("container");
         _shopSkinTemplate = _container.Find("shopSkinTemplate");
         _shopSwordTemplate = _container.Find("shopSwordTemplate");
         _shopUpgradeTemplate = _container.Find("shopUpgradeTemplate");
+
+        _initialItemColor = _shopSwordTemplate.Find("background").GetComponent<Image>().color;
+        _onUseItemColor = new Color(125/255f, 112/255f, 65/255f);
 
         _shopSkinTemplate.gameObject.SetActive(false);
         _shopSwordTemplate.gameObject.SetActive(false);
@@ -38,6 +49,7 @@ public class UI_Shop : MonoBehaviour
 
         CreateUpgradeButton(Items.ItemType.DefenseBoost, Items.GetSprite(Items.ItemType.DefenseBoost), "Defense Boost", Items.GetCost(Items.ItemType.DefenseBoost), 0);
         CreateUpgradeButton(Items.ItemType.OffenseBoost, Items.GetSprite(Items.ItemType.OffenseBoost), "Offense Boost", Items.GetCost(Items.ItemType.OffenseBoost), 1);
+
     }
 
     void CreateSkinButton(Items.ItemType itemType, Sprite[] itemSprite, string itemName, int itemCost, int positionIndex)
@@ -49,16 +61,20 @@ public class UI_Shop : MonoBehaviour
         shopItemRectTransform.anchoredPosition = new Vector2(-400 + (positionIndex % 3) * 400, 50 - shopItemHeight * Mathf.Floor(positionIndex / 3));
 
         shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
-        shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>().SetText(itemCost.ToString());
+
+        TextMeshProUGUI ShopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
+        ShopItemCostText.SetText(itemCost.ToString());
 
         shopItemTransform.Find("itemImage1").GetComponent<Image>().sprite = itemSprite[0];
         shopItemTransform.Find("itemImage2").GetComponent<Image>().sprite = itemSprite[1];
 
         shopItemTransform.gameObject.SetActive(true);
 
+        Image image = shopItemTransform.Find("background").GetComponent<Image>();
+
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
-            TryBuyItem(itemType);
+            TryBuyOutfitItem(itemType, ShopItemCostText, image);
         });
     }
 
@@ -71,16 +87,20 @@ public class UI_Shop : MonoBehaviour
         shopItemRectTransform.anchoredPosition = new Vector2(-400 + (positionIndex % 3) * 400, 300 - shopItemHeight * Mathf.Floor(positionIndex/3));
 
         shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
-        shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>().SetText(itemCost.ToString());
+
+        TextMeshProUGUI ShopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
+        ShopItemCostText.SetText(itemCost.ToString());
 
         shopItemTransform.Find("itemImage1").GetComponent<Image>().sprite = itemSprite[0];
         shopItemTransform.Find("itemImage2").GetComponent<Image>().sprite = itemSprite[0];
 
         shopItemTransform.gameObject.SetActive(true);
 
+        Image image = shopItemTransform.Find("background").GetComponent<Image>();
+
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
-            TryBuyItem(itemType);
+            TryBuySwordItem(itemType, ShopItemCostText, image);
         });
     }
 
@@ -93,20 +113,78 @@ public class UI_Shop : MonoBehaviour
         shopItemRectTransform.anchoredPosition = new Vector2(-400 + (positionIndex % 3) * 400, -200 - shopItemHeight * Mathf.Floor(positionIndex / 3));
 
         shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
-        shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>().SetText(itemCost.ToString());
+
+        TextMeshProUGUI ShopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
+        ShopItemCostText.SetText(itemCost.ToString());
 
         shopItemTransform.Find("itemImage1").GetComponent<Image>().sprite = itemSprite[0];
 
         shopItemTransform.gameObject.SetActive(true);
 
+        Image image = shopItemTransform.Find("background").GetComponent<Image>();
+
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
-            TryBuyItem(itemType);
+            TryBuyBoostItem(itemType, ShopItemCostText, image);
         });
     }
 
-    void TryBuyItem(Items.ItemType itemType)
+    void TryBuySwordItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
     {
+        if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
+        {
+            if (_currentSword != null)
+            {
+                _currentSword.color = _initialItemColor;
+            }
+            _currentSword = image;
+            _currentSword.color = _onUseItemColor;
 
+            Items.SetCost(itemType);
+            shopItemCostText.SetText("0");
+
+            _shopCustomer.BoughtItem(itemType);
+        }
+    }
+
+    void TryBuyOutfitItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
+    {
+        if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
+        {
+            if (_currentOutfit != null)
+            {
+                _currentOutfit.color = _initialItemColor;
+            }
+            _currentOutfit = image;
+            _currentOutfit.color = _onUseItemColor;
+
+            Items.SetCost(itemType);
+            shopItemCostText.SetText("0");
+
+            _shopCustomer.BoughtItem(itemType);
+        }
+    }
+
+    void TryBuyBoostItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
+    {
+        if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
+        {
+
+            Items.SetCost(itemType);
+            shopItemCostText.SetText("0");
+
+            _shopCustomer.BoughtItem(itemType);
+        }
+    }
+
+    public void Show(IShopCustomer shopCustomer)
+    {
+        _shopCustomer = shopCustomer;
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IShopCustomer
 {
     public Action PlayerDied;
     public static Player Instance { get; private set; }
@@ -446,6 +446,71 @@ public class Player : MonoBehaviour
         if (_attackPosition != null)
         {
             Gizmos.DrawWireSphere(_attackPosition.position, _weaponData.attackDetails[0].attackRadius);
+        }
+    }
+
+    void ActivateShopItem()
+    {
+
+    }
+
+    public void BoughtItem(Items.ItemType itemType)
+    {
+        Debug.Log("Bought item: " + itemType);
+        switch (itemType)
+        {
+            case Items.ItemType.DefaultSkin:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.BlueSkin:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.GreenSkin:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.YellowSkin:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.BrownSkin:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.DefaultSword:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.BlueSword:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.CyanSword:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.GreenSword:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.RedSword:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.PurpleSword:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.DefenseBoost:
+                ActivateShopItem();
+                break;
+            case Items.ItemType.OffenseBoost:
+                ActivateShopItem();
+                break;
+        }
+    }
+
+    public bool TrySpendTokenAmount(int spendTokenAmount)
+    {
+        if (ScoreManager.Instance.tokenScore >= spendTokenAmount)
+        {
+            ScoreManager.Instance.Token_Spent(spendTokenAmount);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

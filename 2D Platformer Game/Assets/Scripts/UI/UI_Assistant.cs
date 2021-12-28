@@ -8,6 +8,7 @@ using TMPro;
 public class UI_Assistant : MonoBehaviour
 {
     public Action SpeechEnd;
+    public Action OpenShop;
 
     [SerializeField] TMP_Text _messageText;
 
@@ -40,6 +41,7 @@ public class UI_Assistant : MonoBehaviour
             {
                 if (count >= messages.Length)
                 {
+                    OpenShop?.Invoke();
                     gameObject.SetActive(false);
                     return;
                 }
