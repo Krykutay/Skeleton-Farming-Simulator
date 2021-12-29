@@ -2921,6 +2921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54951a5f47ef4054fbf336699003d1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerInventory: {fileID: 890781903}
 --- !u!1 &143280125
 GameObject:
   m_ObjectHideFlags: 0
@@ -79200,6 +79201,7 @@ GameObject:
   - component: {fileID: 890781895}
   - component: {fileID: 890781894}
   - component: {fileID: 890781902}
+  - component: {fileID: 890781903}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -79433,6 +79435,18 @@ MonoBehaviour:
   - {fileID: 942362343}
   - {fileID: 637920644}
   - {fileID: 125672513}
+--- !u!114 &890781903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890781893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f7af2cfcb27404aa361e5f81f9388d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &891556123
 GameObject:
   m_ObjectHideFlags: 0
@@ -94583,7 +94597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiAssistant: {fileID: 55122979}
   _talkText: {fileID: 1073337939}
-  _shop: {fileID: 141147204}
+  _uiShop: {fileID: 141147206}
 --- !u!1 &1765595707
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,6 +52,7 @@ public class Player : MonoBehaviour, IShopCustomer
     public float maxHealth { get { return _playerData.maxHealth; } }
 
     PlayerHealth _playerHealth;
+    PlayerInventory _playerInventory;
 
     Animator _bodyAnim;
     IEnumerator _hurt;
@@ -82,6 +83,7 @@ public class Player : MonoBehaviour, IShopCustomer
         dashDirectionIndicator = transform.Find("DashDirectionIndicator");
         _bodyAnim = transform.Find("BodyParts").GetComponent<Animator>();
         _playerHealth = GetComponent<PlayerHealth>();
+        _playerInventory = GetComponent<PlayerInventory>();
 
         stateMachine = new PlayerStateMachine();
 
@@ -456,6 +458,8 @@ public class Player : MonoBehaviour, IShopCustomer
 
     public void BoughtItem(Items.ItemType itemType)
     {
+        _playerInventory.AddItem((int)itemType);
+
         Debug.Log("Bought item: " + itemType);
         switch (itemType)
         {

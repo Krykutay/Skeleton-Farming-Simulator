@@ -4,6 +4,8 @@ using TMPro;
 
 public class UI_Shop : MonoBehaviour
 {
+    [SerializeField] PlayerInventory _playerInventory;
+
     Transform _container;
     Transform _shopSkinTemplate;
     Transform _shopSwordTemplate;
@@ -12,8 +14,8 @@ public class UI_Shop : MonoBehaviour
     Image _currentSword;
     Image _currentOutfit;
 
-    Color _initialItemColor;
-    Color _onUseItemColor;
+    Color _unequippedItemColor;
+    Color _equippedItemColor;
 
     IShopCustomer _shopCustomer;
 
@@ -24,8 +26,8 @@ public class UI_Shop : MonoBehaviour
         _shopSwordTemplate = _container.Find("shopSwordTemplate");
         _shopUpgradeTemplate = _container.Find("shopUpgradeTemplate");
 
-        _initialItemColor = _shopSwordTemplate.Find("background").GetComponent<Image>().color;
-        _onUseItemColor = new Color(125/255f, 112/255f, 65/255f);
+        _unequippedItemColor = _shopSwordTemplate.Find("background").GetComponent<Image>().color;
+        _equippedItemColor = new Color(125/255f, 112/255f, 65/255f);
 
         _shopSkinTemplate.gameObject.SetActive(false);
         _shopSwordTemplate.gameObject.SetActive(false);
@@ -34,6 +36,11 @@ public class UI_Shop : MonoBehaviour
 
     void Start()
     {
+        foreach (int item in _playerInventory.inventory)
+        {
+            Items.SetCost((Items.ItemType)item);
+        }
+
         CreateSkinButton(Items.ItemType.DefaultSkin, Items.GetSprite(Items.ItemType.DefaultSkin), "Default Outfit", Items.GetCost(Items.ItemType.DefaultSkin), 0);
         CreateSkinButton(Items.ItemType.BlueSkin, Items.GetSprite(Items.ItemType.BlueSkin), "Blue Outfit", Items.GetCost(Items.ItemType.BlueSkin), 1);
         CreateSkinButton(Items.ItemType.GreenSkin, Items.GetSprite(Items.ItemType.GreenSkin), "Green Outfit", Items.GetCost(Items.ItemType.GreenSkin), 2);
@@ -72,6 +79,12 @@ public class UI_Shop : MonoBehaviour
 
         Image image = shopItemTransform.Find("background").GetComponent<Image>();
 
+        if ((int)itemType == _playerInventory.EquippedOutfit)
+        {
+            image.color = _equippedItemColor;
+            _currentOutfit = image;
+        }
+
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
             TryBuyOutfitItem(itemType, ShopItemCostText, image);
@@ -97,6 +110,12 @@ public class UI_Shop : MonoBehaviour
         shopItemTransform.gameObject.SetActive(true);
 
         Image image = shopItemTransform.Find("background").GetComponent<Image>();
+
+        if ((int)itemType == _playerInventory.EquippedSword)
+        {
+            image.color = _equippedItemColor;
+            _currentSword = image;
+        }
 
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
@@ -129,16 +148,16 @@ public class UI_Shop : MonoBehaviour
         });
     }
 
-    void TryBuySwordItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
+    void TryBuyOutfitItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
     {
         if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
         {
-            if (_currentSword != null)
+            if (_currentOutfit != null)
             {
-                _currentSword.color = _initialItemColor;
+                _currentOutfit.color = _unequippedItemColor;
             }
-            _currentSword = image;
-            _currentSword.color = _onUseItemColor;
+            _currentOutfit = image;
+            _currentOutfit.color = _equippedItemColor;
 
             Items.SetCost(itemType);
             shopItemCostText.SetText("0");
@@ -147,16 +166,17 @@ public class UI_Shop : MonoBehaviour
         }
     }
 
-    void TryBuyOutfitItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
+
+    void TryBuySwordItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
     {
         if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
         {
-            if (_currentOutfit != null)
+            if (_currentSword != null)
             {
-                _currentOutfit.color = _initialItemColor;
+                _currentSword.color = _unequippedItemColor;
             }
-            _currentOutfit = image;
-            _currentOutfit.color = _onUseItemColor;
+            _currentSword = image;
+            _currentSword.color = _equippedItemColor;
 
             Items.SetCost(itemType);
             shopItemCostText.SetText("0");
