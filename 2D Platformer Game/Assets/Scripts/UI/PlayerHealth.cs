@@ -45,4 +45,12 @@ public class PlayerHealth : MonoBehaviour
             healthIndicators[(int)Player.Instance.currentHealth].color = new Color(0.7f, 0.7f, 0.7f, 0.8f);
     }
 
+    public void ChangePlayerHealthImage(Sprite sprite)
+    {
+        foreach (Image image in healthIndicators)
+        {
+            image.sprite = sprite;
+        }
+    }
+
 }

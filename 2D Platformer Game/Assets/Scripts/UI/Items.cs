@@ -29,11 +29,11 @@ public class Items
         GreenSword,
         RedSword,
         PurpleSword,
-        DefaultSkin,
-        BlueSkin,
-        GreenSkin,
-        YellowSkin,
-        BrownSkin,
+        DefaultOutfit,
+        BlueOutfit,
+        GreenOutfit,
+        YellowOutfit,
+        BrownOutfit,
         DefenseBoost,
         OffenseBoost
     }
@@ -55,15 +55,15 @@ public class Items
                 return _redSwordCost;
             case ItemType.PurpleSword:
                 return _purpleSwordCost;
-            case ItemType.DefaultSkin:
+            case ItemType.DefaultOutfit:
                 return _defaultOutfitCost;
-            case ItemType.BlueSkin:
+            case ItemType.BlueOutfit:
                 return _blueOutfitCost;
-            case ItemType.GreenSkin:
+            case ItemType.GreenOutfit:
                 return _greenOutfitCost;
-            case ItemType.YellowSkin:
+            case ItemType.YellowOutfit:
                 return _yellowOutfitCost;
-            case ItemType.BrownSkin:
+            case ItemType.BrownOutfit:
                 return _brownOutfitCost;
             case ItemType.DefenseBoost:
                 return _defenseBoostCost;
@@ -94,19 +94,19 @@ public class Items
             case ItemType.PurpleSword:
                 _purpleSwordCost = 0;
                 break;
-            case ItemType.DefaultSkin:
+            case ItemType.DefaultOutfit:
                 _defaultOutfitCost = 0;
                 break;
-            case ItemType.BlueSkin:
+            case ItemType.BlueOutfit:
                 _blueOutfitCost = 0;
                 break;
-            case ItemType.GreenSkin:
+            case ItemType.GreenOutfit:
                 _greenOutfitCost = 0;
                 break;
-            case ItemType.YellowSkin:
+            case ItemType.YellowOutfit:
                 _yellowOutfitCost = 0;
                 break;
-            case ItemType.BrownSkin:
+            case ItemType.BrownOutfit:
                 _brownOutfitCost = 0;
                 break;
             case ItemType.DefenseBoost:
@@ -145,20 +145,40 @@ public class Items
                 return GameAssets.Instance.s_RedSword;
             case ItemType.PurpleSword:
                 return GameAssets.Instance.s_PurpleSword;
-            case ItemType.DefaultSkin:
-                return GameAssets.Instance.s_DefaultSkin;
-            case ItemType.BlueSkin:
-                return GameAssets.Instance.s_BlueSkin;
-            case ItemType.GreenSkin:
-                return GameAssets.Instance.s_GreenSkin;
-            case ItemType.YellowSkin:
-                return GameAssets.Instance.s_YellowSkin;
-            case ItemType.BrownSkin:
-                return GameAssets.Instance.s_BrownSkin;
+            case ItemType.DefaultOutfit:
+                return GameAssets.Instance.s_DefaultOutfit;
+            case ItemType.BlueOutfit:
+                return GameAssets.Instance.s_BlueOutfit;
+            case ItemType.GreenOutfit:
+                return GameAssets.Instance.s_GreenOutfit;
+            case ItemType.YellowOutfit:
+                return GameAssets.Instance.s_YellowOutfit;
+            case ItemType.BrownOutfit:
+                return GameAssets.Instance.s_BrownOutfit;
             case ItemType.DefenseBoost:
                 return GameAssets.Instance.s_DefenseBoost;
             case ItemType.OffenseBoost:
                 return GameAssets.Instance.s_OffenseBoost;
+        }
+    }
+
+    public static Color[] GetTrailColor(ItemType itemType)
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.DefaultSword:
+                return GameAssets.Instance.c_DefaultTrail;
+            case ItemType.BlueSword:
+                return GameAssets.Instance.c_BlueTrail;
+            case ItemType.CyanSword:
+                return GameAssets.Instance.c_CyanTrail;
+            case ItemType.GreenSword:
+                return GameAssets.Instance.c_GreenTrail;
+            case ItemType.RedSword:
+                return GameAssets.Instance.c_RedTrail;
+            case ItemType.PurpleSword:
+                return GameAssets.Instance.c_PurpleTrail;
         }
     }
 

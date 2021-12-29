@@ -20,6 +20,14 @@ public class Player : MonoBehaviour, IShopCustomer
     [SerializeField] Transform _playerHitPosition;
     [SerializeField] Transform _attackPosition;
 
+    [Header("BodyPartsToChange")]
+    [SerializeField] SpriteRenderer _chestSpriteRenderer;
+    [SerializeField] SpriteRenderer _headSpriteRenderer;
+    [SerializeField] SpriteRenderer _rightSwordSpriteRenderer;
+    [SerializeField] SpriteRenderer _leftSwordSpriteRenderer;
+    [SerializeField] TrailRenderer _rightSwordTrailRenderer;
+    [SerializeField] TrailRenderer _leftSwordTrailRenderer;
+
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
@@ -118,9 +126,11 @@ public class Player : MonoBehaviour, IShopCustomer
 
     void Start()
     {
+        ActivateOutfit((Items.ItemType)_playerInventory.EquippedOutfit);
+        ActivateSwords((Items.ItemType)_playerInventory.EquippedSwords);
+
         _initialHitPositionX = _playerHitPosition.localPosition.x;
         _initialHitPositionY = _playerHitPosition.localPosition.y;
-        AudioListener.volume = 0.5f;
     }
 
     void Update()
@@ -453,11 +463,6 @@ public class Player : MonoBehaviour, IShopCustomer
         }
     }
 
-    void ActivateShopItem()
-    {
-
-    }
-
     public void BoughtItem(Items.ItemType itemType)
     {
         _playerInventory.AddItem((int)itemType);
@@ -465,45 +470,19 @@ public class Player : MonoBehaviour, IShopCustomer
         Debug.Log("Bought item: " + itemType);
         switch (itemType)
         {
-            case Items.ItemType.DefaultSkin:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.BlueSkin:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.GreenSkin:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.YellowSkin:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.BrownSkin:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.DefaultSword:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.BlueSword:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.CyanSword:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.GreenSword:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.RedSword:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.PurpleSword:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.DefenseBoost:
-                ActivateShopItem();
-                break;
-            case Items.ItemType.OffenseBoost:
-                ActivateShopItem();
-                break;
+            case Items.ItemType.DefaultOutfit:  ActivateOutfit(itemType);   break;
+            case Items.ItemType.BlueOutfit:     ActivateOutfit(itemType);   break;
+            case Items.ItemType.GreenOutfit:    ActivateOutfit(itemType);   break;
+            case Items.ItemType.YellowOutfit:   ActivateOutfit(itemType);   break;
+            case Items.ItemType.BrownOutfit:    ActivateOutfit(itemType);   break;
+            case Items.ItemType.DefaultSword:   ActivateSwords(itemType);   break;
+            case Items.ItemType.BlueSword:      ActivateSwords(itemType);   break;
+            case Items.ItemType.CyanSword:      ActivateSwords(itemType);   break;
+            case Items.ItemType.GreenSword:     ActivateSwords(itemType);   break;
+            case Items.ItemType.RedSword:       ActivateSwords(itemType);   break;
+            case Items.ItemType.PurpleSword:    ActivateSwords(itemType);   break;
+            case Items.ItemType.DefenseBoost:   ActivateDefenseBoost();     break;
+            case Items.ItemType.OffenseBoost:   ActivateOffenseBoost();     break;
         }
     }
 
@@ -519,4 +498,38 @@ public class Player : MonoBehaviour, IShopCustomer
             return false;
         }
     }
+
+    void ActivateOutfit(Items.ItemType itemType)
+    {
+        _playerInventory.UpdateEquippedOutfit((int)itemType);
+
+        _chestSpriteRenderer.sprite = Items.GetSprite(itemType)[0];
+        _headSpriteRenderer.sprite = Items.GetSprite(itemType)[1];
+
+        _playerHealth.ChangePlayerHealthImage(Items.GetSprite(itemType)[1]);
+    }
+
+    void ActivateSwords(Items.ItemType itemType)
+    {
+        _playerInventory.UpdateEquippedSword((int)itemType);
+
+        _rightSwordSpriteRenderer.sprite = Items.GetSprite(itemType)[0];
+        _leftSwordSpriteRenderer.sprite = Items.GetSprite(itemType)[0];
+
+        _rightSwordTrailRenderer.startColor = Items.GetTrailColor(itemType)[0];
+        _rightSwordTrailRenderer.endColor = Items.GetTrailColor(itemType)[1];
+        _leftSwordTrailRenderer.startColor = Items.GetTrailColor(itemType)[0];
+        _leftSwordTrailRenderer.endColor = Items.GetTrailColor(itemType)[1];
+    }
+
+    void ActivateDefenseBoost()
+    {
+
+    }
+
+    void ActivateOffenseBoost()
+    {
+
+    }
+
 }

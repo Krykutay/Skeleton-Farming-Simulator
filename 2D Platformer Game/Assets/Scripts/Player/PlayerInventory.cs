@@ -7,7 +7,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public List<int> inventory { get; private set; }
     public int EquippedOutfit { get; private set; }
-    public int EquippedSword { get; private set; }
+    public int EquippedSwords { get; private set; }
 
     void Awake()
     {
@@ -33,7 +33,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            AddItem((int)Items.ItemType.DefaultSkin);
+            AddItem((int)Items.ItemType.DefaultOutfit);
             AddItem((int)Items.ItemType.DefaultSword);
         }
     }
@@ -41,19 +41,23 @@ public class PlayerInventory : MonoBehaviour
     void Load_EquippedItems()
     {
         if (PlayerPrefs.HasKey("equippedOutfit"))
+        {
             EquippedOutfit = PlayerPrefs.GetInt("equippedOutfit");
+        }
         else
         {
-            PlayerPrefs.SetInt("equippedOutfit", (int)Items.ItemType.DefaultSkin);
-            EquippedOutfit = (int)Items.ItemType.DefaultSkin;
+            PlayerPrefs.SetInt("equippedOutfit", (int)Items.ItemType.DefaultOutfit);
+            EquippedOutfit = (int)Items.ItemType.DefaultOutfit;
         }
 
         if (PlayerPrefs.HasKey("equippedSword"))
-            EquippedSword = PlayerPrefs.GetInt("equippedSword");
+        {
+            EquippedSwords = PlayerPrefs.GetInt("equippedSword");
+        }
         else
         {
             PlayerPrefs.SetInt("equippedSword", (int)Items.ItemType.DefaultSword);
-            EquippedSword = (int)Items.ItemType.DefaultSword;
+            EquippedSwords = (int)Items.ItemType.DefaultSword;
         } 
     }
 
@@ -75,8 +79,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void UpdateEquippedSword(int item)
     {
-        EquippedSword = item;
-        PlayerPrefs.SetInt("equippedOutfit", item);
+        EquippedSwords = item;
+        PlayerPrefs.SetInt("equippedSword", item);
     }
 
 }

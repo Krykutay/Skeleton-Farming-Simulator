@@ -43,11 +43,11 @@ public class UI_Shop : MonoBehaviour
             Items.SetCost((Items.ItemType)item);
         }
 
-        CreateSkinButton(Items.ItemType.DefaultSkin, Items.GetSprite(Items.ItemType.DefaultSkin), "Default Outfit", Items.GetCost(Items.ItemType.DefaultSkin), 0);
-        CreateSkinButton(Items.ItemType.BlueSkin, Items.GetSprite(Items.ItemType.BlueSkin), "Blue Outfit", Items.GetCost(Items.ItemType.BlueSkin), 1);
-        CreateSkinButton(Items.ItemType.GreenSkin, Items.GetSprite(Items.ItemType.GreenSkin), "Green Outfit", Items.GetCost(Items.ItemType.GreenSkin), 2);
-        CreateSkinButton(Items.ItemType.YellowSkin, Items.GetSprite(Items.ItemType.YellowSkin), "Yellow Outfit", Items.GetCost(Items.ItemType.YellowSkin), 3);
-        CreateSkinButton(Items.ItemType.BrownSkin, Items.GetSprite(Items.ItemType.BrownSkin), "Brown Outfit", Items.GetCost(Items.ItemType.BrownSkin), 4);
+        CreateSkinButton(Items.ItemType.DefaultOutfit, Items.GetSprite(Items.ItemType.DefaultOutfit), "Default Outfit", Items.GetCost(Items.ItemType.DefaultOutfit), 0);
+        CreateSkinButton(Items.ItemType.BlueOutfit, Items.GetSprite(Items.ItemType.BlueOutfit), "Blue Outfit", Items.GetCost(Items.ItemType.BlueOutfit), 1);
+        CreateSkinButton(Items.ItemType.GreenOutfit, Items.GetSprite(Items.ItemType.GreenOutfit), "Green Outfit", Items.GetCost(Items.ItemType.GreenOutfit), 2);
+        CreateSkinButton(Items.ItemType.YellowOutfit, Items.GetSprite(Items.ItemType.YellowOutfit), "Yellow Outfit", Items.GetCost(Items.ItemType.YellowOutfit), 3);
+        CreateSkinButton(Items.ItemType.BrownOutfit, Items.GetSprite(Items.ItemType.BrownOutfit), "Brown Outfit", Items.GetCost(Items.ItemType.BrownOutfit), 4);
 
         CreateSwordButton(Items.ItemType.DefaultSword, Items.GetSprite(Items.ItemType.DefaultSword), "Default Swords", Items.GetCost(Items.ItemType.DefaultSword), 0);
         CreateSwordButton(Items.ItemType.BlueSword, Items.GetSprite(Items.ItemType.BlueSword), "Blue Swords", Items.GetCost(Items.ItemType.BlueSword), 1);
@@ -113,7 +113,7 @@ public class UI_Shop : MonoBehaviour
 
         Image image = shopItemTransform.Find("background").GetComponent<Image>();
 
-        if ((int)itemType == _playerInventory.EquippedSword)
+        if ((int)itemType == _playerInventory.EquippedSwords)
         {
             image.color = _equippedItemColor;
             _currentSword = image;

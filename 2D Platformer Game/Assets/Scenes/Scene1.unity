@@ -478,25 +478,43 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 284f49b9a39548c499bf66212da18388, type: 3}
   s_PurpleSword:
   - {fileID: 21300000, guid: 0287ab7a951f7ef468a1f818d9728cb4, type: 3}
-  s_DefaultSkin:
+  s_DefaultOutfit:
   - {fileID: 21300000, guid: 0495cc78f71f26247b6f2876d2033ed3, type: 3}
   - {fileID: 21300000, guid: 2973eb8c4987cd9408205930a9023660, type: 3}
-  s_BlueSkin:
+  s_BlueOutfit:
   - {fileID: 21300000, guid: 0ab958c956698a84cafe5d70e84a2ec9, type: 3}
   - {fileID: 21300000, guid: 615a79574bdf45046a0067ce6d099d33, type: 3}
-  s_GreenSkin:
+  s_GreenOutfit:
   - {fileID: 21300000, guid: abd50afb38319c84787f08cd79d472a5, type: 3}
   - {fileID: 21300000, guid: 46cf79fced3b2a74dabe2678eae3c1b4, type: 3}
-  s_YellowSkin:
+  s_YellowOutfit:
   - {fileID: 21300000, guid: 13c57dc227c68f2469bb6fca7ddc27f1, type: 3}
   - {fileID: 21300000, guid: 872d7d935941879438619a871d72a783, type: 3}
-  s_BrownSkin:
+  s_BrownOutfit:
   - {fileID: 21300000, guid: 3285843207107fe4580efd1e2f2055d6, type: 3}
   - {fileID: 21300000, guid: 082b119bfb2fb5b40ae6c86195808ad2, type: 3}
   s_DefenseBoost:
   - {fileID: 21300000, guid: b06b7dbb6f243fc46b85b202c76c13b3, type: 3}
   s_OffenseBoost:
   - {fileID: 21300000, guid: 3d90a103494bd49409c704069bb7e33b, type: 3}
+  c_DefaultTrail:
+  - {r: 0.54901963, g: 0.3529412, b: 0.003921569, a: 1}
+  - {r: 0.93333334, g: 0.85490197, b: 0.5137255, a: 0}
+  c_BlueTrail:
+  - {r: 0.0039215605, g: 0.06203697, b: 0.54901963, a: 1}
+  - {r: 0.5137255, g: 0.68168086, b: 0.93333334, a: 0}
+  c_CyanTrail:
+  - {r: 0.0039215605, g: 0.48462138, b: 0.54901963, a: 1}
+  - {r: 0.5137255, g: 0.93333334, b: 0.9130107, a: 0}
+  c_GreenTrail:
+  - {r: 0.0039215605, g: 0.54901963, b: 0.031182935, a: 1}
+  - {r: 0.5137255, g: 0.93333334, b: 0.62319803, a: 0}
+  c_RedTrail:
+  - {r: 0.54901963, g: 0.0039215605, b: 0.0039215605, a: 1}
+  - {r: 0.93333334, g: 0.56827587, b: 0.5137255, a: 0}
+  c_PurpleTrail:
+  - {r: 0.54901963, g: 0.0039215605, b: 0.54829496, a: 1}
+  - {r: 0.894647, g: 0.5137255, b: 0.93333334, a: 0}
 --- !u!1 &30237307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6007,7 +6025,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 64379
+      ctime1: 65535
       ctime2: 64379
       ctime3: 0
       ctime4: 0
@@ -7168,7 +7186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed52ad762e17d2546bba4afe323733f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 937388793387021323, guid: ca862322cca88b14599ae5b621f97bde, type: 3}
+  _prefab: {fileID: 8880033279014585322, guid: ca862322cca88b14599ae5b621f97bde, type: 3}
   _initialPoolSize: 12
 --- !u!114 &370242327
 MonoBehaviour:
@@ -79229,6 +79247,12 @@ MonoBehaviour:
   _ceilingCheck: {fileID: 113539825}
   _playerHitPosition: {fileID: 973576811}
   _attackPosition: {fileID: 1417173636}
+  _chestSpriteRenderer: {fileID: 1200841433}
+  _headSpriteRenderer: {fileID: 1341801517}
+  _rightSwordSpriteRenderer: {fileID: 411195398}
+  _leftSwordSpriteRenderer: {fileID: 770557991}
+  _rightSwordTrailRenderer: {fileID: 313486677}
+  _leftSwordTrailRenderer: {fileID: 1309449809}
 --- !u!114 &890781895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87326,7 +87350,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 64379
+      ctime1: 65535
       ctime2: 64379
       ctime3: 0
       ctime4: 0
