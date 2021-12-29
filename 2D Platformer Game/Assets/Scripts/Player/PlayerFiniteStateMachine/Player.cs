@@ -44,6 +44,7 @@ public class Player : MonoBehaviour, IShopCustomer
     public BoxCollider2D movementCollider { get; private set; }
     public PlayerInputHandler inputHandler { get; private set; }
     public Transform dashDirectionIndicator { get; private set; }
+    public Camera cam { get; private set; }
 
     public Vector2 currentVelocity { get; private set; }
     public int facingDirection { get; private set; }
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour, IShopCustomer
         _bodyAnim = transform.Find("BodyParts").GetComponent<Animator>();
         _playerHealth = GetComponent<PlayerHealth>();
         _playerInventory = GetComponent<PlayerInventory>();
+        cam = Camera.main;
 
         stateMachine = new PlayerStateMachine();
 

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+using UnityEngine.EventSystems;
 
 public class UI_Shop : MonoBehaviour
 {
@@ -27,7 +29,7 @@ public class UI_Shop : MonoBehaviour
         _shopUpgradeTemplate = _container.Find("shopUpgradeTemplate");
 
         _unequippedItemColor = _shopSwordTemplate.Find("background").GetComponent<Image>().color;
-        _equippedItemColor = new Color(125/255f, 112/255f, 65/255f);
+        _equippedItemColor = new Color(0.36f, 80/255f, 0.17f);
 
         _shopSkinTemplate.gameObject.SetActive(false);
         _shopSwordTemplate.gameObject.SetActive(false);
@@ -164,6 +166,10 @@ public class UI_Shop : MonoBehaviour
 
             _shopCustomer.BoughtItem(itemType);
         }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
 
@@ -183,6 +189,10 @@ public class UI_Shop : MonoBehaviour
 
             _shopCustomer.BoughtItem(itemType);
         }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     void TryBuyBoostItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
@@ -194,6 +204,10 @@ public class UI_Shop : MonoBehaviour
             shopItemCostText.SetText("0");
 
             _shopCustomer.BoughtItem(itemType);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 

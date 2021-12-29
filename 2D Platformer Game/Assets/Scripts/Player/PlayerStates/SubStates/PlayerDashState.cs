@@ -95,8 +95,8 @@ public class PlayerDashState : PlayerAbilityState
             //_dashDirectionInput = player.inputHandler.rawDashDirectionInput;
 
             Vector3 mousePos = Mouse.current.position.ReadValue();
-            mousePos.z = Camera.main.farClipPlane * .5f;
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos.z = player.cam.farClipPlane * .5f;
+            Vector3 worldPoint = player.cam.ScreenToWorldPoint(mousePos);
 
             _dashDirectionInput = worldPoint - player.transform.position;
 

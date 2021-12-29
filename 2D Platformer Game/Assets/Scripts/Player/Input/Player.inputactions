@@ -87,15 +87,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DashDirection",
-                    "type": "Value",
-                    "id": "93c0ee24-130d-41bd-88b0-82fb92a62faf",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Up",
                     "type": "Button",
                     "id": "f10d4a2a-5361-4f13-a09b-580a960121b6",
@@ -125,17 +116,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Grab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4da19607-df6a-46c0-8a93-8c1904365de7",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "DashDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

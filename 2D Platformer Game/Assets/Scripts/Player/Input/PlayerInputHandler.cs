@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    Camera _cam;
     PlayerInput _playerInput;
     InputAction _upAction;
     InputAction _downAction;
@@ -27,7 +26,6 @@ public class PlayerInputHandler : MonoBehaviour
     public bool grabInput { get; private set; }
     public bool dashInput { get; private set; }
     public bool dashInputStopped { get; private set; }
-    public Vector2 rawDashDirectionInput { get; private set; }
     public bool attackInput { get; private set; }
     public bool defenseInput { get; private set; }
     public bool talkInput { get; private set; }
@@ -40,7 +38,6 @@ public class PlayerInputHandler : MonoBehaviour
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _cam = Camera.main;
         _upAction = _playerInput.actions["Up"];
         _downAction = _playerInput.actions["Down"];
         _leftAction = _playerInput.actions["Left"];
@@ -48,7 +45,6 @@ public class PlayerInputHandler : MonoBehaviour
         _jumpAction = _playerInput.actions["Jump"];
         _grabAction = _playerInput.actions["Grab"];
         _dashAction = _playerInput.actions["Dash"];
-        _dashDirectionAction = _playerInput.actions["DashDirection"];
         _primaryAttackAction = _playerInput.actions["PrimaryAttack"];
         _defenseAction = _playerInput.actions["Parry"];
         _talkAction = _playerInput.actions["Talk"];
@@ -73,8 +69,6 @@ public class PlayerInputHandler : MonoBehaviour
 
         _dashAction.performed += DashStart;
         _dashAction.canceled += DashCancel;
-        _dashDirectionAction.performed += DashDirectionStart;
-        _dashDirectionAction.canceled += DashDirectionCancel;
 
         _primaryAttackAction.started += PrimaryAttackStart;
         _primaryAttackAction.canceled += PrimaryAttackCancel;
@@ -104,8 +98,6 @@ public class PlayerInputHandler : MonoBehaviour
 
         _dashAction.performed -= DashStart;
         _dashAction.canceled -= DashCancel;
-        _dashDirectionAction.performed -= DashDirectionStart;
-        _dashDirectionAction.canceled -= DashDirectionCancel;
 
         _primaryAttackAction.started -= PrimaryAttackStart;
         _primaryAttackAction.canceled -= PrimaryAttackCancel;
@@ -244,21 +236,6 @@ public class PlayerInputHandler : MonoBehaviour
     void DashCancel(InputAction.CallbackContext context)
     {
         dashInputStopped = true;
-    }
-
-    void DashDirectionStart(InputAction.CallbackContext context)
-    {
-        rawDashDirectionInput = context.ReadValue<Vector2>();
-
-        if (_playerInput.currentControlScheme == "Keyboard")    // might implement for gamepads/touchpads later
-        {
-            rawDashDirectionInput = _cam.ScreenToWorldPoint((Vector3)rawDashDirectionInput) - transform.position;
-        }
-    }
-
-    void DashDirectionCancel(InputAction.CallbackContext context)
-    {
-        // might implement stuff later
     }
 
     void PrimaryAttackStart(InputAction.CallbackContext context)
