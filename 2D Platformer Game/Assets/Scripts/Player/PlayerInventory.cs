@@ -16,19 +16,23 @@ public class PlayerInventory : MonoBehaviour
         Load_EquippedItems();
     }
 
+    private void Update()
+    {
+        //Debug.Log(inventory.Count);
+    }
+
     void Load_Inventory()
     {
         if (PlayerPrefs.HasKey("inventoryCount"))
         {
-            for (int i = 0; i < PlayerPrefs.GetInt("inventoryCount"); i++)
+            int inventoryCount = PlayerPrefs.GetInt("inventoryCount");
+            for (int i = 0; i < inventoryCount; i++)
             {
-                AddItem(PlayerPrefs.GetInt("inventory" + i.ToString()));
+                inventory.Add(PlayerPrefs.GetInt("inventory" + i.ToString()));
             }
         }
         else
         {
-            PlayerPrefs.SetInt("inventory0", (int)Items.ItemType.DefaultSkin);
-            PlayerPrefs.SetInt("inventory1", (int)Items.ItemType.DefaultSword);
             AddItem((int)Items.ItemType.DefaultSkin);
             AddItem((int)Items.ItemType.DefaultSword);
         }
@@ -58,8 +62,21 @@ public class PlayerInventory : MonoBehaviour
         if (!inventory.Contains(item))
         {
             inventory.Add(item);
+            PlayerPrefs.SetInt("inventory" + (inventory.Count - 1).ToString(), item);
             PlayerPrefs.SetInt("inventoryCount", inventory.Count);
         }
+    }
+
+    public void UpdateEquippedOutfit(int item)
+    {
+        EquippedOutfit = item;
+        PlayerPrefs.SetInt("equippedOutfit", item);
+    }
+
+    public void UpdateEquippedSword(int item)
+    {
+        EquippedSword = item;
+        PlayerPrefs.SetInt("equippedOutfit", item);
     }
 
 }

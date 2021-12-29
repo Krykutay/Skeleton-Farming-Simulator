@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerDashState : PlayerAbilityState
 {
@@ -91,7 +92,15 @@ public class PlayerDashState : PlayerAbilityState
 
             player.CheckIfShouldFlip(_xInput);
 
-            _dashDirectionInput = player.inputHandler.rawDashDirectionInput;
+            //_dashDirectionInput = player.inputHandler.rawDashDirectionInput;
+
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            mousePos.z = Camera.main.farClipPlane * .5f;
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mousePos);
+
+            _dashDirectionInput = worldPoint - player.transform.position;
+
+
             _dashInputStopped = player.inputHandler.dashInputStopped;
 
             if (_dashDirectionInput != Vector2.zero)

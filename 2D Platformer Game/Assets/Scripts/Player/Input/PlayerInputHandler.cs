@@ -254,7 +254,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             rawDashDirectionInput = _cam.ScreenToWorldPoint((Vector3)rawDashDirectionInput) - transform.position;
         }
-
     }
 
     void DashDirectionCancel(InputAction.CallbackContext context)
