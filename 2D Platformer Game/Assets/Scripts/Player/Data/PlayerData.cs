@@ -85,4 +85,15 @@ public class PlayerData : ScriptableObject
     public float groundCheckRadius { get { return _groundCheckRadius; } }
     public float wallCheckDistance { get { return _wallCheckDistance; } }
     public LayerMask ground { get { return _ground; } }
+
+    public void IncreaseMaxHealth()
+    {
+        if (_maxHealth < 9)
+            _maxHealth++;
+    }
+
+    public void SetInitialMaxHealth()
+    {
+        _maxHealth = 5f;
+    }
 }

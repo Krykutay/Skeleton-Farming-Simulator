@@ -126,11 +126,18 @@ public class Player : MonoBehaviour, IShopCustomer
 
     void Start()
     {
+        _initialHitPositionX = _playerHitPosition.localPosition.x;
+        _initialHitPositionY = _playerHitPosition.localPosition.y;
+
         ActivateOutfit((Items.ItemType)_playerInventory.EquippedOutfit);
         ActivateSwords((Items.ItemType)_playerInventory.EquippedSwords);
 
-        _initialHitPositionX = _playerHitPosition.localPosition.x;
-        _initialHitPositionY = _playerHitPosition.localPosition.y;
+        if (maxHealth > 5f && _playerInventory.defensiveBoostCount == 0)
+            _playerData.SetInitialMaxHealth();
+
+        _playerHealth.EnableHealthIndicators();
+        _playerHealth.SetHealthIndicatorColor();
+        
     }
 
     void Update()
@@ -429,6 +436,9 @@ public class Player : MonoBehaviour, IShopCustomer
         if (_currentHealth < maxHealth)
         {
             _currentHealth++;
+            if (_currentHealth > maxHealth)
+                _currentHealth = maxHealth;
+
             _playerHealth.SetHealthIndicatorColor();
         }
     }
@@ -467,7 +477,6 @@ public class Player : MonoBehaviour, IShopCustomer
     {
         _playerInventory.AddItem((int)itemType);
 
-        Debug.Log("Bought item: " + itemType);
         switch (itemType)
         {
             case Items.ItemType.DefaultOutfit:  ActivateOutfit(itemType);   break;
@@ -524,12 +533,18 @@ public class Player : MonoBehaviour, IShopCustomer
 
     void ActivateDefenseBoost()
     {
+        _playerInventory.IncreaseDefensiveBoostCount();
 
+        _playerData.IncreaseMaxHealth();
+        _currentHealth = maxHealth;
+
+        _playerHealth.EnableHealthIndicators();
+        _playerHealth.SetHealthIndicatorColor();
     }
 
     void ActivateOffenseBoost()
     {
-
+        _playerInventory.IncreaseOffensiveBoostCount();
     }
 
 }

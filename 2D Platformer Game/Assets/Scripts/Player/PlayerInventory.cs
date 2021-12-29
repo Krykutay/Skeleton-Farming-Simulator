@@ -8,17 +8,15 @@ public class PlayerInventory : MonoBehaviour
     public List<int> inventory { get; private set; }
     public int EquippedOutfit { get; private set; }
     public int EquippedSwords { get; private set; }
+    public int defensiveBoostCount { get; private set; }
+    public int offensiveBoostCount { get; private set; }
 
     void Awake()
     {
         inventory = new List<int>();
         Load_Inventory();
         Load_EquippedItems();
-    }
-
-    private void Update()
-    {
-        //Debug.Log(inventory.Count);
+        Load_BoostCounts();
     }
 
     void Load_Inventory()
@@ -61,6 +59,20 @@ public class PlayerInventory : MonoBehaviour
         } 
     }
 
+    void Load_BoostCounts()
+    {
+        if (PlayerPrefs.HasKey("defensiveBoostCount"))
+            defensiveBoostCount = PlayerPrefs.GetInt("defensiveBoostCount");
+        else
+            defensiveBoostCount = 0;
+
+
+        if (PlayerPrefs.HasKey("offensiveBoostCount"))
+            offensiveBoostCount = PlayerPrefs.GetInt("offensiveBoostCount");
+        else
+            offensiveBoostCount = 0;
+    }
+
     public void AddItem(int item)
     {
         if (!inventory.Contains(item))
@@ -81,6 +93,18 @@ public class PlayerInventory : MonoBehaviour
     {
         EquippedSwords = item;
         PlayerPrefs.SetInt("equippedSword", item);
+    }
+
+    public void IncreaseDefensiveBoostCount()
+    {
+        defensiveBoostCount++;
+        PlayerPrefs.SetInt("defensiveBoostCount", defensiveBoostCount);
+    }
+
+    public void IncreaseOffensiveBoostCount()
+    {
+        offensiveBoostCount++;
+        PlayerPrefs.SetInt("offensiveBoostCount", offensiveBoostCount);
     }
 
 }

@@ -5,25 +5,18 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] Image[] healthIndicators;
 
-    void OnEnable()
+    public void EnableHealthIndicators()
     {
-        for (int i = 0; i < healthIndicators.Length ; i++)
+        for (int i = 0; i < healthIndicators.Length; i++)
         {
-            EnableHealthIndicators(i);
-        }
-
-        SetHealthIndicatorColor();
-    }
-
-    public void EnableHealthIndicators(int count)
-    {
-        if (count < Player.Instance.maxHealth)
-        {
-            healthIndicators[count].enabled = true;
-        }
-        else
-        {
-            healthIndicators[count].enabled = false;
+            if (i < Player.Instance.maxHealth)
+            {
+                healthIndicators[i].enabled = true;
+            }
+            else
+            {
+                healthIndicators[i].enabled = false;
+            }
         }
     }
 

@@ -71,15 +71,20 @@ public class UI_Shop : MonoBehaviour
 
         shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
 
-        TextMeshProUGUI ShopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
-        ShopItemCostText.SetText(itemCost.ToString());
+        TextMeshProUGUI shopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
+        shopItemCostText.SetText(itemCost.ToString());
 
         shopItemTransform.Find("itemImage1").GetComponent<Image>().sprite = itemSprite[0];
         shopItemTransform.Find("itemImage2").GetComponent<Image>().sprite = itemSprite[1];
 
-        shopItemTransform.gameObject.SetActive(true);
-
         Image image = shopItemTransform.Find("background").GetComponent<Image>();
+        Transform tokenIconTransform = shopItemTransform.Find("tokenIcon");
+
+        if (itemCost == 0)
+        {
+            shopItemCostText.gameObject.SetActive(false);
+            tokenIconTransform.gameObject.SetActive(false);
+        }
 
         if ((int)itemType == _playerInventory.EquippedOutfit)
         {
@@ -89,8 +94,10 @@ public class UI_Shop : MonoBehaviour
 
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
-            TryBuyOutfitItem(itemType, ShopItemCostText, image);
+            TryBuyOutfitItem(itemType, shopItemCostText, image, tokenIconTransform);
         });
+
+        shopItemTransform.gameObject.SetActive(true);
     }
 
     void CreateSwordButton(Items.ItemType itemType, Sprite[] itemSprite, string itemName, int itemCost, int positionIndex)
@@ -103,15 +110,20 @@ public class UI_Shop : MonoBehaviour
 
         shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
 
-        TextMeshProUGUI ShopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
-        ShopItemCostText.SetText(itemCost.ToString());
+        TextMeshProUGUI shopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
+        shopItemCostText.SetText(itemCost.ToString());
 
         shopItemTransform.Find("itemImage1").GetComponent<Image>().sprite = itemSprite[0];
         shopItemTransform.Find("itemImage2").GetComponent<Image>().sprite = itemSprite[0];
 
-        shopItemTransform.gameObject.SetActive(true);
-
         Image image = shopItemTransform.Find("background").GetComponent<Image>();
+        Transform tokenIconTransform = shopItemTransform.Find("tokenIcon");
+
+        if (itemCost == 0)
+        {
+            shopItemCostText.gameObject.SetActive(false);
+            tokenIconTransform.gameObject.SetActive(false);
+        }
 
         if ((int)itemType == _playerInventory.EquippedSwords)
         {
@@ -121,8 +133,10 @@ public class UI_Shop : MonoBehaviour
 
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
-            TryBuySwordItem(itemType, ShopItemCostText, image);
+            TryBuySwordItem(itemType, shopItemCostText, image, tokenIconTransform);
         });
+
+        shopItemTransform.gameObject.SetActive(true);
     }
 
     void CreateUpgradeButton(Items.ItemType itemType, Sprite[] itemSprite, string itemName, int itemCost, int positionIndex)
@@ -135,22 +149,46 @@ public class UI_Shop : MonoBehaviour
 
         shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
 
-        TextMeshProUGUI ShopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
-        ShopItemCostText.SetText(itemCost.ToString());
+        TextMeshProUGUI shopItemCostText = shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>();
+        shopItemCostText.SetText(itemCost.ToString());
 
-        shopItemTransform.Find("itemImage1").GetComponent<Image>().sprite = itemSprite[0];
+        Transform shopItemImage = shopItemTransform.Find("itemImage1");
+        shopItemImage.GetComponent<Image>().sprite = itemSprite[0];
 
-        shopItemTransform.gameObject.SetActive(true);
+        Transform progressBar = shopItemTransform.Find("progressBar");
+        Transform tokenIconTransform = shopItemTransform.Find("tokenIcon");
 
-        Image image = shopItemTransform.Find("background").GetComponent<Image>();
+        if (itemType == Items.ItemType.DefenseBoost)
+        {
+            ActivateBoostProgress(progressBar, _playerInventory.defensiveBoostCount);
+
+            if (_playerInventory.defensiveBoostCount == 3)
+            {
+                tokenIconTransform.gameObject.SetActive(false);
+                shopItemCostText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            ActivateBoostProgress(progressBar, _playerInventory.offensiveBoostCount);
+
+            if (_playerInventory.offensiveBoostCount == 3)
+            {
+                tokenIconTransform.gameObject.SetActive(false);
+                shopItemCostText.gameObject.SetActive(false);
+            }
+        }
+
 
         shopItemTransform.GetComponent<Button>().onClick.AddListener(() =>
         {
-            TryBuyBoostItem(itemType, ShopItemCostText, image);
+            TryBuyBoostItem(itemType, shopItemCostText, progressBar, tokenIconTransform);
         });
+
+        shopItemTransform.gameObject.SetActive(true);
     }
 
-    void TryBuyOutfitItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
+    void TryBuyOutfitItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image, Transform tokenIconTransform)
     {
         if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
         {
@@ -162,7 +200,8 @@ public class UI_Shop : MonoBehaviour
             _currentOutfit.color = _equippedItemColor;
 
             Items.SetCost(itemType);
-            shopItemCostText.SetText("0");
+            shopItemCostText.gameObject.SetActive(false);
+            tokenIconTransform.gameObject.SetActive(false);
 
             _shopCustomer.BoughtItem(itemType);
         }
@@ -173,7 +212,7 @@ public class UI_Shop : MonoBehaviour
     }
 
 
-    void TryBuySwordItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
+    void TryBuySwordItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image, Transform tokenIconTransform)
     {
         if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
         {
@@ -185,7 +224,8 @@ public class UI_Shop : MonoBehaviour
             _currentSword.color = _equippedItemColor;
 
             Items.SetCost(itemType);
-            shopItemCostText.SetText("0");
+            shopItemCostText.gameObject.SetActive(false);
+            tokenIconTransform.gameObject.SetActive(false);
 
             _shopCustomer.BoughtItem(itemType);
         }
@@ -195,19 +235,56 @@ public class UI_Shop : MonoBehaviour
         }
     }
 
-    void TryBuyBoostItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Image image)
+    void TryBuyBoostItem(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Transform progressBar, Transform tokenIconTransform)
     {
-        if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
+        if (itemType == Items.ItemType.DefenseBoost && _playerInventory.defensiveBoostCount < 3)
         {
-
-            Items.SetCost(itemType);
-            shopItemCostText.SetText("0");
-
-            _shopCustomer.BoughtItem(itemType);
+            HandleBoostPurchaseUI(itemType, shopItemCostText, progressBar, _playerInventory.defensiveBoostCount, tokenIconTransform);
+        }
+        else if (itemType == Items.ItemType.OffenseBoost && _playerInventory.offensiveBoostCount < 3)
+        {
+            HandleBoostPurchaseUI(itemType, shopItemCostText, progressBar, _playerInventory.offensiveBoostCount, tokenIconTransform);
         }
         else
         {
             EventSystem.current.SetSelectedGameObject(null);
+        }
+    }
+
+    void HandleBoostPurchaseUI(Items.ItemType itemType, TextMeshProUGUI shopItemCostText, Transform progressBar, int boostCount, Transform tokenIconTransform)
+    {
+        int i = 0;
+        foreach (Transform child in progressBar)
+        {
+            if (boostCount == i)
+            {
+                child.gameObject.SetActive(true);
+                break;
+            }
+            i++;
+        }
+
+        if (boostCount == 2)
+        {
+            shopItemCostText.SetText("0");
+            shopItemCostText.gameObject.SetActive(false);
+            tokenIconTransform.gameObject.SetActive(false);
+        }
+
+        _shopCustomer.BoughtItem(itemType);
+    }
+
+    void ActivateBoostProgress(Transform progressBar, int boostCount)
+    {
+        int i = 0;
+        foreach (Transform child in progressBar)
+        {
+            if (boostCount == i)
+                break;
+            else
+                child.gameObject.SetActive(true);
+
+            i++;
         }
     }
 
