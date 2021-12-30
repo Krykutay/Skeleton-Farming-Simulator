@@ -132,12 +132,14 @@ public class Player : MonoBehaviour, IShopCustomer
         ActivateOutfit((Items.ItemType)_playerInventory.EquippedOutfit);
         ActivateSwords((Items.ItemType)_playerInventory.EquippedSwords);
 
-        if (maxHealth > 5f && _playerInventory.defensiveBoostCount == 0)
+        if (maxHealth > _playerData.initialMaxHealth && _playerInventory.defensiveBoostCount == 0)
             _playerData.SetInitialMaxHealth();
 
         _playerHealth.EnableHealthIndicators();
         _playerHealth.SetHealthIndicatorColor();
-        
+
+        if (_weaponData.attackDetails[0].damageAmount > _weaponData.initialAttackDamages[0] && _playerInventory.offensiveBoostCount == 0)
+            _weaponData.SetInitialDamage();
     }
 
     void Update()
@@ -169,6 +171,7 @@ public class Player : MonoBehaviour, IShopCustomer
 
         if (collision.TryGetComponent<IDamageable>(out var damageable))
         {
+            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonHurt);
             damageable.Damage(_attackDetails);
         }
     }  
@@ -545,6 +548,8 @@ public class Player : MonoBehaviour, IShopCustomer
     void ActivateOffenseBoost()
     {
         _playerInventory.IncreaseOffensiveBoostCount();
+
+        _weaponData.IncreaseDamage();
     }
 
 }

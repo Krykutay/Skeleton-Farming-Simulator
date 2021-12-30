@@ -5,6 +5,7 @@ public class PlayerData : ScriptableObject
 {
     [Header("Player Stats")]
     [SerializeField] float _maxHealth = 5f;
+    [SerializeField] float _initialMaxHealth = 5f;
 
     [Header("Move State")]
     [SerializeField] float _movementVelocity = 10f;
@@ -57,6 +58,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] LayerMask _ground;
 
     public float maxHealth { get { return _maxHealth; } }
+    public float initialMaxHealth { get { return _initialMaxHealth; } }
     public float movementVelocity { get { return _movementVelocity; } }
     public float parryMovementVelocity { get { return _parryMovementVelocity; } }
     public float jumpVelocity { get { return _jumpVelocity; } }
@@ -94,6 +96,6 @@ public class PlayerData : ScriptableObject
 
     public void SetInitialMaxHealth()
     {
-        _maxHealth = 5f;
+        _maxHealth = _initialMaxHealth;
     }
 }
