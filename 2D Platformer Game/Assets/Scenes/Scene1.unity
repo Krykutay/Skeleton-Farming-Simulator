@@ -75706,6 +75706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7646a1870a22e46851be543bdeae50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cvc: {fileID: 1356980334}
   _playerData: {fileID: 11400000, guid: 05025a8bcb6728c4da6396d348522455, type: 2}
   _weaponData: {fileID: 11400000, guid: 77f9604bb4d48d14db0614bb6062685b, type: 2}
   _groundCheck: {fileID: 1195719181}

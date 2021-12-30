@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,9 @@ public class Player : MonoBehaviour, IShopCustomer
 {
     public Action PlayerDied;
     public static Player Instance { get; private set; }
+
+    [Header("Camera")]
+    [SerializeField] CinemachineVirtualCamera _cvc;
 
     [Header("Data")]
     [SerializeField] PlayerData _playerData;
@@ -124,6 +128,7 @@ public class Player : MonoBehaviour, IShopCustomer
         _currentHealth = _playerData.maxHealth;
         _playerHealth.SetHealthIndicatorColor();
         initialGravity = rb.gravityScale;
+        _cvc.m_Follow = transform;
     }
 
     void Start()
@@ -441,6 +446,8 @@ public class Player : MonoBehaviour, IShopCustomer
         DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
         PlayerDied?.Invoke();
         gameObject.SetActive(false);
+        transform.position = Vector3.zero;
+        _cvc.m_Follow = null;
     }
 
     public void SetCurrentHealth()

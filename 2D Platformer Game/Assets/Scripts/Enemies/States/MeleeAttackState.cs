@@ -33,15 +33,6 @@ public class MeleeAttackState : AttackState
         _attackStance = false;
         entity.anim.SetBool("meleeAttack", false);
         entity.anim.SetBool("idle", true);
-
-        _randInt = Random.Range(0, 3);
-        if (_randInt == 0)
-            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonAttack1);
-        else if (_randInt == 0)
-            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonAttack2);
-        else
-            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonAttack3);
-
     }
 
     public override void Exit()
@@ -62,6 +53,14 @@ public class MeleeAttackState : AttackState
             entity.anim.SetBool("idle", false);
             entity.anim.SetInteger("meleeAttackType", meleeAttackType);
             entity.anim.SetBool("meleeAttack", true);
+
+            _randInt = Random.Range(0, 3);
+            if (_randInt == 0)
+                SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonAttack1);
+            else if (_randInt == 0)
+                SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonAttack2);
+            else
+                SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonAttack3);
         }
     }
 

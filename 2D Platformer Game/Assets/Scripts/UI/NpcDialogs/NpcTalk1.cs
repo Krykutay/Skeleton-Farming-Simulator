@@ -37,7 +37,7 @@ public class NpcTalk1 : MonoBehaviour
     {
         _talkText.text = "";
         _isPlayerInRange = false;
-        _talkText.gameObject.SetActive(true);
+        _talkText.gameObject.SetActive(false);
         _uiAssistant.gameObject.SetActive(false);
         _uiAssistant.StopTalkingSound();
     }
