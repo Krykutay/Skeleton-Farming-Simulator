@@ -14,6 +14,7 @@ public enum PlayPauseState
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject _menu;
+    [SerializeField] GameObject _shop;
     //[SerializeField] GameObject _gameoverPanel;
     [SerializeField] GameObject _player;
     [SerializeField] CanvasScaler _canvasScaler;
@@ -53,7 +54,10 @@ public class GameManager : MonoBehaviour
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            Game_Paused();
+            if (_shop.activeSelf)
+                _shop.gameObject.SetActive(false);
+            else
+                Game_Paused();
         }
     }
 

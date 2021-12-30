@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class UI_Shop : MonoBehaviour
 {
     [SerializeField] PlayerInventory _playerInventory;
+    [SerializeField] TMP_Text _warningText;
 
     Transform _container;
     Transform _shopSkinTemplate;
@@ -20,6 +21,7 @@ public class UI_Shop : MonoBehaviour
     Color _equippedItemColor;
 
     IShopCustomer _shopCustomer;
+    IEnumerator _warningCountdown;
 
     void Awake()
     {
@@ -192,6 +194,8 @@ public class UI_Shop : MonoBehaviour
     {
         if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
         {
+            SoundManager.Instance.Play(SoundManager.SoundTags.ShopOutfit);
+
             if (_currentOutfit != null)
             {
                 _currentOutfit.color = _unequippedItemColor;
@@ -207,6 +211,8 @@ public class UI_Shop : MonoBehaviour
         }
         else
         {
+            Warning("You don't have enough Tokens!");
+            SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
@@ -216,6 +222,8 @@ public class UI_Shop : MonoBehaviour
     {
         if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
         {
+            SoundManager.Instance.Play(SoundManager.SoundTags.ShopSword);
+
             if (_currentSword != null)
             {
                 _currentSword.color = _unequippedItemColor;
@@ -231,6 +239,8 @@ public class UI_Shop : MonoBehaviour
         }
         else
         {
+            Warning("You don't have enough Tokens!");
+            SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
@@ -239,14 +249,38 @@ public class UI_Shop : MonoBehaviour
     {
         if (itemType == Items.ItemType.DefenseBoost && _playerInventory.defensiveBoostCount < 3)
         {
-            HandleBoostPurchaseUI(itemType, shopItemCostText, progressBar, _playerInventory.defensiveBoostCount, tokenIconTransform);
+            if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
+            {
+                SoundManager.Instance.Play(SoundManager.SoundTags.ShopBoosts);
+                HandleBoostPurchaseUI(itemType, shopItemCostText, progressBar, _playerInventory.defensiveBoostCount, tokenIconTransform);
+            }
+            else
+            {
+                Warning("You don't have enough Tokens!");
+                SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
+                EventSystem.current.SetSelectedGameObject(null);
+            }
+
         }
         else if (itemType == Items.ItemType.OffenseBoost && _playerInventory.offensiveBoostCount < 3)
         {
-            HandleBoostPurchaseUI(itemType, shopItemCostText, progressBar, _playerInventory.offensiveBoostCount, tokenIconTransform);
+            if (_shopCustomer.TrySpendTokenAmount(Items.GetCost(itemType)))
+            {
+                SoundManager.Instance.Play(SoundManager.SoundTags.ShopBoosts);
+                HandleBoostPurchaseUI(itemType, shopItemCostText, progressBar, _playerInventory.offensiveBoostCount, tokenIconTransform);
+            }
+            else
+            {
+                Warning("You don't have enough Tokens!");
+                SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
+                EventSystem.current.SetSelectedGameObject(null);
+            }
+
         }
         else
         {
+            Warning("You have already reached the maximum amount!");
+            SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
@@ -286,6 +320,24 @@ public class UI_Shop : MonoBehaviour
 
             i++;
         }
+    }
+
+    void Warning(string text)
+    {
+        _warningText.SetText(text);
+        _warningText.gameObject.SetActive(true);
+
+        if (_warningCountdown != null)
+            StopCoroutine(_warningCountdown);
+        _warningCountdown = WarningCountdown();
+        StartCoroutine(_warningCountdown);
+    }
+
+    IEnumerator WarningCountdown()
+    {
+        yield return new WaitForSeconds(2f);
+
+        _warningText.gameObject.SetActive(false);
     }
 
     public void Show(IShopCustomer shopCustomer)

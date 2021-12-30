@@ -17,9 +17,6 @@ public class Items
     
     static int _defenseBoostCost = 30;
     static int _offenseBoostCost = 30;
-    
-    static int _defenseBoostCount = 0;
-    static int _offenseBoostCount = 0;
 
     public enum ItemType
     {
@@ -108,22 +105,6 @@ public class Items
                 break;
             case ItemType.BrownOutfit:
                 _brownOutfitCost = 0;
-                break;
-            case ItemType.DefenseBoost:
-                if (_defenseBoostCount >= 3)
-                {
-                    // Adjust later
-                    break;
-                }
-                _defenseBoostCount++;
-                break;
-            case ItemType.OffenseBoost:
-                if (_offenseBoostCount >= 3)
-                {
-                    // Adjust later
-                    break;
-                }
-                _offenseBoostCount++;
                 break;
         }
     }

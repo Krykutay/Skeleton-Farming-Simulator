@@ -68,7 +68,10 @@ public class SoundManager : MonoBehaviour
         DropLoot2,
         DropLoot3,
         Shield,
-        MerchantTalk
+        MerchantTalk,
+        ShopSword,
+        ShopOutfit,
+        ShopBoosts
     }
 
     public enum SoundTypes
