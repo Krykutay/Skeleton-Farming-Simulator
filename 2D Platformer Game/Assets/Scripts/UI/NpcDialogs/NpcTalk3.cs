@@ -30,6 +30,7 @@ public class NpcTalk3 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        _talkText.gameObject.SetActive(true);
         _talkText.text = "Listen (E)";
         _isPlayerInRange = true;
 
@@ -39,6 +40,7 @@ public class NpcTalk3 : MonoBehaviour
     {
         _talkText.text = "";
         _isPlayerInRange = false;
+        _talkText.gameObject.SetActive(false);
         _uiAssistant.gameObject.SetActive(false);
         _uiAssistant.StopTalkingSound();
     }

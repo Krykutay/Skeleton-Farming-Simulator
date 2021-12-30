@@ -27,6 +27,7 @@ public class NpcTalk1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        _talkText.gameObject.SetActive(true);
         _talkText.text = "Talk (E)";
         _isPlayerInRange = true;
 
@@ -36,6 +37,7 @@ public class NpcTalk1 : MonoBehaviour
     {
         _talkText.text = "";
         _isPlayerInRange = false;
+        _talkText.gameObject.SetActive(true);
         _uiAssistant.gameObject.SetActive(false);
         _uiAssistant.StopTalkingSound();
     }

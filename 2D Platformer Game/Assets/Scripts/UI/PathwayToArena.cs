@@ -19,6 +19,7 @@ public class PathwayToArena : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        _talkText.gameObject.SetActive(true);
         _talkText.text = "Talk (E)";
         _isPlayerInRange = true;
 
@@ -27,6 +28,7 @@ public class PathwayToArena : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         _talkText.text = "";
+        _talkText.gameObject.SetActive(false);
         _isPlayerInRange = false;
     }
 
