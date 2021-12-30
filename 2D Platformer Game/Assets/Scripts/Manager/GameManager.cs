@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _menu;
     [SerializeField] GameObject _shop;
     //[SerializeField] GameObject _gameoverPanel;
-    [SerializeField] GameObject _player;
     [SerializeField] CanvasScaler _canvasScaler;
 
     [SerializeField] Transform _respawnPoint;
@@ -85,8 +84,8 @@ public class GameManager : MonoBehaviour
     {
         if (_respawn && Time.time >= _respawnTimeStart + _respawnTime)
         {
-            var tempPlayer = Instantiate(_player, _respawnPoint.position, Quaternion.Euler(0f, 0f ,0f));
-            _cvc.m_Follow = tempPlayer.transform;
+            Player.Instance.gameObject.SetActive(true);
+            Player.Instance.transform.position = _respawnPoint.position;
             _respawn = false;
         }
     }
@@ -107,10 +106,4 @@ public class GameManager : MonoBehaviour
         currentState = PlayPauseState.Paused;
     }
 
-    /*
-    public PlayPauseState GetCurrentState()
-    {
-        return GameController.GetInstance()._currentState;
-    }
-    */
 }

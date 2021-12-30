@@ -6165,7 +6165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &418081711
 RectTransform:
   m_ObjectHideFlags: 0
@@ -69143,7 +69143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531045656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.19, y: 9, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 657831157}
@@ -69184,7 +69184,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 641, y: -446}
-  m_SizeDelta: {x: 250, y: 250}
+  m_SizeDelta: {x: 250, y: 234.1}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &538275187
 MonoBehaviour:
@@ -80054,7 +80054,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menu: {fileID: 550263045393745148}
   _shop: {fileID: 141147204}
-  _player: {fileID: 5286815135905763436, guid: a1dd0668da6e3714d9f2639f92b78c05, type: 3}
   _canvasScaler: {fileID: 989777093}
   _respawnPoint: {fileID: 531045657}
   _respawnTime: 5
@@ -86037,7 +86036,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 641, y: -446}
-  m_SizeDelta: {x: 250, y: 250}
+  m_SizeDelta: {x: 287.55, y: 241.65}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1539974337
 MonoBehaviour:
@@ -89893,7 +89892,7 @@ MonoBehaviour:
   - name: 8
     type: 0
     clip: {fileID: 8300000, guid: 63415d1b4413fae44bcd4520b5911851, type: 3}
-    volume: 0.4
+    volume: 0.2
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -89901,7 +89900,7 @@ MonoBehaviour:
   - name: 9
     type: 0
     clip: {fileID: 8300000, guid: 3fa799670776ff54bafdbcc2cb5c8fb8, type: 3}
-    volume: 0.4
+    volume: 0.2
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90013,7 +90012,7 @@ MonoBehaviour:
   - name: 23
     type: 0
     clip: {fileID: 8300000, guid: d30b162126407ca41a93055d24f63bde, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90029,7 +90028,7 @@ MonoBehaviour:
   - name: 25
     type: 0
     clip: {fileID: 8300000, guid: 457dfe0f0c3375e41ba4918790bf2f7f, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -93172,7 +93171,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 641, y: -446}
-  m_SizeDelta: {x: 250, y: 250}
+  m_SizeDelta: {x: 250, y: 234.1}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2039972961
 MonoBehaviour:

@@ -120,7 +120,9 @@ public class Player : MonoBehaviour, IShopCustomer
     {
         stateMachine.Initialize(idleState);
         facingDirection = 1;
+        transform.rotation = Quaternion.identity;
         _currentHealth = _playerData.maxHealth;
+        _playerHealth.SetHealthIndicatorColor();
         initialGravity = rb.gravityScale;
     }
 
@@ -431,10 +433,12 @@ public class Player : MonoBehaviour, IShopCustomer
 
     void Die()
     {
+        anim.WriteDefaultValues();
+        _bodyAnim.WriteDefaultValues();
         DeathChunkParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
         DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
         PlayerDied?.Invoke();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void SetCurrentHealth()
@@ -572,6 +576,7 @@ public class Player : MonoBehaviour, IShopCustomer
 
         _playerHealth.EnableHealthIndicators();
         _playerHealth.SetHealthIndicatorColor();
+        _currentHealth = maxHealth;
     }
 
     void Load_Damage()
