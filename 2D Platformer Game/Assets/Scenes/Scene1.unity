@@ -5403,7 +5403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 4330267221748388054, guid: a14d330191fef5644910d583b6f7ef04, type: 3}
-  _initialPoolSize: 2
+  _initialPoolSize: 1
 --- !u!114 &370242322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5417,7 +5417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: -785327172243281404, guid: a91f9edf1d9e9f94bbebb86bca8d3b72, type: 3}
-  _initialPoolSize: 2
+  _initialPoolSize: 1
 --- !u!114 &370242323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90036,7 +90036,7 @@ MonoBehaviour:
   - name: 26
     type: 0
     clip: {fileID: 8300000, guid: 0f995d89e865ec045838def582535010, type: 3}
-    volume: 0.6
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -92796,7 +92796,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023301036}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

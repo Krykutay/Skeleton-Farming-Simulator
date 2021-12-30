@@ -176,8 +176,10 @@ public class Player : MonoBehaviour, IShopCustomer
 
         if (collision.TryGetComponent<IDamageable>(out var damageable))
         {
-            SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonHurt);
-            damageable.Damage(_attackDetails);
+            bool isHit = damageable.Damage(_attackDetails);
+
+            if (isHit)
+                SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonHurt);
         }
     }  
 
@@ -456,7 +458,7 @@ public class Player : MonoBehaviour, IShopCustomer
     IEnumerator Hurt()
     {
         _bodyAnim.SetBool("hurt", true);
-        yield return new WaitForSeconds(1.73f);
+        yield return new WaitForSeconds(0.5f);
         _bodyAnim.SetBool("hurt", false);
     }
 
