@@ -60,7 +60,7 @@ public class Enemy7 : Entity
         base.Damage(attackDetails);
 
         if (stateMachine.currentState == deadState || stateMachine.currentState == respawnState)
-            return true;
+            return false;
 
 
         if (isDead)

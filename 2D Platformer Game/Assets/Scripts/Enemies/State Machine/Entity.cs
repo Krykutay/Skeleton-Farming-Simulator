@@ -83,6 +83,9 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void Update()
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         stateMachine.currentState.LogicUpdate();
 
         //anim.SetFloat("yVelocity", rb.velocity.y);
@@ -95,6 +98,9 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void FixedUpdate()
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         stateMachine.currentState.PhysicsUpdate();
     }
 
@@ -120,7 +126,7 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual bool Damage(AttackDetails attackDetails)
     {
         if (isDead)
-            return true;
+            return false;
 
         float damageAmount = attackDetails.damageAmount;
         if (PowerupManager.Instance.isDamagePowerupActive)

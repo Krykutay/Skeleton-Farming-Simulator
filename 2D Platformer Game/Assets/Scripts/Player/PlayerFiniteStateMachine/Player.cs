@@ -132,24 +132,24 @@ public class Player : MonoBehaviour, IShopCustomer
         ActivateOutfit((Items.ItemType)_playerInventory.EquippedOutfit);
         ActivateSwords((Items.ItemType)_playerInventory.EquippedSwords);
 
-        if (maxHealth > _playerData.initialMaxHealth && _playerInventory.defensiveBoostCount == 0)
-            _playerData.SetInitialMaxHealth();
-
-        _playerHealth.EnableHealthIndicators();
-        _playerHealth.SetHealthIndicatorColor();
-
-        if (_weaponData.attackDetails[0].damageAmount > _weaponData.initialAttackDamages[0] && _playerInventory.offensiveBoostCount == 0)
-            _weaponData.SetInitialDamage();
+        Load_Health();
+        Load_Damage();
     }
 
     void Update()
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+        
         currentVelocity = rb.velocity;
         stateMachine.currentState.LogicUpdate();
     }
 
     void LateUpdate()
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         if (_knockbacked)
         {
             stateMachine.ChangeState(knockbackState);
@@ -159,6 +159,9 @@ public class Player : MonoBehaviour, IShopCustomer
 
     void FixedUpdate()
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         stateMachine.currentState.PhysicsUpdate();
     }
 
@@ -552,4 +555,37 @@ public class Player : MonoBehaviour, IShopCustomer
         _weaponData.IncreaseDamage();
     }
 
+    void Load_Health()
+    {
+        if (maxHealth > _playerData.initialMaxHealth && _playerInventory.defensiveBoostCount == 0)
+            _playerData.SetInitialMaxHealth();
+
+        if (maxHealth < _playerData.initialMaxHealth + _playerInventory.defensiveBoostCount * _playerData.healthIncreaseAmount)
+        {
+            _playerData.SetInitialMaxHealth();
+            for (int i = 0; i < _playerInventory.defensiveBoostCount; i++)
+            {
+                _playerData.IncreaseMaxHealth();
+                _currentHealth = maxHealth;
+            }
+        }
+
+        _playerHealth.EnableHealthIndicators();
+        _playerHealth.SetHealthIndicatorColor();
+    }
+
+    void Load_Damage()
+    {
+        if (_weaponData.attackDetails[0].damageAmount > _weaponData.initialAttackDamages[0] && _playerInventory.offensiveBoostCount == 0)
+            _weaponData.SetInitialDamage();
+
+        if (_weaponData.attackDetails[0].damageAmount < _weaponData.initialAttackDamages[0] + _playerInventory.offensiveBoostCount * _weaponData.damageIncreaseAmount)
+        {
+            _weaponData.SetInitialDamage();
+            for (int i = 0; i < _playerInventory.offensiveBoostCount; i++)
+            {
+                _weaponData.IncreaseDamage();
+            }
+        }
+    }
 }

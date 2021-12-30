@@ -8,6 +8,7 @@ public class WeaponData : ScriptableObject
     [SerializeField] LayerMask _damageable;
     [SerializeField] AttackDetails[] _attackDetails;
     [SerializeField] int[] _initialAttackDamages;
+    [SerializeField] int _damageIncreaseAmount;
 
     public int amountOfAttacks { get; protected set; }
     public float movementSpeed { get { return _movementSpeed; } }
@@ -15,6 +16,7 @@ public class WeaponData : ScriptableObject
     public LayerMask damageable { get { return _damageable; } }
     public AttackDetails[] attackDetails { get { return _attackDetails; } }
     public int[] initialAttackDamages { get { return _initialAttackDamages; } }
+    public int damageIncreaseAmount { get { return _damageIncreaseAmount; } }
 
     void OnEnable()
     {

@@ -21,6 +21,7 @@ public class ProjectileArrow : Projectile
 
         startPosition = transform.position;
         isGravityOn = false;
+        hasHitGround = false;
     }
 
     void FixedUpdate()
@@ -33,7 +34,7 @@ public class ProjectileArrow : Projectile
 
         if (Vector3.Distance(startPosition, transform.position) >= travelDistance && !isGravityOn && !hasHitGround)
         {
-            hasHitGround = false;
+            hasHitGround = true;
             isGravityOn = true;
             rb.gravityScale = _gravity;
         }
@@ -56,6 +57,7 @@ public class ProjectileArrow : Projectile
         else
         {
             hasHitGround = true;
+            isGravityOn = false;
             rb.gravityScale = 0f;
             rb.velocity = Vector2.zero;
 

@@ -90858,7 +90858,7 @@ MonoBehaviour:
   - name: 28
     type: 2
     clip: {fileID: 8300000, guid: c6261c2ca226ea74687f57bbf163394b, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90866,7 +90866,7 @@ MonoBehaviour:
   - name: 29
     type: 2
     clip: {fileID: 8300000, guid: 6476fabb847ecd249b04fc809c59a021, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90874,7 +90874,7 @@ MonoBehaviour:
   - name: 30
     type: 2
     clip: {fileID: 8300000, guid: 93a780354bcbcb24987bfb49a8996bfe, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90882,7 +90882,7 @@ MonoBehaviour:
   - name: 31
     type: 2
     clip: {fileID: 8300000, guid: 89cb99e89a4c7634bace291481fcd3ae, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90890,7 +90890,7 @@ MonoBehaviour:
   - name: 32
     type: 2
     clip: {fileID: 8300000, guid: 5f5befd3caecb3843a3d788e3954bd44, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90898,7 +90898,7 @@ MonoBehaviour:
   - name: 33
     type: 2
     clip: {fileID: 8300000, guid: c46958a623c577d49aeaf3268de6cc64, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90906,7 +90906,7 @@ MonoBehaviour:
   - name: 34
     type: 2
     clip: {fileID: 8300000, guid: d6afb3dcee0a1e441853440eadd0f0bd, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90914,7 +90914,7 @@ MonoBehaviour:
   - name: 35
     type: 2
     clip: {fileID: 8300000, guid: 0c2f22e153299324cb698d54a81375eb, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90922,7 +90922,7 @@ MonoBehaviour:
   - name: 36
     type: 2
     clip: {fileID: 8300000, guid: 704c70cb176d25b42a90ee05e4f94977, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90930,7 +90930,7 @@ MonoBehaviour:
   - name: 37
     type: 2
     clip: {fileID: 8300000, guid: 919945c21e1181249a5aae8edccdca27, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90938,7 +90938,7 @@ MonoBehaviour:
   - name: 38
     type: 2
     clip: {fileID: 8300000, guid: 2e3012641cf7580468a4f473e7b308be, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90946,7 +90946,7 @@ MonoBehaviour:
   - name: 39
     type: 2
     clip: {fileID: 8300000, guid: 135666d3d854a0141a386539ee897fd3, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90954,7 +90954,7 @@ MonoBehaviour:
   - name: 40
     type: 2
     clip: {fileID: 8300000, guid: c8f157b2b5918904f9106a7258e366a8, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90962,7 +90962,7 @@ MonoBehaviour:
   - name: 41
     type: 2
     clip: {fileID: 8300000, guid: d503e92c98acaf7449fdc0120a60d1cd, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90970,7 +90970,7 @@ MonoBehaviour:
   - name: 42
     type: 2
     clip: {fileID: 8300000, guid: 2e38b56bcb3e3cc4f9ddf1fc4d4075e9, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90978,7 +90978,7 @@ MonoBehaviour:
   - name: 43
     type: 2
     clip: {fileID: 8300000, guid: 9cb5d0bdb7bbf494ca10e621bc1a56a8, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90986,7 +90986,7 @@ MonoBehaviour:
   - name: 44
     type: 2
     clip: {fileID: 8300000, guid: 6754e329e1846bf438fb6d4d2b2f68ad, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -91002,7 +91002,7 @@ MonoBehaviour:
   - name: 46
     type: 2
     clip: {fileID: 8300000, guid: 22d223fc85ac21a48ae5732ca2c9681c, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -91010,7 +91010,7 @@ MonoBehaviour:
   - name: 47
     type: 2
     clip: {fileID: 8300000, guid: dd254f3f5af7ec548baac289f5adcc44, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -91018,7 +91018,7 @@ MonoBehaviour:
   - name: 48
     type: 2
     clip: {fileID: 8300000, guid: a1e7173fd07860740ac3e60a9a1c5645, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -91026,7 +91026,7 @@ MonoBehaviour:
   - name: 49
     type: 2
     clip: {fileID: 8300000, guid: 5821fad3e4cff8d4fabfb4acc0e19b53, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -91034,7 +91034,7 @@ MonoBehaviour:
   - name: 50
     type: 2
     clip: {fileID: 8300000, guid: f26a22ab96e1ee844b6d4ee78b61bbfe, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -91074,7 +91074,7 @@ MonoBehaviour:
   - name: 56
     type: 0
     clip: {fileID: 8300000, guid: adff38f7f5c81c74ea2d011a4cda0db5, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -91107,6 +91107,38 @@ MonoBehaviour:
     type: 0
     clip: {fileID: 8300000, guid: a68a4c81f1c7c434e81b70a980625a08, type: 3}
     volume: 0.5
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 61
+    type: 1
+    clip: {fileID: 8300000, guid: 667bebd33cf6b414cb2782bb03a4280f, type: 3}
+    volume: 0.1
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 62
+    type: 1
+    clip: {fileID: 8300000, guid: 3934bc19e5947734d8822b2775af601a, type: 3}
+    volume: 0.1
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 63
+    type: 1
+    clip: {fileID: 8300000, guid: 0601d4d96afb67744bef397faac619ef, type: 3}
+    volume: 0.1
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 63
+    type: 1
+    clip: {fileID: 8300000, guid: 94f61e6851529314ca340f41ebb9d611, type: 3}
+    volume: 0.1
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -103455,6 +103487,7 @@ GameObject:
   - component: {fileID: 550263045809888857}
   - component: {fileID: 550263045809888859}
   - component: {fileID: 550263045809888858}
+  - component: {fileID: 550263045809888871}
   m_Layer: 5
   m_Name: Sound Dialog Menu
   m_TagString: Untagged
@@ -103462,6 +103495,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &550263045809888871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550263045809888870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9779f7cfa045c664a994a10d4b6decd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _applyButton: {fileID: 550263046875138533}
 --- !u!224 &550263045811413732
 RectTransform:
   m_ObjectHideFlags: 0

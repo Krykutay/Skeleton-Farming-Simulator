@@ -53,6 +53,9 @@ public class PlayerAfterImage : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         _alpha -= _alphaDecay * Time.unscaledDeltaTime;
         _color = new Color(1f, 1f, 1f, _alpha);
         foreach (SpriteRenderer sr in _bodySr)

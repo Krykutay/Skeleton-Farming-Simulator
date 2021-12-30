@@ -35,6 +35,13 @@ public class E4_RangeAttackState : RangeAttackState
         }
     }
 
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        entity.RotateBodyToPlayer();
+    }
+
     public override void TriggerAttack()
     {
         base.TriggerAttack();

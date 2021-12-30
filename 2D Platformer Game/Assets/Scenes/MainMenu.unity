@@ -2688,8 +2688,8 @@ RectTransform:
   m_Father: {fileID: 950058328}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3829,8 +3829,8 @@ RectTransform:
   m_Father: {fileID: 2035579004}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4480,7 +4480,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7252,6 +7252,7 @@ GameObject:
   - component: {fileID: 567604322}
   - component: {fileID: 567604321}
   - component: {fileID: 567604323}
+  - component: {fileID: 567604324}
   m_Layer: 5
   m_Name: Sound Dialog Menu
   m_TagString: Untagged
@@ -7340,6 +7341,19 @@ MonoBehaviour:
   _effectVolumeSlider: {fileID: 404952237}
   _musicVolumeSlider: {fileID: 114534854}
   _voiceVolumeSlider: {fileID: 1603340116}
+--- !u!114 &567604324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567604319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9779f7cfa045c664a994a10d4b6decd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _applyButton: {fileID: 1632986076}
 --- !u!1 &575768703
 GameObject:
   m_ObjectHideFlags: 0
@@ -20863,7 +20877,7 @@ MonoBehaviour:
   - name: 19
     type: 0
     clip: {fileID: 8300000, guid: e6528b69dd36b4842b77d233771f1425, type: 3}
-    volume: 0.3
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -20871,7 +20885,7 @@ MonoBehaviour:
   - name: 20
     type: 0
     clip: {fileID: 8300000, guid: 5fd4ea0564a282d4db46656f11bbb8dc, type: 3}
-    volume: 0.3
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -21075,6 +21089,150 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 1
+    source: {fileID: 0}
+  - name: 46
+    type: 2
+    clip: {fileID: 8300000, guid: 22d223fc85ac21a48ae5732ca2c9681c, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 47
+    type: 2
+    clip: {fileID: 8300000, guid: dd254f3f5af7ec548baac289f5adcc44, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 48
+    type: 2
+    clip: {fileID: 8300000, guid: a1e7173fd07860740ac3e60a9a1c5645, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 49
+    type: 2
+    clip: {fileID: 8300000, guid: 5821fad3e4cff8d4fabfb4acc0e19b53, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 50
+    type: 2
+    clip: {fileID: 8300000, guid: f26a22ab96e1ee844b6d4ee78b61bbfe, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 52
+    type: 0
+    clip: {fileID: 8300000, guid: 8816a40d62184e646804cda7b1c93b5e, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 53
+    type: 0
+    clip: {fileID: 8300000, guid: 72085a8d94166de45ae3bd164859a4c9, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 54
+    type: 0
+    clip: {fileID: 8300000, guid: d4a8f542595ff8b439e31b985bb32ea8, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 55
+    type: 0
+    clip: {fileID: 8300000, guid: 3954359db1574ed43a4c2e8201439d3c, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 56
+    type: 0
+    clip: {fileID: 8300000, guid: adff38f7f5c81c74ea2d011a4cda0db5, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 57
+    type: 2
+    clip: {fileID: 8300000, guid: eb3c555406e9d6b4b894a9c233265f8f, type: 3}
+    volume: 0.5
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 58
+    type: 0
+    clip: {fileID: 8300000, guid: 9558ebdde3bd3804b8389a9dac5d68e5, type: 3}
+    volume: 0.5
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 59
+    type: 0
+    clip: {fileID: 8300000, guid: 63580759ff9286a46a5cbd5e8719c09b, type: 3}
+    volume: 0.5
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 60
+    type: 0
+    clip: {fileID: 8300000, guid: a68a4c81f1c7c434e81b70a980625a08, type: 3}
+    volume: 0.5
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 61
+    type: 1
+    clip: {fileID: 8300000, guid: 667bebd33cf6b414cb2782bb03a4280f, type: 3}
+    volume: 0.1
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 62
+    type: 1
+    clip: {fileID: 8300000, guid: 3934bc19e5947734d8822b2775af601a, type: 3}
+    volume: 0.1
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 63
+    type: 1
+    clip: {fileID: 8300000, guid: 0601d4d96afb67744bef397faac619ef, type: 3}
+    volume: 0.1
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 63
+    type: 1
+    clip: {fileID: 8300000, guid: 94f61e6851529314ca340f41ebb9d611, type: 3}
+    volume: 0.1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
     source: {fileID: 0}
 --- !u!1 &1828607737
 GameObject:
@@ -22272,7 +22430,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22798,7 +22956,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: '100
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}

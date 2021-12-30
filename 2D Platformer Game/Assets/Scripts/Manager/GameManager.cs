@@ -13,6 +13,9 @@ public enum PlayPauseState
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+    public PlayPauseState currentState { get; private set; }
+
     [SerializeField] GameObject _menu;
     [SerializeField] GameObject _shop;
     //[SerializeField] GameObject _gameoverPanel;
@@ -28,13 +31,14 @@ public class GameManager : MonoBehaviour
     bool _respawn;
 
     CinemachineVirtualCamera _cvc;
-    PlayPauseState _currentState;
 
     void Awake()
     {
+        Instance = this;
+
         _cvc = transform.parent.Find("Cameras").Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
 
-        _currentState = PlayPauseState.Playing;
+        currentState = PlayPauseState.Playing;
         _canvasScaler.referenceResolution = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
     }
 
@@ -46,6 +50,11 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         Player.Instance.PlayerDied += Player_PlayerDied;
+    }
+
+    void Start()
+    {
+        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance2);
     }
 
     void Update()
@@ -85,17 +94,17 @@ public class GameManager : MonoBehaviour
     public void Game_Resumed()
     {
         Time.timeScale = 1f;
-        _currentState = PlayPauseState.Playing;
+        currentState = PlayPauseState.Playing;
     }
 
     public void Game_Paused()
     {
-        if (_currentState != PlayPauseState.Playing)
+        if (currentState != PlayPauseState.Playing)
             return;
 
         _menu.gameObject.SetActive(true);
         Time.timeScale = 0f;
-        _currentState = PlayPauseState.Paused;
+        currentState = PlayPauseState.Paused;
     }
 
     /*

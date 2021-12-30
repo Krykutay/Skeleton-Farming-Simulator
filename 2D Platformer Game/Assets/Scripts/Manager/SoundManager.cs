@@ -71,7 +71,11 @@ public class SoundManager : MonoBehaviour
         MerchantTalk,
         ShopSword,
         ShopOutfit,
-        ShopBoosts
+        ShopBoosts,
+        Ambiance1,
+        Ambiance2,
+        Ambiance3,
+        Ambiance4
     }
 
     public enum SoundTypes

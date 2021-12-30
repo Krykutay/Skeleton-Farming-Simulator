@@ -206,6 +206,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     void JumpStart(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         jumpInput = true;
         jumpInputStopped = false;
         _jumpInputStartTime = Time.time;
@@ -228,6 +231,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     void DashStart(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         dashInput = true;
         dashInputStopped = false;
         _dashInputStartTime = Time.time;
