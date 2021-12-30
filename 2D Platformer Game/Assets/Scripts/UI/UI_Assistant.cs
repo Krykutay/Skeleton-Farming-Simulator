@@ -7,8 +7,8 @@ using TMPro;
 
 public class UI_Assistant : MonoBehaviour
 {
-    public Action SpeechEnd;
-    public Action OpenShop;
+    public Action OnSpeechEnd;
+    public Action OnOpenShop;
 
     [SerializeField] TMP_Text _messageText;
 
@@ -41,7 +41,7 @@ public class UI_Assistant : MonoBehaviour
             {
                 if (count >= messages.Length)
                 {
-                    OpenShop?.Invoke();
+                    OnOpenShop?.Invoke();
                     gameObject.SetActive(false);
                     return;
                 }
@@ -57,7 +57,7 @@ public class UI_Assistant : MonoBehaviour
     public void StopTalkingSound()
     {
         SoundManager.Instance.Stop(_currentDialogSound);
-        SpeechEnd?.Invoke();
+        OnSpeechEnd?.Invoke();
     }
 
 }

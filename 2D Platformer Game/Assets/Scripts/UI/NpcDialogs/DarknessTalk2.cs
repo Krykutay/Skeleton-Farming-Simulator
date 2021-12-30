@@ -13,12 +13,12 @@ public class DarknessTalk2 : MonoBehaviour
 
     void OnEnable()
     {
-        _darknessTalk.SpeechEnd += CoroutineDisableGameObject;
+        _darknessTalk.OnSpeechEnd += CoroutineDisableGameObject;
     }
 
     void OnDisable()
     {
-        _darknessTalk.SpeechEnd -= CoroutineDisableGameObject;
+        _darknessTalk.OnSpeechEnd -= CoroutineDisableGameObject;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

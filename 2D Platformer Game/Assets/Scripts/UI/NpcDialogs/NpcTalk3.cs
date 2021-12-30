@@ -20,12 +20,12 @@ public class NpcTalk3 : MonoBehaviour
 
     void OnEnable()
     {
-        Player.Instance.inputHandler.talkAction += PlayerTalkPressed;
+        Player.Instance.inputHandler.OnTalkAction += PlayerTalkPressed;
     }
 
     void OnDisable()
     {
-        Player.Instance.inputHandler.talkAction -= PlayerTalkPressed;
+        Player.Instance.inputHandler.OnTalkAction -= PlayerTalkPressed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -34,12 +34,12 @@ public class GraphicsDialogMenu : MonoBehaviour
 
     void OnEnable()
     {
-        LoadPrefs.LoadingDone += LoadPrefs_LoadingDone;
+        LoadPrefs.OnLoadingDone += LoadPrefs_LoadingDone;
     }
 
     void OnDisable()
     {
-        LoadPrefs.LoadingDone -= LoadPrefs_LoadingDone;
+        LoadPrefs.OnLoadingDone -= LoadPrefs_LoadingDone;
     }
 
     void Start()

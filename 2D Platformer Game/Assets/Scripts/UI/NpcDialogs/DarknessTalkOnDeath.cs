@@ -13,14 +13,14 @@ public class DarknessTalkOnDeath : MonoBehaviour
 
     void OnEnable()
     {
-        Player.Instance.PlayerDied += Player_PlayerDied;
-        _darknessTalk.SpeechEnd += CoroutineDisableGameObject;
+        Player.Instance.OnPlayerDied += Player_PlayerDied;
+        _darknessTalk.OnSpeechEnd += CoroutineDisableGameObject;
     }
 
     void OnDisable()
     {
-        Player.Instance.PlayerDied -= Player_PlayerDied;
-        _darknessTalk.SpeechEnd -= CoroutineDisableGameObject;
+        Player.Instance.OnPlayerDied -= Player_PlayerDied;
+        _darknessTalk.OnSpeechEnd -= CoroutineDisableGameObject;
     }
 
     void Player_PlayerDied()

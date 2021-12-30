@@ -51,7 +51,7 @@ public class LoadPrefs : MonoBehaviour
     const string MASTER_FULLSCREEN = "masterFullscreen";
     const string MASTER_VSYNC = "masterVsync";
 
-    public static Action LoadingDone;
+    public static Action OnLoadingDone;
 
     void Awake()
     {
@@ -64,7 +64,7 @@ public class LoadPrefs : MonoBehaviour
         LoadControls();
         LoadVolumes();
         LoadGraphics();
-        LoadingDone?.Invoke();
+        OnLoadingDone?.Invoke();
     }
 
     public void LoadVolumes()

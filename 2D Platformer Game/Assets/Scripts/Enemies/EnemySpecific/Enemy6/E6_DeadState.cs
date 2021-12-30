@@ -30,7 +30,7 @@ public class E6_DeadState : DeadState
                 stateMachine.ChangeState(enemy.respawnState);
             else
             {
-                Entity.Died?.Invoke(enemy);
+                Entity.OnEnemyDied?.Invoke(enemy);
                 enemy.anim.WriteDefaultValues();
                 Enemy6Pool.Instance.ReturnToPool(enemy);
             }

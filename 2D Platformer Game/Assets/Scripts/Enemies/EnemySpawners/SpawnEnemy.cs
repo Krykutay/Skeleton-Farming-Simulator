@@ -7,12 +7,12 @@ public class SpawnEnemy : MonoBehaviour
 
     void OnEnable()
     {
-        Entity.Died += Entity_Died;
+        Entity.OnEnemyDied += Entity_Died;
     }
 
     void OnDisable()
     {
-        Entity.Died -= Entity_Died;
+        Entity.OnEnemyDied -= Entity_Died;
     }
 
     void Entity_Died(Entity entity)

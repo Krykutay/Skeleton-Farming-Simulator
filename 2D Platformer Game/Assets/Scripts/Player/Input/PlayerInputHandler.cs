@@ -17,7 +17,7 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction _defenseAction;
     InputAction _talkAction;
 
-    public Action talkAction;
+    public Action OnTalkAction;
 
     public int xInput { get; private set; }
     public int yInput { get; private set;}
@@ -267,6 +267,6 @@ public class PlayerInputHandler : MonoBehaviour
     void TalkStart(InputAction.CallbackContext context)
     {
         talkInput = true;
-        talkAction?.Invoke();
+        OnTalkAction?.Invoke();
     }
 }

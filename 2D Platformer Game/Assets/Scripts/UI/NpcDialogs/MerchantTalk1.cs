@@ -18,14 +18,14 @@ public class MerchantTalk1 : MonoBehaviour
 
     void OnEnable()
     {
-        Player.Instance.inputHandler.talkAction += PlayerTalkPressed;
-        _uiAssistant.OpenShop += UIAssistant_OpenShop;
+        Player.Instance.inputHandler.OnTalkAction += PlayerTalkPressed;
+        _uiAssistant.OnOpenShop += UIAssistant_OpenShop;
     }
 
     void OnDisable()
     {
-        Player.Instance.inputHandler.talkAction -= PlayerTalkPressed;
-        _uiAssistant.OpenShop -= UIAssistant_OpenShop;
+        Player.Instance.inputHandler.OnTalkAction -= PlayerTalkPressed;
+        _uiAssistant.OnOpenShop -= UIAssistant_OpenShop;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

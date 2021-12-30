@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IShopCustomer
 {
-    public Action PlayerDied;
+    public Action OnPlayerDied;
     public static Player Instance { get; private set; }
 
     [Header("Camera")]
@@ -444,7 +444,7 @@ public class Player : MonoBehaviour, IShopCustomer
         _bodyAnim.WriteDefaultValues();
         DeathChunkParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
         DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
-        PlayerDied?.Invoke();
+        OnPlayerDied?.Invoke();
         gameObject.SetActive(false);
         transform.position = Vector3.zero;
         _cvc.m_Follow = null;

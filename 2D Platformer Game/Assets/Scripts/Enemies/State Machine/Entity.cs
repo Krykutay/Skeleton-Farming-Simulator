@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour, IDamageable
 {
-    public static Action<Entity> Died;
+    public static Action<Entity> OnEnemyDied;
 
     public FiniteStateMachine stateMachine;
 
@@ -68,12 +68,12 @@ public class Entity : MonoBehaviour, IDamageable
         _healthbar.SetMaxHealth(entityData.maxHealth);
         _healthbar.SetCurrentHealth(entityData.maxHealth, 0);
 
-        PowerupManager.Instance.Vaporize += PowerupManager_Vaporize;
+        PowerupManager.Instance.OnVaporize += PowerupManager_Vaporize;
     }
 
     void OnDisable()
     {
-        PowerupManager.Instance.Vaporize -= PowerupManager_Vaporize;
+        PowerupManager.Instance.OnVaporize -= PowerupManager_Vaporize;
     }
 
     public virtual void Start()
@@ -190,7 +190,7 @@ public class Entity : MonoBehaviour, IDamageable
 
         DropLootOnDeath();
         VaporizeParticle1Pool.Instance.Get(transform.position, Quaternion.identity);
-        Died?.Invoke(this);
+        OnEnemyDied?.Invoke(this);
 
         SoundManager.Instance.Stop(SoundManager.SoundTags.SkeletonRespawn);
         anim.WriteDefaultValues();

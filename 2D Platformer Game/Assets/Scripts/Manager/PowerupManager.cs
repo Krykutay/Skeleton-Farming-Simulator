@@ -6,7 +6,7 @@ using UnityEngine;
 public class PowerupManager : MonoBehaviour
 {
     public static PowerupManager Instance { get; private set; }
-    public Action Vaporize;
+    public Action OnVaporize;
     public bool isDamagePowerupActive { get; private set; }
     public bool isShieldPowerupActive { get; private set; }
 
@@ -225,7 +225,7 @@ public class PowerupManager : MonoBehaviour
     {
         _vaporizePowerupCountdownBar.gameObject.SetActive(true);
         _vaporizePowerupCountdownBar.StartCountdown(_durationVaporize);
-        Vaporize?.Invoke();
+        OnVaporize?.Invoke();
 
         if (_deactivateVaporizePowerup != null)
             StopCoroutine(_deactivateVaporizePowerup);
