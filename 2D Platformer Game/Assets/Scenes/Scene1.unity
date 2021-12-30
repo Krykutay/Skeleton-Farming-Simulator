@@ -6165,7 +6165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &418081711
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89892,7 +89892,7 @@ MonoBehaviour:
   - name: 8
     type: 0
     clip: {fileID: 8300000, guid: 63415d1b4413fae44bcd4520b5911851, type: 3}
-    volume: 0.2
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -89900,7 +89900,7 @@ MonoBehaviour:
   - name: 9
     type: 0
     clip: {fileID: 8300000, guid: 3fa799670776ff54bafdbcc2cb5c8fb8, type: 3}
-    volume: 0.2
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -89924,7 +89924,7 @@ MonoBehaviour:
   - name: 12
     type: 0
     clip: {fileID: 8300000, guid: 841f14bdd472a5b4687d6ab56fd92aec, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -89948,7 +89948,7 @@ MonoBehaviour:
   - name: 15
     type: 0
     clip: {fileID: 8300000, guid: dc99852d174f95947b15d973cee70ff9, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -89956,7 +89956,7 @@ MonoBehaviour:
   - name: 16
     type: 0
     clip: {fileID: 8300000, guid: be7cfb5ee402b844bb1d422e446353f9, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -89964,7 +89964,7 @@ MonoBehaviour:
   - name: 17
     type: 0
     clip: {fileID: 8300000, guid: d7e9b510115e6a44b9d64a225b07b53c, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90012,7 +90012,7 @@ MonoBehaviour:
   - name: 23
     type: 0
     clip: {fileID: 8300000, guid: d30b162126407ca41a93055d24f63bde, type: 3}
-    volume: 0.5
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -90236,7 +90236,7 @@ MonoBehaviour:
   - name: 52
     type: 0
     clip: {fileID: 8300000, guid: 8816a40d62184e646804cda7b1c93b5e, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
