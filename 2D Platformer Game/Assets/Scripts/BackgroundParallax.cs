@@ -31,7 +31,7 @@ public class BackgroundParallax : MonoBehaviour
     void LateUpdate()
     {
         _deltaMovement = _cameraTransform.position - _lastCameraPosition;
-        _workSpace.Set(_deltaMovement.x * _parallaxEffect.x, _deltaMovement.y * _parallaxEffect.y, transform.position.z);
+        _workSpace.Set(_deltaMovement.x * _parallaxEffect.x, _deltaMovement.y * _parallaxEffect.y, _deltaMovement.z);
         transform.position += _workSpace;
         _lastCameraPosition = _cameraTransform.position;
 
@@ -50,7 +50,7 @@ public class BackgroundParallax : MonoBehaviour
             if (Mathf.Abs(_cameraTransform.position.y - transform.position.y) >= _textureUnitSizeY)
             {
                 float offsetPositionY = (_cameraTransform.position.y - transform.position.y) % _textureUnitSizeY;
-                transform.position = new Vector3(_cameraTransform.position.y, transform.position.y + offsetPositionY);
+                transform.position = new Vector3(transform.position.x, _cameraTransform.position.y + offsetPositionY);
             }
         }
     }
