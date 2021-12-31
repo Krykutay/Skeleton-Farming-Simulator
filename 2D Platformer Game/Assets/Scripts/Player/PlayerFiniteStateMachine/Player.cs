@@ -9,9 +9,6 @@ public class Player : MonoBehaviour, IShopCustomer
     public Action OnPlayerDied;
     public static Player Instance { get; private set; }
 
-    [Header("Camera")]
-    [SerializeField] CinemachineVirtualCamera _cvc;
-
     [Header("Data")]
     [SerializeField] PlayerData _playerData;
     [SerializeField] WeaponData _weaponData;
@@ -128,7 +125,6 @@ public class Player : MonoBehaviour, IShopCustomer
         _currentHealth = _playerData.maxHealth;
         _playerHealth.SetHealthIndicatorColor();
         initialGravity = rb.gravityScale;
-        _cvc.m_Follow = transform;
     }
 
     void Start()
@@ -440,14 +436,13 @@ public class Player : MonoBehaviour, IShopCustomer
 
     void Die()
     {
-        anim.WriteDefaultValues();
-        _bodyAnim.WriteDefaultValues();
         DeathChunkParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
         DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.Euler(0f, 0f, 0f));
+
+        anim.WriteDefaultValues();
+        _bodyAnim.WriteDefaultValues();
+
         OnPlayerDied?.Invoke();
-        gameObject.SetActive(false);
-        transform.position = Vector3.zero;
-        _cvc.m_Follow = null;
     }
 
     public void SetCurrentHealth()

@@ -18,16 +18,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject _menu;
     [SerializeField] GameObject _shop;
-    //[SerializeField] GameObject _gameoverPanel;
+    [SerializeField] GameObject _gameoverPanel;
     [SerializeField] CanvasScaler _canvasScaler;
 
     [SerializeField] Transform _respawnPoint;
-
-    [SerializeField] float _respawnTime;
-
-    float _respawnTimeStart;
-
-    bool _respawn;
 
     CinemachineVirtualCamera _cvc;
 
@@ -58,8 +52,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        CheckRespawn();
-
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (_shop.activeSelf)
@@ -71,23 +63,22 @@ public class GameManager : MonoBehaviour
 
     void Player_PlayerDied()
     {
-        Respawn();
+        Player.Instance.gameObject.SetActive(false);
+        Player.Instance.transform.position = _respawnPoint.position;
+        _cvc.m_Follow = null;
+        _gameoverPanel.SetActive(true);
+
+        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance2);
+        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance4);
     }
 
-    void Respawn()
+    public void Respawn()
     {
-        _respawnTimeStart = Time.time;
-        _respawn = true;
-    }
+        _cvc.m_Follow = Player.Instance.transform;
+        Player.Instance.gameObject.SetActive(true);
 
-    void CheckRespawn()
-    {
-        if (_respawn && Time.time >= _respawnTimeStart + _respawnTime)
-        {
-            Player.Instance.gameObject.SetActive(true);
-            Player.Instance.transform.position = _respawnPoint.position;
-            _respawn = false;
-        }
+        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance4);
+        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance2);
     }
 
     public void Game_Resumed()
