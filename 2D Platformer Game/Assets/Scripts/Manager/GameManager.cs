@@ -68,8 +68,8 @@ public class GameManager : MonoBehaviour
         _cvc.m_Follow = null;
         _gameoverPanel.SetActive(true);
 
-        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance2);
-        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance3);
+        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance3);
+        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance4);
     }
 
     public void Respawn()
@@ -77,8 +77,8 @@ public class GameManager : MonoBehaviour
         _cvc.m_Follow = Player.Instance.transform;
         Player.Instance.gameObject.SetActive(true);
 
-        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance3);
-        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance2);
+        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance4);
+        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance3);
     }
 
     public void Game_Resumed()
