@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BirdFly : MonoBehaviour
+public class BirdFly : MonoBehaviour, IDamageable
 {
     float _heightVariance;
     [SerializeField] float _moveSpeed = 5f;
@@ -27,6 +25,16 @@ public class BirdFly : MonoBehaviour
         }
 
         transform.position += new Vector3(_moveSpeed * Time.deltaTime, Mathf.Sin(Time.time) * Time.deltaTime * _heightVariance);
-            
     }
+
+    public bool Damage(AttackDetails attackDetails)
+    {
+        DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.identity);
+        DeathChunkParticlePool.Instance.Get(transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
+
+        return true;
+    }
+
 }

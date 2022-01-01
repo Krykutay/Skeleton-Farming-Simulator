@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance3);
+        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance2);
     }
 
     void Update()
