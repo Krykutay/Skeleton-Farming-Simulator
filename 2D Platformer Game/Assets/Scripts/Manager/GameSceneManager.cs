@@ -16,9 +16,17 @@ public class GameSceneManager : MonoBehaviour
         SceneManager.LoadScene(Loader.Scene.MainMenu.ToString());
     }
 
-    public void RestartGame()
+    public void LoadScene1()
     {
         Time.timeScale = 1f;
+        ApplicationModel.LoadScene = 0;
+        SceneManager.LoadScene(Loader.Scene.Loading.ToString());
+    }
+
+    public void LoadScene2()
+    {
+        Time.timeScale = 1f;
+        ApplicationModel.LoadScene = 1;
         SceneManager.LoadScene(Loader.Scene.Loading.ToString());
     }
 }

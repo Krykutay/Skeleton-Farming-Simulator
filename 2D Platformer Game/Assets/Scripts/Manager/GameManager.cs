@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance2);
+        PlayAmbianceMusicAccordingToScene();
     }
 
     void Update()
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         _cvc.m_Follow = null;
         _gameoverPanel.SetActive(true);
 
-        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance3);
+        StopAmbianceMusicAccordingToScene();
         SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance4);
     }
 
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         _cvc.m_Follow = Player.Instance.transform;
         Player.Instance.gameObject.SetActive(true);
 
-        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance4);
+        StopAmbianceMusicAccordingToScene();
         SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance3);
     }
 
@@ -95,6 +95,22 @@ public class GameManager : MonoBehaviour
         _menu.gameObject.SetActive(true);
         Time.timeScale = 0f;
         currentState = PlayPauseState.Paused;
+    }
+
+    void PlayAmbianceMusicAccordingToScene()
+    {
+        if (ApplicationModel.LoadScene == 0)
+            SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance2);
+        else
+            SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance3);
+    }
+
+    void StopAmbianceMusicAccordingToScene()
+    {
+        if (ApplicationModel.LoadScene == 0)
+            SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance2);
+        else
+            SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance3);
     }
 
 }

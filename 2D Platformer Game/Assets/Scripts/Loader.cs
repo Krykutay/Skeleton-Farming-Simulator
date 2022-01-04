@@ -12,6 +12,7 @@ public class Loader : MonoBehaviour
     public enum Scene
     {
         Scene1,
+        Scene2,
         Loading,
         MainMenu,
     }
@@ -19,7 +20,14 @@ public class Loader : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitForSeconds(0.1f);  // Merely waiting for people to get rick rolled - for the memes
-        AsyncOperation operation = SceneManager.LoadSceneAsync(Scene.Scene1.ToString());
+
+        AsyncOperation operation;
+
+        if (ApplicationModel.LoadScene == (int)Scene.Scene1)
+            operation = SceneManager.LoadSceneAsync(Scene.Scene1.ToString());
+        else
+            operation = SceneManager.LoadSceneAsync(Scene.Scene2.ToString());
+
 
         while (operation.isDone == false)
         {

@@ -10,6 +10,7 @@ public class MainMenuSceneManager : MonoBehaviour
 
     public void PlayGame()
     {
+        ApplicationModel.LoadScene = 0;
         SceneManager.LoadScene(Loader.Scene.Loading.ToString());
     }
 
