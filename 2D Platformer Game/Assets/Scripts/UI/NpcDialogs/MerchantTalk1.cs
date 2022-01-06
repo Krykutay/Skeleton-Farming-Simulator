@@ -14,7 +14,7 @@ public class MerchantTalk1 : MonoBehaviour
     float[] _typeSpeed;
 
     bool _isPlayerInRange;
-    bool _hasTalkedOnce;
+    static bool _HasTalkedOnce;
 
     void OnEnable()
     {
@@ -54,7 +54,7 @@ public class MerchantTalk1 : MonoBehaviour
         if (!_isPlayerInRange)
             return;
 
-        if (_hasTalkedOnce)
+        if (_HasTalkedOnce)
         {
             _uiShop.Show(_shopCustomer);
             return;
@@ -88,7 +88,7 @@ public class MerchantTalk1 : MonoBehaviour
 
     void UIAssistant_OpenShop()
     {
-        _hasTalkedOnce = true;
+        _HasTalkedOnce = true;
         _uiShop.Show(_shopCustomer);
     }
 

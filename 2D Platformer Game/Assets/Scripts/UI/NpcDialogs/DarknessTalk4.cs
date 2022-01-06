@@ -9,7 +9,7 @@ public class DarknessTalk4 : MonoBehaviour
     SoundManager.SoundTags[] _dialogSounds;
     float[] _typeSpeed;
 
-    bool isActivatedOnce;
+    static bool _IsActivatedOnce;
 
     void OnEnable()
     {
@@ -23,10 +23,10 @@ public class DarknessTalk4 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isActivatedOnce)
+        if (_IsActivatedOnce)
             return;
 
-        isActivatedOnce = true;
+        _IsActivatedOnce = true;
 
         _initialDialog = new string[]
         {
@@ -49,7 +49,7 @@ public class DarknessTalk4 : MonoBehaviour
 
     void CoroutineDisableGameObject()
     {
-        if (isActivatedOnce)
+        if (_IsActivatedOnce)
         {
             StopCoroutine(DisableGameObject());
             StartCoroutine(DisableGameObject());
@@ -61,7 +61,7 @@ public class DarknessTalk4 : MonoBehaviour
     {
         yield return new WaitForSeconds(1.8f);
 
-        isActivatedOnce = false;
+        _IsActivatedOnce = false;
         _darknessTalk.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }

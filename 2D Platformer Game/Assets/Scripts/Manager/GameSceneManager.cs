@@ -19,14 +19,16 @@ public class GameSceneManager : MonoBehaviour
     public void LoadScene1()
     {
         Time.timeScale = 1f;
-        ApplicationModel.LoadScene = 0;
+        ApplicationModel.PreviousScene = ApplicationModel.CurrentScene;
+        ApplicationModel.CurrentScene = (int)Loader.Scene.Scene1;
         SceneManager.LoadScene(Loader.Scene.Loading.ToString());
     }
 
     public void LoadScene2()
     {
         Time.timeScale = 1f;
-        ApplicationModel.LoadScene = 1;
+        ApplicationModel.PreviousScene = ApplicationModel.CurrentScene;
+        ApplicationModel.CurrentScene = (int)Loader.Scene.Scene2;
         SceneManager.LoadScene(Loader.Scene.Loading.ToString());
     }
 }

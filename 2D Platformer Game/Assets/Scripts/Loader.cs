@@ -11,10 +11,10 @@ public class Loader : MonoBehaviour
 
     public enum Scene
     {
+        MainMenu,
+        Loading,
         Scene1,
         Scene2,
-        Loading,
-        MainMenu,
     }
 
     IEnumerator Start()
@@ -23,7 +23,7 @@ public class Loader : MonoBehaviour
 
         AsyncOperation operation;
 
-        if (ApplicationModel.LoadScene == (int)Scene.Scene1)
+        if (ApplicationModel.CurrentScene == (int)Scene.Scene1)
             operation = SceneManager.LoadSceneAsync(Scene.Scene1.ToString());
         else
             operation = SceneManager.LoadSceneAsync(Scene.Scene2.ToString());

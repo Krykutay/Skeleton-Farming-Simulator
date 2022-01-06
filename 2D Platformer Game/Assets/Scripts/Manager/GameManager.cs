@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
@@ -21,7 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _gameoverPanel;
     [SerializeField] CanvasScaler _canvasScaler;
 
-    [SerializeField] Transform _respawnPoint;
+    [SerializeField] Transform _spawnPoint;
+    [SerializeField] Transform _returnedSpawnPoint;
 
     CinemachineVirtualCamera _cvc;
 
@@ -48,6 +47,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayAmbianceMusicAccordingToScene();
+        PlayerSpawnPointAccordingToScene();
     }
 
     void Update()
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     void Player_PlayerDied()
     {
         Player.Instance.gameObject.SetActive(false);
-        Player.Instance.transform.position = _respawnPoint.position;
+        Player.Instance.transform.position = _spawnPoint.position;
         _cvc.m_Follow = null;
         _gameoverPanel.SetActive(true);
 
@@ -77,8 +77,8 @@ public class GameManager : MonoBehaviour
         _cvc.m_Follow = Player.Instance.transform;
         Player.Instance.gameObject.SetActive(true);
 
-        StopAmbianceMusicAccordingToScene();
-        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance3);
+        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance4);
+        PlayAmbianceMusicAccordingToScene();
     }
 
     public void Game_Resumed()
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     void PlayAmbianceMusicAccordingToScene()
     {
-        if (ApplicationModel.LoadScene == 0)
+        if (ApplicationModel.CurrentScene == (int)Loader.Scene.Scene1)
             SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance2);
         else
             SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance3);
@@ -107,10 +107,22 @@ public class GameManager : MonoBehaviour
 
     void StopAmbianceMusicAccordingToScene()
     {
-        if (ApplicationModel.LoadScene == 0)
+        if (ApplicationModel.CurrentScene == (int)Loader.Scene.Scene1)
             SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance2);
         else
             SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance3);
+    }
+
+    void PlayerSpawnPointAccordingToScene()
+    {
+        if (ApplicationModel.PreviousScene == (int)Loader.Scene.Scene1)
+        {
+            Player.Instance.transform.position = _spawnPoint.position;
+        }
+        else if (ApplicationModel.PreviousScene == (int)Loader.Scene.Scene2)
+        {
+            Player.Instance.transform.position = _returnedSpawnPoint.position;
+        }
     }
 
 }
