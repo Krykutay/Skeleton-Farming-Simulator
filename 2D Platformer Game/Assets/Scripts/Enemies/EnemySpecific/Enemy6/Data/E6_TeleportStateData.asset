@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _teleportSpeed: 4.5
   _teleportDuration: 1
-  _teleportCooldown: 2
+  _teleportCooldown: 5

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _maxHealth: 5
+  _initialMaxHealth: 5
+  _healthIncreaseAmount: 1
   _movementVelocity: 10
   _parryMovementVelocity: 5
   _jumpVelocity: 15
@@ -34,7 +36,7 @@ MonoBehaviour:
   _drag: 10
   _dashEndYMultiplier: 0.2
   _distBetweenAfterImages: 0.5
-  _dashDamage: 40
+  _dashDamage: 8
   _crouchMovementVelocity: 3.5
   _crouchColliderHeight: 0.8
   _standColliderHeight: 1.6
