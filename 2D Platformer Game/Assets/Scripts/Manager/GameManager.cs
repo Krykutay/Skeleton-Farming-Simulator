@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
+        Time.timeScale = 1f;
+
         Player.Instance.OnPlayerDied += Player_PlayerDied;
     }
 
@@ -79,6 +81,16 @@ public class GameManager : MonoBehaviour
 
         SoundManager.Instance.Stop(SoundManager.SoundTags.Gameover);
         PlayAmbianceMusicAccordingToScene();
+    }
+
+    public void LeaveScene2()
+    {
+        Time.timeScale = 0f;
+        _gameoverPanel.SetActive(true);
+        currentState = PlayPauseState.Paused;
+
+        StopAmbianceMusicAccordingToScene();
+        SoundManager.Instance.Play(SoundManager.SoundTags.Gameover);
     }
 
     public void Game_Resumed()

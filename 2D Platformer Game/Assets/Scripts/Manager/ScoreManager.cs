@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
     public int tokenScore { get; private set; }
     public int orbScore { get; private set; }
+    public int enemyKillCount { get; private set; }
 
     [SerializeField] TMP_Text _tokenText;
     [SerializeField] TMP_Text _orbText;
@@ -53,6 +54,11 @@ public class ScoreManager : MonoBehaviour
             tokenScore = 0;
 
         _tokenText.SetText("x " + tokenScore);
+    }
+
+    public void Enemy_Killed()
+    {
+        enemyKillCount++;
     }
 
 }

@@ -22668,6 +22668,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1ad6b5573a46b614e8cc3ca1b1f44c9b, type: 3}
     volume: 0.1
     pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 51
+    type: 0
+    clip: {fileID: 8300000, guid: 8c98a39c6687bf84780798cd60b3702d, type: 3}
+    volume: 0.5
+    pitch: 1
     isLoop: 0
     hasCooldown: 0
     source: {fileID: 0}

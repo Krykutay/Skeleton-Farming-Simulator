@@ -73413,7 +73413,6 @@ GameObject:
   m_Component:
   - component: {fileID: 551236396}
   - component: {fileID: 551236398}
-  - component: {fileID: 551236397}
   m_Layer: 5
   m_Name: GameoverPanel
   m_TagString: Untagged
@@ -73448,18 +73447,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.20000076, y: 16.75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &551236397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551236395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82f0faf61ff29e4c8cb58c56d35eec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &551236398
 Animator:
   serializedVersion: 3
@@ -102004,7 +101991,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4a83da1744b493c4c9dfdff537c598f3, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -105083,6 +105070,14 @@ MonoBehaviour:
     type: 1
     clip: {fileID: 8300000, guid: 1ad6b5573a46b614e8cc3ca1b1f44c9b, type: 3}
     volume: 0.1
+    pitch: 1
+    isLoop: 1
+    hasCooldown: 0
+    source: {fileID: 0}
+  - name: 51
+    type: 0
+    clip: {fileID: 8300000, guid: 8c98a39c6687bf84780798cd60b3702d, type: 3}
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0

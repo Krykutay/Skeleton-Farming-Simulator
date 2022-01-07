@@ -191,6 +191,7 @@ public class Entity : MonoBehaviour, IDamageable
         DropLootOnDeath();
         VaporizeParticle1Pool.Instance.Get(transform.position, Quaternion.identity);
         OnEnemyDied?.Invoke(this);
+        ScoreManager.Instance.Enemy_Killed();
 
         SoundManager.Instance.Stop(SoundManager.SoundTags.SkeletonRespawn);
         anim.WriteDefaultValues();
@@ -199,6 +200,9 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual void JustDied()
     {
         deathCount++;
+        if (deathCount == 2)
+            ScoreManager.Instance.Enemy_Killed();
+
         isDead = true;
         SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonDie);
         _healthbar.gameObject.SetActive(false);
