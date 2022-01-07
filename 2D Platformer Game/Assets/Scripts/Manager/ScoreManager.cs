@@ -23,9 +23,6 @@ public class ScoreManager : MonoBehaviour
         _orbText.SetText("x " + orbScore);
 
         Load_Token();
-
-        tokenScore = 150;
-        _tokenText.SetText("x " + tokenScore);
     }
 
     public void Orb_Collected()

@@ -50,7 +50,7 @@ public class NpcTalk7 : MonoBehaviour
         _initialDialog = new string[]
         {
             "The mining pits are just ahead, we must claim it back.",
-            "Oh, and be careful lad.",
+            "Oh, and be careful lad. And here, take these gems behind me if you haven't already.",
         };
 
         _dialogSounds = new SoundManager.SoundTags[]
@@ -62,7 +62,7 @@ public class NpcTalk7 : MonoBehaviour
         _typeSpeed = new float[]
         {
             0.065f,
-            0.08f,
+            0.065f,
         };
 
         _uiAssistant.gameObject.SetActive(true);

@@ -22226,7 +22226,7 @@ MonoBehaviour:
   - name: 8
     type: 0
     clip: {fileID: 8300000, guid: 63415d1b4413fae44bcd4520b5911851, type: 3}
-    volume: 0.4
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22234,7 +22234,7 @@ MonoBehaviour:
   - name: 9
     type: 0
     clip: {fileID: 8300000, guid: 3fa799670776ff54bafdbcc2cb5c8fb8, type: 3}
-    volume: 0.4
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22258,7 +22258,7 @@ MonoBehaviour:
   - name: 12
     type: 0
     clip: {fileID: 8300000, guid: 841f14bdd472a5b4687d6ab56fd92aec, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22282,7 +22282,7 @@ MonoBehaviour:
   - name: 15
     type: 0
     clip: {fileID: 8300000, guid: dc99852d174f95947b15d973cee70ff9, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22290,7 +22290,7 @@ MonoBehaviour:
   - name: 16
     type: 0
     clip: {fileID: 8300000, guid: be7cfb5ee402b844bb1d422e446353f9, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22298,7 +22298,7 @@ MonoBehaviour:
   - name: 17
     type: 0
     clip: {fileID: 8300000, guid: d7e9b510115e6a44b9d64a225b07b53c, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22346,7 +22346,7 @@ MonoBehaviour:
   - name: 23
     type: 0
     clip: {fileID: 8300000, guid: d30b162126407ca41a93055d24f63bde, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22362,7 +22362,7 @@ MonoBehaviour:
   - name: 25
     type: 0
     clip: {fileID: 8300000, guid: 457dfe0f0c3375e41ba4918790bf2f7f, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22370,7 +22370,7 @@ MonoBehaviour:
   - name: 26
     type: 0
     clip: {fileID: 8300000, guid: 0f995d89e865ec045838def582535010, type: 3}
-    volume: 0.6
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22386,7 +22386,7 @@ MonoBehaviour:
   - name: 28
     type: 2
     clip: {fileID: 8300000, guid: c6261c2ca226ea74687f57bbf163394b, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22394,7 +22394,7 @@ MonoBehaviour:
   - name: 29
     type: 2
     clip: {fileID: 8300000, guid: 6476fabb847ecd249b04fc809c59a021, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22402,15 +22402,15 @@ MonoBehaviour:
   - name: 30
     type: 2
     clip: {fileID: 8300000, guid: 93a780354bcbcb24987bfb49a8996bfe, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
     source: {fileID: 0}
   - name: 31
     type: 2
-    clip: {fileID: 8300000, guid: 89cb99e89a4c7634bace291481fcd3ae, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 772ee2f1a99ffbf49a07ae49d4bd098c, type: 3}
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22418,7 +22418,7 @@ MonoBehaviour:
   - name: 32
     type: 2
     clip: {fileID: 8300000, guid: 5f5befd3caecb3843a3d788e3954bd44, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22426,7 +22426,7 @@ MonoBehaviour:
   - name: 33
     type: 2
     clip: {fileID: 8300000, guid: c46958a623c577d49aeaf3268de6cc64, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22434,7 +22434,7 @@ MonoBehaviour:
   - name: 34
     type: 2
     clip: {fileID: 8300000, guid: d6afb3dcee0a1e441853440eadd0f0bd, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22442,7 +22442,7 @@ MonoBehaviour:
   - name: 35
     type: 2
     clip: {fileID: 8300000, guid: 0c2f22e153299324cb698d54a81375eb, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22450,7 +22450,7 @@ MonoBehaviour:
   - name: 36
     type: 2
     clip: {fileID: 8300000, guid: 704c70cb176d25b42a90ee05e4f94977, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22458,7 +22458,7 @@ MonoBehaviour:
   - name: 37
     type: 2
     clip: {fileID: 8300000, guid: 919945c21e1181249a5aae8edccdca27, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22466,7 +22466,7 @@ MonoBehaviour:
   - name: 38
     type: 2
     clip: {fileID: 8300000, guid: 2e3012641cf7580468a4f473e7b308be, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22474,7 +22474,7 @@ MonoBehaviour:
   - name: 39
     type: 2
     clip: {fileID: 8300000, guid: 135666d3d854a0141a386539ee897fd3, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22482,7 +22482,7 @@ MonoBehaviour:
   - name: 40
     type: 2
     clip: {fileID: 8300000, guid: c8f157b2b5918904f9106a7258e366a8, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22490,7 +22490,7 @@ MonoBehaviour:
   - name: 41
     type: 2
     clip: {fileID: 8300000, guid: d503e92c98acaf7449fdc0120a60d1cd, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22498,7 +22498,7 @@ MonoBehaviour:
   - name: 42
     type: 2
     clip: {fileID: 8300000, guid: 2e38b56bcb3e3cc4f9ddf1fc4d4075e9, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22506,7 +22506,7 @@ MonoBehaviour:
   - name: 43
     type: 2
     clip: {fileID: 8300000, guid: 9cb5d0bdb7bbf494ca10e621bc1a56a8, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22514,7 +22514,7 @@ MonoBehaviour:
   - name: 44
     type: 2
     clip: {fileID: 8300000, guid: 6754e329e1846bf438fb6d4d2b2f68ad, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22530,7 +22530,7 @@ MonoBehaviour:
   - name: 46
     type: 2
     clip: {fileID: 8300000, guid: 22d223fc85ac21a48ae5732ca2c9681c, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22538,7 +22538,7 @@ MonoBehaviour:
   - name: 47
     type: 2
     clip: {fileID: 8300000, guid: dd254f3f5af7ec548baac289f5adcc44, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22546,7 +22546,7 @@ MonoBehaviour:
   - name: 48
     type: 2
     clip: {fileID: 8300000, guid: a1e7173fd07860740ac3e60a9a1c5645, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22554,7 +22554,7 @@ MonoBehaviour:
   - name: 49
     type: 2
     clip: {fileID: 8300000, guid: 5821fad3e4cff8d4fabfb4acc0e19b53, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22562,7 +22562,7 @@ MonoBehaviour:
   - name: 50
     type: 2
     clip: {fileID: 8300000, guid: f26a22ab96e1ee844b6d4ee78b61bbfe, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22570,7 +22570,7 @@ MonoBehaviour:
   - name: 52
     type: 0
     clip: {fileID: 8300000, guid: 8816a40d62184e646804cda7b1c93b5e, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22602,7 +22602,7 @@ MonoBehaviour:
   - name: 56
     type: 0
     clip: {fileID: 8300000, guid: adff38f7f5c81c74ea2d011a4cda0db5, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22663,9 +22663,9 @@ MonoBehaviour:
     isLoop: 1
     hasCooldown: 0
     source: {fileID: 0}
-  - name: 63
+  - name: 64
     type: 1
-    clip: {fileID: 8300000, guid: 94f61e6851529314ca340f41ebb9d611, type: 3}
+    clip: {fileID: 8300000, guid: 1ad6b5573a46b614e8cc3ca1b1f44c9b, type: 3}
     volume: 0.1
     pitch: 1
     isLoop: 0

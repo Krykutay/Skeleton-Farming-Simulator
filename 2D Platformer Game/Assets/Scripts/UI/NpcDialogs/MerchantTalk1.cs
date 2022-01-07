@@ -14,7 +14,7 @@ public class MerchantTalk1 : MonoBehaviour
     float[] _typeSpeed;
 
     bool _isPlayerInRange;
-    static bool _HasTalkedOnce;
+    static bool _hasTalkedOnce;
 
     void OnEnable()
     {
@@ -32,6 +32,7 @@ public class MerchantTalk1 : MonoBehaviour
     {
         if (collision.TryGetComponent<IShopCustomer>(out _shopCustomer))
         {
+            _talkText.gameObject.SetActive(true);
             _talkText.text = "Shop (E)";
             _isPlayerInRange = true;
         }
@@ -43,6 +44,7 @@ public class MerchantTalk1 : MonoBehaviour
         {
             _talkText.text = "";
             _isPlayerInRange = false;
+            _talkText.gameObject.SetActive(false);
             _uiAssistant.gameObject.SetActive(false);
             _uiShop.Hide();
             _uiAssistant.StopTalkingSound();
@@ -54,7 +56,7 @@ public class MerchantTalk1 : MonoBehaviour
         if (!_isPlayerInRange)
             return;
 
-        if (_HasTalkedOnce)
+        if (_hasTalkedOnce)
         {
             _uiShop.Show(_shopCustomer);
             return;
@@ -88,7 +90,7 @@ public class MerchantTalk1 : MonoBehaviour
 
     void UIAssistant_OpenShop()
     {
-        _HasTalkedOnce = true;
+        _hasTalkedOnce = true;
         _uiShop.Show(_shopCustomer);
     }
 
