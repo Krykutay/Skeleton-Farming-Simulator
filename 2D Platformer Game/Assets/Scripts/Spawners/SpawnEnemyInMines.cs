@@ -5,7 +5,7 @@ public class SpawnEnemyInMines : MonoBehaviour
     [SerializeField] StartSpawns _startSpawns;
     [SerializeField] Transform[] _spawnPositions;
 
-    [SerializeField] float _spawnDuration = 7.5f;
+    [SerializeField] float _spawnDuration = 10f;
 
     float _lastSpawnTime = Mathf.NegativeInfinity;
 
@@ -13,15 +13,19 @@ public class SpawnEnemyInMines : MonoBehaviour
 
     int _randomPosition;
     int _randomEnemy;
+    int _activeEnemyCount;
 
     void OnEnable()
     {
+        _activeEnemyCount = 5;
         _startSpawns.SpawnsTriggered += StartSpawns_SpawnsTriggered;
+        Entity.OnEnemyDied += Entity_EnemyDied;
     }
 
     void OnDisable()
     {
         _startSpawns.SpawnsTriggered -= StartSpawns_SpawnsTriggered;
+        Entity.OnEnemyDied -= Entity_EnemyDied;
     }
 
     void Update()
@@ -29,7 +33,7 @@ public class SpawnEnemyInMines : MonoBehaviour
         if (!_isSpawnTriggered)
             return;
 
-        if (Time.time > _lastSpawnTime + _spawnDuration)
+        if (Time.time > _lastSpawnTime + _spawnDuration && _activeEnemyCount <= 30)
         {
             _randomPosition = Random.Range(0, _spawnPositions.Length);
             _randomEnemy = Random.Range(0, 6);
@@ -54,8 +58,9 @@ public class SpawnEnemyInMines : MonoBehaviour
                     break;
             }
 
+            _activeEnemyCount++;
             _lastSpawnTime = Time.time;
-            if (_spawnDuration > 2.5f)
+            if (_spawnDuration > 5f)
                 _spawnDuration -= 0.1f;
         }
     }
@@ -63,5 +68,10 @@ public class SpawnEnemyInMines : MonoBehaviour
     void StartSpawns_SpawnsTriggered()
     {
         _isSpawnTriggered = true;
+    }
+
+    void Entity_EnemyDied(Entity entity)
+    {
+        _activeEnemyCount--;
     }
 }

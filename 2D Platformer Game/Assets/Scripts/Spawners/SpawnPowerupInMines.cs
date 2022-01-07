@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class SpawnPowerupInMines : MonoBehaviour
@@ -13,6 +14,7 @@ public class SpawnPowerupInMines : MonoBehaviour
 
     int _randomPosition;
     int _randomPowerup;
+    int _lastPosition = -1;
 
     void OnEnable()
     {
@@ -31,8 +33,10 @@ public class SpawnPowerupInMines : MonoBehaviour
 
         if (Time.time > _lastSpawnTime + _spawnDuration)
         {
+            var list = Enumerable.Range(0, _spawnPositions.Length).Where(t => t != _lastPosition).ToArray();
+
             _randomPowerup = Random.Range(0, 100);
-            _randomPosition = Random.Range(0, _spawnPositions.Length);
+            _randomPosition = list[Random.Range(0, list.Length)];
 
             if (_randomPowerup < 15)
                 VaporizePowerupPool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
@@ -44,6 +48,7 @@ public class SpawnPowerupInMines : MonoBehaviour
                 ShieldPowerupPool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
 
             _lastSpawnTime = Time.time;
+            _lastPosition = _randomPosition;
         }
     }
 
