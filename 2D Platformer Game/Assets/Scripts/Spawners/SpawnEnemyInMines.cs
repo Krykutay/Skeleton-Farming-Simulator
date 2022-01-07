@@ -5,7 +5,7 @@ public class SpawnEnemyInMines : MonoBehaviour
     [SerializeField] StartSpawns _startSpawns;
     [SerializeField] Transform[] _spawnPositions;
 
-    [SerializeField] float _spawnDuration = 5f;
+    [SerializeField] float _spawnDuration = 7.5f;
 
     float _lastSpawnTime = Mathf.NegativeInfinity;
 

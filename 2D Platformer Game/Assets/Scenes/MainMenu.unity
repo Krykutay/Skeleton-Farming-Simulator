@@ -401,7 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2120729116}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Missing Prefab (Dummy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1870040519
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &53626378
@@ -768,7 +768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042759035}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BluePotionCountdownBar (Missing Prefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3062,7 +3062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1661524872}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RedPotionCountdownBar (Missing Prefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4820,7 +4820,7 @@ GameObject:
   - component: {fileID: 299259575}
   - component: {fileID: 299259577}
   - component: {fileID: 299259572}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Menu Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7670,7 +7670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1448677621}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Missing Prefab (Dummy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7691,7 +7691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829680334}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ManaBar (Missing Prefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14826,7 +14826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 700833763}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Missing Prefab (Dummy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17424,7 +17424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 750886619}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GreenPotionCountdownBar (Missing Prefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21149,7 +21149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1487925985}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Missing Prefab (Dummy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22530,7 +22530,7 @@ MonoBehaviour:
   - name: 46
     type: 2
     clip: {fileID: 8300000, guid: 22d223fc85ac21a48ae5732ca2c9681c, type: 3}
-    volume: 0.5
+    volume: 0.4
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22538,7 +22538,7 @@ MonoBehaviour:
   - name: 47
     type: 2
     clip: {fileID: 8300000, guid: dd254f3f5af7ec548baac289f5adcc44, type: 3}
-    volume: 0.5
+    volume: 0.4
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22546,7 +22546,7 @@ MonoBehaviour:
   - name: 48
     type: 2
     clip: {fileID: 8300000, guid: a1e7173fd07860740ac3e60a9a1c5645, type: 3}
-    volume: 0.5
+    volume: 0.4
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22554,7 +22554,7 @@ MonoBehaviour:
   - name: 49
     type: 2
     clip: {fileID: 8300000, guid: 5821fad3e4cff8d4fabfb4acc0e19b53, type: 3}
-    volume: 0.5
+    volume: 0.4
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22674,7 +22674,7 @@ MonoBehaviour:
   - name: 51
     type: 0
     clip: {fileID: 8300000, guid: 8c98a39c6687bf84780798cd60b3702d, type: 3}
-    volume: 0.5
+    volume: 0.35
     pitch: 1
     isLoop: 0
     hasCooldown: 0

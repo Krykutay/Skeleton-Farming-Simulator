@@ -211,7 +211,7 @@ public class UI_Shop : MonoBehaviour
         }
         else
         {
-            Warning("You don't have enough Tokens!");
+            Warning("You don't have enough Gems!");
             SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
             EventSystem.current.SetSelectedGameObject(null);
         }
@@ -239,7 +239,7 @@ public class UI_Shop : MonoBehaviour
         }
         else
         {
-            Warning("You don't have enough Tokens!");
+            Warning("You don't have enough Gems!");
             SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
             EventSystem.current.SetSelectedGameObject(null);
         }
@@ -256,7 +256,7 @@ public class UI_Shop : MonoBehaviour
             }
             else
             {
-                Warning("You don't have enough Tokens!");
+                Warning("You don't have enough Gems!");
                 SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
                 EventSystem.current.SetSelectedGameObject(null);
             }
@@ -271,7 +271,7 @@ public class UI_Shop : MonoBehaviour
             }
             else
             {
-                Warning("You don't have enough Tokens!");
+                Warning("You don't have enough Gems!");
                 SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
                 EventSystem.current.SetSelectedGameObject(null);
             }

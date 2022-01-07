@@ -13,6 +13,12 @@ public class DarknessTalk4 : MonoBehaviour
 
     void OnEnable()
     {
+        if (_IsActivatedOnce)
+        {
+            _darknessTalk.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+
         _darknessTalk.OnSpeechEnd += CoroutineDisableGameObject;
     }
 
@@ -59,9 +65,8 @@ public class DarknessTalk4 : MonoBehaviour
 
     IEnumerator DisableGameObject()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
-        _IsActivatedOnce = false;
         _darknessTalk.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }

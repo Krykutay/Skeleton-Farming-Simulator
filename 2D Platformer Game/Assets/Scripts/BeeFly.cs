@@ -1,16 +1,28 @@
+using System;
 using UnityEngine;
 
 public class BeeFly : MonoBehaviour, IDamageable
 {
-    float _heightVariance;
+    public static Action<Vector3, Quaternion> OnBeeDied;
+
     [SerializeField] float _moveSpeed = 5f;
     [SerializeField] float _turnTime = 3f;
 
+    Vector3 _initialPosition;
+    Quaternion _initialRotation;
+
+    float _heightVariance;
     float _initialTurnTime;
+
+    void Awake()
+    {
+        _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
+    }
 
     void Start()
     {
-        _heightVariance = 0.3f;
+        _heightVariance = UnityEngine.Random.Range(0.4f, 1.2f);
         _initialTurnTime = _turnTime;
     }
 
@@ -32,7 +44,8 @@ public class BeeFly : MonoBehaviour, IDamageable
         DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.identity);
         DeathChunkParticlePool.Instance.Get(transform.position, Quaternion.identity);
 
-        Destroy(gameObject);
+        OnBeeDied?.Invoke(_initialPosition, _initialRotation);
+        BeePool.Instance.ReturnToPool(this);
 
         return true;
     }
