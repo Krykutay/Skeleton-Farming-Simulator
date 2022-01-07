@@ -22,6 +22,9 @@ public class EasterEgg : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_isPressedOnce)
+            return;
+
         _talkText.gameObject.SetActive(true);
         _talkText.text = "Press (E)";
         _isPlayerInRange = true;
