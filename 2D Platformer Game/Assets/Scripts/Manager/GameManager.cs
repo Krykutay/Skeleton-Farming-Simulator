@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         _gameoverPanel.SetActive(true);
 
         StopAmbianceMusicAccordingToScene();
-        SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance4);
+        SoundManager.Instance.Play(SoundManager.SoundTags.Gameover);
     }
 
     public void Respawn()
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         _cvc.m_Follow = Player.Instance.transform;
         Player.Instance.gameObject.SetActive(true);
 
-        SoundManager.Instance.Stop(SoundManager.SoundTags.Ambiance4);
+        SoundManager.Instance.Stop(SoundManager.SoundTags.Gameover);
         PlayAmbianceMusicAccordingToScene();
     }
 

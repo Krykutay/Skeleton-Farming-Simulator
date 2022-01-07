@@ -52,7 +52,7 @@ public class NpcTalk1 : MonoBehaviour
             "Welcome stranger, I.. mean hero!. We've been waiting for you!",
             "Our mining pits are under attack. The eternals have almost taken the complete control of them.",
             "We've managed to capture some of those, and we would like to train you against them.",
-            "Let's move on, and begin your training.",
+            "Let's move on, and begin your training. Oh and please don't kill the birds, they're cute. I love 'em.",
         };
 
         _dialogSounds = new SoundManager.SoundTags[]
@@ -68,7 +68,7 @@ public class NpcTalk1 : MonoBehaviour
             0.07f,
             0.062f,
             0.05f,
-            0.062f,
+            0.06f
         };
 
         _uiAssistant.gameObject.SetActive(true);

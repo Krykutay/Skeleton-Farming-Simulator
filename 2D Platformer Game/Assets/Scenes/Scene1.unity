@@ -102060,7 +102060,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: 31
     type: 2
-    clip: {fileID: 8300000, guid: 89cb99e89a4c7634bace291481fcd3ae, type: 3}
+    clip: {fileID: 8300000, guid: 772ee2f1a99ffbf49a07ae49d4bd098c, type: 3}
     volume: 0.7
     pitch: 1
     isLoop: 0
@@ -102316,7 +102316,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: 64
     type: 1
-    clip: {fileID: 8300000, guid: 94f61e6851529314ca340f41ebb9d611, type: 3}
+    clip: {fileID: 8300000, guid: 1ad6b5573a46b614e8cc3ca1b1f44c9b, type: 3}
     volume: 0.1
     pitch: 1
     isLoop: 0

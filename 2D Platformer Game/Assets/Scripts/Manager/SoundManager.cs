@@ -75,7 +75,8 @@ public class SoundManager : MonoBehaviour
         Ambiance1,
         Ambiance2,
         Ambiance3,
-        Ambiance4
+        Gameover,
+        NpcTalk1_5
     }
 
     public enum SoundTypes
