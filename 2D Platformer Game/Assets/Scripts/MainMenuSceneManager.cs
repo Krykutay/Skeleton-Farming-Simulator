@@ -5,6 +5,7 @@ public class MainMenuSceneManager : MonoBehaviour
 {
     void Start()
     {
+        ApplicationModel.CurrentScene = (int)Loader.Scene.MainMenu;
         SoundManager.Instance.Play(SoundManager.SoundTags.Ambiance1);
     }
 

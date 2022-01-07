@@ -1,23 +1,25 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class BeeFly : MonoBehaviour, IDamageable
 {
-    public static Action<Vector3, Quaternion> OnBeeDied;
-
     [SerializeField] float _moveSpeed = 5f;
     [SerializeField] float _turnTime = 3f;
+    [SerializeField] float _spawnDuration = 8f;
 
-    Vector3 _initialPosition;
-    Quaternion _initialRotation;
+    SpriteRenderer _spriteRenderer;
+    CircleCollider2D _collider;
+    Animator _anim;
 
     float _heightVariance;
     float _initialTurnTime;
 
     void Awake()
     {
-        _initialPosition = transform.position;
-        _initialRotation = transform.rotation;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<CircleCollider2D>();
+        _anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -44,10 +46,21 @@ public class BeeFly : MonoBehaviour, IDamageable
         DeathBloodParticlePool.Instance.Get(transform.position, Quaternion.identity);
         DeathChunkParticlePool.Instance.Get(transform.position, Quaternion.identity);
 
-        OnBeeDied?.Invoke(_initialPosition, _initialRotation);
-        BeePool.Instance.ReturnToPool(this);
+        _anim.enabled = false;
+        _spriteRenderer.enabled = false;
+        _collider.enabled = false;
 
+        StartCoroutine(BeeDied());
         return true;
+    }
+
+    IEnumerator BeeDied()
+    {
+        yield return new WaitForSeconds(_spawnDuration);
+
+        _anim.enabled = true;
+        _spriteRenderer.enabled = true;
+        _collider.enabled = true;
     }
 
 }

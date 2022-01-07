@@ -5,7 +5,7 @@ public class SpawnPowerupInMines : MonoBehaviour
     [SerializeField] StartSpawns _startSpawns;
     [SerializeField] Transform[] _spawnPositions;
 
-    [SerializeField] float _spawnDuration = 6f;
+    [SerializeField] float _spawnDuration = 5f;
 
     float _lastSpawnTime = Mathf.NegativeInfinity;
 
@@ -39,7 +39,7 @@ public class SpawnPowerupInMines : MonoBehaviour
             else if (_randomPowerup < 50)
                 HealthPowerupPool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
             else if (_randomPowerup < 75)
-                DamagePopupPool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
+                DamagePowerupPool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
             else
                 ShieldPowerupPool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
 
