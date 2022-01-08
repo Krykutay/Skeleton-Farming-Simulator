@@ -10292,9 +10292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiAssistant: {fileID: 1874042850}
   _talkText: {fileID: 1894222844}
-  _currentJumpKeybindText: {fileID: 6685068270787288569}
-  _currentMoveLeftKeybindText: {fileID: 7318814968282755143}
-  _currentMoveRightKeybindText: {fileID: 7318814968679943948}
 --- !u!58 &460157169
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -74575,7 +74572,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiAssistant: {fileID: 1874042850}
   _talkText: {fileID: 1188603199}
-  _currentJumpKeybindText: {fileID: 6685068270787288569}
 --- !u!1 &590380980
 GameObject:
   m_ObjectHideFlags: 0
@@ -85533,7 +85529,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiAssistant: {fileID: 1874042850}
   _talkText: {fileID: 1743392919}
-  _currentDashKeybindText: {fileID: 7318814968805022083}
 --- !u!95 &1031943109
 Animator:
   serializedVersion: 3
@@ -101893,8 +101888,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiAssistant: {fileID: 1874042850}
   _talkText: {fileID: 1848965898}
-  _currentAttackKeybindText: {fileID: 6685068269622799630}
-  _currentParryKeybindText: {fileID: 7318814967446189003}
 --- !u!58 &1706771475
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127856,7 +127849,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 550263046520174817}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 550263045358264126}
