@@ -24,7 +24,7 @@ public class ScoreCalculationOnGameOver : MonoBehaviour
     void OnEnable()
     {
         _isEarned = false;
-        _tokensEarned = (int)Mathf.Ceil(ScoreManager.Instance.orbScore / 10);
+        _tokensEarned = (int)Mathf.Ceil(ScoreManager.Instance.orbScore / 5);
 
         int highScore;
         int score = ScoreManager.Instance.orbScore * 100;

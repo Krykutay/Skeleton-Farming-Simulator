@@ -5,6 +5,7 @@ public class EasterEgg : MonoBehaviour
 {
     [SerializeField] TMP_Text _talkText;
     [SerializeField] Animator _easterEggAnim;
+    [SerializeField] GameObject _easterEggPowerups;
 
     bool _isPlayerInRange;
     bool _isPressedOnce;
@@ -46,6 +47,7 @@ public class EasterEgg : MonoBehaviour
         if (_isPressedOnce)
             return;
 
+        _easterEggPowerups.SetActive(true);
         _isPressedOnce = true;
         _talkText.text = "";
         SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonRespawn);
