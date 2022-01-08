@@ -29,9 +29,9 @@ public class ScoreCalculationOnGameOver : MonoBehaviour
         int highScore;
         int score = ScoreManager.Instance.orbScore * 100;
 
-        _enemyScoreText.text = ScoreManager.Instance.enemyKillCount.ToString();
-        _orbsScoreText.text = ScoreManager.Instance.orbScore.ToString();
-        _tokensEarnedText.text = "0";
+        _enemyScoreText.text = "x " + ScoreManager.Instance.enemyKillCount.ToString();
+        _orbsScoreText.text = "x " + ScoreManager.Instance.orbScore.ToString();
+        _tokensEarnedText.text = "x 0";
 
         _scoreText.text = score.ToString();
 
@@ -70,7 +70,7 @@ public class ScoreCalculationOnGameOver : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.05f);
 
-            _tokensEarnedText.text = i.ToString();
+            _tokensEarnedText.text = "x " + i.ToString();
         }
         SoundManager.Instance.Play(SoundManager.SoundTags.ScoreCalculation);
         _anim.SetTrigger("part1Complete");
