@@ -3,11 +3,11 @@ using UnityEngine;
 public class Items
 {
     static int _defaultSwordCost = 0;
-    static int _blueSwordCost = 12;
-    static int _cyanSwordCost = 12;
-    static int _greenSwordCost = 12;
-    static int _redSwordCost = 12;
-    static int _purpleSwordCost = 12;
+    static int _blueSwordCost = 10;
+    static int _cyanSwordCost = 10;
+    static int _greenSwordCost = 10;
+    static int _redSwordCost = 10;
+    static int _purpleSwordCost = 10;
     
     static int _defaultOutfitCost = 0;
     static int _blueOutfitCost = 8;
@@ -15,8 +15,8 @@ public class Items
     static int _yellowOutfitCost = 8;
     static int _brownOutfitCost = 8;
     
-    static int _defenseBoostCost = 30;
-    static int _offenseBoostCost = 30;
+    static int _defenseBoostCost = 20;
+    static int _offenseBoostCost = 20;
 
     public enum ItemType
     {

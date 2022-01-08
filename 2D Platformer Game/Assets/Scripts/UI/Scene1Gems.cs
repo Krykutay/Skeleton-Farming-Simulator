@@ -4,8 +4,10 @@ using TMPro;
 
 public class Scene1Gems : MonoBehaviour
 {
-    [SerializeField] protected int minModifier = 40;
-    [SerializeField] protected int maxModifier = 60;
+    [SerializeField] int _minModifier = 40;
+    [SerializeField] int _maxModifier = 60;
+
+    [SerializeField] int _tokensEarned = 18;
 
     [SerializeField] TMP_Text _talkText;
 
@@ -76,9 +78,9 @@ public class Scene1Gems : MonoBehaviour
     {
         while (isFollowing)
         {
-            orb1.transform.position = Vector3.SmoothDamp(orb1.transform.position, Player.Instance.transform.position, ref _velocity, Time.deltaTime * Random.Range(minModifier, maxModifier));
-            orb2.transform.position = Vector3.SmoothDamp(orb2.transform.position, Player.Instance.transform.position, ref _velocity1, Time.deltaTime * Random.Range(minModifier, maxModifier));
-            orb3.transform.position = Vector3.SmoothDamp(orb3.transform.position, Player.Instance.transform.position, ref _velocity2, Time.deltaTime * Random.Range(minModifier, maxModifier));
+            orb1.transform.position = Vector3.SmoothDamp(orb1.transform.position, Player.Instance.transform.position, ref _velocity, Time.deltaTime * Random.Range(_minModifier, _maxModifier));
+            orb2.transform.position = Vector3.SmoothDamp(orb2.transform.position, Player.Instance.transform.position, ref _velocity1, Time.deltaTime * Random.Range(_minModifier, _maxModifier));
+            orb3.transform.position = Vector3.SmoothDamp(orb3.transform.position, Player.Instance.transform.position, ref _velocity2, Time.deltaTime * Random.Range(_minModifier, _maxModifier));
             yield return null;
         }
     }
@@ -89,7 +91,7 @@ public class Scene1Gems : MonoBehaviour
 
         isFollowing = false;
         StopCoroutine(CollectGems());
-        ScoreManager.Instance.Token_Earned(20);
+        ScoreManager.Instance.Token_Earned(_tokensEarned);
         PlayerPrefs.SetInt("scene1Gems", 1);
         Destroy(gameObject);
     }
