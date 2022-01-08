@@ -28,6 +28,9 @@ public class ProjectileSkill : Projectile
         _isCasting = true;
         startPosition = transform.position;
         _anim.SetBool("isCasting", _isCasting);
+
+        StopCoroutine(DisableProjectileIfNotFired(1f));
+        StartCoroutine(DisableProjectileIfNotFired(1f));
     }
 
     private void OnDisable()
@@ -70,6 +73,14 @@ public class ProjectileSkill : Projectile
     {
         yield return new WaitForSeconds(duration);
         EnemySkillPool.Instance.ReturnToPool(this);
+    }
+
+    IEnumerator DisableProjectileIfNotFired(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        if (_isCasting)
+            EnemySkillPool.Instance.ReturnToPool(this);
     }
 
     public override void FireProjectile(float speed, float travelDistance, float damage, Entity entity)

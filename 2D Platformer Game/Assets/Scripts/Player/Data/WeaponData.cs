@@ -8,7 +8,7 @@ public class WeaponData : ScriptableObject
     [SerializeField] LayerMask _damageable;
     [SerializeField] AttackDetails[] _attackDetails;
     [SerializeField] int[] _initialAttackDamages;
-    [SerializeField] int _damageIncreaseAmount;
+    [SerializeField] int _damageIncreaseAmount = 1;
 
     public int amountOfAttacks { get; protected set; }
     public float movementSpeed { get { return _movementSpeed; } }

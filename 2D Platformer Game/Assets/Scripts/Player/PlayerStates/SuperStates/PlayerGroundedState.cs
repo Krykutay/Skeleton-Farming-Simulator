@@ -50,10 +50,9 @@ public class PlayerGroundedState : PlayerState
         _attackInput = player.inputHandler.attackInput;
         _defenseInput = player.inputHandler.defenseInput;
 
-        if (_attackInput && !isTouchingCeiling)
+        if (_attackInput && !isTouchingCeiling && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-                stateMachine.ChangeState(player.primaryAttackState);
+            stateMachine.ChangeState(player.primaryAttackState);
         }
         else if (_defenseInput && !isTouchingCeiling)
         {

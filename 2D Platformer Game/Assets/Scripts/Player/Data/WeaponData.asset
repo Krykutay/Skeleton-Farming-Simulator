@@ -61,3 +61,4 @@ MonoBehaviour:
     attackRadius: 1
     size: {x: 0, y: 0}
   _initialAttackDamages: 0a0000000c0000000f0000000a0000000c0000000f000000
+  _damageIncreaseAmount: 1

@@ -66,10 +66,9 @@ public class PlayerInAirState : PlayerState
 
         CheckJumpMultiplier();
 
-        if (_attackInput)
+        if (_attackInput && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-                stateMachine.ChangeState(player.primaryAttackState);
+            stateMachine.ChangeState(player.primaryAttackState);
         }
         else if (_defenseInput)
         {
