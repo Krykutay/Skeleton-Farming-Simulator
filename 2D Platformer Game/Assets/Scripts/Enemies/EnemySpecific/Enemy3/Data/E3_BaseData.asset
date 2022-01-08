@@ -18,8 +18,8 @@ MonoBehaviour:
   _wallCheckDistance: 0.2
   _ledgeCheckDistance: 0.5
   _ledgeBehindCheckDistance: 3
-  _minAgroDistance: 8
-  _maxAgroDistance: 10
+  _minAgroDistance: 9
+  _maxAgroDistance: 12
   _stunResistance: 3
   _stunRecoveryTime: 3
   _meleeRangeActionDistance: 1.85
