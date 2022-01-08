@@ -5,9 +5,11 @@ using TMPro;
 
 public class ControlsDialogMenu : MonoBehaviour
 {
+    public static TMP_Text[] KeyBinds { get { return _bindingDisplayNameTexts; } }
+
     [SerializeField] InputActionAsset _actions;
     [SerializeField] InputActionReference[] _actionReferences;
-    [SerializeField] TMP_Text[] _bindingDisplayNameTexts;
+    [SerializeField] static TMP_Text[] _bindingDisplayNameTexts;
     [SerializeField] GameObject[] _waitingForInputPanels;
 
     [Header("ConfirmationPopup")]
