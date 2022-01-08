@@ -21,7 +21,7 @@ public class ResetScene2 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "Leave (E)";
+        _talkText.text = "Leave (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
     }
 

@@ -33,7 +33,7 @@ public class MerchantTalk1 : MonoBehaviour
         if (collision.TryGetComponent<IShopCustomer>(out _shopCustomer))
         {
             _talkText.gameObject.SetActive(true);
-            _talkText.text = "Shop (E)";
+            _talkText.text = "Shop (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
             _isPlayerInRange = true;
         }
     }

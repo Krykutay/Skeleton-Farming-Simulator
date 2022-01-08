@@ -25,7 +25,7 @@ public class NpcTalk1 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "Talk (E)";
+        _talkText.text = "Talk (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
 
     }

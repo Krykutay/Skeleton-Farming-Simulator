@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class GameAssets : MonoBehaviour
 {
@@ -8,6 +9,22 @@ public class GameAssets : MonoBehaviour
     {
         Instance = this;
     }
+
+    public enum Keybinds
+    {
+        MoveLeft,
+        MoveRight,
+        Jump,
+        Attack,
+        Parry,
+        Dash,
+        Crouch,
+        Interact
+    }
+
+    [SerializeField] TMP_Text[] _keybinds;
+    public TMP_Text[] keybinds { get { return _keybinds; } private set { keybinds = value; } }
+
 
     [Header("Sprite Swords")]
     public Sprite[] s_DefaultSword;

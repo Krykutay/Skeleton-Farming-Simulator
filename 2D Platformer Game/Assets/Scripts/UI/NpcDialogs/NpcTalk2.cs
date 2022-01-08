@@ -8,7 +8,6 @@ public class NpcTalk2 : MonoBehaviour
 {
     [SerializeField] UI_Assistant _uiAssistant;
     [SerializeField] TMP_Text _talkText;
-    [SerializeField] TMP_Text _currentJumpKeybindText;
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
@@ -29,7 +28,7 @@ public class NpcTalk2 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "Listen (E)";
+        _talkText.text = "Listen (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
 
     }
@@ -50,7 +49,7 @@ public class NpcTalk2 : MonoBehaviour
 
         _initialDialog = new string[]
         {
-            "Press [" + _currentJumpKeybindText.text + "] to jump, jump twice if you like!",              
+            "Press [" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Jump].text + "] to jump, jump twice if you like!",              
         };
 
         _dialogSounds = new SoundManager.SoundTags[]

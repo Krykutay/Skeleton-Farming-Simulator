@@ -28,7 +28,7 @@ public class EasterEgg : MonoBehaviour
             return;
 
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "Press (E)";
+        _talkText.text = "Press (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
 
     }

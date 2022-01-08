@@ -8,7 +8,6 @@ public class NpcTalk5 : MonoBehaviour
 {
     [SerializeField] UI_Assistant _uiAssistant;
     [SerializeField] TMP_Text _talkText;
-    [SerializeField] TMP_Text _currentDashKeybindText;
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
@@ -29,7 +28,7 @@ public class NpcTalk5 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "Talk (E)";
+        _talkText.text = "Talk (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
 
     }
@@ -51,7 +50,7 @@ public class NpcTalk5 : MonoBehaviour
         _initialDialog = new string[]
         {
             "Not bad so far, now let's learn to Dash!",
-            "Press ["+ _currentDashKeybindText.text +"] and aim with Mouse, easy peasy.",
+            "Press ["+ GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Dash].text +"] and aim with Mouse, easy peasy.",
             "Then release it or charge it. Remember, dashing can also hurt the eternals, and makes you invincible!",
         };
 

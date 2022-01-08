@@ -21,7 +21,7 @@ public class PathwayToScene2 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "To Mines (E)";
+        _talkText.text = "To Mines (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
     }
 

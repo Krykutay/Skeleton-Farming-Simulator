@@ -883,6 +883,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b5e303eafcb394f975586367112747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _keybinds:
+  - {fileID: 7318814968282755143}
+  - {fileID: 7318814968679943948}
+  - {fileID: 6685068270787288569}
+  - {fileID: 6685068269622799630}
+  - {fileID: 7318814967446189003}
+  - {fileID: 7318814968805022083}
+  - {fileID: 7318814967401117701}
+  - {fileID: 5030475461305640414}
   s_DefaultSword:
   - {fileID: 21300000, guid: 5705cd5b85bfeef4db6b4af3cf3f9579, type: 3}
   s_BlueSword:
@@ -73419,7 +73428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &551236396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89323,7 +89332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1184931792}
   - component: {fileID: 1184931791}
-  - component: {fileID: 1184931789}
   - component: {fileID: 1184931787}
   - component: {fileID: 1184931793}
   - component: {fileID: 1184931784}
@@ -89360,19 +89368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpawnDuration: 3
---- !u!114 &1184931789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184931783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e135b22dcb8ac478fb4ec4812f3a39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combatDummySpawnTime: 3
 --- !u!114 &1184931791
 MonoBehaviour:
   m_ObjectHideFlags: 0

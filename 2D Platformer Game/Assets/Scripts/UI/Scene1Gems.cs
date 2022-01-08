@@ -50,7 +50,7 @@ public class Scene1Gems : MonoBehaviour
             return;
 
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "Collect (E)";
+        _talkText.text = "Collect (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
     }
 
