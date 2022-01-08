@@ -101968,8 +101968,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8658a47ecc7aa8a4aac6b660da1be506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minModifier: 40
-  maxModifier: 60
+  _minModifier: 40
+  _maxModifier: 60
+  _tokensEarned: 18
   _talkText: {fileID: 237272313}
 --- !u!95 &1712255674
 Animator:
@@ -105012,7 +105013,7 @@ MonoBehaviour:
   - name: 58
     type: 0
     clip: {fileID: 8300000, guid: 9558ebdde3bd3804b8389a9dac5d68e5, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -105020,7 +105021,7 @@ MonoBehaviour:
   - name: 59
     type: 0
     clip: {fileID: 8300000, guid: 63580759ff9286a46a5cbd5e8719c09b, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0

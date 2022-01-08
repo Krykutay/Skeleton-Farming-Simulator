@@ -22651,7 +22651,7 @@ MonoBehaviour:
   - name: 58
     type: 0
     clip: {fileID: 8300000, guid: 9558ebdde3bd3804b8389a9dac5d68e5, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0
@@ -22659,7 +22659,7 @@ MonoBehaviour:
   - name: 59
     type: 0
     clip: {fileID: 8300000, guid: 63580759ff9286a46a5cbd5e8719c09b, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     isLoop: 0
     hasCooldown: 0
