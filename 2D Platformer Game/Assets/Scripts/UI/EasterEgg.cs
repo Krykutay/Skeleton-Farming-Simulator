@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class EasterEgg : MonoBehaviour
 {
@@ -47,12 +48,19 @@ public class EasterEgg : MonoBehaviour
         if (_isPressedOnce)
             return;
 
-        _easterEggPowerups.SetActive(true);
         _isPressedOnce = true;
         _talkText.text = "";
         SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonRespawn);
         _easterEggAnim.SetTrigger("easterEgg");
-        
+
+        StartCoroutine(SpawnPowerups());
+    }
+
+    IEnumerator SpawnPowerups()
+    {
+        yield return new WaitForSeconds(2f);
+
+        _easterEggPowerups.SetActive(true);
     }
 
 }
