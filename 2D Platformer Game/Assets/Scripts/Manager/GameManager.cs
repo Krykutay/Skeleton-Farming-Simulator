@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public PlayPauseState currentState { get; private set; }
 
     [SerializeField] GameObject _menu;
-    [SerializeField] GameObject _shop;
+    [SerializeField] GameObject[] _panelsToClose;
     [SerializeField] GameObject _gameoverPanel;
     [SerializeField] CanvasScaler _canvasScaler;
 
@@ -56,9 +56,20 @@ public class GameManager : MonoBehaviour
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (_shop.activeSelf)
-                _shop.gameObject.SetActive(false);
-            else
+            if (_gameoverPanel.activeSelf)
+                return;
+
+            bool isPanelOn = false;
+            foreach (GameObject panel in _panelsToClose)
+            {
+                if (panel.activeSelf)
+                {
+                    panel.SetActive(false);
+                    isPanelOn = true;
+                }
+            }
+
+            if (!isPanelOn && currentState == PlayPauseState.Playing)
                 Game_Paused();
         }
     }

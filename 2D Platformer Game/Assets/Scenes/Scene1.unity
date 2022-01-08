@@ -89376,7 +89376,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menu: {fileID: 550263045393745148}
-  _shop: {fileID: 141147204}
+  _panelsToClose:
+  - {fileID: 141147204}
+  - {fileID: 526163842}
   _gameoverPanel: {fileID: 551236395}
   _canvasScaler: {fileID: 989777093}
   _spawnPoint: {fileID: 531045657}
