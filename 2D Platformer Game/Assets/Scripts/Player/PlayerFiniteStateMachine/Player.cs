@@ -172,6 +172,7 @@ public class Player : MonoBehaviour, IShopCustomer
             return;
 
         _attackDetails.damageAmount = _playerData.dashDamage;
+        _attackDetails.position = transform.position;
 
         if (collision.TryGetComponent<IDamageable>(out var damageable))
         {
