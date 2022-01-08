@@ -27,7 +27,6 @@ public class NpcTalk1 : MonoBehaviour
         _talkText.gameObject.SetActive(true);
         _talkText.text = "Talk (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
-
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -41,7 +40,7 @@ public class NpcTalk1 : MonoBehaviour
 
     void PlayerTalkPressed()
     {
-        if (!_isPlayerInRange)
+        if (!_isPlayerInRange || GameManager.Instance.currentState == PlayPauseState.Paused)
             return;
 
         _initialDialog = new string[]

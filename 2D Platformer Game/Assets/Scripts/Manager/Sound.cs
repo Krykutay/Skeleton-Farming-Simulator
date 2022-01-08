@@ -21,5 +21,6 @@ public class Sound
 
     public bool isLoop;
     public bool hasCooldown;
+    public bool ignoreListenerPause;
     public AudioSource source;
 }

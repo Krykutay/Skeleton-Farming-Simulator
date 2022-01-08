@@ -44,7 +44,7 @@ public class NpcTalk3 : MonoBehaviour
 
     void PlayerTalkPressed()
     {
-        if (!_isPlayerInRange)
+        if (!_isPlayerInRange || GameManager.Instance.currentState == PlayPauseState.Paused)
             return;
 
         _initialDialog = new string[]

@@ -22199,6 +22199,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 1
     type: 0
@@ -22207,6 +22208,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 2
     type: 0
@@ -22215,6 +22217,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 3
     type: 0
@@ -22223,6 +22226,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 4
     type: 0
@@ -22231,6 +22235,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 5
     type: 0
@@ -22239,6 +22244,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 6
     type: 0
@@ -22247,6 +22253,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 7
     type: 0
@@ -22255,6 +22262,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 8
     type: 0
@@ -22263,6 +22271,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 9
     type: 0
@@ -22271,6 +22280,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 10
     type: 0
@@ -22279,6 +22289,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 11
     type: 0
@@ -22287,6 +22298,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 12
     type: 0
@@ -22295,6 +22307,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 13
     type: 0
@@ -22303,6 +22316,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 14
     type: 0
@@ -22311,6 +22325,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 15
     type: 0
@@ -22319,6 +22334,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 16
     type: 0
@@ -22327,6 +22343,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 17
     type: 0
@@ -22335,6 +22352,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 18
     type: 0
@@ -22343,6 +22361,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 19
     type: 0
@@ -22351,6 +22370,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 20
     type: 0
@@ -22359,6 +22379,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 21
     type: 0
@@ -22367,6 +22388,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 22
     type: 0
@@ -22375,6 +22397,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 23
     type: 0
@@ -22383,6 +22406,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 24
     type: 0
@@ -22391,6 +22415,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 25
     type: 0
@@ -22399,6 +22424,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 26
     type: 0
@@ -22407,6 +22433,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 27
     type: 0
@@ -22415,6 +22442,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 28
     type: 2
@@ -22423,6 +22451,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 29
     type: 2
@@ -22431,6 +22460,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 30
     type: 2
@@ -22439,6 +22469,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 31
     type: 2
@@ -22447,6 +22478,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 32
     type: 2
@@ -22455,6 +22487,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 33
     type: 2
@@ -22463,6 +22496,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 34
     type: 2
@@ -22471,6 +22505,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 35
     type: 2
@@ -22479,6 +22514,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 36
     type: 2
@@ -22487,6 +22523,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 37
     type: 2
@@ -22495,6 +22532,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 38
     type: 2
@@ -22503,6 +22541,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 39
     type: 2
@@ -22511,6 +22550,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 40
     type: 2
@@ -22519,6 +22559,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 41
     type: 2
@@ -22527,6 +22568,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 42
     type: 2
@@ -22535,6 +22577,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 43
     type: 2
@@ -22543,6 +22586,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 44
     type: 2
@@ -22551,6 +22595,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 45
     type: 0
@@ -22559,6 +22604,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 1
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 46
     type: 2
@@ -22567,6 +22613,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 47
     type: 2
@@ -22575,6 +22622,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 48
     type: 2
@@ -22583,6 +22631,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 49
     type: 2
@@ -22591,6 +22640,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 50
     type: 2
@@ -22599,6 +22649,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 52
     type: 0
@@ -22607,6 +22658,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 53
     type: 0
@@ -22615,6 +22667,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 54
     type: 0
@@ -22623,6 +22676,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 55
     type: 0
@@ -22631,6 +22685,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 56
     type: 0
@@ -22639,6 +22694,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 57
     type: 2
@@ -22647,6 +22703,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     hasCooldown: 0
+    ignoreListenerPause: 0
     source: {fileID: 0}
   - name: 58
     type: 0
@@ -22655,6 +22712,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 59
     type: 0
@@ -22663,6 +22721,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 60
     type: 0
@@ -22671,6 +22730,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 61
     type: 1
@@ -22679,6 +22739,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 62
     type: 1
@@ -22687,6 +22748,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 63
     type: 1
@@ -22695,6 +22757,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 64
     type: 1
@@ -22703,6 +22766,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
   - name: 51
     type: 0
@@ -22711,6 +22775,7 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     hasCooldown: 0
+    ignoreListenerPause: 1
     source: {fileID: 0}
 --- !u!1 &1828607737
 GameObject:

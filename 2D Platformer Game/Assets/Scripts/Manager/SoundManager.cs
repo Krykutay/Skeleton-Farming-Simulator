@@ -101,6 +101,7 @@ public class SoundManager : MonoBehaviour
             sound.source.volume = sound.volume;
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.isLoop;
+            sound.source.ignoreListenerPause = sound.ignoreListenerPause;
             sound.source.playOnAwake = false;
 
             if (sound.hasCooldown)
@@ -140,7 +141,22 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        sound.source.Stop();
+        if (sound.source.isPlaying)
+            sound.source.Stop();
+    }
+
+    public void Puase(SoundTags name)
+    {
+        Sound sound = Array.Find(sounds, s => s.name == name);
+
+        if (sound == null)
+        {
+            Debug.LogError("Sound " + name + " Not Found!");
+            return;
+        }
+
+        if (sound.source.isPlaying)
+            sound.source.Pause();
     }
 
     private static bool CanPlaySound(Sound sound)

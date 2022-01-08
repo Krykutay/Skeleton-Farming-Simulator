@@ -32,6 +32,9 @@ public class UI_Assistant : MonoBehaviour
 
         _button.onClick.AddListener(() =>
         {
+            if (GameManager.Instance.currentState == PlayPauseState.Paused)
+                return;
+
             if (_textWriterSingle != null && _textWriterSingle.IsActive())
             {
                 // Currently active TextWriter

@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
                 {
                     panel.SetActive(false);
                     isPanelOn = true;
+                    SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
                 }
             }
 
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
 
     public void Game_Resumed()
     {
+        AudioListener.pause = false;
         Time.timeScale = 1f;
         currentState = PlayPauseState.Playing;
     }
@@ -115,6 +117,8 @@ public class GameManager : MonoBehaviour
         if (currentState != PlayPauseState.Playing)
             return;
 
+        AudioListener.pause = true;
+        SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
         _menu.gameObject.SetActive(true);
         Time.timeScale = 0f;
         currentState = PlayPauseState.Paused;

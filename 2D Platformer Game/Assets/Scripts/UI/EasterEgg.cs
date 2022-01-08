@@ -42,7 +42,7 @@ public class EasterEgg : MonoBehaviour
 
     void PlayerTalkPressed()
     {
-        if (!_isPlayerInRange)
+        if (!_isPlayerInRange || GameManager.Instance.currentState == PlayPauseState.Paused)
             return;
 
         if (_isPressedOnce)
