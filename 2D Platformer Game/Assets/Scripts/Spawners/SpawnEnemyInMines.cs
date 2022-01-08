@@ -6,6 +6,7 @@ public class SpawnEnemyInMines : MonoBehaviour
     [SerializeField] Transform[] _spawnPositions;
 
     [SerializeField] float _spawnDuration = 10f;
+    [SerializeField] int _maxEnemyCount = 25;
 
     float _lastSpawnTime = Mathf.NegativeInfinity;
 
@@ -33,7 +34,7 @@ public class SpawnEnemyInMines : MonoBehaviour
         if (!_isSpawnTriggered)
             return;
 
-        if (Time.time > _lastSpawnTime + _spawnDuration && _activeEnemyCount <= 30)
+        if (Time.time > _lastSpawnTime + _spawnDuration && _activeEnemyCount <= _maxEnemyCount)
         {
             _randomPosition = Random.Range(0, _spawnPositions.Length);
             _randomEnemy = Random.Range(0, 6);

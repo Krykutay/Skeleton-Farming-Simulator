@@ -4,6 +4,8 @@ public class E6_PlayerDetectedState : PlayerDetectedState
 {
     readonly Enemy6 enemy;
 
+    bool _isGrounded;
+
     public E6_PlayerDetectedState(Enemy6 enemy, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData) 
         : base(enemy, stateMachine, animBoolName, stateData)
     {
@@ -16,7 +18,7 @@ public class E6_PlayerDetectedState : PlayerDetectedState
 
         if (performMeleeRangeAction)
         {
-            if (Time.time >= enemy.teleportState.startTime + enemy.teleportStateData.teleportCooldown && enemy.teleportState.TransitionToTeleportState())
+            if (Time.time >= enemy.teleportState.startTime + enemy.teleportStateData.teleportCooldown && enemy.teleportState.TransitionToTeleportState() && _isGrounded)
             {
                 stateMachine.ChangeState(enemy.teleportState);
             }
@@ -52,4 +54,10 @@ public class E6_PlayerDetectedState : PlayerDetectedState
         }
     }
 
+    public override void DoChecks()
+    {
+        base.DoChecks();
+
+        _isGrounded = enemy.CheckGround();
+    }
 }

@@ -6,7 +6,7 @@ public class SpawnPowerupInMines : MonoBehaviour
     [SerializeField] StartSpawns _startSpawns;
     [SerializeField] Transform[] _spawnPositions;
 
-    [SerializeField] float _spawnDuration = 5f;
+    [SerializeField] float _spawnDuration = 6f;
 
     float _lastSpawnTime = Mathf.NegativeInfinity;
 
