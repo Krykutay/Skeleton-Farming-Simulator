@@ -3115,7 +3115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &183054022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5278,6 +5278,15 @@ MonoBehaviour:
   - {fileID: 6606502217528026113, guid: bfa8d08be847f55459ae152fce01ade1, type: 3}
   - {fileID: -5293863411031762292, guid: bfa8d08be847f55459ae152fce01ade1, type: 3}
   - {fileID: -1692516884193033600, guid: bfa8d08be847f55459ae152fce01ade1, type: 3}
+  _bindingDisplayNameTexts:
+  - {fileID: 7076081064747145854}
+  - {fileID: 7076081065175803189}
+  - {fileID: 6585616700980590528}
+  - {fileID: 6585616699847542583}
+  - {fileID: 7076081063841241586}
+  - {fileID: 7076081065302848442}
+  - {fileID: 7076081063898927676}
+  - {fileID: 4786547488106483687}
   _waitingForInputPanels:
   - {fileID: 4131917709453807710}
   - {fileID: 4131917710115680021}

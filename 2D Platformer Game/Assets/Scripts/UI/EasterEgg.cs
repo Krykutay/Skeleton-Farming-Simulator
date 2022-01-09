@@ -28,7 +28,7 @@ public class EasterEgg : MonoBehaviour
             return;
 
         _talkText.gameObject.SetActive(true);
-        _talkText.text = "Press (" + ControlsDialogMenu.KeyBinds[7] + ")";
+        _talkText.text = "Press (" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Interact].text + ")";
         _isPlayerInRange = true;
 
     }
@@ -42,7 +42,7 @@ public class EasterEgg : MonoBehaviour
 
     void PlayerTalkPressed()
     {
-        if (!_isPlayerInRange)
+        if (!_isPlayerInRange || GameManager.Instance.currentState == PlayPauseState.Paused)
             return;
 
         if (_isPressedOnce)
