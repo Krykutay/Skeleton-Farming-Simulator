@@ -14,7 +14,7 @@ public class HowToPlayPanelControlsDisplay : MonoBehaviour
     void OnEnable()
     {
         _displayedMoveLeftRightKeybindText.text = "Left: [" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.MoveLeft].text + "] -" +
-            " Right: [" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.MoveLeft].text + "]";
+            " Right: [" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.MoveRight].text + "]";
 
         _displayedJumpbindText.text = "Jump: ["+ GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Jump].text + "]";
         _displayedAttackKeybindText.text = "Attack: [" + GameAssets.Instance.keybinds[(int)GameAssets.Keybinds.Attack].text + "]";

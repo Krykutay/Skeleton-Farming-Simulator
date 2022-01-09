@@ -14,7 +14,7 @@ public class UI_Assistant : MonoBehaviour
 
     Button _button;
     TextWriter.TextWriterSingle _textWriterSingle;
-    SoundManager.SoundTags _currentDialogSound;
+    static SoundManager.SoundTags _currentDialogSound = SoundManager.SoundTags.NpcTalk1_1;
 
     void Awake()
     {
@@ -23,10 +23,12 @@ public class UI_Assistant : MonoBehaviour
 
     public void NpcTalk(string[] messages, SoundManager.SoundTags[] dialogSounds, float[] typeSpeed)
     {
-        int count = 1;
+        SoundManager.Instance.Stop(_currentDialogSound);
         SoundManager.Instance.Play(dialogSounds[0]);
         _currentDialogSound = dialogSounds[0];
         _textWriterSingle = TextWriter.AddWriter_Static(_messageText, messages[0], typeSpeed[0], true, true, StopTalkingSound);
+
+        int count = 1;
 
         _button.onClick.RemoveAllListeners();
 
