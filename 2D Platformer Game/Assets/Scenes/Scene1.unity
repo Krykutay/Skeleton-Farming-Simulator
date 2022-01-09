@@ -7894,9 +7894,6 @@ GameObject:
   m_Component:
   - component: {fileID: 370242310}
   - component: {fileID: 370242326}
-  - component: {fileID: 370242325}
-  - component: {fileID: 370242324}
-  - component: {fileID: 370242323}
   - component: {fileID: 370242322}
   - component: {fileID: 370242321}
   - component: {fileID: 370242320}
@@ -8085,48 +8082,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: -785327172243281404, guid: a91f9edf1d9e9f94bbebb86bca8d3b72, type: 3}
   _initialPoolSize: 1
---- !u!114 &370242323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370242309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5187f4ce1f653dc44b7f8fee06d89bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 2881694015201815732, guid: 41b9d0eac4010844dae18dc969612c8f, type: 3}
-  _initialPoolSize: 1
---- !u!114 &370242324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370242309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f441e3bab7ca84cbb095a4c8c76da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 5090739057091375233, guid: 6df36f6230ff68f46a4f0784c6dabb0b, type: 3}
-  _initialPoolSize: 1
---- !u!114 &370242325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370242309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6995263e1d52d894797de0a11d5d03b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 6191937845652291967, guid: 05dc64d35c44aaf449a1dd93cca47579, type: 3}
-  _initialPoolSize: 0
 --- !u!114 &370242326
 MonoBehaviour:
   m_ObjectHideFlags: 0
