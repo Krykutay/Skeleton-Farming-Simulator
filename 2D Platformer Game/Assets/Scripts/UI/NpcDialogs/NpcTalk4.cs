@@ -62,6 +62,7 @@ public class NpcTalk4 : MonoBehaviour
             0.08f,
         };
 
+        _uiAssistant.CloseDarknessTalk();
         _uiAssistant.gameObject.SetActive(true);
         _uiAssistant.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
 

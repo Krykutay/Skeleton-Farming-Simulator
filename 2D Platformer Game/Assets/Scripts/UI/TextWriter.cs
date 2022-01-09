@@ -19,6 +19,9 @@ public class TextWriter : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.currentState == PlayPauseState.Paused)
+            return;
+
         for (int i = 0; i < _textWriterSingleList.Count; i++)
         {
             bool destroyInstance = _textWriterSingleList[i].Update();

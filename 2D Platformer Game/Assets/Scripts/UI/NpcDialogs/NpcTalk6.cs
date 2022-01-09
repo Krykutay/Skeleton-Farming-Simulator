@@ -72,6 +72,7 @@ public class NpcTalk6 : MonoBehaviour
             0.055f,
         };
 
+        _uiAssistant.CloseDarknessTalk();
         _uiAssistant.gameObject.SetActive(true);
         _uiAssistant.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
 

@@ -2141,6 +2141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageText: {fileID: 1397030458}
+  _darknessTalk: {fileID: 418081710}
 --- !u!1 &57151021
 GameObject:
   m_ObjectHideFlags: 0
@@ -10292,6 +10293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageText: {fileID: 433740693}
+  _darknessTalk: {fileID: 418081710}
 --- !u!1 &425718596
 GameObject:
   m_ObjectHideFlags: 0
@@ -110995,6 +110997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageText: {fileID: 30237309}
+  _darknessTalk: {fileID: 418081710}
 --- !u!1 &1875192236
 GameObject:
   m_ObjectHideFlags: 0

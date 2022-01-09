@@ -83,6 +83,7 @@ public class MerchantTalk1 : MonoBehaviour
             0.05f,
         };
 
+        _uiAssistant.CloseDarknessTalk();
         _uiAssistant.gameObject.SetActive(true);
         _uiAssistant.NpcTalk(_initialDialog, _dialogSounds, _typeSpeed);
 
