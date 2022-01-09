@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         _cvc.m_Follow = null;
         _gameoverPanel.SetActive(true);
 
+        SoundManager.Instance.Stop(SoundManager.SoundTags.PlayerRun);
         StopAmbianceMusicAccordingToScene();
         SoundManager.Instance.Play(SoundManager.SoundTags.Gameover);
     }
