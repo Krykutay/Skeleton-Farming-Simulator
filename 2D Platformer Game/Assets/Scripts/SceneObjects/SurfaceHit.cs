@@ -55,6 +55,16 @@ public class SurfaceHit : MonoBehaviour
         }
 
         if (!isAllLeft)
-            collisions.Clear();
+        {
+            StopCoroutine(ClearCollisions());
+            StartCoroutine(ClearCollisions());
+        }
+    }
+
+    IEnumerator ClearCollisions()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        collisions.Clear();
     }
 }
