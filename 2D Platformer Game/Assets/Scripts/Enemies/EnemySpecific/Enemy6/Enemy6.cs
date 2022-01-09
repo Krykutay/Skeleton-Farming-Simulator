@@ -110,6 +110,12 @@ public class Enemy6 : Entity
         Enemy6Pool.Instance.ReturnToPool(this);
     }
 
+    public override void DamageHop(float velocity)
+    {
+        if (stateMachine.currentState != teleportState)
+            rb.velocity = new Vector2(rb.velocity.x, velocity);
+    }
+
     public override void RotateBodyToPlayer()
     {
         Vector3 direction;

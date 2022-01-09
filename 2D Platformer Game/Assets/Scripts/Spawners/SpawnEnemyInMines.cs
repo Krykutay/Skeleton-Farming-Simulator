@@ -43,19 +43,19 @@ public class SpawnEnemyInMines : MonoBehaviour
             {
                 default:
                 case 0:
-                    Enemy3Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
+                    Enemy6Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
                     break;
                 case 1:
-                    Enemy4Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
+                    Enemy6Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
                     break;
                 case 2:
-                    Enemy5Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
+                    Enemy6Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
                     break;
                 case 3:
                     Enemy6Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
                     break;
                 case 4:
-                    Enemy7Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
+                    Enemy6Pool.Instance.Get(_spawnPositions[_randomPosition].position, Quaternion.identity);
                     break;
             }
 

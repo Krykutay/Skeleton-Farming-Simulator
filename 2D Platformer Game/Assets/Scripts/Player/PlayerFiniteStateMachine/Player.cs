@@ -456,6 +456,17 @@ public class Player : MonoBehaviour, IShopCustomer
         }
     }
 
+    void PlayHurt()
+    {
+        if (_currentHealth <= 0f)
+            return;
+
+        if (_hurt != null)
+            StopCoroutine(_hurt);
+        _hurt = Hurt();
+        StartCoroutine(_hurt);
+    }
+
     IEnumerator Hurt()
     {
         _bodyAnim.SetBool("hurt", true);
