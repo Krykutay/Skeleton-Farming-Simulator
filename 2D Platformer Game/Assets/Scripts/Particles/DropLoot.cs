@@ -9,6 +9,13 @@ public class DropLoot : MonoBehaviour
 
     protected bool isFollowing;
 
+    Animator _anim;
+
+    void Awake()
+    {
+        _anim = GetComponent<Animator>();
+    }
+
     void OnEnable()
     {
         isFollowing = false;
@@ -16,7 +23,7 @@ public class DropLoot : MonoBehaviour
 
     void Update()
     {
-        if (isFollowing)
+        if (isFollowing && Player.Instance.currentHealth > 0f)
         {
             transform.position = Vector3.SmoothDamp(transform.position, Player.Instance.transform.position, ref _velocity, Time.deltaTime * Random.Range(minModifier, maxModifier));
         }
@@ -24,6 +31,12 @@ public class DropLoot : MonoBehaviour
 
     public void StartFollowing()
     {
+        if (Player.Instance.currentHealth <= 0f)
+        {
+            _anim.Play("DropLoot", -1, 0f);
+            return;
+        }
+
         isFollowing = true;
         int playSoundEffect = Random.Range(0, 3);
         if (playSoundEffect == 0)

@@ -405,7 +405,7 @@ public class Player : MonoBehaviour, IShopCustomer
 
     public void DamageBySurface()
     {
-        if (stateMachine.currentState == dashState)
+        if (stateMachine.currentState == dashState || _currentHealth <= 0f)
             return;
 
         if (PowerupManager.Instance.isShieldPowerupActive)

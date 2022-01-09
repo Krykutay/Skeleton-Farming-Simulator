@@ -50,6 +50,7 @@ public class EasterEgg : MonoBehaviour
 
         _isPressedOnce = true;
         _talkText.text = "";
+        _talkText.gameObject.SetActive(false);
         SoundManager.Instance.Play(SoundManager.SoundTags.SkeletonRespawn);
         _easterEggAnim.SetTrigger("easterEgg");
 
