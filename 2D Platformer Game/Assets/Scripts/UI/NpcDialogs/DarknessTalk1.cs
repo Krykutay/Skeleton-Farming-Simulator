@@ -8,6 +8,7 @@ public class DarknessTalk1 : MonoBehaviour
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
     float[] _typeSpeed;
+    Coroutine _disableGameobject = null;
 
     static bool _IsActivatedOnce;
 
@@ -57,8 +58,9 @@ public class DarknessTalk1 : MonoBehaviour
     {
         if (_IsActivatedOnce)
         {
-            StopCoroutine(DisableGameObject());
-            StartCoroutine(DisableGameObject());
+            if (_disableGameobject != null)
+                StopCoroutine(_disableGameobject);
+            _disableGameobject = StartCoroutine(DisableGameObject());
         }
     }
 

@@ -4,67 +4,48 @@ using UnityEngine;
 
 public class SurfaceHit : MonoBehaviour
 {
-    float _damageFrequency = 1f;
-    float _trigerEnterTime;
+    BoxCollider2D _collider;
+    List<Collider2D> collisions;
+    [SerializeField] LayerMask _playerAndEnemy;
 
-    Dictionary<Collider2D, bool> collisions;
+    Coroutine _hitCollisions = null;
 
     void Awake()
     {
-        collisions = new Dictionary<Collider2D, bool>();
+        _collider = GetComponent<BoxCollider2D>();
+        collisions = new List<Collider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        _trigerEnterTime = Time.time;
-        if (collision.TryGetComponent<Entity>(out Entity entity))
-            entity.DamageBySurface();
-        else
-            Player.Instance.DamageBySurface();
+        collisions.Add(collision);
 
-        collisions[collision] = true;
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Time.time >= _trigerEnterTime + _damageFrequency)
-        {
-            foreach (Collider2D key in collisions.Keys)
-            {
-                if (!collisions[key])
-                    continue;
-
-                if (key.TryGetComponent<Entity>(out Entity entity))
-                    entity.DamageBySurface();
-                else
-                    Player.Instance.DamageBySurface();
-            }
-            _trigerEnterTime = Time.time;
-        }
+        if (collisions.Count == 1)
+            _hitCollisions = StartCoroutine(HitCollisions());
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        collisions[collision] = false;
+        collisions.Remove(collision);
 
-        bool isAllLeft = false;
-        foreach (bool value in collisions.Values)
-        {
-            if (value)
-                isAllLeft = true;
-        }
-
-        if (!isAllLeft)
-        {
-            StopCoroutine(ClearCollisions());
-            StartCoroutine(ClearCollisions());
-        }
+        if (collisions.Count == 0)
+            StopCoroutine(_hitCollisions);
     }
 
-    IEnumerator ClearCollisions()
+    IEnumerator HitCollisions()
     {
-        yield return new WaitForSeconds(0.5f);
-
-        collisions.Clear();
+        while (collisions.Count > 0)
+        {
+            Collider2D[] collision = Physics2D.OverlapBoxAll(_collider.bounds.center, _collider.bounds.size, 0f, _playerAndEnemy);
+            foreach (var col in collision)
+            {
+                if (col.TryGetComponent<Entity>(out Entity entity))
+                    entity.DamageBySurface();
+                else
+                    Player.Instance.DamageBySurface();
+            }
+            
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

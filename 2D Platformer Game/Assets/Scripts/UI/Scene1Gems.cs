@@ -24,6 +24,8 @@ public class Scene1Gems : MonoBehaviour
     bool isFollowing;
     bool _isPlayerInRange;
 
+    Coroutine _collectGems = null;
+
     void Awake()
     {
         if (PlayerPrefs.HasKey("scene1Gems"))
@@ -70,7 +72,7 @@ public class Scene1Gems : MonoBehaviour
 
         _anim.enabled = false;
         StartFollowing();
-        StartCoroutine(CollectGems());
+        _collectGems = StartCoroutine(CollectGems());
         StartCoroutine(DelayBeforeDisappear());
     }
 
@@ -90,7 +92,8 @@ public class Scene1Gems : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         isFollowing = false;
-        StopCoroutine(CollectGems());
+        if (_collectGems != null)
+            StopCoroutine(_collectGems);
         ScoreManager.Instance.Token_Earned(_tokensEarned);
         PlayerPrefs.SetInt("scene1Gems", 1);
         Destroy(gameObject);

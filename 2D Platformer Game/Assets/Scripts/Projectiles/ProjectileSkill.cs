@@ -11,6 +11,8 @@ public class ProjectileSkill : Projectile
 
     bool _isCasting;
 
+    Coroutine _disableProjectileIfNotFired = null;
+
     protected override void Awake()
     {
         base.Awake();
@@ -29,8 +31,9 @@ public class ProjectileSkill : Projectile
         startPosition = transform.position;
         _anim.SetBool("isCasting", _isCasting);
 
-        StopCoroutine(DisableProjectileIfNotFired(1f));
-        StartCoroutine(DisableProjectileIfNotFired(1f));
+        if (_disableProjectileIfNotFired != null)
+            StopCoroutine(_disableProjectileIfNotFired);
+        _disableProjectileIfNotFired = StartCoroutine(DisableProjectileIfNotFired(1f));
     }
 
     private void OnDisable()
