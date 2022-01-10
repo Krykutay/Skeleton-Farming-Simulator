@@ -50,6 +50,13 @@ public class GameManager : MonoBehaviour
     {
         PlayAmbianceMusicAccordingToScene();
         PlayerSpawnPointAccordingToScene();
+
+        // to prevent a strange webgl bug
+        AudioListener.pause = true;
+        Time.timeScale = 0f;
+
+        AudioListener.pause = false;
+        Time.timeScale = 1f;
     }
 
     void Update()

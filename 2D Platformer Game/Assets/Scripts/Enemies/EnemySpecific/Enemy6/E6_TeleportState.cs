@@ -19,6 +19,8 @@ public class E6_TeleportState : TeleportState
     {
         base.LogicUpdate();
 
+        entity.SetVelocityY(0f);
+
         if (!isTeleportOver)
             return;
 

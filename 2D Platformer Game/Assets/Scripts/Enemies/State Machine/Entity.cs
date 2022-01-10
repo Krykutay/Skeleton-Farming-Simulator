@@ -110,6 +110,12 @@ public class Entity : MonoBehaviour, IDamageable
         rb.velocity = _velocityWorkspace;
     }
 
+    public virtual void SetVelocityY(float velocity)
+    {
+        _velocityWorkspace.Set(rb.velocity.x, velocity);
+        rb.velocity = _velocityWorkspace;
+    }
+
     public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
