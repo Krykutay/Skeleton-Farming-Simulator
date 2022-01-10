@@ -32,6 +32,7 @@ public class Loader : MonoBehaviour
         while (operation.isDone == false)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            progress = (float)System.Math.Round(progress, 2);
 
             _loadingSlider.value = progress;
             progressText.text = progress * 100f + "%";
