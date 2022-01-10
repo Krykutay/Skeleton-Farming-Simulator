@@ -39,7 +39,7 @@ SpriteAtlas:
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 1
+      enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
@@ -223,7 +223,6 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: e68d440090185e44a94953f94048fba7, type: 3}
-  - {fileID: 21300000, guid: e833dc00a29c8e247a15c0b80d90dbfb, type: 3}
   - {fileID: 21300000, guid: cbf80b20db4035140a867510d5815368, type: 3}
   - {fileID: 21300000, guid: cf6ed0406441c4d418bff0249f43ba57, type: 3}
   - {fileID: 21300000, guid: 15e70b40bb7faf64e8cc0f711c49cddc, type: 3}
@@ -270,7 +269,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 29fe8a93e1343ff4a94952987a3c342b, type: 3}
   - {fileID: 21300000, guid: 52452c93083414f45b4e9354389db273, type: 3}
   - {fileID: 21300000, guid: 872d7d935941879438619a871d72a783, type: 3}
-  - {fileID: 21300000, guid: a75aa4a3f8da84444a2145f7cec71d76, type: 3}
   - {fileID: 21300000, guid: 322e66e3f3c47694c80cbdd04b676369, type: 3}
   - {fileID: 21300000, guid: ab1b2404622a1ac4b8d4eb3cd78f1c62, type: 3}
   - {fileID: 21300000, guid: 77d1b11499c14f74187e4033b18323db, type: 3}
@@ -284,7 +282,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f3cd622586639fd48afc416a310e20a1, type: 3}
   - {fileID: 21300000, guid: ccc8ee359b9c7e842aa7a737190d48c2, type: 3}
   - {fileID: 21300000, guid: 29333545269b656468e86d412dbf93f5, type: 3}
-  - {fileID: 21300000, guid: b95483a596a1cff469718338fe79c5d1, type: 3}
   - {fileID: 21300000, guid: 6f9dc8c527c653941ab18e7c7928c9af, type: 3}
   - {fileID: 21300000, guid: a15de8c5988e8c84f835084b829532d1, type: 3}
   - {fileID: 21300000, guid: 816986d521bde51419f56fae7b5f494d, type: 3}
@@ -305,7 +302,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e514ff67d9649e049ac2f2a971fc8035, type: 3}
   - {fileID: 21300000, guid: fb734387772800949ae7ff1c9a03913f, type: 3}
   - {fileID: 21300000, guid: f901e197d932c4741b7274a643890b38, type: 3}
-  - {fileID: 21300000, guid: 393b3297e5856114fa6045e73e21c892, type: 3}
   - {fileID: 21300000, guid: e2a29797402f5f449baca6081deee279, type: 3}
   - {fileID: 21300000, guid: 9e75889710aa6f14cb6d2b9e0f36c0a3, type: 3}
   - {fileID: 21300000, guid: 457df7b7d006e544cb4be1b8c90d9904, type: 3}
@@ -340,7 +336,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 086453b90ba232a41b0dbc4e47c9ffb8, type: 3}
   - {fileID: 21300000, guid: 284f49b9a39548c499bf66212da18388, type: 3}
   - {fileID: 21300000, guid: 0ab958c956698a84cafe5d70e84a2ec9, type: 3}
-  - {fileID: 21300000, guid: 6faa25e92f204eb41af163b4b8b216a0, type: 3}
   - {fileID: 21300000, guid: 16769ff913e904e418c9a40e8b21b2ad, type: 3}
   - {fileID: 21300000, guid: d07e1a0ae7959934893add4f120d137f, type: 3}
   - {fileID: 21300000, guid: 6ed75a1a0069ac941b61a40c0cb3f7ef, type: 3}
@@ -349,7 +344,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0416715a5bebec64b8aa72bb138afe85, type: 3}
   - {fileID: 21300000, guid: 338fdb5a9cf2dc745bba93f80c643cd7, type: 3}
   - {fileID: 21300000, guid: 0287ab7a951f7ef468a1f818d9728cb4, type: 3}
-  - {fileID: 21300000, guid: 27227f8a014c1324f87f945c7410631a, type: 3}
   - {fileID: 21300000, guid: 4150979a3daf94947b29eeaf160be489, type: 3}
   - {fileID: 21300000, guid: 14aafeca64e0ff4458a2c79537c27ea8, type: 3}
   - {fileID: 21300000, guid: 9b2e94da24428fa40b48b0a4d0e0f707, type: 3}
@@ -403,7 +397,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ef77f6df647ec29458cd7a73b2978d4f, type: 3}
   m_PackedSpriteNamesToIndex:
   - crate
-  - Orb_04
   - CyanSword
   - timber_brace_1
   - fly_1
@@ -450,7 +443,6 @@ SpriteAtlas:
   - player_arm_r
   - player_quiver
   - npc_merchant_head
-  - Orb_05
   - bricks_1
   - particleTriple
   - idle_0
@@ -464,7 +456,6 @@ SpriteAtlas:
   - skeleton_archer_head_die
   - skeleton_mage_arm_l
   - skeleton_archer_head
-  - Orb_02
   - firebowl_2
   - stone_5
   - player_head_die
@@ -485,7 +476,6 @@ SpriteAtlas:
   - house_1
   - firebowl_7
   - ButtonImage
-  - Orb_01
   - grass_4
   - idle_1_6
   - player_leg_r
@@ -520,7 +510,6 @@ SpriteAtlas:
   - tree_2
   - RedSword
   - npc_body_1
-  - Orb_06
   - run_01
   - sheet_1
   - firebowl_4
@@ -529,7 +518,6 @@ SpriteAtlas:
   - sign
   - skeleton_mage_head_die
   - PurpleSword
-  - Orb_03
   - crystal_5
   - chair_1
   - crystal_4
