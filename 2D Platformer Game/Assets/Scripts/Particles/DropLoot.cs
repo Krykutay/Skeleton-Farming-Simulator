@@ -38,8 +38,7 @@ public class DropLoot : MonoBehaviour
         }
 
         isFollowing = true;
-        //int playSoundEffect = Random.Range(0, 3);
-        int playSoundEffect = 0;
+        int playSoundEffect = Random.Range(0, 3);
 
         if (playSoundEffect == 0)
             SoundManager.Instance.Play(SoundManager.SoundTags.DropLoot1);
