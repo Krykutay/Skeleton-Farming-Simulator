@@ -4,9 +4,7 @@ using TMPro;
 
 public class Scene1Gems : MonoBehaviour
 {
-    [SerializeField] int _minModifier = 40;
-    [SerializeField] int _maxModifier = 60;
-
+    [SerializeField] float _speed = 0.25f;
     [SerializeField] int _tokensEarned = 18;
 
     [SerializeField] TMP_Text _talkText;
@@ -80,9 +78,9 @@ public class Scene1Gems : MonoBehaviour
     {
         while (isFollowing)
         {
-            orb1.transform.position = Vector3.SmoothDamp(orb1.transform.position, Player.Instance.transform.position, ref _velocity, Time.deltaTime * Random.Range(_minModifier, _maxModifier));
-            orb2.transform.position = Vector3.SmoothDamp(orb2.transform.position, Player.Instance.transform.position, ref _velocity1, Time.deltaTime * Random.Range(_minModifier, _maxModifier));
-            orb3.transform.position = Vector3.SmoothDamp(orb3.transform.position, Player.Instance.transform.position, ref _velocity2, Time.deltaTime * Random.Range(_minModifier, _maxModifier));
+            orb1.transform.position = Vector3.SmoothDamp(orb1.transform.position, Player.Instance.transform.position, ref _velocity, _speed);
+            orb2.transform.position = Vector3.SmoothDamp(orb2.transform.position, Player.Instance.transform.position, ref _velocity1, _speed);
+            orb3.transform.position = Vector3.SmoothDamp(orb3.transform.position, Player.Instance.transform.position, ref _velocity2, _speed);
             yield return null;
         }
     }

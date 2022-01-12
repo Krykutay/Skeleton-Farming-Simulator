@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class DropLoot : MonoBehaviour
 {
-    [SerializeField] protected int minModifier = 40;
-    [SerializeField] protected int maxModifier = 60;
+    [SerializeField] float _speed = 0.25f;
 
     Vector3 _velocity = Vector3.zero;
 
@@ -25,7 +24,7 @@ public class DropLoot : MonoBehaviour
     {
         if (isFollowing && Player.Instance.currentHealth > 0f)
         {
-            transform.position = Vector3.SmoothDamp(transform.position, Player.Instance.transform.position, ref _velocity, Time.deltaTime * Random.Range(minModifier, maxModifier));
+            transform.position = Vector3.SmoothDamp(transform.position, Player.Instance.transform.position, ref _velocity, _speed);
         }
     }
 

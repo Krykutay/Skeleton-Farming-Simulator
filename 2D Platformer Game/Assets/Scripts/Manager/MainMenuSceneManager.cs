@@ -3,11 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuSceneManager : MonoBehaviour
 {
-    private void Awake()
-    {
-        Application.targetFrameRate = -1;
-    }
-
     void Start()
     {
         ApplicationModel.CurrentScene = (int)Loader.Scene.MainMenu;

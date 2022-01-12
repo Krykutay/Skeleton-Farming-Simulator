@@ -32,7 +32,7 @@ public class BackgroundParallax : MonoBehaviour
     {
         _deltaMovement = _cameraTransform.position - _lastCameraPosition;
         _workSpace.Set(_deltaMovement.x * _parallaxEffect.x, _deltaMovement.y * _parallaxEffect.y, _deltaMovement.z);
-        transform.position += _workSpace;
+        transform.position -= _workSpace;
         _lastCameraPosition = _cameraTransform.position;
 
         if (_infiniteHorizontal)
