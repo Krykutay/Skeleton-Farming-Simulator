@@ -1953,7 +1953,7 @@ TextureImporter:
       physicsShape:
       - - {x: -128, y: 128}
         - {x: -128, y: -128}
-        - {x: 128, y: -124}
+        - {x: 128, y: -128}
         - {x: 128, y: 128}
       tessellationDetail: 0
       bones: []
