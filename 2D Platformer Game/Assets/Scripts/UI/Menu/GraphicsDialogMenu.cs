@@ -121,7 +121,8 @@ public class GraphicsDialogMenu : MonoBehaviour
         if (_isvSyncEnabled != isVsyncEnabled)
             _isGraphicsChanged = true;
         _isvSyncEnabled = isVsyncEnabled;
-        QualitySettings.vSyncCount = (_isvSyncEnabled ? 1 : 0);
+        //QualitySettings.vSyncCount = (_isvSyncEnabled ? 1 : 0);
+        QualitySettings.vSyncCount = 0;
     }
 
     public void GraphicsApply()
