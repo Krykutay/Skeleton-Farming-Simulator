@@ -122,7 +122,7 @@ public class GraphicsDialogMenu : MonoBehaviour
             _isGraphicsChanged = true;
         _isvSyncEnabled = isVsyncEnabled;
         //QualitySettings.vSyncCount = (_isvSyncEnabled ? 1 : 0);
-        QualitySettings.vSyncCount = 0;
+        //QualitySettings.vSyncCount = 0;
     }
 
     public void GraphicsApply()
@@ -169,11 +169,13 @@ public class GraphicsDialogMenu : MonoBehaviour
         Screen.fullScreen = false;
     }
 
-    public void ResetvSync()
+    public void ResetvSync()    // Disabled on WebGL version
     {
+        /*
         _isvSyncEnabled = true;
         _vSyncToggle.isOn = true;
         QualitySettings.vSyncCount = 1;
+        */
     }
 
     public void BackButton()

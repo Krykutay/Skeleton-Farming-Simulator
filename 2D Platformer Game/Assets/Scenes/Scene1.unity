@@ -8255,7 +8255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded4ca4c32a00324398b421c115a7e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parallaxEffect: {x: 0.66, y: 0.66}
+  _parallaxEffect: {x: 0.75, y: 0.75}
   _infiniteHorizontal: 1
   _infiniteVertical: 0
 --- !u!1 &354188778
@@ -84607,7 +84607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded4ca4c32a00324398b421c115a7e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parallaxEffect: {x: 0.8, y: 0.8}
+  _parallaxEffect: {x: 0.9, y: 0.9}
   _infiniteHorizontal: 1
   _infiniteVertical: 0
 --- !u!1 &929070068
@@ -87586,7 +87586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded4ca4c32a00324398b421c115a7e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parallaxEffect: {x: 0.5, y: 0.5}
+  _parallaxEffect: {x: 0.6, y: 0.6}
   _infiniteHorizontal: 1
   _infiniteVertical: 0
 --- !u!1 &1040912906
@@ -97638,7 +97638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded4ca4c32a00324398b421c115a7e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parallaxEffect: {x: 0.94, y: 0.94}
+  _parallaxEffect: {x: 0.98, y: 0.98}
   _infiniteHorizontal: 1
   _infiniteVertical: 0
 --- !u!1 &1378691981
