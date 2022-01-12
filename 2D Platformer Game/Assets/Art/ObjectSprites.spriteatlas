@@ -237,6 +237,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 3d90a103494bd49409c704069bb7e33b, type: 3}
     - {fileID: 2800000, guid: a685c2245f7349842b83fc432dec38ac, type: 3}
     - {fileID: 2800000, guid: 5b303ff28ad9368468a2edd759cf458d, type: 3}
+    - {fileID: 2800000, guid: e3c5286793d7be747a8abae1c0d1c5ed, type: 3}
+    - {fileID: 2800000, guid: dcc20d78cb8ec51408db6d602e0a672d, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -329,6 +331,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ec0e9c37fd3046f4b88ac4fe43574685, type: 3}
   - {fileID: 21300000, guid: e46148479656e8541a64224038a5b2d8, type: 3}
   - {fileID: 21300000, guid: 615a79574bdf45046a0067ce6d099d33, type: 3}
+  - {fileID: 21300000, guid: e3c5286793d7be747a8abae1c0d1c5ed, type: 3}
   - {fileID: 21300000, guid: ea3359672e8978b448fcca94dea50523, type: 3}
   - {fileID: 21300000, guid: e514ff67d9649e049ac2f2a971fc8035, type: 3}
   - {fileID: 21300000, guid: fb734387772800949ae7ff1c9a03913f, type: 3}
@@ -348,6 +351,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0120c7685db72394c83ee53dda5b5154, type: 3}
   - {fileID: 21300000, guid: 6ecd6d6825af2424da8622e07d3feeb9, type: 3}
   - {fileID: 21300000, guid: 0495cc78f71f26247b6f2876d2033ed3, type: 3}
+  - {fileID: 5684327315910396547, guid: dcc20d78cb8ec51408db6d602e0a672d, type: 3}
+  - {fileID: -1189345562256101844, guid: dcc20d78cb8ec51408db6d602e0a672d, type: 3}
+  - {fileID: 5722333315871558701, guid: dcc20d78cb8ec51408db6d602e0a672d, type: 3}
   - {fileID: 21300000, guid: 112346a8e9d2b2b4295565dc3f7bdef6, type: 3}
   - {fileID: 21300000, guid: cd544ac8dbad13b48bf43340474d3f6b, type: 3}
   - {fileID: 21300000, guid: 6e8d8cc81a678004cbe441a13cbf2d5f, type: 3}
@@ -522,6 +528,7 @@ SpriteAtlas:
   - Powerup2-Shiny
   - skeleton_archer_quiver
   - npc_head_1
+  - DustSprite
   - barrel_2
   - house_1
   - firebowl_7
@@ -541,6 +548,9 @@ SpriteAtlas:
   - idle_0
   - grass_3
   - player_body
+  - Blood_0
+  - Blood_1
+  - Blood_2
   - bank_5
   - index
   - dummy
