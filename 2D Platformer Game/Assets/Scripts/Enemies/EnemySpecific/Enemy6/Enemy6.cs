@@ -131,7 +131,10 @@ public class Enemy6 : Entity
         if (direction.x > 0f)
         {
             if (facingDirection == -1)
+            {
+                SetVelocityX(0f);
                 Flip();
+            }
 
             angle = Vector2.SignedAngle(Vector2.right, direction);
             _bodyLookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -142,7 +145,10 @@ public class Enemy6 : Entity
         else
         {
             if (facingDirection == 1)
+            {
+                SetVelocityX(0f);
                 Flip();
+            }
 
             angle = Vector2.SignedAngle(-Vector2.right, direction);
             _bodyLookAtRotation = Quaternion.AngleAxis(-angle, Vector3.forward);

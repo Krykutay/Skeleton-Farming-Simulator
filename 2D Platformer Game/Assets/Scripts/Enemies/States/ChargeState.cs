@@ -13,7 +13,7 @@ public class ChargeState : State
     protected bool isChargeTimeOver;
     protected bool performMeleeRangeAction;
 
-    protected bool canLeaveChargeState { get; private set; }
+    protected bool canLeaveChargeState;
 
     float _chargeStateEnterTime;
 
@@ -76,5 +76,11 @@ public class ChargeState : State
         isDetectingLedge = entity.CheckLedge();
         isDetectingWall = entity.CheckWall();
         performMeleeRangeAction = entity.CheckPlayerInMeleeRangeAction();
+    }
+
+    public void LeaveChargeState()
+    {
+        isChargeTimeOver = true;
+        canLeaveChargeState = true;
     }
 }

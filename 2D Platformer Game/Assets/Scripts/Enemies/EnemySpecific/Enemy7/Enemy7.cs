@@ -113,6 +113,7 @@ public class Enemy7 : Entity
         Vector3 direction;
         float angle;
         Quaternion lookAtRotation;
+        bool shouldLeaveChargeState = false;
 
         if (_resetBodyParts != null)
             StopCoroutine(_resetBodyParts);
@@ -122,25 +123,36 @@ public class Enemy7 : Entity
         if (direction.x > 0f)
         {
             if (facingDirection == -1)
+            {
+                SetVelocityX(0f);
                 Flip();
+                shouldLeaveChargeState = true;
+            }
 
             angle = Vector2.SignedAngle(Vector2.right, direction);
-            angle = Mathf.Clamp(angle, -30f, 30f);
+            angle = Mathf.Clamp(angle, -25f, 25f);
             lookAtRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         else
         {
             if (facingDirection == 1)
+            {
+                SetVelocityX(0f);
                 Flip();
+                shouldLeaveChargeState = true;
+            }
 
             angle = Vector2.SignedAngle(-Vector2.right, direction);
-            angle = Mathf.Clamp(angle, -30f, 30f);
-            lookAtRotation = Quaternion.AngleAxis(-angle > 30 ? 30 : -angle, Vector3.forward);
+            angle = Mathf.Clamp(angle, -25f, 25f);
+            lookAtRotation = Quaternion.AngleAxis(-angle > 25 ? 25 : -angle, Vector3.forward);
         }
 
         _head.localRotation = Quaternion.Slerp(_head.localRotation, lookAtRotation, Time.deltaTime * 5f);
         _leftArm.localRotation = Quaternion.Slerp(_leftArm.localRotation, lookAtRotation, Time.deltaTime * 5f);
         _rightArm.localRotation = Quaternion.Slerp(_rightArm.localRotation, lookAtRotation, Time.deltaTime * 5f);
+
+        if (shouldLeaveChargeState)
+            chargeState.LeaveChargeState();
     }
 
     public override void ResetBodyPosition()
