@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SurfaceHit : MonoBehaviour
 {
+    [SerializeField] float _hitFrequency = 1.75f;
+
     BoxCollider2D _collider;
     List<Collider2D> collisions;
     LayerMask _mask;
@@ -47,7 +49,7 @@ public class SurfaceHit : MonoBehaviour
                     Player.Instance.DamageBySurface();
             }
             
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(_hitFrequency);
         }
     }
 }

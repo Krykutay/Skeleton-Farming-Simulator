@@ -6,6 +6,7 @@ public class SpawnEnemyInMines : MonoBehaviour
     [SerializeField] Transform[] _spawnPositions;
 
     [SerializeField] float _spawnDuration = 10f;
+    [SerializeField] float _minSpawnDuration = 7.5f;
     [SerializeField] int _maxEnemyCount = 25;
 
     float _lastSpawnTime = Mathf.NegativeInfinity;
@@ -61,7 +62,7 @@ public class SpawnEnemyInMines : MonoBehaviour
 
             _activeEnemyCount++;
             _lastSpawnTime = Time.time;
-            if (_spawnDuration > 5f)
+            if (_spawnDuration > _minSpawnDuration)
                 _spawnDuration -= 0.1f;
         }
     }

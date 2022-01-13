@@ -78,18 +78,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grab",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "61073605-ea0f-4d20-b99c-0be6e44fdde9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "f10d4a2a-5361-4f13-a09b-580a960121b6",
+                    "id": "777bd589-ac85-4d4b-ac76-57e488024d5c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -105,28 +96,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "be4da7d6-503a-444e-9202-e3054286caab",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Grab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "23c06d57-e273-4d91-b8f6-c0ef3079c8ed",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -204,6 +173,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Talk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "696a4d53-1a43-486b-bdc4-1d124d908d90",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36e2e0e8-8df9-472b-bf86-02ea8adaa9f8",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

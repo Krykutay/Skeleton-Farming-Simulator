@@ -44,10 +44,13 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         Player.Instance.OnPlayerDied += Player_PlayerDied;
+        InputManager.Instance.OnPauseAction -= InputManager_PausePressed;
     }
 
     void Start()
     {
+        InputManager.Instance.OnPauseAction += InputManager_PausePressed;
+
         PlayAmbianceMusicAccordingToScene();
         PlayerSpawnPointAccordingToScene();
 
@@ -59,27 +62,24 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    void Update()
+    void InputManager_PausePressed()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (_gameoverPanel.activeSelf)
+            return;
+
+        bool isPanelOn = false;
+        foreach (GameObject panel in _panelsToClose)
         {
-            if (_gameoverPanel.activeSelf)
-                return;
-
-            bool isPanelOn = false;
-            foreach (GameObject panel in _panelsToClose)
+            if (panel.activeSelf)
             {
-                if (panel.activeSelf)
-                {
-                    panel.SetActive(false);
-                    isPanelOn = true;
-                    SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
-                }
+                panel.SetActive(false);
+                isPanelOn = true;
+                SoundManager.Instance.Play(SoundManager.SoundTags.ButtonClick);
             }
-
-            if (!isPanelOn && currentState == PlayPauseState.Playing)
-                Game_Paused();
         }
+
+        if (!isPanelOn && currentState == PlayPauseState.Playing)
+            Game_Paused();
     }
 
     void Player_PlayerDied()

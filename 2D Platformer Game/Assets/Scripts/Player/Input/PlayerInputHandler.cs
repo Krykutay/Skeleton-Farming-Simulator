@@ -5,14 +5,13 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     PlayerInput _playerInput;
-    InputAction _upAction;
+    //InputAction _upAction;
     InputAction _downAction;
     InputAction _leftAction;
     InputAction _rightAction;
     InputAction _jumpAction;
-    InputAction _grabAction;
+    //InputAction _grabAction;
     InputAction _dashAction;
-    InputAction _dashDirectionAction;
     InputAction _primaryAttackAction;
     InputAction _defenseAction;
     InputAction _talkAction;
@@ -38,12 +37,12 @@ public class PlayerInputHandler : MonoBehaviour
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _upAction = _playerInput.actions["Up"];
+        //_upAction = _playerInput.actions["Up"];
         _downAction = _playerInput.actions["Down"];
         _leftAction = _playerInput.actions["Left"];
         _rightAction = _playerInput.actions["Right"];
         _jumpAction = _playerInput.actions["Jump"];
-        _grabAction = _playerInput.actions["Grab"];
+        //_grabAction = _playerInput.actions["Grab"];
         _dashAction = _playerInput.actions["Dash"];
         _primaryAttackAction = _playerInput.actions["PrimaryAttack"];
         _defenseAction = _playerInput.actions["Parry"];
@@ -52,8 +51,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnEnable()
     {
-        _upAction.performed += UpStart;
-        _upAction.canceled += UpCancel;
+        //_upAction.performed += UpStart;
+        //_upAction.canceled += UpCancel;
         _downAction.performed += DownStart;
         _downAction.canceled += DownCancel;
         _leftAction.performed += LeftStart;
@@ -64,8 +63,8 @@ public class PlayerInputHandler : MonoBehaviour
         _jumpAction.performed += JumpStart;
         _jumpAction.canceled += JumpCancel;
 
-        _grabAction.performed += GrabStart;
-        _grabAction.canceled += GrabCancel;
+        //_grabAction.performed += GrabStart;
+        //_grabAction.canceled += GrabCancel;
 
         _dashAction.performed += DashStart;
         _dashAction.canceled += DashCancel;
@@ -81,8 +80,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnDisable()
     {
-        _upAction.performed -= UpStart;
-        _upAction.canceled -= UpCancel;
+        //_upAction.performed -= UpStart;
+        //_upAction.canceled -= UpCancel;
         _downAction.performed -= DownStart;
         _downAction.canceled -= DownCancel;
         _leftAction.performed -= LeftStart;
@@ -93,8 +92,8 @@ public class PlayerInputHandler : MonoBehaviour
         _jumpAction.performed -= JumpStart;
         _jumpAction.canceled -= JumpCancel;
 
-        _grabAction.performed -= GrabStart;
-        _grabAction.canceled -= GrabCancel;
+        //_grabAction.performed -= GrabStart;
+        //_grabAction.canceled -= GrabCancel;
 
         _dashAction.performed -= DashStart;
         _dashAction.canceled -= DashCancel;
@@ -140,6 +139,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    /*
     void UpStart(InputAction.CallbackContext context)
     {
         if (_downAction.inProgress)
@@ -156,19 +156,20 @@ public class PlayerInputHandler : MonoBehaviour
             yInput = 0;
     }
 
+    */
     void DownStart(InputAction.CallbackContext context)
     {
-        if (_upAction.inProgress)
-            yInput = 0;
-        else
+        //if (_upAction.inProgress)
+          //  yInput = 0;
+        //else
             yInput = -1;
     }
 
     void DownCancel(InputAction.CallbackContext context)
     {
-        if (_upAction.inProgress)
-            yInput = 1;
-        else
+        //if (_upAction.inProgress)
+          //  yInput = 1;
+        //else
             yInput = 0;
     }
 
@@ -269,4 +270,5 @@ public class PlayerInputHandler : MonoBehaviour
         talkInput = true;
         OnTalkAction?.Invoke();
     }
+
 }
