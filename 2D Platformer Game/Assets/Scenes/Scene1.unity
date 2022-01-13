@@ -84210,7 +84210,6 @@ Transform:
   - {fileID: 1545830411}
   - {fileID: 282031689}
   - {fileID: 107135645}
-  - {fileID: 1245383690}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93581,68 +93580,6 @@ RectTransform:
   m_AnchoredPosition: {x: 90.6, y: -96}
   m_SizeDelta: {x: 253.7189, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1245383689
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 911043829}
-    m_Modifications:
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -24.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4274536266786534455, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-      propertyPath: m_Name
-      value: HealthPowerupTrainScene (6)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
---- !u!4 &1245383690 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1024284053373104319, guid: 9e8df3361c86912419bacec90a09c5c1, type: 3}
-  m_PrefabInstance: {fileID: 1245383689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1246468716
 PrefabInstance:
   m_ObjectHideFlags: 0
