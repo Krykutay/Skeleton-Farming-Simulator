@@ -1,7 +1,5 @@
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public enum PlayPauseState
 {
@@ -17,7 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _menu;
     [SerializeField] GameObject[] _panelsToClose;
     [SerializeField] GameObject _gameoverPanel;
-    [SerializeField] CanvasScaler _canvasScaler;
 
     [SerializeField] Transform _spawnPoint;
     [SerializeField] Transform _returnedSpawnPoint;
@@ -31,7 +28,6 @@ public class GameManager : MonoBehaviour
         _cvc = transform.parent.Find("Cameras").Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
 
         currentState = PlayPauseState.Playing;
-        _canvasScaler.referenceResolution = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
     }
 
     void OnEnable()
