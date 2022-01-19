@@ -20,7 +20,7 @@ Platformer Game
 ## Game Summary
 It's basically a platformer game where the main character can climb, jump, dash, slide and fights with combat mechanics against.. well, skeletons.
 The game has three scenes, first one being the main menu with its play button, settings (Sound, Graphics, Controls), how to play tab and Exit.
-The second one is the Traning Groud where an npc guides the player with dialog system, and simply teaches the game in a story driven way, explaning the keys and such.
+The second one is the Traning Groud where an npc guides the player with dialog system, and simply teaches the game in a story driven way, explaining the keys and such.
 The last scene is where the actual endless game begins, there are spots where enemies & powerups spawn, and the spawn rate as well as the difficulty gets harder the more time passes. By killing a skeletons, you do collect a stone which then turns into a gem, and with gems player can buy new outfits, new swords and enhances the character's offense and defense. Oh and the game includes quite sophisticated easter eggs.
 
 ## Things the game include
@@ -33,7 +33,7 @@ The last scene is where the actual endless game begins, there are spots where en
 + Voiced Npcs with dialogue system.
 + A story to go along with.
 + Merchants that sell new Outfits, Swords and stimulates that enhance the character's attack damage and total health.
-+ Robust UI system working on all resolutions.
++ Responsive UI system working on all resolutions.
 + A rich detialed Settings menu -> Sounds (master, effects, ambiance, voice), Graphics (resolution, quality, vsync, fullscreen), Controls (changable key binds).
 + Super nice sound effects and ambiance music!
 + Some alright easter eggs.
