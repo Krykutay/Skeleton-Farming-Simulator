@@ -63,14 +63,14 @@ The last scene is where the actual endless game begins, there are spots where en
 - Both the Player's and Enemies' datas are kept in scriptable objects.
 
 - The game is run via managers, most of which are simple singletons.
-GameManager -> Adjusts the difficulty over time, spawns enemies and powerups and responsible for the time when player is dead and respawned back. Also manages Pause & Play throughout the game as well as the dialogs.
-GameSceneManager -> This manager adjusts the scenes accordingly, player can move between the scenes including the main menu scene.
-SoundManager -> This manager simply adjusts all the sounds in the game. Instead of adding audio for a lot of objects, a simple manager handles it all.
-ObjectPoolingManager -> Instead of destroying and re instantiating gameobjects, Objects pooling manager simply has a Generic Scripts and basically disables and re-enables objects (object pooling) without destroying them in order to avoid memory adjustments which causes performance issues.
-PowerupManager -> Basically whenever the player picks up a powerup, this manager is responsible for the outcome.
-ScoreManager -> This manager is responsible for the stones and gems that are collected as well as keeping the highscore.
-InputManager -> Since Unity's new input system is used, this manager handles the C# based event system for the inputs.
-GameAssets -> A manager that keeps references to the outfit, sword, sword effect sprites.
+GameManager -> Adjusts the difficulty over time, spawns enemies and powerups and responsible for the time when player is dead and respawned back. Also manages Pause & Play throughout the game as well as the dialogs.<br/>
+GameSceneManager -> This manager adjusts the scenes accordingly, player can move between the scenes including the main menu scene.<br/>
+SoundManager -> This manager simply adjusts all the sounds in the game. Instead of adding audio for a lot of objects, a simple manager handles it all.<br/>
+ObjectPoolingManager -> Instead of destroying and re instantiating gameobjects, Objects pooling manager simply has a Generic Scripts and basically disables and re-enables objects (object pooling) without destroying them in order to avoid memory adjustments which causes performance issues.<br/>
+PowerupManager -> Basically whenever the player picks up a powerup, this manager is responsible for the outcome.<br/>
+ScoreManager -> This manager is responsible for the stones and gems that are collected as well as keeping the highscore.<br/>
+InputManager -> Since Unity's new input system is used, this manager handles the C# based event system for the inputs.<br/>
+GameAssets -> A manager that keeps references to the outfit, sword, sword effect sprites.<br/>
 
 - Playerpref Save system for all settings, scores, player inventory and current outfit/sword.
 
