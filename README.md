@@ -114,7 +114,7 @@ Guess what! Npcs do talk with voice and tell the game's story as well as helping
 <img src="https://user-images.githubusercontent.com/44427408/150685319-4134b4be-667f-45b9-aed6-67b3c99fae6a.jpg" width="720" height="405"> <br/> 
 
 ### Powerup Visual Effects & Duration Countdown
-Each powerup pops up it's own visual effect. Health has its own particle-system animations, Offensive powerup vibrates an orange aura and turns character more orange while Defensive powerup vibrates a blue auro and turns character more blue. <br/>
+Each powerup pops up it's own visual effect. Health has its own particle-system animations, Offensive powerup vibrates an orange aura and the character glooms orange while Defensive powerup vibrates a blue auro and the character glooms blue. <br/>
 These icons on top left indicates that the corresponding powerup is active and also tell its remaning duration. <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685532-85cbc5b0-a237-4465-93d7-4e0aa00090bb.jpg" width="720" height="405"> <br/>
 
