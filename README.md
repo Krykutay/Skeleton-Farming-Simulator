@@ -5,13 +5,12 @@ Gameplay video on [YouTube: Skeleton Farming Simulator](https://youtu.be/AO2dPDl
 
 Click the link to play! https://simmer.io/@Krykutay/skeleton-farming-simulator  <br/>
 
-<img src="https://user-images.githubusercontent.com/44427408/149325365-5b406779-6d0d-4c3b-b4b1-1e4a8d3f3cda.png" width="720" height="405"> <br/>
-
+<img src="https://user-images.githubusercontent.com/44427408/149325365-5b406779-6d0d-4c3b-b4b1-1e4a8d3f3cda.png" width="720" height="405"> <br/> <br/>
 
 This is a mini game version of what I've been enjoying to create lately. The actual game is leaning toward a platformer game with puzzles and such whereas this one is basically a "skeleton farming simulator" with a main character, enemies and npcs. 
 
 # Game Overview
-<img src="https://user-images.githubusercontent.com/44427408/150685719-54b6bc9a-933a-44b6-8378-ef6017769e8a.jpg" width="720" height="405"> <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685719-54b6bc9a-933a-44b6-8378-ef6017769e8a.jpg" width="720" height="405"> <br/> <br/>
 
 ## Game Genre
 Platformer Game
@@ -62,7 +61,7 @@ GameAssets -> A manager that keeps references to the outfit, sword, sword effect
 
 ## Player Finite State Machine diagrams in detail
 
-![SkeletonFarmSimulatorPlayerStates](https://user-images.githubusercontent.com/44427408/150682231-b6cf1a75-69e5-441d-99c4-d3e08d633d9b.png) <br/>
+![SkeletonFarmSimulatorPlayerStates](https://user-images.githubusercontent.com/44427408/150682231-b6cf1a75-69e5-441d-99c4-d3e08d633d9b.png) <br/> <br/>
 
 The diagram above explains the translations from a state to another. When observered in detail, there are two types of player states, Super States and Sub States. Super states are Grounded state, Ability state and Touching Wall states. <br/>
 Grounded state includes Move state, Idle state, Crouch Move state, Crouch Idle state and Landing state. <br/>
@@ -72,11 +71,11 @@ Finally, there are also two states that doesn't have a superstates. These are, I
 
 These states, of course, also bring up animations as the complicity. Animation state behaviours are shows in the following picture. Note that player can actively be on only a single state at a time. <br/>
 
-![PlayerAnims](https://user-images.githubusercontent.com/44427408/150682589-362494d3-07f0-47de-8670-ae97ec970d27.jpg) <br/>
+![PlayerAnims](https://user-images.githubusercontent.com/44427408/150682589-362494d3-07f0-47de-8670-ae97ec970d27.jpg) <br/> <br/>
 
 UML Diagram of Player States:
 
-![PlayerStateUML](https://user-images.githubusercontent.com/44427408/150683315-dd2cc360-bd39-42dd-bc09-abb695c4a629.png) <br/>
+![PlayerStateUML](https://user-images.githubusercontent.com/44427408/150683315-dd2cc360-bd39-42dd-bc09-abb695c4a629.png) <br/> <br/>
 
 ## Enemy Finite State Machines
 
@@ -86,7 +85,7 @@ With enemies, there is sub/super state system. There are certain states as Idle,
 This way, some enemies may or may not have, let's say stun state, and therefore they won't be able to stunned by the player. Additionally, each state has it's own scriptable object and the characteristics / stats of each enemy is saved in them. Finally, Since all enemies do share similar behaviors, they all inherit from the class Entity. <br/>
 
 To give an example, Enemy4 (Archer), uses the following scriptable objects as its data behaviors.
-<img src="https://user-images.githubusercontent.com/44427408/150683899-04f9cb26-f0ee-4b6d-a49d-40d4a76e9cb8.png" width="371" height="260"> <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150683899-04f9cb26-f0ee-4b6d-a49d-40d4a76e9cb8.png" width="371" height="260"> <br/> <br/>
 
 ## Checks for both Player and Enemy
 Each enemy and player object has its own Ground Check, WallCheck, LedgeCheck, MeleeAttackPositionCheck. Some enemies also have checks as RangeAttack, LedgeBehind etc. <br/>
@@ -95,38 +94,38 @@ Additionally, on this demo, Each enemy checks its distance between the player in
 
 ## Combat System
 A very simple example of the combat system.
-<img src="https://user-images.githubusercontent.com/44427408/150685590-a78a4fe2-0feb-4a9a-89c7-737b11a38a50.jpg" width="720" height="405"> <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685590-a78a4fe2-0feb-4a9a-89c7-737b11a38a50.jpg" width="720" height="405"> <br/> <br/>
 
 ## UI Elements
 ### Settings
 Audio Settings offer the player a chance to alter Master, Effects, Music and Voice Volumes
-<img src="https://user-images.githubusercontent.com/44427408/150685194-e9c31e10-1101-4a5e-969d-50c70fca5eb9.jpg" width="390" height="250"> <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685194-e9c31e10-1101-4a5e-969d-50c70fca5eb9.jpg" width="390" height="250"> <br/> <br/>
 Graphics Settings offer the player a chance to change Quality, Resolution, FullScreen(or not), V-Sync(or not).
-<img src="https://user-images.githubusercontent.com/44427408/150685219-25eb842c-d655-4a41-b552-a0a2bc8c60aa.jpg" width="390" height="250"> <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685219-25eb842c-d655-4a41-b552-a0a2bc8c60aa.jpg" width="390" height="250"> <br/> <br/>
 Controls Settings offer the player a chance to change any key binding. Note that this is done in the new Input System - SO MUCH WORK IT WAS.
-<img src="https://user-images.githubusercontent.com/44427408/150685265-bacd5063-d7dd-4ee9-bdb6-77c46d453dd4.jpg" width="390" height="250"> <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685265-bacd5063-d7dd-4ee9-bdb6-77c46d453dd4.jpg" width="390" height="250"> <br/> <br/>
 
 ### Shops
 Shops do include new outfits, new swords and stimulates that enchance the character's total health and damage. These are bought with gems which are collected from skeletons.
-![F-ss7](https://user-images.githubusercontent.com/44427408/150685303-c24b9167-8994-4f2e-a390-8067f3d6f3e9.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685303-c24b9167-8994-4f2e-a390-8067f3d6f3e9.jpg" width="750" height="465"><br/> <br/>
 
 ### Dialogue System
 Guess what! Npcs do talk with voice and tell the game's story as well as helping player how to play.
-![ss6](https://user-images.githubusercontent.com/44427408/150685319-4134b4be-667f-45b9-aed6-67b3c99fae6a.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685319-4134b4be-667f-45b9-aed6-67b3c99fae6a.jpg" width="720" height="405"> <br/> <br/>
 
 ### Powerup Duration Countdown
 These icons indicates that the corresponding powerup is active and also tell its remaning duration.
-![Powerups-UI](https://user-images.githubusercontent.com/44427408/150685532-85cbc5b0-a237-4465-93d7-4e0aa00090bb.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685532-85cbc5b0-a237-4465-93d7-4e0aa00090bb.jpg" width="720" height="405"> <br/> <br/>
 
 ### Gameover
 When the player dies, or tries to leave the scene, the gameover panel pops-up and turns the collected stones into gems as well as showing the kill/collect counts and highscore.
-![ss13](https://user-images.githubusercontent.com/44427408/150685561-fb974309-7cc5-4c6c-be78-cd7bd0ebf4eb.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685561-fb974309-7cc5-4c6c-be78-cd7bd0ebf4eb.jpg" width="720" height="405"> <br/> <br/>
 
 ## Quite sophisticated easter eggs
 Loading Screen
-![ss5](https://user-images.githubusercontent.com/44427408/150685643-d2fb9171-c012-4b0c-9367-e83bb828445a.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685643-d2fb9171-c012-4b0c-9367-e83bb828445a.jpg" width="720" height="405"> <br/> <br/>
 A hidden floor where the player finds secret powerups
-![ss12](https://user-images.githubusercontent.com/44427408/150685665-350198c3-c1b8-478e-9e07-fabcf166f412.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685665-350198c3-c1b8-478e-9e07-fabcf166f412.jpg" width="720" height="405"> <br/> <br/>
 
 
 As I make progress in the original game, I'll make sure to put its updates here on its own github page! Thanks for reading.
