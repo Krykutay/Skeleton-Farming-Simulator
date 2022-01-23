@@ -1,7 +1,7 @@
 # Skeleton Farming Simulator
 Short version of a 2D platformer game I'm creating on Unity.
 
-Gameplay video on [YouTube: Skeleton Farming Simulator](https://youtu.be/vG0dXZinKso)
+Gameplay video on [YouTube: Skeleton Farming Simulator](https://youtu.be/AO2dPDledO8)
 
 Click the link to play! https://simmer.io/@Krykutay/skeleton-farming-simulator
 
