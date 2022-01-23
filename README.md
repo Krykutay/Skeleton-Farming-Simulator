@@ -11,7 +11,7 @@ This is a mini game version of what I've been enjoying to create lately. The act
 
 # Game Overview
 <br/>
-<img src="https://user-images.githubusercontent.com/44427408/150685719-54b6bc9a-933a-44b6-8378-ef6017769e8a.jpg" width="720" height="405"> <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685719-54b6bc9a-933a-44b6-8378-ef6017769e8a.jpg" width="720" height="405">
 
 ## Game Genre
 Platformer Game
