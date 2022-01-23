@@ -93,7 +93,7 @@ With these checks, in each physics update (Fixed Update), the game checks if pla
 Additionally, on this demo, Each enemy checks its distance between the player in each physics update and determines whether it is in agro range or not. However, this behaviour will get costy and costy the bigger the game gets. Thus, as a solution, instead player will constantly crate an overlapseCircleAll in every .1 seconds and let the enemies know the player has approached with an observer pattern.
 
 ## Combat System
-A very simple example of the combat system. <br/>
+In this game, combat system is handled through interfaces. When the player weapon's hit area hits the enemy hitbox, the engine checks for IDamagable interface, and if it exists, then the enemy takes hit. A simillar pattern for the vice versa. <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685590-a78a4fe2-0feb-4a9a-89c7-737b11a38a50.jpg" width="720" height="405"> <br/>
 
 ## UI Elements
@@ -106,7 +106,7 @@ Controls Settings offer the player a chance to change any key binding. Note that
 <img src="https://user-images.githubusercontent.com/44427408/150685265-bacd5063-d7dd-4ee9-bdb6-77c46d453dd4.jpg" width="390" height="250"> <br/>
 
 ### Shops
-Shops do include new outfits, new swords and stimulates that enchance the character's total health and damage. These are bought with gems which are collected from skeletons. <br/>
+Shops do include new outfits, new swords and stimulates that enchance the character's total health and damage. These are bought with gems which are collected from skeletons. Not that each item that is bought from the shop is added to player inventory and stays there forever thanks to the save system! <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685303-c24b9167-8994-4f2e-a390-8067f3d6f3e9.jpg" width="750" height="465"><br/>
 
 ### Dialogue System
