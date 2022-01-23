@@ -51,7 +51,7 @@ The last scene is where the actual endless game begins, there are spots where en
 GameManager -> Adjusts the difficulty over time, spawns enemies and powerups and responsible for the time when player is dead and respawned back. Also manages Pause & Play throughout the game as well as the dialogs.<br/><br/>
 GameSceneManager -> This manager adjusts the scenes accordingly, player can move between the scenes including the main menu scene.<br/><br/>
 SoundManager -> This manager simply adjusts all the sounds in the game. Instead of adding audio for a lot of objects, a simple manager handles it all.<br/><br/>
-ObjectPoolingManager -> Instead of destroying and re instantiating gameobjects, Objects pooling manager simply has a Generic Scripts and basically disables and re-enables objects (object pooling) without destroying them in order to avoid memory adjustments which causes performance issues.<br/><br/>
+ObjectPoolingManager -> Instead of destroying and re instantiating gameobjects, Objects pooling manager simply has a Generic Script and basically disables and re-enables objects (object pooling) without destroying them in order to avoid memory allocations which causes performance issues.<br/><br/>
 PowerupManager -> Basically whenever the player picks up a powerup, this manager is responsible for the outcome.<br/><br/>
 ScoreManager -> This manager is responsible for the stones and gems that are collected as well as keeping the highscore.<br/><br/>
 InputManager -> Since Unity's new input system is used, this manager handles the C# based event system for the inputs.<br/><br/>
@@ -61,7 +61,75 @@ GameAssets -> A manager that keeps references to the outfit, sword, sword effect
 
 - Many performance and memory adjustments such as keeping the sprites in power of 2, using sprite atlas, efficient animations and coding.
 
-Includes quite sophisticated easter eggs.
-![ssSkeleton](https://user-images.githubusercontent.com/44427408/149325407-3a37f129-3dfd-423a-acea-0fa060235db9.png)
+## Player Finite State Machine diagrams in detail
+
+![SkeletonFarmSimulatorPlayerStates](https://user-images.githubusercontent.com/44427408/150682231-b6cf1a75-69e5-441d-99c4-d3e08d633d9b.png)
+
+The diagram above explains the translations from a state to another. When observered in detail, there are two types of player states, Super States and Sub States. Super states are Grounded state, Ability state and Touching Wall states. <br/>
+Grounded state includes Move state, Idle state, Crouch Move state, Crouch Idle state and Landing state. <br/>
+Touching Wall state includes Wall Grab state, Wall Climb state and Wall Slide state. <br/>
+Ability state includes Primary Attack state, Dash state, Jump state, Wall Jump state and finally Dodge Roll state. <br/>
+Finally, there are also two states that doesn't have a superstates. These are, In Air State, Ledge Climb, Knockback state and Defense(parry) state. <br/>
+
+These states, of course, also bring up animations as the complicity. Animation state behaviours are shows in the following picture. Note that player can actively be on only a single state at a time. <br/>
+
+![PlayerAnims](https://user-images.githubusercontent.com/44427408/150682589-362494d3-07f0-47de-8670-ae97ec970d27.jpg)
+
+UML Diagram of Player States:
+
+![PlayerStateUML](https://user-images.githubusercontent.com/44427408/150683315-dd2cc360-bd39-42dd-bc09-abb695c4a629.png)
+
+## Enemy Finite State Machines
+
+This is what makes the Enemy AI act like they got a semblance of brain! <br/>
+With enemies, there is sub/super state system. There are certain states as Idle, Move, PlayerDetected, Stun, Charge, RangeAttack, MeleeAttack, Dead, Respawn and such, and enemies get to have as many of these states. I've used inheritance here such that each enemy has their own, let's say, melee attack behaviours but also do have certain shared melee attack behaviors, thus EnemyXMeleeAttackState inherits from MeleeAttackState. <br/>
+
+This way, some enemies may or may not have, let's say stun state, and therefore they won't be able to stunned by the player. Additionally, each state has it's own scriptable object and the characteristics / stats of each enemy is saved in them. Finally, Since all enemies do share similar behaviors, they all inherit from the class Entity. <br/>
+
+To give an example, Enemy4 (Archer), uses the following scriptable objects as its data behaviors.
+![EnemyScript](https://user-images.githubusercontent.com/44427408/150683899-04f9cb26-f0ee-4b6d-a49d-40d4a76e9cb8.png)
+
+## Checks for both Player and Enemy
+Each enemy and player object has its own Ground Check, WallCheck, LedgeCheck, MeleeAttackPositionCheck. Some enemies also have checks as RangeAttack, LedgeBehind etc. <br/>
+With these checks, in each physics update (Fixed Update), the game checks if player is let's say grounded or not if its ground touching is concerned in its current state. <br/>
+Additionally, on this demo, Each enemy checks its distance between the player in each physics update and determines whether it is in agro range or not. However, this behaviour will get costy and costy the bigger the game gets. Thus, as a solution, instead player will constantly crate an overlapseCircleAll in every .1 seconds and let the enemies know the player has approached with an observer pattern.
+
+## Combat System
+A very simple example of the combat system.
+![ss8](https://user-images.githubusercontent.com/44427408/150685590-a78a4fe2-0feb-4a9a-89c7-737b11a38a50.jpg)
+
+## UI Elements
+### Settings
+Audio Settings offer the player a chance to alter Master, Effects, Music and Voice Volumes
+![F-ss1](https://user-images.githubusercontent.com/44427408/150685194-e9c31e10-1101-4a5e-969d-50c70fca5eb9.jpg)
+Graphics Settings offer the player a chance to change Quality, Resolution, FullScreen(or not), V-Sync(or not).
+![F-ss2](https://user-images.githubusercontent.com/44427408/150685219-25eb842c-d655-4a41-b552-a0a2bc8c60aa.jpg)
+Controls Settings offer the player a chance to change any key binding. Note that this is done in the new Input System - SO MUCH WORK IT WAS.
+![F-ss3](https://user-images.githubusercontent.com/44427408/150685265-bacd5063-d7dd-4ee9-bdb6-77c46d453dd4.jpg)
+
+### Shops
+Shops do include new outfits, new swords and stimulates that enchance the character's total health and damage. These are bought with gems which are collected from skeletons.
+![F-ss7](https://user-images.githubusercontent.com/44427408/150685303-c24b9167-8994-4f2e-a390-8067f3d6f3e9.jpg)
+
+### Dialogue System
+Guess what! Npcs do talk with voice and tell the game's story as well as helping player how to play.
+![ss6](https://user-images.githubusercontent.com/44427408/150685319-4134b4be-667f-45b9-aed6-67b3c99fae6a.jpg)
+
+### Powerup Duration Countdown
+These icons indicates that the corresponding powerup is active and also tell its remaning duration.
+![Powerups-UI](https://user-images.githubusercontent.com/44427408/150685532-85cbc5b0-a237-4465-93d7-4e0aa00090bb.jpg)
+
+### Gameover
+When the player dies, or tries to leave the scene, the gameover panel pops-up and turns the collected stones into gems as well as showing the kill/collect counts and highscore.
+![ss13](https://user-images.githubusercontent.com/44427408/150685561-fb974309-7cc5-4c6c-be78-cd7bd0ebf4eb.jpg)
+
+## Quite sophisticated easter eggs
+Loading Screen
+![ss5](https://user-images.githubusercontent.com/44427408/150685643-d2fb9171-c012-4b0c-9367-e83bb828445a.jpg)
+A hidden floor where the player finds secret powerups
+![ss12](https://user-images.githubusercontent.com/44427408/150685665-350198c3-c1b8-478e-9e07-fabcf166f412.jpg)
+
+
+As I make progress in the original game, I'll make sure to put its updates here on its own github page! Thanks for reading.
 
 ![unity logo](https://user-images.githubusercontent.com/44427408/141788735-9ec1183a-0e02-4acb-b385-a65fc893b201.png)
