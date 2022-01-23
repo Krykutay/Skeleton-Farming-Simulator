@@ -61,7 +61,6 @@ GameAssets -> A manager that keeps references to the outfit, sword, sword effect
 - Many performance and memory adjustments such as keeping the sprites in power of 2, using sprite atlas, efficient animations and coding.
 
 ## Player Finite State Machine diagrams in detail
-<br/>
 ![SkeletonFarmSimulatorPlayerStates](https://user-images.githubusercontent.com/44427408/150682231-b6cf1a75-69e5-441d-99c4-d3e08d633d9b.png) <br/>
 
 The diagram above explains the translations from a state to another. When observered in detail, there are two types of player states, Super States and Sub States. Super states are Grounded state, Ability state and Touching Wall states. <br/>
