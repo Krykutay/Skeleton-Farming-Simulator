@@ -5,7 +5,7 @@ Gameplay video on [YouTube: Skeleton Farming Simulator](https://youtu.be/AO2dPDl
 
 Click the link to play! https://simmer.io/@Krykutay/skeleton-farming-simulator  <br/>
 
-![Sfsmainss](https://user-images.githubusercontent.com/44427408/149325365-5b406779-6d0d-4c3b-b4b1-1e4a8d3f3cda.png) <br/>
+![Sfsmainss](https://user-images.githubusercontent.com/44427408/149325365-5b406779-6d0d-4c3b-b4b1-1e4a8d3f3cda.png "a") <br/>
 
 
 This is a mini game version of what I've been enjoying to create lately. The actual game is leaning toward a platformer game with puzzles and such whereas this one is basically a "skeleton farming simulator" with a main character, enemies and npcs. 
