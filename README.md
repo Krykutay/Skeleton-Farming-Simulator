@@ -113,8 +113,9 @@ Shops do include new outfits, new swords and stimulates that enchance the charac
 Guess what! Npcs do talk with voice and tell the game's story as well as helping player how to play. <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685319-4134b4be-667f-45b9-aed6-67b3c99fae6a.jpg" width="720" height="405"> <br/> 
 
-### Powerup Duration Countdown
-These icons indicates that the corresponding powerup is active and also tell its remaning duration. <br/>
+### Powerup Visual Effects & Duration Countdown
+Each powerup pops up it's own visual effect. Health has its own particle-system animations, Offensive powerup vibrates an orange aura and turns character more orange while Defensive powerup vibrates a blue auro and turns character more blue. <br/>
+These icons on top left indicates that the corresponding powerup is active and also tell its remaning duration. <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685532-85cbc5b0-a237-4465-93d7-4e0aa00090bb.jpg" width="720" height="405"> <br/>
 
 ### Gameover
@@ -126,7 +127,6 @@ Loading Screen <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685643-d2fb9171-c012-4b0c-9367-e83bb828445a.jpg" width="720" height="405"> <br/> 
 A hidden floor where the player finds secret powerups <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685665-350198c3-c1b8-478e-9e07-fabcf166f412.jpg" width="720" height="405"> <br/> 
-
 
 As I make progress in the original game, I'll make sure to put its updates here on its own github page! Thanks for reading.
 
