@@ -124,9 +124,9 @@ When the player dies, or tries to leave the scene, the gameover panel pops-up an
 
 ## Quite sophisticated easter eggs
 Loading Screen <br/>
-<img src="https://user-images.githubusercontent.com/44427408/150685643-d2fb9171-c012-4b0c-9367-e83bb828445a.jpg" width="720" height="405"> <br/> 
+<img src="https://user-images.githubusercontent.com/44427408/150685643-d2fb9171-c012-4b0c-9367-e83bb828445a.jpg" width="720" height="405"> <br/> <br/>
 A hidden floor where the player finds secret powerups <br/>
-<img src="https://user-images.githubusercontent.com/44427408/150685665-350198c3-c1b8-478e-9e07-fabcf166f412.jpg" width="720" height="405"> <br/> 
+<img src="https://user-images.githubusercontent.com/44427408/150685665-350198c3-c1b8-478e-9e07-fabcf166f412.jpg" width="720" height="405"> <br/> <br/>
 
 As I make progress in the original game, I'll make sure to put its updates here on its own github page! Thanks for reading.
 
