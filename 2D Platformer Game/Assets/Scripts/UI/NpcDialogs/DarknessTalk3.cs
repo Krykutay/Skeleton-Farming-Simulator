@@ -1,14 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class DarknessTalk3 : MonoBehaviour
+public class DarknessTalk3 : DarknessTalk
 {
     [SerializeField] UI_Assistant _darknessTalk;
 
     string[] _initialDialog;
     SoundManager.SoundTags[] _dialogSounds;
     float[] _typeSpeed;
-    Coroutine _disableGameobject = null;
 
     static bool _IsActivatedOnce;
 
@@ -58,9 +57,9 @@ public class DarknessTalk3 : MonoBehaviour
     {
         if (_IsActivatedOnce)
         {
-            if (_disableGameobject != null)
-                StopCoroutine(_disableGameobject);
-            _disableGameobject = StartCoroutine(DisableGameObject());
+            if (disableGameobject != null)
+                StopCoroutine(disableGameobject);
+            disableGameobject = StartCoroutine(DisableGameObject());
         }
     }
 
