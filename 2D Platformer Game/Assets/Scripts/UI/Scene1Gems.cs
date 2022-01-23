@@ -4,6 +4,14 @@ using TMPro;
 
 public class Scene1Gems : MonoBehaviour
 {
+    enum Gems
+    {
+        StartGems,
+        EndGems
+    }
+
+    [SerializeField] Gems _gems;
+
     [SerializeField] float _speed = 0.25f;
     [SerializeField] int _tokensEarned = 18;
 
@@ -26,8 +34,12 @@ public class Scene1Gems : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerPrefs.HasKey("scene1Gems"))
+        if (PlayerPrefs.HasKey("scene1StartGems") && _gems == Gems.StartGems)
             Destroy(gameObject);
+
+        if (PlayerPrefs.HasKey("scene1EndGems") && _gems == Gems.EndGems)
+            Destroy(gameObject);
+
 
         _anim = GetComponent<Animator>();
 
@@ -48,7 +60,10 @@ public class Scene1Gems : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (PlayerPrefs.HasKey("scene1Gems"))
+        if (PlayerPrefs.HasKey("scene1StartGems") && _gems == Gems.StartGems)
+            return;
+
+        if (PlayerPrefs.HasKey("scene1EndGems") && _gems == Gems.EndGems)
             return;
 
         _talkText.gameObject.SetActive(true);
@@ -93,7 +108,13 @@ public class Scene1Gems : MonoBehaviour
         if (_collectGems != null)
             StopCoroutine(_collectGems);
         ScoreManager.Instance.Token_Earned(_tokensEarned);
-        PlayerPrefs.SetInt("scene1Gems", 1);
+
+        if (_gems == Gems.StartGems)
+            PlayerPrefs.SetInt("scene1StartGems", 1);
+
+        if (_gems == Gems.EndGems)
+            PlayerPrefs.SetInt("scene1EndGems", 1);
+
         Destroy(gameObject);
     }
 
