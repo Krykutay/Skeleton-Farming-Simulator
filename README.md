@@ -11,8 +11,7 @@ Click the link to play! https://simmer.io/@Krykutay/skeleton-farming-simulator
 This is a mini game version of what I've been enjoying to create lately. The actual game is leaning toward a platformer game with puzzles and such whereas this one is basically a "skeleton farming simulator" with a main character, enemies and npcs. 
 
 # Game Overview
-
-photo
+![ss11](https://user-images.githubusercontent.com/44427408/150685719-54b6bc9a-933a-44b6-8378-ef6017769e8a.jpg)
 
 ## Game Genre
 Platformer Game
