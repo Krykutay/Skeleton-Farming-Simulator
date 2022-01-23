@@ -102,7 +102,7 @@ Audio Settings offer the player a chance to alter Master, Effects, Music and Voi
 <img src="https://user-images.githubusercontent.com/44427408/150685194-e9c31e10-1101-4a5e-969d-50c70fca5eb9.jpg" width="390" height="250"> <br/> <br/>
 Graphics Settings offer the player a chance to change Quality, Resolution, FullScreen(or not), V-Sync(or not).
 <img src="https://user-images.githubusercontent.com/44427408/150685219-25eb842c-d655-4a41-b552-a0a2bc8c60aa.jpg" width="390" height="250"> <br/> <br/>
-Controls Settings offer the player a chance to change any key binding. Note that this is done in the new Input System - SO MUCH WORK IT WAS.
+Controls Settings offer the player a chance to change any key binding. Note that this is done in the new Input System, SO MUCH WORK IT WAS.
 <img src="https://user-images.githubusercontent.com/44427408/150685265-bacd5063-d7dd-4ee9-bdb6-77c46d453dd4.jpg" width="390" height="250"> <br/> <br/>
 
 ### Shops
