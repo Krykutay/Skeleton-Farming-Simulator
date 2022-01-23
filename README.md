@@ -11,7 +11,7 @@ Click the link to play! https://simmer.io/@Krykutay/skeleton-farming-simulator  
 This is a mini game version of what I've been enjoying to create lately. The actual game is leaning toward a platformer game with puzzles and such whereas this one is basically a "skeleton farming simulator" with a main character, enemies and npcs. 
 
 # Game Overview
-![ss11](https://user-images.githubusercontent.com/44427408/150685719-54b6bc9a-933a-44b6-8378-ef6017769e8a.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685719-54b6bc9a-933a-44b6-8378-ef6017769e8a.jpg" width="720" height="405"> <br/>
 
 ## Game Genre
 Platformer Game
@@ -86,7 +86,7 @@ With enemies, there is sub/super state system. There are certain states as Idle,
 This way, some enemies may or may not have, let's say stun state, and therefore they won't be able to stunned by the player. Additionally, each state has it's own scriptable object and the characteristics / stats of each enemy is saved in them. Finally, Since all enemies do share similar behaviors, they all inherit from the class Entity. <br/>
 
 To give an example, Enemy4 (Archer), uses the following scriptable objects as its data behaviors.
-![EnemyScript](https://user-images.githubusercontent.com/44427408/150683899-04f9cb26-f0ee-4b6d-a49d-40d4a76e9cb8.png)
+<img src="https://user-images.githubusercontent.com/44427408/150683899-04f9cb26-f0ee-4b6d-a49d-40d4a76e9cb8.png" width="371" height="260"> <br/>
 
 ## Checks for both Player and Enemy
 Each enemy and player object has its own Ground Check, WallCheck, LedgeCheck, MeleeAttackPositionCheck. Some enemies also have checks as RangeAttack, LedgeBehind etc. <br/>
@@ -95,16 +95,16 @@ Additionally, on this demo, Each enemy checks its distance between the player in
 
 ## Combat System
 A very simple example of the combat system.
-![ss8](https://user-images.githubusercontent.com/44427408/150685590-a78a4fe2-0feb-4a9a-89c7-737b11a38a50.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685590-a78a4fe2-0feb-4a9a-89c7-737b11a38a50.jpg" width="720" height="405"> <br/>
 
 ## UI Elements
 ### Settings
 Audio Settings offer the player a chance to alter Master, Effects, Music and Voice Volumes
-![F-ss1](https://user-images.githubusercontent.com/44427408/150685194-e9c31e10-1101-4a5e-969d-50c70fca5eb9.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685194-e9c31e10-1101-4a5e-969d-50c70fca5eb9.jpg" width="390" height="250"> <br/>
 Graphics Settings offer the player a chance to change Quality, Resolution, FullScreen(or not), V-Sync(or not).
-![F-ss2](https://user-images.githubusercontent.com/44427408/150685219-25eb842c-d655-4a41-b552-a0a2bc8c60aa.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685219-25eb842c-d655-4a41-b552-a0a2bc8c60aa.jpg" width="390" height="250"> <br/>
 Controls Settings offer the player a chance to change any key binding. Note that this is done in the new Input System - SO MUCH WORK IT WAS.
-![F-ss3](https://user-images.githubusercontent.com/44427408/150685265-bacd5063-d7dd-4ee9-bdb6-77c46d453dd4.jpg) <br/>
+<img src="https://user-images.githubusercontent.com/44427408/150685265-bacd5063-d7dd-4ee9-bdb6-77c46d453dd4.jpg" width="390" height="250"> <br/>
 
 ### Shops
 Shops do include new outfits, new swords and stimulates that enchance the character's total health and damage. These are bought with gems which are collected from skeletons.
