@@ -72,11 +72,9 @@ Finally, there are also two states that doesn't have a superstates. These are, I
 
 These states, of course, also bring up animations as the complicity. Animation state behaviours are shows in the following picture. Note that player can actively be on only a single state at a time. <br/>
 
-<br/>
 ![PlayerAnims](https://user-images.githubusercontent.com/44427408/150682589-362494d3-07f0-47de-8670-ae97ec970d27.jpg) <br/>
 
 UML Diagram of Player States:
-<br/>
 ![PlayerStateUML](https://user-images.githubusercontent.com/44427408/150683315-dd2cc360-bd39-42dd-bc09-abb695c4a629.png) <br/>
 
 ## Enemy Finite State Machines
