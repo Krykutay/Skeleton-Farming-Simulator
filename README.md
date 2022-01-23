@@ -98,7 +98,7 @@ In this game, combat system is handled through interfaces. When the player weapo
 
 ## UI Elements
 ### Settings
-Audio Settings offer the player a chance to alter Master, Effects, Music and Voice Volumes <br/>
+Audio Settings offer the player a chance to alter Master, Effects, Music and Voice Volumes.<br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685194-e9c31e10-1101-4a5e-969d-50c70fca5eb9.jpg" width="390" height="250"> <br/>
 Graphics Settings offer the player a chance to change Quality, Resolution, FullScreen(or not), V-Sync(or not). <br/>
 <img src="https://user-images.githubusercontent.com/44427408/150685219-25eb842c-d655-4a41-b552-a0a2bc8c60aa.jpg" width="390" height="250"> <br/>
